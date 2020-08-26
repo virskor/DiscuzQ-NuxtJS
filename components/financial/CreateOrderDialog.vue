@@ -10,7 +10,7 @@
 					</v-list-item-avatar>
 					<v-list-item-title>{{p.name}}</v-list-item-title>
 					<v-list-item-action v-if="method == p">
-						<v-checkbox input-value="true" value></v-checkbox>
+						<v-icon color="primary">mdi-checkbox-marked-circle</v-icon>
 					</v-list-item-action>
 				</v-list-item>
 			</v-list>
@@ -66,7 +66,11 @@ export default {
 			 * 预设的支付方式
 			 */
 			paymentMethods: [
-				{ name: "微信扫码支付", type: 10, icon: 'icon-wechat-pay-fill' },
+				{
+					name: "微信扫码支付",
+					type: 10,
+					icon: "icon-wechat-pay-fill",
+				},
 				// { name: "钱包支付", type: 20, icon: 'icon-qianbao' },
 			],
 			/**

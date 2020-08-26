@@ -22,13 +22,21 @@
 		</v-dialog>
 
 		<!--创建订单对话框组价-->
-		<Order @orderCreated="payOrder" :type="2" v-model="showOrder" :amount="$C.formatAmounts(amount)" :thread="thread"></Order>
+		<CreateOrderDialog
+			@orderCreated="payOrder"
+			:type="2"
+			v-model="showOrder"
+			:amount="$C.formatAmounts(amount)"
+			:thread="thread"
+		></CreateOrderDialog>
+
+		
 	</div>
 </template>
 
 <script>
 import RewardDialogItems from "~/components/financial/RewardDialogItems";
-import Order from "~/components/financial/Order";
+import CreateOrderDialog from "~/components/financial/CreateOrderDialog";
 
 export default {
 	props: {
@@ -60,7 +68,7 @@ export default {
 		 * 请求支付订单
 		 * payment 包含订单信息 和 支付方式
 		 */
-		async payOrder(payment){
+		async payOrder(payment) {
 			this.loading = true;
 
 			console.log(payment);
@@ -69,12 +77,12 @@ export default {
 				this.loading = false;
 			}, 3000);
 
-			this.$swal('已经创建订单，但暂时无法唤起支付，请稍等后续功能完善');
-		}
+			this.$swal("已经创建订单，但暂时无法唤起支付，请稍等后续功能完善");
+		},
 	},
 	components: {
 		RewardDialogItems,
-		Order,
+		CreateOrderDialog,
 	},
 };
 </script>
