@@ -1,0 +1,120 @@
+<template>
+	<div class="discuz">
+		<v-app :dark="appConf.dark">
+			<StartDrawer v-model="showStartDrawer" />
+
+			<!--路由渲染-->
+			<v-main app>
+				<template v-if="!forum && !loadForumFailed">
+					<v-sheet class="px-3 pt-3 pb-12">
+						<center>
+							<v-progress-circular :size="50" color="primary" indeterminate></v-progress-circular>
+						</center>
+					</v-sheet>
+				</template>
+
+				<!--加载forum对象失败-->
+				<template v-if="!forum && loadForumFailed">
+					<v-sheet class="px-3 pt-3 pb-12">
+						<center class="text-h6">
+							<span>网络不稳定导致加载失败，请重试</span>
+						</center>
+					</v-sheet>
+				</template>
+
+				<nuxt v-if="forum && !loadForumFailed"></nuxt>
+
+				<EndDrawer v-model="showEndDrawer" />
+
+				<!--返回顶部按钮-->
+				<client-only>
+					<go-top id="goTop" :duration="1000">
+						<v-btn class="gotop elevation-5" color="primary" fab>
+							<v-icon large dark>mdi-chevron-up</v-icon>
+						</v-btn>
+					</go-top>
+				</client-only>
+
+				<!--应用底部导航-->
+				<AppFooter />
+			</v-main>
+		</v-app>
+	</div>
+</template>
+
+<script>
+import * as types from "~/store/vuex-types";
+import { mapGetters } from "vuex";
+
+import StartDrawer from "~/components/navigationDrawers/StartDrawer";
+import EndDrawer from "~/components/navigationDrawers/EndDrawer";
+import AppFooter from "~/components/AppFooter";
+import DefaultMixins from "~/layouts/default.mixins";
+
+export default {
+	mixins: [DefaultMixins],
+	data() {
+		return {
+			loadForumFailed: false,
+			showStartDrawer: false,
+			showEndDrawer: false,
+			//showbackIcon: false,
+		};
+	},
+	mounted() {
+		this.$nextTick(async () => {
+			/**
+			 * mixin method bootstrap
+			 */
+			await this.bootstrap();
+
+			this.loadForumFailed = !(await this.$store.dispatch("getForum"));
+
+			/**
+			 * 如果用户刷新页面，防止登录状态丢失
+			 * 尝试恢复从本地的登录记录中登录的当前用户
+			 */
+			await this.$store.dispatch("getCurrentUser", {
+				fromLocal: true,
+			});
+		});
+	},
+	computed: {
+		...mapGetters({
+			appConf: types.GETTERS_APPCONF,
+			forum: types.GETTERS_FORUM,
+		}),
+		siteClosed() {
+			const { forum } = this;
+			return forum == null ? false : forum.attributes.set_site.site_close;
+		},
+	},
+	methods: {
+		toggleDrawers() {
+			this.showStartDrawer = !this.showStartDrawer;
+			if (!this.$C.isMobile()) {
+				this.showEndDrawer = !this.showEndDrawer;
+			}
+		},
+	},
+	watch: {
+		// "$route": function(){
+		// 	this.showbackIcon = this.$route.path != '/';
+		// }
+	},
+	components: {
+		EndDrawer,
+		StartDrawer,
+		AppFooter,
+	},
+};
+</script>
+
+<style lang="less">
+.discuz {
+	.theme--light.v-app-bar.v-toolbar.v-sheet {
+		border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
+		//box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.02), 0px 4px 5px 0px rgba(0, 0, 0, 0.04), 0px 1px 10px 0px rgba(0, 0, 0, 0.22) !important;
+	}
+}
+</style>

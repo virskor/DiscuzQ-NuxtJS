@@ -1,0 +1,76 @@
+<template>
+	<v-card :ripple="false" elevation="0" class="topic-card pa-2" :id="`topic-${topic.id}`" tile>
+		<!--话题标题-->
+		<v-card-title>
+			<v-list-item class="pa-0">
+				<v-list-item-content class="pa-0">
+					<v-list-item-title class="headline">
+						<span class="text-h5 font-weight-black">#{{topic.attributes.content || ""}}#</span>
+					</v-list-item-title>
+					<v-list-item-subtitle>最近发布：{{$C.formatDateTime(topic.attributes.updated_at)}}</v-list-item-subtitle>
+				</v-list-item-content>
+				<v-list-item-action>
+					<v-btn @click="$router.push(`/topics/${topic.id}`)" color="primary" text>
+						查看
+					</v-btn>
+				</v-list-item-action>
+			</v-list-item>
+		</v-card-title>
+
+		<!--内容主题-->
+		<ThreadContents
+			v-if="thread"
+			class="pl-4 pr-5 pb-2"
+			isFloor
+			:thread="thread"
+			:hideContents="thread.attributes.isSticky || false"
+			:title="thread.attributes.title||''"
+			:contents="firstPost.attributes.contentHtml || ''"
+		></ThreadContents>
+
+		<!--附件-->
+		<ThreadAttachments grid :attachments="attachments"></ThreadAttachments>
+
+		<!--话题热度概览-->
+		<p class="v-list-item__subtitle pl-4">
+			<span>热度：{{topic.attributes.view_count || 0}}</span>
+			<span>内容：{{topic.attributes.thread_count || 0}}</span>
+		</p>
+	</v-card>
+</template>
+
+<script>
+import ThreadContents from "~/components/threads/ThreadContents";
+import ThreadAttachments from "~/components/threads/ThreadAttachments";
+
+export default {
+	props: {
+		/**
+		 * 话题模型
+		 */
+		topic: Object,
+		/**
+		 * 主题模型
+		 */
+		thread: Object,
+		/**
+		 * 首贴
+		 */
+		firstPost: Object,
+		/**
+		 * 关联的附件
+		 */
+		attachments: Array,
+	},
+	components: {
+		ThreadContents,
+		ThreadAttachments,
+	},
+};
+</script>
+
+<style lang="less">
+.topic-card {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
+}
+</style>

@@ -1,0 +1,52 @@
+{
+  "name": "dzq-nuxt",
+  "description": "Powered by Discuz!Q",
+  "version": "1.0.0",
+  "private": true,
+  "config": {
+    "nuxt": {
+      "port": "3333"
+    }
+  },
+  "scripts": {
+    "dev": "node ./discuz.serve.js",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "serve": "cross-env NODE_ENV=production node ./discuz.serve.js",
+    "generate": "nuxt generate",
+    "test": "jest",
+    "refresh-cdn": "node ./tools/cdn.js"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "babel-polyfill": "^6.26.0",
+    "clipboardy": "^2.3.0",
+    "crypto-js": "^4.0.0",
+    "github-markdown-css": "^4.0.0",
+    "lodash": "^4.17.19",
+    "moment": "^2.27.0",
+    "numeral": "^2.0.6",
+    "nuxt": "^2.14.0",
+    "vue-gotop": "^1.0.2",
+    "vue-pswipe": "^0.15.0",
+    "vue-swal": "^1.0.0",
+    "vuex": "^3.5.1"
+  },
+  "devDependencies": {
+    "@nuxtjs/vuetify": "^1.11.2",
+    "@vue/test-utils": "^1.0.3",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^26.1.0",
+    "consola": "^2.14.0",
+    "cross-env": "^7.0.2",
+    "express": "^4.17.1",
+    "file-loader": "^6.0.0",
+    "http-proxy-middleware": "^1.0.5",
+    "jest": "^26.1.0",
+    "less": "^3.12.2",
+    "less-loader": "^6.2.0",
+    "tencent-cdn-refresh": "^2.0.0",
+    "vue-jest": "^3.0.4",
+    "webpack-node-externals": "^2.5.0"
+  }
+}
