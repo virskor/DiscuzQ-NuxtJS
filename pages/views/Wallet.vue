@@ -13,6 +13,18 @@
 
 			<v-divider></v-divider>
 			<!--钱包明细，订单明细 提现记录-->
+			<v-card flat tile>
+				<v-list>
+					<v-list-item @click="$router.push(m.path)" v-for="(m, i) in menus" :key="i">
+						<v-list-item-title>{{m.caption}}</v-list-item-title>
+						<v-list-item-icon>
+							<v-btn text small>
+								<v-icon>mdi-chevron-right</v-icon>
+							</v-btn>
+						</v-list-item-icon>
+					</v-list-item>
+				</v-list>
+			</v-card>
 		</v-container>
 	</div>
 </template>
@@ -45,6 +57,12 @@ export default {
 		return {
 			wallet: null,
 			loading: true,
+			menus: [
+				{ caption: "提现记录", path: "/wallet/withdrawalslist" },
+				{ caption: "钱包明细", path: "/wallet/walletlist" },
+				{ caption: "订单明细", path: "/wallet/orderlist" },
+				{ caption: "设置支付密码", path: "/wallet/security" },
+			],
 		};
 	},
 	methods: {
