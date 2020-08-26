@@ -1,7 +1,6 @@
 import Request from '~/api/requests/request';
 import RequestIncludes from '~/api/requests/requestIncludes';
 import URLS from '~/api/requests/URLS';
-import requestIncludes from './requests/requestIncludes';
 
 export default {
     /**

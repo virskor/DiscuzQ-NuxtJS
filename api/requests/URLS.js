@@ -182,6 +182,11 @@ const URLS = {
      * https://discuz.com/api-docs/v1/MyFavorite.html
      */
     FAVORITES: `${APIHOST}${APIVERSION}/favorites`,
+
+    /**
+     * POST api/orders 创建订单
+     */
+    ORDERS: `${APIHOST}${APIVERSION}/orders`,
 }
 
 export default URLS

@@ -19,7 +19,7 @@ module.exports = {
          * 因为这样多处修改，并不利于你快速使用一份config启动你的APP
          */
         link: [
-            { rel: 'stylesheet', href: '//at.alicdn.com/t/font_1989193_lt1cea51g8.css' },
+            { rel: 'stylesheet', href: '//at.alicdn.com/t/font_1989193_cjlfpcvmc1u.css' },
             { rel: 'stylesheet', href: '//fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100;300;400;500;700;900&display=swap' },
             { rel: 'stylesheet', href: '//imgcache.qq.com/open/qcloud/video/tcplayer/tcplayer.css' },
         ],
