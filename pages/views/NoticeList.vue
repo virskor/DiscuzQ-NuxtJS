@@ -72,6 +72,7 @@ export default {
 	},
 	mounted() {
 		this.$nextTick(async () => {
+			await this.$store.dispatch("shouldLogin");
 			await this.getNotifications();
 		});
 	},

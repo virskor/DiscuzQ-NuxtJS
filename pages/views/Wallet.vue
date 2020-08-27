@@ -58,10 +58,10 @@ export default {
 			wallet: null,
 			loading: true,
 			menus: [
-				{ caption: "提现记录", path: "/wallet/withdrawalslist" },
-				{ caption: "钱包明细", path: "/wallet/walletlist" },
+				//{ caption: "提现记录", path: "/wallet/withdrawalslist" },
+				//{ caption: "钱包明细", path: "/wallet/walletlist" },
 				{ caption: "订单明细", path: "/wallet/orderlist" },
-				{ caption: "设置支付密码", path: "/wallet/security" },
+				//{ caption: "设置支付密码", path: "/wallet/security" },
 			],
 		};
 	},

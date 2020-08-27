@@ -36,9 +36,11 @@
 
 <script>
 import RewardDialogItems from "~/components/financial/RewardDialogItems";
-import CreateOrderDialog from "~/components/financial/CreateOrderDialog";
+import CreateOrderDialog from "~/components/financial/orders/CreateOrderDialog";
+import PaymentMixin from "~/components/financial/mixins/Payment.mixin";
 
 export default {
+	mixins: [PaymentMixin],
 	props: {
 		/**
 		 * 主题
@@ -71,13 +73,18 @@ export default {
 		async payOrder(payment) {
 			this.loading = true;
 
-			console.log(payment);
+			const result = await this.pay(payment.order, payment.method.type);
 
-			setTimeout(() => {
-				this.loading = false;
-			}, 3000);
+			this.loading = false;
+			if(result){
+				/**
+				 * 支付完成回调
+				 */
+				await this.$swal("打赏成功，谢谢");
+				return;
+			}
 
-			this.$swal("已经创建订单，但暂时无法唤起支付，请稍等后续功能完善");
+			this.$swal("未查询到成功支付状态，请在订单明细中查看或继续支付");
 		},
 	},
 	components: {

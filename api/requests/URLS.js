@@ -187,6 +187,12 @@ const URLS = {
      * POST api/orders 创建订单
      */
     ORDERS: `${APIHOST}${APIVERSION}/orders`,
+
+    /**
+     * POST trade/pay/order 支付
+     * https://discuz.com/api-docs/v1/TradePayOrder.html
+     */
+    ORDERS_PAY: `${APIHOST}${APIVERSION}/trade/pay/order`,
 }
 
 export default URLS

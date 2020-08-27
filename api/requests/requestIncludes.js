@@ -38,6 +38,12 @@ const requestIncludes = {
     FIRST_POST: 'firstPost',
 
     /**
+     * firstPost
+     * 首贴
+     */
+    THREAD_FIRST_POST: 'thread.firstPost',
+
+    /**
      * firstPost.mentionUsers
      * 首贴提到的用户
      */

@@ -6,7 +6,7 @@
 		<!--打赏用户的头像-->
 
 		<v-card tile flat class="rewardedUsersList" v-if="!$_.isEmpty(rewardedUsers)">
-			<Avatar class="ma-1" :size="30" v-for="(u, i) in rewardedUsers" :key="i" :user="u"></Avatar>
+			<Avatar class="ma-1" :size="30" v-for="(u, i) in rewardedUsersFiltered" :key="i" :user="u"></Avatar>
 		</v-card>
 	</div>
 </template>
@@ -24,6 +24,16 @@ export default {
 		 * 打赏的用户数组
 		 */
 		rewardedUsers: Array,
+	},
+	computed: {
+		/**
+		 * 去除打赏用户中相同的用户记录
+		 */
+		rewardedUsersFiltered(){
+			const {rewardedUsers} = this;
+			let attr = new Map();
+			return rewardedUsers.filter((r) => !attr.has(r) && attr.set(r, 1))
+		}
 	},
 	components: {
 		Avatar,
