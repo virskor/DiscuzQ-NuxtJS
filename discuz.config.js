@@ -73,6 +73,7 @@ module.exports = {
         development: '',
         production: '',
     },
+
     /**
      * 是否配置了独立的手机版用于自动跳转
      * 当你开启responsive中的一些参数，在手机版中渲染，可能会发生改变
@@ -88,8 +89,10 @@ module.exports = {
         /**
          * 手机版下要跳转的域名
          * 不要加路径，仅协议+domain
+         * h5前端站点部署域名
+         * 将用于生成手机看帖二维码服务
          */
-        redirectDomain: 'https://m.dehong.ren'
+        redirectDomain: 'https://discuz.chat'
     },
     /**
      * analytics
