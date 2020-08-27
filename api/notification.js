@@ -24,4 +24,12 @@ export default {
             data
         });
     },
+    /**
+     * 删除通知
+     */
+    removeNotifications(ID) {
+        return Request.delete({
+            url: `${URLS.NOTIFICATION}/${ID}`,
+        });
+    },
 }

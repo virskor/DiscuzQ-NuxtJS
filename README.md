@@ -1,10 +1,19 @@
-# DiscuzQ-NuxtJS
+# DiscuzQ-NuxtJS Light
 DiscuzQ 基于NuxtJS并支持后端渲染的PC HOME，来自第三方。  
 目前我们不保证项目的交付日期
 
-## 提示
-目前我们将抽出部分PR，先完成一个light的版本，仅支持渲染帖子部分基础功能，后续将逐渐拓展feature。
+## 版权提示
+目前我们将抽出部分PR，先完成一个light的版本，仅支持渲染帖子部分基础功能，后续将逐渐拓展feature。  
+#### 将这个项目用于开源社区，个人学习等非商业用途是不需要付费购买源代码使用权的。源码正版授权购买属于自愿原则（目的捐赠以获得持续的更新和使用指导建议，及维持演示站点服务器等费用）  
+授权原则为单个域名，根据网站备案类型区分，企业用户授权与个人用户授权价格不一致。  
+原价： 个人授权 288 企业授权 588  (Light Version 精简版)  
+如您预定，我们将预计9月15日前交付可用于生产的RC版本  
+如果使用有疑问欢迎添加微信： gentlevirs
 
+### 已预授权域名查询（赞助者）
+www.dehong.ren  
+
+### 预览
 关注： https://github.com/virskor/DiscuzQ  
 预览： https://www.dehong.ren  
 
@@ -18,6 +27,14 @@ DiscuzQ 基于NuxtJS并支持后端渲染的PC HOME，来自第三方。
 推荐使用腾讯云CDN进行加速访问。
 
 ### 启动命令
+
+#### 一键启动
+使用一键启动，意味着不在乎反向代理导致的性能降低。那么您只需要修改 discuz.config.js 中的域名，与Discuz!Q 后端域名地址一致即可，之后再运行下面的指令。  
+```bash
+yarn build
+yarn serve
+```  
+然后访问 http://127.0.0.1:3333 即可使用，nginx配置参考nginx.frontend.conf
 
 ```bash
 # install dependencies

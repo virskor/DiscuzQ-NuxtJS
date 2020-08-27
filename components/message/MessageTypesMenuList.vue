@@ -1,8 +1,8 @@
 <template>
-	<v-list disabled>
+	<v-list>
 		<v-subheader>提醒</v-subheader>
 		<v-list-item-group color="primary" class="pr-2">
-			<v-list-item v-for="(item, i) in messageTypes" :key="i">
+			<v-list-item @click="openMessageList(item)" v-for="(item, i) in messageTypes" :key="i">
 				<v-list-item-icon>
 					<v-icon v-text="item.icon"></v-icon>
 				</v-list-item-icon>
@@ -53,6 +53,11 @@ export default {
 			return user.attributes.typeUnreadNotifications || [];
 		},
 	},
+	methods: {
+		openMessageList(m){
+			this.$router.push({path: '/views/noticelist', query: {type: m.value, title: m.caption}});
+		}
+	}
 };
 </script>
 

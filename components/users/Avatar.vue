@@ -44,6 +44,7 @@ export default {
 		 */
 		userAvatar() {
 			const { user, emptyAvatar } = this;
+			
 			if (this.$_.isEmpty(user)) {
 				return emptyAvatar;
 			}

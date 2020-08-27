@@ -10,14 +10,22 @@
 			</v-card>
 			<v-card tile flat class="pl-4">
 				<p>计划近期完成的：编辑器</p>
-				<p>计划近期完成的：帖子管理，删除，编辑，回复，发帖等</p>
+				<p>计划近期完成的：编辑，回复，发帖等</p>
 				<p>计划近期完成的：消息提醒</p>
 				<p>计划近期完成的：私信</p>
 				<p>计划近期完成的：微信支付</p>
-				<p>计划近期完成的：订单，提现，流水，打赏等</p>
 				<p>计划近期完成的：偏好设置</p>
 			</v-card>
 			<v-list>
+				<v-list-item>
+					<v-card flat tile>
+						<p class="text-h5">2020-08-27</p>
+						<p>新增消息列表</p>
+						<p v-if="false">新增订单，提现，流水，打赏等</p>
+						<p v-if="false">支持删除自己发布的帖子</p>
+						<p v-if="false">新增微信扫码支付</p>
+					</v-card>
+				</v-list-item>
 				<v-list-item>
 					<v-card flat tile>
 						<p class="text-h5">2020-08-26</p>

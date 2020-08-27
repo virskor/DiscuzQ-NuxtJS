@@ -67,7 +67,7 @@ export default {
 				{
 					icon: "icon-tongzhi",
 					text: "消息提醒",
-					route: "/views/notifications",
+					route: "/views/notices",
 				},
 				{ divider: true },
 				{
