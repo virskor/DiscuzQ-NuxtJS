@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<AppTitle title="下载APP"></AppTitle>
+		<AppTitle showExtendedNav title="下载APP"></AppTitle>
 		<AppLanding />
 	</div>
 </template>

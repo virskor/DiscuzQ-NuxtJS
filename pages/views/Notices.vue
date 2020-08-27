@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<AppTitle title="消息提醒"></AppTitle>
+		<AppTitle showExtendedNav title="消息提醒"></AppTitle>
 		<v-container fluid>
 			<MessageTypesMenuList></MessageTypesMenuList>
 			<PrivateMessagesList></PrivateMessagesList>

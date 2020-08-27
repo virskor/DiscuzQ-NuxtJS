@@ -95,6 +95,21 @@ module.exports = {
         redirectDomain: 'https://discuz.chat'
     },
     /**
+     * 导航拓展
+     * 数组
+     * 内部对象解释
+     * {
+     *  caption: '标题', // String
+     *  href: '链接', // String
+     *  newWidow: false, // Boolean 
+     * }
+     */
+    extendedNavigations: [
+        { caption: '官方站点', href: 'https://discuz.chat', newWidow: true },
+        { caption: 'API文档', href: 'https://discuz.com/api-docs/v1/', newWidow: true },
+        { caption: '获取源码', href: 'https://github.com/virskor/DiscuzQ-NuxtJS', newWidow: true }
+    ],
+    /**
      * analytics
      * 统计代码
      * 

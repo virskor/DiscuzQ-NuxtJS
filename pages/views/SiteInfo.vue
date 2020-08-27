@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<AppTitle title="站点信息"></AppTitle>
+		<AppTitle showExtendedNav title="站点信息"></AppTitle>
 		<v-container fluid>
 			<!--顶部-->
 			<SiteInfo>

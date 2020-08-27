@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<AppTitle title="我的收藏"></AppTitle>
+		<AppTitle showExtendedNav title="我的收藏"></AppTitle>
 		<v-container fluid>
 			<ThreadsCollectionList></ThreadsCollectionList>
 		</v-container>

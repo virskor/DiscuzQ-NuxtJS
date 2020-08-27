@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<AppTitle title="偏好设置"></AppTitle>
+		<AppTitle showExtendedNav title="偏好设置"></AppTitle>
 		<v-alert text tile dense type="info">部分设置在您下次清除浏览器缓存，重新访问时将会失效</v-alert>
 
 		<v-container fluid>

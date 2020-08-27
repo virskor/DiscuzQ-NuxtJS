@@ -1,7 +1,7 @@
 <template>
 	<div>
-		<AppTitle title="更新日志">
-			<v-btn @click="openGithub" color="primary" text>GITHUB</v-btn>
+		<AppTitle  title="更新日志">
+			
 		</AppTitle>
 		<v-container fluid>
 			<v-card tile flat>
@@ -16,16 +16,17 @@
 				<p>剩余未完成或计划近期完成的：偏好设置</p>
 				<p>剩余未完成或计划近期完成的：个人资料，等设置</p>
 				<p>剩余未完成或计划近期完成的：冻结明细，提现，流水等</p>
+				<p>剩余未完成或计划近期完成的：扫码看帖(在手机中查看引流)</p>
 			</v-card>
 			<v-list>
 				<v-list-item>
 					<v-card flat tile>
 						<p class="text-h5">2020-08-27</p>
 						<p>新增消息列表</p>
-						<p>新增扫码看帖(在手机中查看引流)</p>
 						<p>新增微信扫码支付(在打赏中进行体验)</p>
 						<p>新增订单查询筛选组件</p>
 						<p>新增订单明细</p>
+						<p>新增可拓展的导航菜单</p>
 						<p v-if="false">支持删除自己发布的帖子</p>
 					</v-card>
 				</v-list-item>
@@ -76,12 +77,6 @@ export default {
 		};
 	},
 	methods: {
-		openGithub() {
-			const { githubUrl } = this;
-
-			let win = window.open();
-			win.location.href = githubUrl;
-		},
 	},
 };
 </script>

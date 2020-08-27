@@ -6,8 +6,12 @@
 
 		<v-toolbar-title class="font-weight-black">{{title}}</v-toolbar-title>
 		<v-spacer />
-
+		
 		<slot />
+
+		<!--拓展菜单-->
+		<ExtendedNav v-if="!hideExtendedNav"></ExtendedNav>
+
 		<!--用户登录状态栏-->
 		<UserStatusBar />
 	</v-toolbar>
@@ -18,6 +22,7 @@ import * as types from "~/store/vuex-types";
 import { mapGetters } from "vuex";
 
 import UserStatusBar from "~/components/users/UserStatusBar";
+import ExtendedNav from "~/components/common/global/ExtendedNav";
 
 export default {
 	props: {
@@ -33,6 +38,10 @@ export default {
 		 * dark
 		 */
 		dark: Boolean,
+		/**
+		 * 隐藏导航条
+		 */
+		hideExtendedNav: Boolean
 	},
 	data() {
 		return {
@@ -62,6 +71,7 @@ export default {
 	},
 	components: {
 		UserStatusBar,
+		ExtendedNav
 	},
 };
 </script>

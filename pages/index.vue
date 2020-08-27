@@ -1,10 +1,10 @@
 <template>
 	<div>
-		<AppTitle title="首页">
+		<AppTitle  title="首页">
 			<ThreadsFilters />
 		</AppTitle>
 		<v-alert class="ma-0" tile text dense dark type="info">
-			现在您可以使用的功能并不完整。这个项目不保证上线时间。演示数据来自discuz.chat
+			第三方PC模板，现在您可以使用的功能并不完整。这个项目不保证上线时间。演示数据来自discuz.chat
 		</v-alert>
 
 		<v-container fluid>

@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<AppTitle title="话题">
+		<AppTitle hideExtendedNav title="话题">
 			<!--搜索输入框-->
 			<v-text-field
 				v-model="keyword"
