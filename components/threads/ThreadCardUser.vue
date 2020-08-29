@@ -11,9 +11,8 @@
 			</v-list-item-content>
 
 			<v-list-item-action>
-				<v-chip label dark v-if="isSticky" class="mb-1" color="primary" small>置顶</v-chip>
-				<v-chip label dark v-if="isEssence" class="mb-1" color="pink" small>精华</v-chip>
-				<v-chip label dark v-if="shouldPay" color="amber" small>付费</v-chip>
+				<!--关注按钮-->
+				<UserFollowButton v-if="allowFollow" :user="user"></UserFollowButton>
 			</v-list-item-action>
 		</v-list-item>
 	</v-list>
@@ -21,6 +20,7 @@
 
 <script>
 import Avatar from "~/components/users/Avatar";
+import UserFollowButton from "~/components/users/follow/UserFollowButton";
 
 export default {
 	props: {
@@ -33,17 +33,9 @@ export default {
 		 */
 		firstPost: Object,
 		/**
-		 * 是否显示顶置图标
+		 * 显示关注按钮
 		 */
-		isSticky: Boolean,
-		/**
-		 * 是否显示精华
-		 */
-		isEssence: Boolean,
-		/**
-		 * shouldPay
-		 */
-		shouldPay: Boolean
+		allowFollow: Boolean,
 	},
 	components: {
 		Avatar,

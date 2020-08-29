@@ -6,13 +6,25 @@
 			@click="onWantOpenThreadDetail"
 			v-if="title"
 		>{{title}}</div>
-		<!--显示分类-->
-		<CategoriesLabel v-if="thread.relationships.category" :categoryID="thread.relationships.category.data.id"></CategoriesLabel>
-		
+		<!--标签-->
+		<div>
+			<v-chip label outlined v-if="isSticky" class="mb-1" color="primary" small>置顶</v-chip>
+			<v-chip label outlined v-if="isEssence" class="mb-1" color="pink" small>精华</v-chip>
+			<v-chip label outlined v-if="shouldPay" color="amber" small>付费</v-chip>
+			<!--显示分类-->
+			<CategoriesLabel
+				v-if="thread.relationships.category"
+				:categoryID="thread.relationships.category.data.id"
+			></CategoriesLabel>
+		</div>
+
 		<!--内容-->
-		<div v-if="!hideContents" @click="onWantOpenThreadDetail" class="clickable" v-html="formatRichText(contents)"></div>
-	
-		
+		<div
+			v-if="!hideContents"
+			@click="onWantOpenThreadDetail"
+			class="clickable"
+			v-html="formatRichText(contents)"
+		></div>
 	</div>
 </template>
 
@@ -44,6 +56,18 @@ export default {
 		 * 主题
 		 */
 		thread: Object,
+		/**
+		 * 是否显示顶置图标
+		 */
+		isSticky: Boolean,
+		/**
+		 * 是否显示精华
+		 */
+		isEssence: Boolean,
+		/**
+		 * shouldPay
+		 */
+		shouldPay: Boolean,
 	},
 	methods: {
 		/**
@@ -81,8 +105,8 @@ export default {
 		},
 	},
 	components: {
-		CategoriesLabel
-	}
+		CategoriesLabel,
+	},
 };
 </script>
 

@@ -86,10 +86,56 @@ const requestIncludes = {
     FIRST_POST_ATTACHMENTS: 'firstPost.attachments',
 
     /**
+     * 附件
+     */
+    ATTACHMENTS: 'attachments',
+
+    /**
      * firstPostLikedUsers
      * 点赞首贴的用户
      */
     FIRST_POST_LIKED_USERS: 'firstPost.likedUsers',
+
+    /**
+     * 点赞的用户
+     */
+    LIKED_USERS: 'likedUsers',
+
+    /**
+     * 评论关联的POSTS
+     */
+    COMMENT_POSTS: 'commentPosts',
+
+    /**
+     * 评论关联的POSTS的发布人
+     */
+    COMMENT_POSTS_USER: 'commentPosts.user',
+
+    /**
+     * 评论关联的POSTS的发布人的用户组
+     */
+    COMMENT_POSTS_USER_GROUPS: 'commentPosts.user.groups',
+
+    /**
+     * 回复人
+     */
+    COMMENT_POSTS_REPLY_USER: 'commentPosts.replyUser',
+
+    /**
+     * 回复人的用户组
+     */
+    COMMENT_POSTS_REPLY_USER_GROUPS: 'commentPosts.replyUser.groups',
+
+    /**
+     * 评论@的用户
+     */
+    COMMENT_POSTS_MENTION_USERS: 'commentPosts.mentionUsers',
+
+    /**
+     * 评论关联的图片
+     */
+    COMMENT_POSTS_IMAGES: 'commentPosts.images',
+
 
     /**
      * lastThreePosts
@@ -120,7 +166,7 @@ const requestIncludes = {
      * 最后三条回复的用户信息
      */
     LAST_THREE_POSTS_USER: 'lastThreePosts.user',
-    
+
     /**
      * lastThreePostsReplyUser
      * 最后三条回复所回复的用户

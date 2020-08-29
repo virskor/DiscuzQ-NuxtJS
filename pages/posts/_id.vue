@@ -1,20 +1,139 @@
 <template>
 	<div>
 		<AppTitle title="评论"></AppTitle>
+		<v-container fluid>
+			<div v-if="loading">
+				<template>
+					<v-sheet class="px-3 pb-3">
+						<v-skeleton-loader
+							v-for="(_, i) in 20"
+							:key="i"
+							ref="skeleton"
+							type="list-item-avatar-two-line, table-tfoot"
+							class="mx-auto"
+						></v-skeleton-loader>
+					</v-sheet>
+				</template>
+			</div>
+			<div v-else-if="postData && threadData">
+				<v-card flat tile>
+					<!--该评论关联的帖子-->
+					<ThreadCardUser :firstPost="postData.data" :user="postRelatedUser"></ThreadCardUser>
+					<!--该评论关联的内容-->
+					<PostContent :thread="threadData.data" :post="postData.data"></PostContent>
+					<!--显示关联的原帖-->
+					<ThreadCardSimplified
+						class="ma-4"
+						v-if="threadData"
+						:user="threadData.included.find(el => el.type == 'users')"
+						:firstPost="threadData.included.find(el => el.type == 'posts')"
+						:thread="threadData.data"
+					></ThreadCardSimplified>
+				</v-card>
+				<PostsList :post="postData.data" :thread="threadData.data"></PostsList>
+			</div>
+		</v-container>
 	</div>
 </template>
 
 <script>
+import threadsAPI from "~/api/threads";
+import postsAPI from "~/api/post";
+import ThreadCardSimplified from "~/components/threads/ThreadCardSimplified";
+import ThreadCardUser from "~/components/threads/ThreadCardUser";
+import PostContent from "~/components/posts/PostContent";
+import PostsList from "~/components/posts/PostsList";
+
 export default {
 	validate({ params }) {
 		// 必须是number类型
 		return /^\d+$/.test(params.id);
-    },
-    head(){
-        return {
-            title: '评论'
-        }
-    }
+	},
+	head() {
+		return {
+			title: "评论",
+		};
+	},
+	data() {
+		return {
+			threadID: this.$route.query.threadID || "",
+			postID: this.$route.params.id || 0,
+			/**
+			 * 主题信息
+			 */
+			threadData: null,
+			/**
+			 * 查看的评论信息
+			 */
+			postData: null,
+			/**
+			 * 加载中
+			 */
+			loading: true,
+		};
+	},
+	mounted() {
+		this.$nextTick(async () => {
+			await this.getThreadWithNoPosts();
+			await this.getPosts();
+			this.loading = false;
+		});
+	},
+	computed: {
+		/**
+		 * 该评论关联的用户
+		 */
+		postRelatedUser() {
+			const { postData } = this;
+			if (!postData) {
+				return null;
+			}
+
+			const relatedUser = postData.data.relationships.user.data;
+
+			return postData.included.find(
+				(el) => el.type == "users" && el.id == relatedUser.id
+			);
+		},
+	},
+	methods: {
+		/**
+		 * 获取不包含评论的主题信息
+		 */
+		async getThreadWithNoPosts() {
+			const { threadID } = this;
+			const rs = await threadsAPI.getThreadNoPosts(threadID, {
+				"filter[isDeleted]": "no",
+			});
+
+			if (rs) {
+				this.threadData = rs;
+				return true;
+			}
+
+			return false;
+		},
+		/**
+		 * get posts
+		 * 获取关联的评论
+		 */
+		async getPosts() {
+			const {postID} = this;
+			const rs = await postsAPI.getPost(postID);
+
+			if (rs) {
+				this.postData = rs;
+				return true;
+			}
+			return false;
+		},
+	},
+	components: {
+		ThreadCardSimplified,
+		ThreadCardUser,
+		PostContent,
+		PostsList,
+	},
 };
 </script>
 

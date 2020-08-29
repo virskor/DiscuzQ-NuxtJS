@@ -1,6 +1,6 @@
 <template>
 	<div v-if="categories">
-		<v-tabs v-model="tab" color="primary" centered show-arrows>
+		<v-tabs v-model="tab" background-color="primary" dark centered show-arrows>
 			<template v-for="(cat, i) in categories">
 				<v-tab
 					class="text-h5 font-weight-bold"
@@ -13,7 +13,9 @@
 		<v-tabs-items v-model="tab">
 			<template v-for="(cat, i) in categories">
 				<v-tab-item :key="i">
-					<ThreadList :category="category"></ThreadList>
+					<v-container fluid>
+						<ThreadList :category="category"></ThreadList>
+					</v-container>
 				</v-tab-item>
 			</template>
 		</v-tabs-items>

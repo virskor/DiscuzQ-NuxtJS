@@ -7,13 +7,7 @@
 		tile
 	>
 		<!--渲染发布用户的信息-->
-		<ThreadCardUser
-			:firstPost="firstPost"
-			:user="user"
-			:isSticky="thread.attributes.isSticky"
-			:isEssence="thread.attributes.isEssence"
-			:shouldPay="thread.attributes.price != '0.00'"
-		></ThreadCardUser>
+		<ThreadCardUser :firstPost="firstPost" :user="user"></ThreadCardUser>
 		<div class="floor">
 			<!--
             渲染用户发布的帖子内容
@@ -26,6 +20,9 @@
 				:hideContents="thread.attributes.isSticky"
 				:title="thread.attributes.title||''"
 				:contents="firstPost.attributes.contentHtml || ''"
+				:isSticky="thread.attributes.isSticky"
+				:isEssence="thread.attributes.isEssence"
+				:shouldPay="thread.attributes.price != '0.00'"
 			></ThreadContents>
 
 			<!--

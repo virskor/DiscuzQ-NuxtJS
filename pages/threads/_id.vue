@@ -30,12 +30,7 @@
 
 		<v-container fluid>
 			<!--渲染发布用户的信息-->
-			<ThreadCardUser
-				:firstPost="firstPost"
-				:user="author"
-				:isSticky="thread.attributes.isSticky"
-				:isEssence="thread.attributes.isEssence"
-			></ThreadCardUser>
+			<ThreadCardUser :firstPost="firstPost" :user="author" allowFollow></ThreadCardUser>
 
 			<!--渲染内容-->
 			<template v-if="firstPost">
@@ -49,6 +44,9 @@
 						:thread="thread"
 						:title="thread.attributes.title || ''"
 						:contents="firstPost.attributes.contentHtml || ''"
+						:isSticky="thread.attributes.isSticky"
+						:isEssence="thread.attributes.isEssence"
+						:shouldPay="thread.attributes.price != '0.00'"
 						:hideContents="false"
 					></ThreadContents>
 					<!--附件-->

@@ -37,5 +37,29 @@ export default {
                 RequestIncludes.LAST_THREE_COMMENTS_REPLY_USER
             ]
         });
-    }
+    },
+    /**
+     * 获取单个评论
+     * 
+     * @param {*} postID 
+     * @param {*} data 
+     */
+    getPost(postID) {
+        return Request.get({
+            url: `${URLS.POSTS}/${postID}`,
+            includes: [
+                RequestIncludes.USER,
+                RequestIncludes.LIKED_USERS,
+                RequestIncludes.COMMENT_POSTS,
+                RequestIncludes.COMMENT_POSTS_USER,
+                RequestIncludes.COMMENT_POSTS_USER_GROUPS,
+                RequestIncludes.COMMENT_POSTS_REPLY_USER,
+                RequestIncludes.COMMENT_POSTS_REPLY_USER_GROUPS,
+                RequestIncludes.COMMENT_POSTS_MENTION_USERS,
+                RequestIncludes.COMMENT_POSTS_IMAGES,
+                RequestIncludes.IMAGES,
+                RequestIncludes.ATTACHMENTS
+            ]
+        });
+    },
 }

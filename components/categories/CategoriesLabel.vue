@@ -1,14 +1,12 @@
 <template>
-	<div>
-		<v-chip
-			@click="$router.push({path: '/views/categories', query:{categoryid: currentCategory.id}})"
-			label
-			v-if="currentCategory"
-			class="mb-2 mt-1"
-			outlined
-			small
-		>版块：{{currentCategory.attributes.name}}</v-chip>
-	</div>
+	<v-chip
+		@click="$router.push({path: '/views/categories', query:{categoryid: currentCategory.id}})"
+		label
+		v-if="currentCategory"
+		class="mb-2 mt-1"
+		outlined
+		small
+	>版块：{{currentCategory.attributes.name}}</v-chip>
 </template>
 
 <script>

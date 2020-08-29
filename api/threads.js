@@ -45,6 +45,21 @@ export default {
         });
     },
     /**
+     * get thread 
+     * 获取主题详情，无评论数据
+     */
+    getThreadNoPosts(threadID, data) {
+        return Request.get({
+            url: `${URLS.THREADS}/${threadID}`,
+            data,
+            includes: [
+                RequestIncludes.USER,
+                RequestIncludes.USERS_GROUPS,
+                RequestIncludes.FIRST_POST,
+            ],
+        });
+    },
+    /**
      * favorite
      * 收藏主题
      */

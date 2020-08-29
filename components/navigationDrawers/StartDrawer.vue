@@ -106,8 +106,24 @@ export default {
 					text: "退出",
 					color: "red",
 					shouldLogin: true,
-					callback: () => {
-						this.$store.dispatch("logout");
+					callback: async () => {
+						const result = await this.$swal({
+							title: "退出登录吗",
+							text:
+								"您将退出登录，是否确定当前操作？",
+							icon: "info",
+							buttons: {
+								cancel: "取消",
+								catch: {
+									text: "确定",
+								},
+							},
+							dangerMode: true,
+						});
+
+						if (result) {
+							this.$store.dispatch("logout");
+						}
 					},
 				},
 				{ divider: true },

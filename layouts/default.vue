@@ -59,6 +59,9 @@ export default {
 			showStartDrawer: false,
 			showEndDrawer: false,
 			//showbackIcon: false,
+			/**
+			 * loadingUser 结束后，路由才会进行渲染
+			 */
 			loadingUser: true,
 		};
 	},

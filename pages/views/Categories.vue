@@ -3,9 +3,7 @@
 		<AppTitle showExtendedNav title="版块分类">
 			<ThreadsFilters />
 		</AppTitle>
-		<v-container fluid>
-			<CategoriesTab />
-		</v-container>
+		<CategoriesTab />
 	</div>
 </template>
 

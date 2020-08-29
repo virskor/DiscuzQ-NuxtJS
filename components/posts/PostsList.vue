@@ -51,6 +51,10 @@ export default {
 		 * 主题模型
 		 */
 		thread: Object,
+		/**
+		 * post
+		 */
+		post: Object,
 	},
 	data() {
 		return {
@@ -111,11 +115,11 @@ export default {
 				this.pageNumber = 1;
 				this.postsData = null;
 			}
-			const { pageNumber, thread, postsData, sort } = this;
+			const { pageNumber, thread, postsData, sort, post } = this;
 
 			this.loading = true;
 
-			const data = {
+			let data = {
 				"filter[isApproved]": 1,
 				"filter[isDeleted]": "no",
 				"filter[isComment]": "no",
@@ -124,6 +128,14 @@ export default {
 
 				sort,
 			};
+
+			/**
+			 *关联回复 
+			 */
+			if(post){
+				data['filter[reply]'] = post.id;
+			}
+
 			const rs = await postAPI.getThreadPosts(data);
 
 			this.loading = false;
