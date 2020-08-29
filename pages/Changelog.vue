@@ -1,8 +1,6 @@
 <template>
 	<div>
-		<AppTitle  title="更新日志">
-			
-		</AppTitle>
+		<AppTitle title="更新日志"></AppTitle>
 		<v-container fluid>
 			<v-card tile flat>
 				<v-card-title>最新上传的代码</v-card-title>
@@ -14,6 +12,8 @@
 				<p>剩余未完成或计划近期完成的：个人资料，等设置</p>
 				<p>剩余未完成或计划近期完成的：冻结明细，提现，流水等</p>
 				<p>剩余未完成或计划近期完成的：扫码看帖(在手机中查看引流)</p>
+				<p>新增编辑器</p>
+				<p>新增 编辑，回复，发帖等</p>
 			</v-card>
 			<v-list>
 				<v-list-item>
@@ -26,8 +26,6 @@
 						<p>修复用户刷新页面时，异步请求导致的登录状态同步紊乱</p>
 						<p>主题标签布局更新，新增主题详情内关注发布人</p>
 						<p>新增查看评论(点击评论来查看回复)</p>
-						<p v-if="false">新增编辑器</p>
-						<p v-if="false">新增 编辑，回复，发帖等</p>
 					</v-card>
 				</v-list-item>
 				<v-list-item>
@@ -87,7 +85,6 @@ export default {
 			githubUrl: "https://github.com/virskor/DiscuzQ-NuxtJS",
 		};
 	},
-	methods: {
-	},
+	methods: {},
 };
 </script>
