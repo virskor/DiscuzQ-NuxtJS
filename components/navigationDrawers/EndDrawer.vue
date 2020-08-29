@@ -1,5 +1,5 @@
 <template>
-	<v-navigation-drawer class="end-drawer"  app v-model="show" right>
+	<v-navigation-drawer class="end-drawer" :width="300" app v-model="show" right>
 		<v-toolbar v-if="$route.path.indexOf('/search/') < 0" dense elevation="0">
 			<SearchField />
 		</v-toolbar>

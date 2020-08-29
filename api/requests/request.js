@@ -197,14 +197,14 @@ export default {
                 return;
             }
 
+            if (err.response.data) {
+                this.showError(err.response.data.errors[0].code, err.response.data.errors);
+            }
 
             if (opts.failed) {
                 return opts.failed(err);
             }
-
-            if (err.response.data) {
-                this.showError(err.response.data.errors[0].code, err.response.data.errors);
-            }
+            
         }).catch(_ => {
             requestFilter.pop(opts);
         });
@@ -274,7 +274,7 @@ export default {
             if (opt.failed) {
                 return opt.failed(err);
             }
-
+            
             if (err.response.data) {
                 this.showError(err.response.data.errors[0].code, err.response.data.errors);
             }

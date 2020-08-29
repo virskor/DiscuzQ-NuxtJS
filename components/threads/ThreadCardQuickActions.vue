@@ -15,6 +15,9 @@
 
 			<ThreadFavoriteButton :thread="thread"></ThreadFavoriteButton>
 
+			<!--拓展菜单，包含编辑等功能-->
+			<ThreadCardQuickActionsExt v-if="showExt"></ThreadCardQuickActionsExt>
+
 			<!--分享-->
 			<v-btn color="transparent" @click="share" depressed>
 				<v-icon>mdi-share-outline</v-icon>
@@ -29,6 +32,7 @@ import threadsAPI from "~/api/threads";
 import clipboardy from "~/utils/clipboard";
 import PostLikeButton from "~/components/posts/PostLikeButton";
 import ThreadFavoriteButton from "~/components/threads/ThreadFavoriteButton";
+import ThreadCardQuickActionsExt from "~/components/threads/ThreadCardQuickActionsExt";
 
 export default {
 	props: {
@@ -44,6 +48,10 @@ export default {
 		 * show view count
 		 */
 		showViewCount: Boolean,
+		/**
+		 * show ext
+		 */
+		showExt: Boolean
 	},
 	methods: {
 		/**
@@ -71,6 +79,7 @@ export default {
 	components: {
 		PostLikeButton,
 		ThreadFavoriteButton,
+		ThreadCardQuickActionsExt
 	},
 };
 </script>

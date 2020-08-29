@@ -73,6 +73,8 @@ export default {
                  */
             }
 
+            await this.$swal('无法支付，请检查账户状态或交易方式失效不存在');
+
             return false;
         },
         /**

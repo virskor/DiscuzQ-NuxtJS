@@ -1,5 +1,5 @@
 <template>
-	<v-navigation-drawer class="start-drawer" v-model="show" app>
+	<v-navigation-drawer class="start-drawer" :width="300" v-model="show" app>
 		<v-toolbar dense elevation="0">
 			<AppLogo />
 		</v-toolbar>

@@ -15,6 +15,14 @@
 		</v-list-item>
 		<v-card-actions>
 			<v-btn
+				@click="payOrder"
+				rounded
+				:loading="loading"
+				depressed
+				color="primary"
+				v-if="!$_.isEmpty(thread) && allowContinue"
+			>继续支付</v-btn>
+			<v-btn
 				@click="$router.push(`/threads/${thread.id}`)"
 				text
 				color="primary"
@@ -26,7 +34,10 @@
 </template>
 
 <script>
+import PaymentMixin from "~/components/financial/mixins/Payment.mixin";
+
 export default {
+	mixins: [PaymentMixin],
 	props: {
 		/**
 		 * 关联的主题
@@ -40,6 +51,11 @@ export default {
 		 * order
 		 */
 		order: Object,
+	},
+	data(){
+		return {
+			loading: false,
+		}
 	},
 	computed: {
 		/**
@@ -59,6 +75,16 @@ export default {
 
 			return status.find((o) => o.value == order.attributes.status)
 				.caption;
+		},
+		/**
+		 * 允许继续支付
+		 */
+		allowContinue() {
+			const { order } = this;
+			if (order.attributes.status == 0) {
+				return true;
+			}
+			return false;
 		},
 		/**
 		 * paymentTypeText
@@ -84,12 +110,35 @@ export default {
 			const { thread, firstPost } = this;
 			if (thread.attributes.title) {
 				return thread.attributes.title;
-      }
-      
-      return firstPost.attributes.contentHtml;
+			}
+
+			return firstPost.attributes.contentHtml;
 		},
 	},
-	methods: {},
+	methods: {
+		/**
+		 * 请求支付订单
+		 * payment 包含订单信息 和 支付方式
+		 */
+		async payOrder() {
+			const { order } = this;
+			this.loading = true;
+
+			const result = await this.pay(order, order.attributes.type);
+
+			this.loading = false;
+
+			if (result) {
+				/**
+				 * 支付完成回调
+				 */
+				await this.$swal("支付成功");
+				return;
+			}
+
+			this.$swal("未查询到成功支付状态，请在订单明细中查看或继续支付");
+		},
+	},
 };
 </script>
 

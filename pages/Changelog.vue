@@ -21,6 +21,13 @@
 			<v-list>
 				<v-list-item>
 					<v-card flat tile>
+						<p class="text-h5">2020-08-28</p>
+						<p v-if="false">支持删除自己发布的帖子</p>
+						<p>支持继续在订单明细中支付订单</p>
+					</v-card>
+				</v-list-item>
+				<v-list-item>
+					<v-card flat tile>
 						<p class="text-h5">2020-08-27</p>
 						<p>新增消息列表</p>
 						<p>新增微信扫码支付(在打赏中进行体验)</p>
