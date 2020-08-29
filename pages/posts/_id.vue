@@ -16,7 +16,7 @@
 				</template>
 			</div>
 			<div v-else-if="postData && threadData">
-				<v-card flat tile>
+				<v-card class="pb-2" flat tile>
 					<!--该评论关联的帖子-->
 					<ThreadCardUser :firstPost="postData.data" :user="postRelatedUser"></ThreadCardUser>
 					<!--该评论关联的内容-->
