@@ -61,7 +61,7 @@
 					<RewardedUsers :rewardedUsers="mapRewardedUsers" :thread="thread"></RewardedUsers>
 
 					<!---渲染点赞评论分享-->
-					<ThreadCardQuickActions showViewCount :firstPost="firstPost" :thread="thread"></ThreadCardQuickActions>
+					<ThreadCardQuickActions showExt showViewCount :firstPost="firstPost" :thread="thread"></ThreadCardQuickActions>
 				</v-card>
 			</template>
 

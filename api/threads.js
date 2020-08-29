@@ -99,4 +99,12 @@ export default {
             ],
         });
     },
+    /**
+     * 删除主题
+     */
+    deleteThread(threadID) {
+        return Request.delete({
+            url: `${URLS.THREADS}/${threadID}`
+        });
+    }
 }

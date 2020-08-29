@@ -15,13 +15,13 @@
 
 			<ThreadFavoriteButton :thread="thread"></ThreadFavoriteButton>
 
-			<!--拓展菜单，包含编辑等功能-->
-			<ThreadCardQuickActionsExt v-if="showExt"></ThreadCardQuickActionsExt>
-
 			<!--分享-->
 			<v-btn color="transparent" @click="share" depressed>
 				<v-icon>mdi-share-outline</v-icon>
 			</v-btn>
+
+			<!--拓展菜单，包含编辑等功能-->
+			<ThreadCardQuickActionsExt :thread="thread" v-if="showExt"></ThreadCardQuickActionsExt>
 		</v-card-actions>
 		<v-divider v-if="showViewCount"></v-divider>
 	</div>
