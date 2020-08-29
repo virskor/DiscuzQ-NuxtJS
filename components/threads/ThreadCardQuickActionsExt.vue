@@ -72,7 +72,7 @@ export default {
 			if (result) {
 				const rs = await threadsAPI.deleteThread(thread.id);
 				if (rs) {
-					this.$route.go(-1);
+					this.$router.go(-1);
 					return;
 				}
 

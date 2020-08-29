@@ -1,7 +1,11 @@
 <template>
 	<div>
 		<!--内容-->
-		<div @click="onTapUrl" class="clickable ma-2 pl-3" v-html="formatRichText(contents)"></div>
+		<div
+			@click="onTapUrl"
+			class="clickable ma-2 pl-3"
+			v-html="formatRichText(post.attributes.contentHtml || '')"
+		></div>
 	</div>
 </template>
 
@@ -14,7 +18,7 @@ export default {
 		/**
 		 * 用于渲染的内容数据
 		 */
-		contents: String,
+		post: Object,
 	},
 	methods: {
 		formatRichText(html) {
@@ -25,18 +29,20 @@ export default {
 		 * 打开帖子详情
 		 */
 		async onTapUrl(event) {
+			const {post} = this;
 			event.preventDefault();
 
 			if (await this.preventSpecialSpanClick(event.srcElement)) {
 				return;
 			}
+
+			this.$router.push(`/posts/${post.id}`);
 		},
 		/**
 		 * prevent span click
 		 */
 		async preventSpecialSpanClick(element) {
 			return urlParser(element);
-			
 		},
 	},
 };

@@ -21,7 +21,7 @@ export default {
             }
 
             const data = {
-                order_sn: orderSN,
+                //order_sn: orderSN,
                 payment_type: type,
                 // pay_password
                 // pay_password: 

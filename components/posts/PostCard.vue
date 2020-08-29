@@ -21,7 +21,7 @@
 			</v-list-item-action>
 		</v-list-item>
 		<!--显示评论内容-->
-		<PostContent :contents="post.attributes.contentHtml || ''"></PostContent>
+		<PostContent :post="post"></PostContent>
 	</v-card>
 </template>
 
