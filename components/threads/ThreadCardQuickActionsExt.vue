@@ -2,8 +2,8 @@
 	<div v-if="hasLogined" class="ml-2">
 		<v-menu top offset-y>
 			<template v-slot:activator="{ on, attrs }">
-				<v-btn icon v-bind="attrs" v-on="on">
-					<v-icon>mdi-dots-horizontal</v-icon>
+				<v-btn text v-bind="attrs" v-on="on">
+					更多
 				</v-btn>
 			</template>
 
@@ -21,7 +21,7 @@
 		<v-dialog v-model="showQrCode" persistent max-width="300">
 			<v-card>
 				<v-card-title class="headline">扫描二维码来阅读</v-card-title>
-				<QRCode :thread="thread"></QRCode>
+				<ThreadQRCode :thread="thread"></ThreadQRCode>
 				
 				<v-card-actions>
 					<v-spacer></v-spacer>
@@ -37,7 +37,7 @@ import * as types from "~/store/vuex-types";
 import { mapGetters } from "vuex";
 
 import threadsAPI from "~/api/threads";
-import QRCode from "~/components/common/QRCode";
+import ThreadQRCode from "~/components/threads/ThreadQRCode";
 
 export default {
 	props: {
@@ -99,7 +99,7 @@ export default {
 		},
 	},
 	components: {
-		QRCode
+		ThreadQRCode
 	}
 };
 </script>
