@@ -2,9 +2,16 @@
 	<div>
 		<!--渲染评论列表-->
 		<template v-if="!$_.isEmpty(posts)">
+			<v-toolbar flat>
+				<v-toolbar-title>评论 ({{meta ? meta.postCount : 0}})</v-toolbar-title>
+				<v-spacer></v-spacer>
+				<v-toolbar-items>
+					<PostsFilter @input="loadMorePosts(true)" v-model="sort"></PostsFilter>
+				</v-toolbar-items>
+			</v-toolbar>
 			<template v-for="(post, i) in posts">
 				<var-box :user="mapPostUser(post.relationships.user.data.id)" :key="i" v-slot="{ user }">
-					<PostCard v-if="user" :post="post" :user="user" :key="i"></PostCard>
+					<PostCard v-if="user" :thread="thread" :post="post" :user="user" :key="i"></PostCard>
 				</var-box>
 			</template>
 
@@ -35,6 +42,7 @@
 <script>
 import PostCard from "~/components/posts/PostCard";
 import NoPosts from "~/components/posts/NoPosts";
+import PostsFilter from "~/components/posts/PostsFilter";
 import postAPI from "~/api/post";
 
 export default {
@@ -60,6 +68,10 @@ export default {
 			 * 分页数据
 			 */
 			meta: null,
+			/**
+			 * 排序
+			 */
+			sort: "createdAt",
 		};
 	},
 	mounted() {
@@ -94,8 +106,12 @@ export default {
 		/**
 		 * load more posts
 		 */
-		async loadMorePosts() {
-			const { pageNumber, thread, postsData } = this;
+		async loadMorePosts(clear) {
+			if(clear === true){
+				this.pageNumber = 1;
+				this.postsData = null;
+			}
+			const { pageNumber, thread, postsData, sort } = this;
 
 			this.loading = true;
 
@@ -105,7 +121,8 @@ export default {
 				"filter[isComment]": "no",
 				"page[number]": pageNumber,
 				"filter[thread]": thread.id,
-				sort: "createdAt",
+
+				sort,
 			};
 			const rs = await postAPI.getThreadPosts(data);
 
@@ -128,6 +145,7 @@ export default {
 	components: {
 		PostCard,
 		NoPosts,
+		PostsFilter,
 	},
 };
 </script>

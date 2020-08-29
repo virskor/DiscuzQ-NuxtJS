@@ -4,7 +4,7 @@
 			<v-btn depressed text color="primary" v-bind="attrs" v-on="on">
 				<v-icon>mdi-sort-variant</v-icon>
 				&nbsp;
-				{{selectedItem.caption || '热度'}}
+				{{selectedItem.caption || '评论时间正序'}}
 			</v-btn>
 		</template>
 
@@ -27,8 +27,8 @@ export default {
 	data() {
 		return {
 			items: [
-				{ caption: "热度", value: "-viewCount" },
-				{ caption: "内容数", value: "-threadCount" },
+				{ caption: "评论时间正序", value: "createdAt" },
+				{ caption: "评论时间倒序", value: "-createdAt" },
 			],
 			selectedItem: "",
 		};
@@ -39,7 +39,7 @@ export default {
 		 */
 		emit(item) {
 			this.selectedItem = item;
-			this.$emit("input", item.value || "-viewCount");
+			this.$emit("input", item.value || "createdAt");
 		},
 	},
 };

@@ -98,7 +98,10 @@ export default {
 			 * 如果有评论则先尝试打开评论
 			 */
 			if (notification.attributes.post_id) {
-				this.$router.push(`/posts/${notification.attributes.post_id}`);
+				this.$router.push({
+					path: `/posts/${notification.attributes.post_id}`,
+					query: { threadID: notification.attributes.thread_id },
+				});
 				return;
 			}
 

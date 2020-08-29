@@ -21,7 +21,7 @@
 			</v-list-item-action>
 		</v-list-item>
 		<!--显示评论内容-->
-		<PostContent :post="post"></PostContent>
+		<PostContent :thread="thread" :post="post"></PostContent>
 	</v-card>
 </template>
 
@@ -44,7 +44,11 @@ export default {
 		 * reply to user
 		 * 回复给某个用户
 		 */
-		replyToUser: Object
+		replyToUser: Object,
+		/**
+		 * 关联的主题
+		 */
+		thread: Object
 	},
 	components: {
 		PostContent,

@@ -19,6 +19,10 @@ export default {
 		 * 用于渲染的内容数据
 		 */
 		post: Object,
+		/**
+		 * 关联的主题
+		 */
+		thread: Object,
 	},
 	methods: {
 		formatRichText(html) {
@@ -29,14 +33,17 @@ export default {
 		 * 打开帖子详情
 		 */
 		async onTapUrl(event) {
-			const {post} = this;
+			const { post, thread } = this;
 			event.preventDefault();
 
 			if (await this.preventSpecialSpanClick(event.srcElement)) {
 				return;
 			}
 
-			this.$router.push(`/posts/${post.id}`);
+			this.$router.push({
+				path: `/posts/${post.id}`,
+				query: { threadID: thread.id },
+			});
 		},
 		/**
 		 * prevent span click
