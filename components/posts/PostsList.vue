@@ -1,14 +1,14 @@
 <template>
 	<div>
+		<v-toolbar flat>
+			<v-toolbar-title>评论 ({{meta ? meta.postCount : 0}})</v-toolbar-title>
+			<v-spacer></v-spacer>
+			<v-toolbar-items>
+				<PostsFilter @input="loadMorePosts(true)" v-model="sort"></PostsFilter>
+			</v-toolbar-items>
+		</v-toolbar>
 		<!--渲染评论列表-->
 		<template v-if="!$_.isEmpty(posts)">
-			<v-toolbar flat>
-				<v-toolbar-title>评论 ({{meta ? meta.postCount : 0}})</v-toolbar-title>
-				<v-spacer></v-spacer>
-				<v-toolbar-items>
-					<PostsFilter @input="loadMorePosts(true)" v-model="sort"></PostsFilter>
-				</v-toolbar-items>
-			</v-toolbar>
 			<template v-for="(post, i) in posts">
 				<var-box :user="mapPostUser(post.relationships.user.data.id)" :key="i" v-slot="{ user }">
 					<PostCard v-if="user" :thread="thread" :post="post" :user="user" :key="i"></PostCard>
@@ -107,7 +107,7 @@ export default {
 		 * load more posts
 		 */
 		async loadMorePosts(clear) {
-			if(clear === true){
+			if (clear === true) {
 				this.pageNumber = 1;
 				this.postsData = null;
 			}

@@ -18,10 +18,12 @@
 			<v-list>
 				<v-list-item>
 					<v-card flat tile>
-						<p class="text-h5">2020-08-28</p>
+						<p class="text-h5">2020-08-29</p>
 						<p>[帖子编辑]支持删除自己发布的帖子</p>
 						<p>支持继续在订单明细中支付订单</p>
 						<p>新增评论排序筛选</p>
+						<p>消息提醒显示未读数量</p>
+						<p v-if="false">头像鼠标停留特效</p>
 						<p v-if="false">新增查看评论</p>
 						<p v-if="false">新增编辑器</p>
 						<p v-if="false">新增 编辑，回复，发帖等</p>

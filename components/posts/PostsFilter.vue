@@ -4,7 +4,7 @@
 			<v-btn depressed text color="primary" v-bind="attrs" v-on="on">
 				<v-icon>mdi-sort-variant</v-icon>
 				&nbsp;
-				{{selectedItem.caption || '评论时间正序'}}
+				{{selectedItem ? selectedItem.caption : '评论时间正序'}}
 			</v-btn>
 		</template>
 

@@ -18,7 +18,10 @@
 							<v-list-item-content>
 								<v-list-item-title
 									:class="!item.color &&  $route.path == item.route  ? 'primary--text font-weight-bold' : 'font-weight-bold'"
-								>{{ item.text }}</v-list-item-title>
+								>
+									<v-badge v-if="item.badge" color="red" :content="item.badge">{{ item.text }}</v-badge>
+									<span v-else>{{ item.text }}</span>
+								</v-list-item-title>
 							</v-list-item-content>
 						</v-list-item>
 					</template>
@@ -51,6 +54,16 @@ export default {
 		width() {
 			return this.$C.isMobile() ? 300 : 440;
 		},
+		/**
+		 * 未读消息数量
+		 */
+		unreadNotifications() {
+			const { hasLogined, user } = this;
+			if (!hasLogined) {
+				return 0;
+			}
+			return user.attributes.unreadNotifications || 0;
+		},
 	},
 	data() {
 		return {
@@ -68,6 +81,7 @@ export default {
 					icon: "icon-tongzhi",
 					text: "消息提醒",
 					route: "/views/notices",
+					badge: this.unreadNotifications,
 				},
 				{ divider: true },
 				{
