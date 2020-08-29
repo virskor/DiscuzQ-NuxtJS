@@ -5,7 +5,7 @@
 
 			<!--路由渲染-->
 			<v-main app>
-				<template v-if="!forum && !loadForumFailed">
+				<template v-if="!forum && !loadForumFailed || loadingUser">
 					<v-sheet class="px-3 pt-3 pb-12">
 						<center>
 							<v-progress-circular :size="50" color="primary" indeterminate></v-progress-circular>
@@ -22,7 +22,7 @@
 					</v-sheet>
 				</template>
 
-				<nuxt v-if="forum && !loadForumFailed"></nuxt>
+				<nuxt v-if="forum && !loadForumFailed && !loadingUser"></nuxt>
 
 				<EndDrawer v-model="showEndDrawer" />
 
@@ -59,6 +59,7 @@ export default {
 			showStartDrawer: false,
 			showEndDrawer: false,
 			//showbackIcon: false,
+			loadingUser: true,
 		};
 	},
 	mounted() {
@@ -77,6 +78,9 @@ export default {
 			await this.$store.dispatch("getCurrentUser", {
 				fromLocal: true,
 			});
+			/// getCurrentUser 之后才能将 loadingUser 改变
+			/// 否则将会导致用户刷新页面，错误跳转到登录页面
+			this.loadingUser = false;
 		});
 	},
 	computed: {
