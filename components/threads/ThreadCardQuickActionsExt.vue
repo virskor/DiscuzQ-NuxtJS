@@ -1,6 +1,5 @@
 <template>
-	<!--todo: 菜单增加后，记得移除if canDelete -->
-	<div v-if="hasLogined && canDelete" class="ml-2">
+	<div v-if="hasLogined" class="ml-2">
 		<v-menu top offset-y>
 			<template v-slot:activator="{ on, attrs }">
 				<v-btn icon v-bind="attrs" v-on="on">
@@ -12,8 +11,24 @@
 				<v-list-item @click="deleteThread" v-if="canDelete">
 					<v-list-item-title>删除该主题</v-list-item-title>
 				</v-list-item>
+				<v-list-item @click="showQrCode = true">
+					<v-list-item-title>在手机中查看</v-list-item-title>
+				</v-list-item>
 			</v-list>
 		</v-menu>
+
+		<!--二维码生成-->
+		<v-dialog v-model="showQrCode" persistent max-width="300">
+			<v-card>
+				<v-card-title class="headline">扫描二维码来阅读</v-card-title>
+				<QRCode :thread="thread"></QRCode>
+				
+				<v-card-actions>
+					<v-spacer></v-spacer>
+					<v-btn color="primary" text @click="showQrCode = false">好的，完成扫描</v-btn>
+				</v-card-actions>
+			</v-card>
+		</v-dialog>
 	</div>
 </template>
 
@@ -22,6 +37,7 @@ import * as types from "~/store/vuex-types";
 import { mapGetters } from "vuex";
 
 import threadsAPI from "~/api/threads";
+import QRCode from "~/components/common/QRCode";
 
 export default {
 	props: {
@@ -47,7 +63,9 @@ export default {
 		},
 	},
 	data() {
-		return {};
+		return {
+			showQrCode: false,
+		};
 	},
 	methods: {
 		/**
@@ -80,6 +98,9 @@ export default {
 			}
 		},
 	},
+	components: {
+		QRCode
+	}
 };
 </script>
 

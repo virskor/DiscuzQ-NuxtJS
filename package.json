@@ -27,6 +27,7 @@
     "moment": "^2.27.0",
     "numeral": "^2.0.6",
     "nuxt": "^2.14.0",
+    "qrcode": "^1.4.4",
     "vue-gotop": "^1.0.2",
     "vue-pswipe": "^0.15.0",
     "vue-swal": "^1.0.0",

@@ -4,18 +4,24 @@
 		<v-container fluid>
 			<v-card tile flat>
 				<v-card-title>最新上传的代码</v-card-title>
-				<v-card-subtitle>我们为您列出最近上传的代码中包含的更新。仅为您提供参考，这是第三方的PC DESKTOP版本，暂时无法用于生产。您可以再Github上关注，以便第一时间知道是否可用于生产 {{githubUrl}}</v-card-subtitle>
+				<v-card-subtitle>我们为您列出最近上传的代码中包含的更新。仅为您提供参考，这是第三方的PC DESKTOP版本，暂时无法用于生产。您可以再Github上关注，以便第一时间知道是否可用于生产 {{githubUrl}}。我们所有的功能，将在9月15日前完成。</v-card-subtitle>
 			</v-card>
 			<v-card tile flat class="pl-4">
 				<p>剩余未完成或计划近期完成的：私信</p>
 				<p>剩余未完成或计划近期完成的：偏好设置</p>
 				<p>剩余未完成或计划近期完成的：个人资料，等设置</p>
 				<p>剩余未完成或计划近期完成的：冻结明细，提现，流水等</p>
-				<p>剩余未完成或计划近期完成的：扫码看帖(在手机中查看引流)</p>
-				<p>剩余未完成或计划近期完成的：新增编辑器</p>
-				<p>剩余未完成或计划近期完成的：新增 编辑，回复，发帖等</p>
 			</v-card>
 			<v-list>
+				<v-list-item>
+					<v-card flat tile>
+						<p class="text-h5">2020-08-30</p>
+						<p>扫码看帖(在手机中查看引流)</p>
+						<p v-if="false">补全评论的'回复 @用户' 信息</p>
+						<p v-if="false">剩余未完成或计划近期完成的：新增编辑器</p>
+						<p v-if="false">剩余未完成或计划近期完成的：新增 编辑，回复，发帖等</p>
+					</v-card>
+				</v-list-item>
 				<v-list-item>
 					<v-card flat tile>
 						<p class="text-h5">2020-08-29</p>

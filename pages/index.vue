@@ -8,7 +8,7 @@
 		</v-alert>
 
 		<v-container fluid>
-			<Editor></Editor>
+			<Editor lightMode></Editor>
 			<ThreadList/>
 		</v-container>
 	</div>
