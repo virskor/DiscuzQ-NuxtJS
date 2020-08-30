@@ -8,13 +8,22 @@
 			</v-card>
 			<v-card tile flat class="pl-4">
 				<p>剩余未完成或计划近期完成的：私信</p>
-				<p>剩余未完成或计划近期完成的：个人资料，等设置</p>
 				<p>剩余未完成或计划近期完成的：冻结明细，提现，流水等</p>
 				<p>剩余未完成或计划近期完成的：非图片的附件渲染</p>
-				<p>剩余未完成或计划近期完成的：新增 编辑，回复，发帖，插入表情等插入编辑交互</p>
+				<p>剩余未完成或计划近期完成的：新增 编辑帖子或评论</p>
 				<p>剩余未完成或计划近期完成的：使用零钱包，及支付密码输入组件</p>
 			</v-card>
 			<v-list>
+				<v-list-item>
+					<v-card flat tile>
+						<p class="text-h5">2020-08-31</p>
+						<p v-if="false">新增发帖</p>
+						<p v-if="false">新增发评论</p>
+						<p v-if="false">新增表情选择组件</p>
+						<p v-if="false">个人资料</p>
+						<p v-if="false">头像上传</p>
+					</v-card>
+				</v-list-item>
 				<v-list-item>
 					<v-card flat tile>
 						<p class="text-h5">2020-08-30</p>

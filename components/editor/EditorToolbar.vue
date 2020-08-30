@@ -2,10 +2,11 @@
 	<v-toolbar class="editor-toolbar" flat dense>
 		<div class="format-items">
 			<!--粗体-->
-			<v-btn
+			<!-- <v-btn
 				v-if="!showAdvancedButton"
 				:color="bold ? 'primary' :''"
 				icon
+				:ripple="false"
 				@click="toolbarEvent('format_bold')"
 			>
 				<v-icon>mdi-format-bold</v-icon>
@@ -15,6 +16,7 @@
 				v-if="!showAdvancedButton"
 				:color="italic ? 'primary' :''"
 				icon
+				:ripple="false"
 				@click="toolbarEvent('format_italic')"
 			>
 				<v-icon>mdi-format-italic</v-icon>
@@ -24,38 +26,42 @@
 				v-if="!showAdvancedButton"
 				:color="underline ? 'primary' :''"
 				icon
+				:ripple="false"
 				@click="toolbarEvent('format_underline')"
 			>
 				<v-icon>mdi-format-underline</v-icon>
-			</v-btn>
+			</v-btn> -->
 
-			<v-btn icon @click="toolbarEvent('add_emoji')">
+			<v-btn :ripple="false" icon @click="toolbarEvent('add_emoji')">
 				<v-icon>mdi-emoticon-happy</v-icon>
 			</v-btn>
 
-			<v-btn icon @click="toolbarEvent('upload_image')">
+			<v-btn :ripple="false" icon @click="toolbarEvent('upload_image')">
 				<v-icon>mdi-image-area</v-icon>
 			</v-btn>
 
-			<v-btn v-if="allowVideo" icon @click="toolbarEvent('upload_video')">
+			<v-btn v-if="allowVideo" :ripple="false" icon @click="toolbarEvent('upload_video')">
 				<v-icon>mdi-message-video</v-icon>
 			</v-btn>
 
 			<v-badge color="amber" :content="`需支付：${price}`" v-if="allowPrice">
-				<v-btn icon @click="toolbarEvent('set_price')">
+				<v-btn :ripple="false" icon @click="toolbarEvent('set_price')">
 					<v-icon>mdi-currency-usd</v-icon>
 				</v-btn>
 			</v-badge>
 		</div>
 		<v-spacer></v-spacer>
 
-		<v-btn v-if="showAdvancedButton" @click="$router.push('/views/editor')" text>高级</v-btn>
-
+		<v-btn :ripple="false" v-if="showAdvancedButton" @click="$router.push('/views/editor')" text>高级</v-btn>
+		
+		<CategoriesSelectionList></CategoriesSelectionList>
 		<v-btn @click="pub" depressed rounded color="primary">发布</v-btn>
 	</v-toolbar>
 </template>
 
 <script>
+import CategoriesSelectionList from "~/components/categories/CategoriesSelectionList";
+
 export default {
 	props: {
 		/**
@@ -128,6 +134,9 @@ export default {
 			this.$emit("action", { type });
 		},
 	},
+	components:{
+		CategoriesSelectionList
+	}
 };
 </script>
 

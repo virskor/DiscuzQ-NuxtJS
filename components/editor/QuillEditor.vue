@@ -75,20 +75,19 @@ export default {
 			}
 
 			if (action.type == "format_bold") {
-				this.quillEditor.format('bold', action.value)
+				this.quillEditor.format("bold", action.value);
 				return;
 			}
 
 			if (action.type == "format_italic") {
-				this.quillEditor.format('italic', action.value)
+				this.quillEditor.format("italic", action.value);
 				return;
 			}
 
 			if (action.type == "format_underline") {
-				this.quillEditor.format('underline', action.value)
+				this.quillEditor.format("underline", action.value);
 				return;
 			}
-
 
 			/**
 			 * 设置价格
@@ -124,7 +123,14 @@ export default {
 		 */
 		pub() {
 			const { quillEditor } = this;
-			this.$emit("input", quillEditor.getText());
+			const { fromDelta } = require("delta-markdown-for-quill");
+			try {
+				// const markdown = fromDelta(quillEditor.getContents());
+				// console.log(markdown, quillEditor.getContents());
+				this.$emit("input", quillEditor.getText());
+			} catch (e) {
+				console.log(e);
+			}
 		},
 	},
 	components: {

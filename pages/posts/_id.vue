@@ -118,7 +118,7 @@ export default {
 		 * 获取关联的评论
 		 */
 		async getPosts() {
-			const {postID} = this;
+			const { postID } = this;
 			const rs = await postsAPI.getPost(postID);
 
 			if (rs) {

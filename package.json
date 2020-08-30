@@ -22,6 +22,7 @@
     "babel-polyfill": "^6.26.0",
     "clipboardy": "^2.3.0",
     "crypto-js": "^4.0.0",
+    "delta-markdown-for-quill": "^0.0.9",
     "github-markdown-css": "^4.0.0",
     "lodash": "^4.17.19",
     "moment": "^2.27.0",

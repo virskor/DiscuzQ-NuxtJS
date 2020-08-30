@@ -1,5 +1,6 @@
 <template>
-	<v-toolbar dense :color="appbarColor" :dark="appConf.appbarDark" flat class="apptitle">
+<div class="app-title">
+	<v-toolbar dense :color="appbarColor" :dark="appConf.appbarDark" flat>
 		<v-btn v-if="showArrow && $route.path != '/'" @click="$router.go(-1)" color="primary" icon>
 			<v-icon>mdi-arrow-left</v-icon>
 		</v-btn>
@@ -15,6 +16,7 @@
 		<!--用户登录状态栏-->
 		<UserStatusBar />
 	</v-toolbar>
+</div>
 </template>
 
 <script>
@@ -77,7 +79,7 @@ export default {
 </script>
 
 <style lang="less">
-.apptitle {
+.app-title {
 	border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
 }
 </style>
