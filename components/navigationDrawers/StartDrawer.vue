@@ -152,6 +152,7 @@ export default {
 
 			if (selection.callback) {
 				selection.callback();
+				return;
 			}
 
 			this.$router.push(selection.route || "/");
