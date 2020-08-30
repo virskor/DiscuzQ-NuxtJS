@@ -41,7 +41,7 @@
 
 <script>
 import ThreadContents from "~/components/threads/ThreadContents";
-import ThreadAttachments from "~/components/threads/ThreadAttachments";
+import ThreadAttachments from "~/components/threads/attachments/ThreadAttachments";
 
 export default {
 	props: {

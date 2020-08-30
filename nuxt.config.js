@@ -41,7 +41,7 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    '~/styles/common.less'
+    '~/styles/common.less',
   ],
   /*
   ** Plugins to load before mounting the App
@@ -62,6 +62,7 @@ module.exports = {
     { src: '~/plugins/tcaptcha', ssr: false },
     { src: '~/plugins/gotop', ssr: false },
     { src: '~/plugins/photoswipe', ssr: false },
+    { src: '~/plugins/quill', ssr: false },
   ],
   /*
   ** Auto import components

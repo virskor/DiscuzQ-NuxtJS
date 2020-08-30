@@ -1,21 +1,24 @@
 <template>
 	<client-only>
-		<div>
-			<div id="DiscuzQEditor"></div>
-			<!--编辑器工具栏-->
-			<EditorToolbar></EditorToolbar>
-		</div>
+		<v-card outlined flat>
+			<v-overlay v-if="!hasLogined" absolute :opacity=".1" :value="true">
+				<v-btn @click="login" depressed rounded color="primary">登录来发布或评论</v-btn>
+			</v-overlay>
+			<QuillEditor v-model="content"></QuillEditor>
+		</v-card>
 	</client-only>
 </template>
 
 <script>
+import * as types from "~/store/vuex-types";
+import { mapGetters } from "vuex";
 /**
  * 该编辑器直接嵌入的话，会不限定高度宽度
  * 注意，嵌入编辑器时要自定义盒子来引入该组件，可以使dialog，也可以是普通的DIV
  *
  * https://github.com/sparksuite/simplemde-markdown-editor
  */
-import EditorToolbar from "~/components/editor/EditorToolbar";
+import QuillEditor from "~/components/editor/QuillEditor";
 
 export default {
 	name: "Editor",
@@ -25,36 +28,55 @@ export default {
 		 */
 		lightMode: Boolean,
 		/**
-		 * 是否是回复帖子,
-		 * 回复帖子时，非lightMode也不会显示标题框，其次需要传入关联的Post, thread
-		 */
-		isReply: Boolean,
-		/**
 		 * 回复时，关联post, 将补全replyId
 		 */
 		post: Object,
 		/**
 		 * 回复时，关联thread
 		 */
-		thread: Object
-
+		thread: Object,
+		/**
+		 * isEditMode
+		 * 编辑数据时，区分thread, post 传入thread则编辑thread, 传入post则编辑Post
+		 */
+		isEditMode: Boolean,
 	},
 	mounted() {
-		this.$nextTick(async () => {
-			this.initEditor();
-		});
+		this.$nextTick(async () => {});
+	},
+	data(){
+		return {
+			content: ''
+		}
+	},
+	computed: {
+		...mapGetters({
+			user: types.GETTERS_USER,
+		}),
+		hasLogined() {
+			const { user } = this;
+			return !this.$_.isEmpty(user);
+		},
+		/**
+		 * 是否用于回复
+		 */
+		isReply() {
+			const { thread } = this;
+			if (thread) {
+				return true;
+			}
+		},
 	},
 	methods: {
 		/**
-		 * 初始化编辑器
+		 * 跳转登录页面
 		 */
-		async initEditor() {},
-	},
-	components: {
-		EditorToolbar,
+		login() {
+			this.$router.push({
+				path: "/users/login",
+				query: { callback: this.$route.path },
+			});
+		},
 	},
 };
 </script>
-
-<style>
-</style>

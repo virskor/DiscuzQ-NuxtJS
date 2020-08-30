@@ -9,6 +9,7 @@
 		</v-toolbar>
 		<!--渲染评论列表-->
 		<template v-if="!$_.isEmpty(posts)">
+			<Editor :thread="thread" :post="post"></Editor>
 			<template v-for="(post, i) in posts">
 				<var-box :user="mapPostUser(post.relationships.user.data.id)" :key="i" v-slot="{ user }">
 					<PostCard v-if="user" :thread="thread" :post="post" :replyToUser="mapReplyToUser(post)" :user="user" :key="i"></PostCard>
@@ -44,6 +45,7 @@ import PostCard from "~/components/posts/PostCard";
 import NoPosts from "~/components/posts/NoPosts";
 import PostsFilter from "~/components/posts/PostsFilter";
 import postAPI from "~/api/post";
+import Editor from "~/components/editor/Editor";
 
 export default {
 	props: {
@@ -171,6 +173,7 @@ export default {
 		PostCard,
 		NoPosts,
 		PostsFilter,
+		Editor
 	},
 };
 </script>
