@@ -1,7 +1,11 @@
 <template>
 	<div class="discuz">
 		<v-app :dark="appConf.dark">
+			<!--经典模式下，不显示-->
 			<StartDrawer v-if="!appConf.classicalTheme" v-model="showStartDrawer" />
+
+			<!--经典模式下，不显示-->
+			<EndDrawer v-if="!appConf.classicalTheme" v-model="showEndDrawer" />
 
 			<!--路由渲染-->
 			<v-main app>
@@ -22,12 +26,11 @@
 					</v-sheet>
 				</template>
 
+				<!--经典模式下，增加v-container-->
 				<nuxt v-if="forum && !loadForumFailed && !loadingUser && !appConf.classicalTheme"></nuxt>
 				<v-container v-else-if="forum && !loadForumFailed && !loadingUser">
 					<nuxt></nuxt>
 				</v-container>
-
-				<EndDrawer v-if="!appConf.classicalTheme" v-model="showEndDrawer" />
 
 				<!--返回顶部按钮-->
 				<client-only>
