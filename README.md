@@ -1,9 +1,9 @@
-# DiscuzQ-NuxtJS Light
+# DiscuzQ-NuxtJS Lite
 DiscuzQ 基于NuxtJS并支持后端渲染的PC HOME，来自第三方。  
 目前我们不保证项目的交付日期
 
 ## 版权提示
-目前我们将抽出部分PR，先完成一个light的版本，仅支持渲染帖子部分基础功能，后续将逐渐拓展feature。  
+目前我们将抽出部分PR，先完成一个Lite的版本，仅支持渲染帖子部分基础功能，后续将逐渐拓展feature。  
 本打算出个Pro收费的。收毛费，免费，随便玩
 
 ### 已预授权域名查询（赞助者）
