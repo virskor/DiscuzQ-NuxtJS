@@ -52,8 +52,13 @@
 					<!--附件-->
 					<ThreadAttachments :attachments="attachments"></ThreadAttachments>
 
-					<!--打赏-->
-					<RewardButton :thread="thread"></RewardButton>
+					<div>
+						<!--打赏-->
+						<RewardButton :thread="thread"></RewardButton>
+
+						<!--购买主题-->
+						<BuyThreadButton :thread="thread"></BuyThreadButton>
+					</div>
 
 					<!--打赏记录-->
 					<RewardedUsers :rewardedUsers="mapRewardedUsers" :thread="thread"></RewardedUsers>
@@ -80,6 +85,7 @@ import PostsList from "~/components/posts/PostsList";
 import Player from "~/components/player/Player";
 import RewardButton from "~/components/financial/RewardButton";
 import RewardedUsers from "~/components/financial/RewardedUsers";
+import BuyThreadButton from "~/components/financial/BuyThreadButton";
 
 const defaultTitle = "帖子详情";
 
@@ -230,6 +236,7 @@ export default {
 		Player,
 		RewardButton,
 		RewardedUsers,
+		BuyThreadButton,
 	},
 };
 </script>

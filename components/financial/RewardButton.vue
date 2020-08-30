@@ -26,6 +26,7 @@
 			@orderCreated="payOrder"
 			:type="2"
 			v-model="showOrder"
+			:isAnonymous="false"
 			:amount="$C.formatAmounts(amount)"
 			:thread="thread"
 		></CreateOrderDialog>
