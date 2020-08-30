@@ -87,8 +87,8 @@ export default {
             url: URLS.FOLLOW,
             data,
             includes: [
-                requestIncludes.TO_USER,
-                requestIncludes.TO_USER_GROUPS
+                RequestIncludes.TO_USER,
+                RequestIncludes.TO_USER_GROUPS
             ]
         });
     },
@@ -101,8 +101,8 @@ export default {
             url: URLS.FOLLOW,
             data,
             includes: [
-                requestIncludes.FROM_USER,
-                requestIncludes.FROM_USER_GROUPS
+                RequestIncludes.FROM_USER,
+                RequestIncludes.FROM_USER_GROUPS
             ]
         });
     },
