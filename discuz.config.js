@@ -123,4 +123,23 @@ module.exports = {
         wechat: true,
         qq: false,
     },
+    /**
+     * 主题色调主题
+     */
+    theme: {
+        themes: {
+          light: {
+            /**
+             * primary 主色调
+             */
+            primary: '#1878f3',
+            secondary: '#424242',
+            accent: '#82B1FF',
+            error: '#FF5252',
+            info: '#2196F3',
+            success: '#4CAF50',
+            warning: '#FFC107'
+          }
+        }
+      }
 }
