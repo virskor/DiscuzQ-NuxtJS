@@ -11,6 +11,7 @@ const state = () => {
             dark: false,
             appbarDark: false,
             appbarColor: null,
+            removeChargedThreads: false,
         }
     }
 }
@@ -39,9 +40,7 @@ const actions = {
         const newAppConf = Object.assign({ ...state.appConf }, { ...conf });
         commit(types.MUTATION_APPCONF, newAppConf);
         if (process.client) {
-            new Promise((resolve, reject) => {
-                localStorage.setItem(consts.STORAGE_APPCONF, JSON.stringify(newAppConf));
-            });
+            localStorage.setItem(consts.STORAGE_APPCONF, JSON.stringify(newAppConf));
         }
     },
     /**

@@ -5,6 +5,7 @@
 		class="thread-card pb-2 pt-2"
 		:id="`thread-${thread.id}`"
 		tile
+		v-if="!showHideThread"
 	>
 		<!--渲染发布用户的信息-->
 		<ThreadCardUser :firstPost="firstPost" :user="user"></ThreadCardUser>
@@ -22,7 +23,7 @@
 				:contents="firstPost.attributes.contentHtml || ''"
 				:isSticky="thread.attributes.isSticky"
 				:isEssence="thread.attributes.isEssence"
-				:shouldPay="thread.attributes.price != '0.00'"
+				:shouldPay="shouldPay"
 			></ThreadContents>
 
 			<!--
@@ -72,6 +73,34 @@ export default {
 		 * 一个帖子只会关联一个视频
 		 */
 		threadVideo: Object,
+	},
+	computed: {
+		...mapGetters({
+			appConf: types.GETTERS_APPCONF,
+		}),
+		/**
+		 * 是否是付费贴
+		 */
+		shouldPay(){
+			const {thread} = this;
+			return thread.attributes.price != '0.00';
+		},
+		shouldContinueToPay(){
+			const {thread} = this;
+			return thread.attributes.price != '0.00' && !thread.attributes.paid;
+		},
+		showHideThread(){
+			const {appConf, shouldContinueToPay} = this;
+			if(!appConf.removeChargedThreads){
+				return false;
+			}
+
+			if(appConf.removeChargedThreads && !shouldContinueToPay){
+				return false;
+			}
+
+			return true;
+		}
 	},
 	components: {
 		ThreadCardUser,

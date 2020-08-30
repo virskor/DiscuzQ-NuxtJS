@@ -37,7 +37,7 @@
 <script>
 import * as types from "~/store/vuex-types";
 import { mapGetters } from "vuex";
-import DarkSwitcher from "~/components/common/DarkSwitcher";
+import DarkSwitcher from "~/components/settings/DarkSwitcher";
 
 export default {
 	props: {

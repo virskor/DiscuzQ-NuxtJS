@@ -21,13 +21,28 @@
 					</v-list-item>
 				</v-list-item-group>
 				<v-subheader>内容相关</v-subheader>
+				<v-list-item-group color="primary">
+					<!--黑暗模式切换-->
+					<v-list-item>
+						<v-list-item-icon>
+							<v-icon>mdi-currency-usd</v-icon>
+						</v-list-item-icon>
+						<v-list-item-content>
+							<v-list-item-title>不看付费的帖子</v-list-item-title>
+						</v-list-item-content>
+						<v-list-item-action>
+							<RemoveChargedThreads></RemoveChargedThreads>
+						</v-list-item-action>
+					</v-list-item>
+				</v-list-item-group>
 			</v-list>
 		</v-container>
 	</div>
 </template>
 
 <script>
-import DarkSwitcher from "~/components/common/DarkSwitcher";
+import DarkSwitcher from "~/components/settings/DarkSwitcher";
+import RemoveChargedThreads from "~/components/settings/RemoveChargedThreads";
 
 export default {
 	head() {
@@ -43,6 +58,6 @@ export default {
 	data() {
 		return {};
 	},
-	components: { DarkSwitcher },
+	components: { DarkSwitcher,RemoveChargedThreads },
 };
 </script>
