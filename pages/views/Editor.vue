@@ -2,17 +2,17 @@
 	<div>
 		<AppTitle showExtendedNav title="编辑器"></AppTitle>
 		<v-container fluid>
-			<QuillEditor></QuillEditor>
+			<Editor></Editor>
 		</v-container>
 	</div>
 </template>
 
 <script>
-import QuillEditor from "~/components/editor/QuillEditor";
+import Editor from "~/components/editor/Editor";
 
 export default {
 	components: {
-		QuillEditor,
+		Editor,
 	},
 };
 </script>

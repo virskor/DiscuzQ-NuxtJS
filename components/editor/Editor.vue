@@ -4,7 +4,14 @@
 			<v-overlay v-if="!hasLogined" absolute :opacity=".1" :value="true">
 				<v-btn @click="login" depressed rounded color="primary">登录来发布或评论</v-btn>
 			</v-overlay>
-			<QuillEditor @addAttachements="addAttachements" @input="pub" v-model="content"></QuillEditor>
+			<QuillEditor
+				:allowPrice="!isReply"
+				:allowVideo="!isReply"
+				@addAttachements="addAttachements"
+				@input="pub"
+				v-model="content"
+				:lightMode="lightMode"
+			></QuillEditor>
 		</v-card>
 	</client-only>
 </template>
@@ -47,6 +54,10 @@ export default {
 	data() {
 		return {
 			content: "",
+			/**
+			 * 标题
+			 */
+			title: ""
 		};
 	},
 	computed: {
@@ -80,9 +91,7 @@ export default {
 		/**
 		 * 添加附件
 		 */
-		addAttachements() {
-			
-		},
+		addAttachements() {},
 		/**
 		 * pub 发布
 		 */

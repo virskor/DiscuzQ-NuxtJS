@@ -9,7 +9,7 @@
 		</v-toolbar>
 		<!--渲染评论列表-->
 		<template v-if="!$_.isEmpty(posts)">
-			<Editor :thread="thread" :post="post"></Editor>
+			<Editor lightMode :thread="thread" :post="post"></Editor>
 			<template v-for="(post, i) in posts">
 				<var-box :user="mapPostUser(post.relationships.user.data.id)" :key="i" v-slot="{ user }">
 					<PostCard v-if="user" :thread="thread" :post="post" :replyToUser="mapReplyToUser(post)" :user="user" :key="i"></PostCard>

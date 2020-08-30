@@ -1,8 +1,17 @@
 <template>
 	<div>
+		<v-text-field class="ma-3" v-if="!lightMode" label="标题" placeholder="请输入主题的标题"></v-text-field>
+
 		<div id="quill-editor" class="quill-editor"></div>
+
 		<!--编辑器工具栏-->
-		<EditorToolbar @action="toolbarAction" @pub="pub"></EditorToolbar>
+		<EditorToolbar
+			:allowPrice="allowPrice"
+			:allowVideo="allowVideo"
+			:showAdvancedButton="lightMode"
+			@action="toolbarAction"
+			@pub="pub"
+		></EditorToolbar>
 	</div>
 </template>
 
@@ -12,6 +21,18 @@ import EditorToolbar from "~/components/editor/EditorToolbar";
 export default {
 	props: {
 		value: String,
+		/**
+		 * 允许发布视频
+		 */
+		allowVideo: Boolean,
+		/**
+		 * 允许设置价格
+		 */
+		allowPrice: Boolean,
+		/**
+		 * 精简模式将不支持输入标题，等，适用于快速发帖，回复嵌入
+		 */
+		lightMode: Boolean,
 	},
 	mounted() {
 		this.$nextTick(async () => {
@@ -53,9 +74,9 @@ export default {
 			 */
 			if (action == "fullscreen") {
 				return;
-            }
-            
-            this.$swal('即将支持');
+			}
+
+			this.$swal("即将支持");
 		},
 		/**
 		 * 发布
