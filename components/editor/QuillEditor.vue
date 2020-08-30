@@ -1,8 +1,8 @@
 <template>
 	<div>
-		<div id="quill-editor" class="quill-editor" @change="onEditorChange($event)"></div>
+		<div id="quill-editor" class="quill-editor"></div>
 		<!--编辑器工具栏-->
-		<EditorToolbar></EditorToolbar>
+		<EditorToolbar @action="toolbarAction" @pub="pub"></EditorToolbar>
 	</div>
 </template>
 
@@ -20,8 +20,7 @@ export default {
 	},
 	data() {
 		return {
-            quillEditor: null,
-			content: "",
+			quillEditor: null,
 			option: {
 				placeholder: "输入要编辑的内容",
 				readOnly: false,
@@ -33,9 +32,9 @@ export default {
 		};
 	},
 	methods: {
-        /**
-         * 初始化编辑器
-         */
+		/**
+		 * 初始化编辑器
+		 */
 		initEditor() {
 			const { option } = this;
 			if (!process.client) {
@@ -44,14 +43,27 @@ export default {
 
 			const Quill = require("quill");
 			this.quillEditor = new Quill("#quill-editor", option);
-        },
-        /**
-         * 编辑器输入
-         */
-		onEditorChange({ editor, html, text }) {
-			_.debounce(function () {
-				this.$emit("input", text);
-			}, 500);
+		},
+		/**
+		 * 工具栏点击事件
+		 */
+		toolbarAction(action) {
+			/**
+			 * 处理用户点击全屏
+			 */
+			if (action == "fullscreen") {
+				return;
+            }
+            
+            this.$swal('即将支持');
+		},
+		/**
+		 * 发布
+		 * 仅当用户点击pub按钮后才进行input事件传递
+		 */
+		pub() {
+			const { quillEditor } = this;
+			this.$emit("input", quillEditor.getText());
 		},
 	},
 	components: {
@@ -61,8 +73,8 @@ export default {
 </script>
 
 <style lang="less">
-#quill-editor{
-    min-height: 100px;
+#quill-editor {
+	min-height: 100px;
 }
 .ql-container.ql-snow,
 .ql-toolbar.ql-snow {

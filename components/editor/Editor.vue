@@ -4,7 +4,7 @@
 			<v-overlay v-if="!hasLogined" absolute :opacity=".1" :value="true">
 				<v-btn @click="login" depressed rounded color="primary">登录来发布或评论</v-btn>
 			</v-overlay>
-			<QuillEditor v-model="content"></QuillEditor>
+			<QuillEditor @addAttachements="addAttachements" @input="pub" v-model="content"></QuillEditor>
 		</v-card>
 	</client-only>
 </template>
@@ -44,10 +44,10 @@ export default {
 	mounted() {
 		this.$nextTick(async () => {});
 	},
-	data(){
+	data() {
 		return {
-			content: ''
-		}
+			content: "",
+		};
 	},
 	computed: {
 		...mapGetters({
@@ -76,6 +76,23 @@ export default {
 				path: "/users/login",
 				query: { callback: this.$route.path },
 			});
+		},
+		/**
+		 * 添加附件
+		 */
+		addAttachements() {
+			
+		},
+		/**
+		 * pub 发布
+		 */
+		pub() {
+			const { content } = this;
+			if (!this.$_.trim(content)) {
+				this.$swal("请输入内容后再继续");
+				return;
+			}
+			this.$swal(`即将支持您发布\r\n${content}`);
 		},
 	},
 };

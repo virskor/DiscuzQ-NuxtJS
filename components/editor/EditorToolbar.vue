@@ -1,35 +1,25 @@
 <template>
 	<v-toolbar flat dense>
 		<v-btn-toggle v-model="toggle_exclusive" group dense multiple>
-			<v-btn @click="toolbarEvent">
-				<v-icon>mdi-format-bold</v-icon>
-			</v-btn>
-
-			<v-btn @click="toolbarEvent">
-				<v-icon>mdi-format-italic</v-icon>
-			</v-btn>
-
-			<v-btn @click="toolbarEvent">
-				<v-icon>mdi-format-underline</v-icon>
-			</v-btn>
-
-			<v-btn @click="toolbarEvent">
+			<v-btn @click="toolbarEvent('upload_image')">
 				<v-icon>mdi-image-area</v-icon>
 			</v-btn>
 
-			<v-btn @click="toolbarEvent">
+			<v-btn @click="toolbarEvent('add_emoji')">
 				<v-icon>mdi-emoticon-happy</v-icon>
 			</v-btn>
 
-			<v-btn @click="toolbarEvent">
+			<v-btn @click="toolbarEvent('upload_video')">
 				<v-icon>mdi-message-video</v-icon>
 			</v-btn>
 		</v-btn-toggle>
 		<v-spacer></v-spacer>
-		<v-btn text>
+
+		<!-- <v-btn @click="toolbarEvent('full_screen')" text>
 			<v-icon>mdi-crop-free</v-icon>
-		</v-btn>
-		<v-btn @click="publish" depressed rounded color="primary">发布</v-btn>
+		</v-btn> -->
+
+		<v-btn @click="pub" depressed rounded color="primary">发布</v-btn>
 	</v-toolbar>
 </template>
 
@@ -41,13 +31,15 @@ export default {
 		};
 	},
 	methods: {
-		publish() {
-			this.$swal("即将支持");
+		/**
+		 * 点击发布按钮
+		 */
+		pub() {
+			this.$emit('pub');
 		},
-		toolbarEvent(){
+		toolbarEvent(action){
 			const {toggle_exclusive} = this;
-			this.$swal("即将支持");
-			console.log(toggle_exclusive);
+			this.$emit('action', action);
 		}
 	},
 };
