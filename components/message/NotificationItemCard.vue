@@ -21,6 +21,7 @@
 		</v-list>
 		<div class="pl-5 mb-4">
 			<div
+			class="clickable"
 				@click="openRelatedThreadOrPost"
 				v-html="notification.attributes.post_content || notification.attributes.content || '无通知内容'"
 			></div>

@@ -1,14 +1,22 @@
 <template>
 	<v-card :ripple="false" elevation="0" class="post-card pb-2 pt-2" tile :id="`post-${post.id}`">
 		<!--评论header 用户信息和操作条-->
-	
+
 		<v-list-item>
 			<v-list-item-avatar :size="50" title>
 				<Avatar :user="user"></Avatar>
 			</v-list-item-avatar>
 
 			<v-list-item-content>
-				<v-list-item-title  class="font-weight-black" v-text="user.attributes.username"></v-list-item-title>
+				<v-list-item-title>
+					<span class="font-weight-black">{{user.attributes.username}}</span>
+					<span v-if="replyToUser" class="v-list-item__subtitle">回复</span>
+					<span
+						v-if="replyToUser"
+						@click="$router.push(`/users/${replyToUser.id}`)"
+						class="v-list-item__subtitle primary--text clickable"
+					>@{{replyToUser.attributes.username}}</span>
+				</v-list-item-title>
 				<v-list-item-subtitle>
 					<span>发布于：{{$C.formatDateTime(post.attributes.createdAt)}}</span>
 					<span></span>
@@ -48,12 +56,12 @@ export default {
 		/**
 		 * 关联的主题
 		 */
-		thread: Object
+		thread: Object,
 	},
 	components: {
 		PostContent,
 		Avatar,
-		PostLikeButton
+		PostLikeButton,
 	},
 };
 </script>

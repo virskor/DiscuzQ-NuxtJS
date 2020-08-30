@@ -11,7 +11,7 @@
 		<template v-if="!$_.isEmpty(posts)">
 			<template v-for="(post, i) in posts">
 				<var-box :user="mapPostUser(post.relationships.user.data.id)" :key="i" v-slot="{ user }">
-					<PostCard v-if="user" :thread="thread" :post="post" :user="user" :key="i"></PostCard>
+					<PostCard v-if="user" :thread="thread" :post="post" :replyToUser="mapReplyToUser(post)" :user="user" :key="i"></PostCard>
 				</var-box>
 			</template>
 
@@ -106,6 +106,19 @@ export default {
 		mapPostUser(id) {
 			const { included } = this;
 			return included.find((it) => it.type == "users" && it.id == id);
+		},
+		/**
+		 * 取出回复关联的用户
+		 */
+		mapReplyToUser(post){
+			//replyUserId
+			const replyUserId = post.attributes.replyUserId;
+			if(!replyUserId){
+				return null
+			}
+
+			const { included } = this;
+			return included.find((it) => it.type == "users" && it.id == replyUserId);
 		},
 		/**
 		 * load more posts

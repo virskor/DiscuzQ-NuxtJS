@@ -8,7 +8,7 @@
 			depressed
 		>
 			<v-icon :color="isFollowed ? 'primary' : ''">mdi-account-plus</v-icon>
-			<span :class="isFollowed ? 'primary--text' : ''">{{isFollowed ? '已关注': '关注TA'}}</span>
+			<span :class="isFollowed ? 'primary--text' : ''">{{followStatusSpan}}</span>
 		</v-btn>
 	</v-row>
 </template>
@@ -33,6 +33,10 @@ export default {
 			 * 处理中
 			 */
 			loading: false,
+			/**
+			 * 是否是双向
+			 */
+			isMutual: null
 		};
 	},
 	computed: {
@@ -46,14 +50,25 @@ export default {
 			}
 			return !user.attributes.follow ? false : true;
 		},
+		/**
+		 * 关注状态标签
+		 */
+		followStatusSpan(){
+			const {user, isMutual, isFollowed} = this;
+			if(isMutual || user.attributes.is_mutual){
+				return '互相关注';
+			}
+
+			return isFollowed ? '已关注': '关注TA';
+		}
 	},
 	methods: {
 		/**
 		 * 反选关注
 		 */
 		async toggleFollowButton() {
-			const { followed } = this;
-			return followed ? await this.unfollow() : await this.follow();
+			const { isFollowed } = this;
+			return isFollowed ? await this.unfollow() : await this.follow();
 		},
 		/**
 		 * 关注
@@ -68,6 +83,7 @@ export default {
 
 			if(rs){
 				this.followed = true;
+				this.isMutual = rs.data.attributes.is_mutual;
 			}
 		},
 		/** 取消关注 */
@@ -81,6 +97,7 @@ export default {
 
 			if(rs){
 				this.followed = false;
+				this.isMutual = false;
 			}
 		},
 	},
