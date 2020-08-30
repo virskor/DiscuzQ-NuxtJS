@@ -35,6 +35,7 @@
 		</template>
 
 		<template v-else>
+			<Editor lightMode :thread="thread" :post="post"></Editor>
 			<NoPosts v-if="!loading"></NoPosts>
 		</template>
 	</div>

@@ -59,9 +59,10 @@
 import * as types from "~/store/vuex-types";
 import { mapGetters } from "vuex";
 import WechatLogin from "~/components/users/mixins/WechatLogin.mixins";
+import AlreadyLoginNotice from "~/components/users/mixins/AlreadyLoginNotice.mixins";
 
 export default {
-	mixins: [WechatLogin],
+	mixins: [WechatLogin, AlreadyLoginNotice],
 	head() {
 		return {
 			title: "用户登录",
@@ -117,6 +118,11 @@ export default {
 			if (registerClosed && !force) {
 				this.$router.push("/users/mobile");
 			}
+		});
+	},
+	mounted() {
+		this.$nextTick(async () => {
+			await this.alreadyLoginNotice();
 		});
 	},
 	methods: {

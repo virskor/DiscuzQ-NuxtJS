@@ -56,9 +56,10 @@
 <script>
 import * as types from "~/store/vuex-types";
 import { mapGetters } from "vuex";
-import WechatLogin from "~/components/users/mixins/WechatLogin.mixins";
 import Captcha from "~/utils/captcha";
 import smsAPI from "~/api/sms";
+import WechatLogin from "~/components/users/mixins/WechatLogin.mixins";
+import AlreadyLoginNotice from "~/components/users/mixins/AlreadyLoginNotice.mixins";
 
 /**
  * sms verify type
@@ -71,7 +72,7 @@ const smsVerifyType = "login";
 const defaultSuffix = "发送验证码";
 
 export default {
-	mixins: [WechatLogin],
+	mixins: [WechatLogin, AlreadyLoginNotice],
 	head() {
 		return {
 			title: "使用短信验证码登录",
@@ -115,6 +116,11 @@ export default {
 			const { forum } = this;
 			return forum.attributes.qcloud.qcloud_captcha_app_id;
 		},
+	},
+	mounted() {
+		this.$nextTick(async () => {
+			await this.alreadyLoginNotice();
+		});
 	},
 	methods: {
 		/**

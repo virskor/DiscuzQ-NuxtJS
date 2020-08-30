@@ -5,12 +5,11 @@
 				<v-btn @click="login" depressed rounded color="primary">登录来发布或评论</v-btn>
 			</v-overlay>
 			<QuillEditor
-				:allowPrice="!isReply"
-				:allowVideo="!isReply"
 				@addAttachements="addAttachements"
 				@input="pub"
 				v-model="content"
 				:lightMode="lightMode"
+				:isReply="isReply"
 			></QuillEditor>
 		</v-card>
 	</client-only>

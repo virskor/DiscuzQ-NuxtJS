@@ -6,9 +6,9 @@
 
 		<!--编辑器工具栏-->
 		<EditorToolbar
-			:allowPrice="allowPrice"
-			:allowVideo="allowVideo"
-			:showAdvancedButton="lightMode"
+			:allowPrice="!isReply"
+			:allowVideo="!isReply"
+			:showAdvancedButton="lightMode && !isReply"
 			@action="toolbarAction"
 			@pub="pub"
 		></EditorToolbar>
@@ -22,17 +22,13 @@ export default {
 	props: {
 		value: String,
 		/**
-		 * 允许发布视频
-		 */
-		allowVideo: Boolean,
-		/**
-		 * 允许设置价格
-		 */
-		allowPrice: Boolean,
-		/**
 		 * 精简模式将不支持输入标题，等，适用于快速发帖，回复嵌入
 		 */
 		lightMode: Boolean,
+		/**
+		 * 是否是回复模式
+		 */
+		isReply: Boolean
 	},
 	mounted() {
 		this.$nextTick(async () => {
