@@ -9,6 +9,7 @@
 			:allowPrice="!isReply"
 			:allowVideo="!isReply"
 			:showAdvancedButton="lightMode && !isReply"
+			:price="price"
 			@action="toolbarAction"
 			@pub="pub"
 		></EditorToolbar>
@@ -28,7 +29,7 @@ export default {
 		/**
 		 * 是否是回复模式
 		 */
-		isReply: Boolean
+		isReply: Boolean,
 	},
 	mounted() {
 		this.$nextTick(async () => {
@@ -46,6 +47,7 @@ export default {
 					toolbar: false,
 				},
 			},
+			price: "0.00",
 		};
 	},
 	methods: {
@@ -64,11 +66,53 @@ export default {
 		/**
 		 * 工具栏点击事件
 		 */
-		toolbarAction(action) {
+		async toolbarAction(action) {
 			/**
 			 * 处理用户点击全屏
 			 */
-			if (action == "fullscreen") {
+			if (action.type == "fullscreen") {
+				return;
+			}
+
+			if (action.type == "format_bold") {
+				this.quillEditor.format('bold', action.value)
+				return;
+			}
+
+			if (action.type == "format_italic") {
+				this.quillEditor.format('italic', action.value)
+				return;
+			}
+
+			if (action.type == "format_underline") {
+				this.quillEditor.format('underline', action.value)
+				return;
+			}
+
+
+			/**
+			 * 设置价格
+			 */
+			if (action.type == "set_price") {
+				const { price } = this;
+				const value = await this.$swal("请输入帖子的价格", {
+					content: {
+						element: "input",
+						attributes: {
+							value: price,
+						},
+					},
+				});
+
+				if (this.$C.formatAmounts(value) > 0) {
+					const formatPrice = this.$C.formatAmounts(value);
+					this.price = formatPrice;
+					this.$emit("price", formatPrice);
+					return;
+				}
+
+				await this.$swal("输入的价格无效");
+
 				return;
 			}
 

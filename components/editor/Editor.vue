@@ -10,6 +10,7 @@
 				v-model="content"
 				:lightMode="lightMode"
 				:isReply="isReply"
+				@price="setPrice"
 			></QuillEditor>
 		</v-card>
 	</client-only>
@@ -56,7 +57,11 @@ export default {
 			/**
 			 * 标题
 			 */
-			title: ""
+			title: "",
+			/**
+			 * 价格
+			 */
+			price: '0.00'
 		};
 	},
 	computed: {
@@ -91,6 +96,12 @@ export default {
 		 * 添加附件
 		 */
 		addAttachements() {},
+		/**
+		 * 设置价格
+		 */
+		setPrice(price){
+			this.price = price;
+		},
 		/**
 		 * pub 发布
 		 */
