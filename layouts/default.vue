@@ -1,7 +1,7 @@
 <template>
 	<div class="discuz">
 		<v-app :dark="appConf.dark">
-			<StartDrawer v-model="showStartDrawer" />
+			<StartDrawer v-if="!appConf.classicalTheme" v-model="showStartDrawer" />
 
 			<!--路由渲染-->
 			<v-main app>
@@ -22,9 +22,12 @@
 					</v-sheet>
 				</template>
 
-				<nuxt v-if="forum && !loadForumFailed && !loadingUser"></nuxt>
+				<nuxt v-if="forum && !loadForumFailed && !loadingUser && !appConf.classicalTheme"></nuxt>
+				<v-container v-else-if="forum && !loadForumFailed && !loadingUser">
+					<nuxt></nuxt>
+				</v-container>
 
-				<EndDrawer v-model="showEndDrawer" />
+				<EndDrawer v-if="!appConf.classicalTheme" v-model="showEndDrawer" />
 
 				<!--返回顶部按钮-->
 				<client-only>
@@ -69,6 +72,8 @@ export default {
 		this.$nextTick(async () => {
 			/**
 			 * mixin method bootstrap
+			 * bootstrap 将启动应用配置
+			 *
 			 */
 			await this.bootstrap();
 

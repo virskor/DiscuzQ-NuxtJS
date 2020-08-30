@@ -1,22 +1,25 @@
 <template>
-<div class="app-title">
-	<v-toolbar dense :color="appbarColor" :dark="appConf.appbarDark" flat>
-		<v-btn v-if="showArrow && $route.path != '/'" @click="$router.go(-1)" color="primary" icon>
-			<v-icon>mdi-arrow-left</v-icon>
-		</v-btn>
+	<div>
+		<div class="app-title">
+			<v-toolbar dense :color="appbarColor" :dark="appConf.appbarDark" flat>
+				<v-btn v-if="showArrow && $route.path != '/'" @click="$router.go(-1)" color="primary" icon>
+					<v-icon>mdi-arrow-left</v-icon>
+				</v-btn>
 
-		<v-toolbar-title class="font-weight-black">{{title}}</v-toolbar-title>
-		<v-spacer />
-		
-		<slot />
+				<v-toolbar-title class="font-weight-black">{{title}}</v-toolbar-title>
+				<v-spacer />
 
-		<!--拓展菜单-->
-		<ExtendedNav v-if="!hideExtendedNav"></ExtendedNav>
+				<slot />
 
-		<!--用户登录状态栏-->
-		<UserStatusBar />
-	</v-toolbar>
-</div>
+				<!--拓展菜单-->
+				<ExtendedNav v-if="!hideExtendedNav"></ExtendedNav>
+
+				<!--用户登录状态栏-->
+				<UserStatusBar />
+			</v-toolbar>
+		</div>
+		<ClassicalNav v-if="appConf.classicalTheme"></ClassicalNav>
+	</div>
 </template>
 
 <script>
@@ -25,6 +28,7 @@ import { mapGetters } from "vuex";
 
 import UserStatusBar from "~/components/users/UserStatusBar";
 import ExtendedNav from "~/components/common/global/ExtendedNav";
+import ClassicalNav from "~/components/common/ClassicalNav";
 
 export default {
 	props: {
@@ -43,7 +47,7 @@ export default {
 		/**
 		 * 隐藏导航条
 		 */
-		hideExtendedNav: Boolean
+		hideExtendedNav: Boolean,
 	},
 	data() {
 		return {
@@ -73,7 +77,8 @@ export default {
 	},
 	components: {
 		UserStatusBar,
-		ExtendedNav
+		ExtendedNav,
+		ClassicalNav,
 	},
 };
 </script>

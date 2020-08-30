@@ -1,7 +1,7 @@
 <template>
 	<div class="userStatusBar">
 		<div v-if="!hasLogined">
-			<v-btn depressed rounded text color="primary" @click="login">登录</v-btn>
+			<v-btn depressed rounded color="primary" @click="login">登录</v-btn>
 			<!-- <v-btn depressed text small color="primary" @click="register">注册</v-btn> -->
 		</div>
 		<div v-else>

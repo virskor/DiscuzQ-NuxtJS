@@ -12,6 +12,7 @@ const state = () => {
             appbarDark: false,
             appbarColor: null,
             removeChargedThreads: false,
+            classicalTheme: false,
         }
     }
 }

@@ -19,21 +19,14 @@
 							<DarkSwitcher></DarkSwitcher>
 						</v-list-item-action>
 					</v-list-item>
+
+					<!--Discuz!X 经典布局-->
+					<!-- <AppConfSwitcher label="经典布局" icon="mdi-monitor-multiple" keyName="classicalTheme"></AppConfSwitcher> -->
 				</v-list-item-group>
 				<v-subheader>内容相关</v-subheader>
 				<v-list-item-group color="primary">
 					<!--黑暗模式切换-->
-					<v-list-item>
-						<v-list-item-icon>
-							<v-icon>mdi-currency-usd</v-icon>
-						</v-list-item-icon>
-						<v-list-item-content>
-							<v-list-item-title>不看付费的帖子</v-list-item-title>
-						</v-list-item-content>
-						<v-list-item-action>
-							<RemoveChargedThreads></RemoveChargedThreads>
-						</v-list-item-action>
-					</v-list-item>
+					<AppConfSwitcher label="不看付费的帖子" icon="mdi-currency-usd" keyName="removeChargedThreads"></AppConfSwitcher>
 				</v-list-item-group>
 			</v-list>
 		</v-container>
@@ -42,7 +35,7 @@
 
 <script>
 import DarkSwitcher from "~/components/settings/DarkSwitcher";
-import RemoveChargedThreads from "~/components/settings/RemoveChargedThreads";
+import AppConfSwitcher from "~/components/settings/AppConfSwitcher";
 
 export default {
 	head() {
@@ -58,6 +51,6 @@ export default {
 	data() {
 		return {};
 	},
-	components: { DarkSwitcher,RemoveChargedThreads },
+	components: { DarkSwitcher, AppConfSwitcher },
 };
 </script>
