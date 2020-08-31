@@ -11,6 +11,10 @@
 				></v-img>
 			</v-col>
 		</v-row>
+		<v-card-actions>
+			<v-spacer></v-spacer>
+			<v-btn @click="$emit('close')" text color="primary">完成</v-btn>
+		</v-card-actions>
 	</v-card>
 </template>
 

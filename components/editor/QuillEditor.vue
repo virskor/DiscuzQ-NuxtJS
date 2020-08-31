@@ -68,8 +68,8 @@ export default {
 			this.quillEditor = new Quill("#quill-editor", option);
 
 			/** inline blots */
-			const InlineBlot = Quill.import("blots/block");
-			class EmojiBlot extends InlineBlot {
+			const Embed = Quill.import("blots/embed");
+			class EmojiBlot extends Embed {
 				static create(data) {
 					const node = super.create(data);
 					node.setAttribute("src", `${data.src}`);
@@ -118,7 +118,7 @@ export default {
 			if (action.type == "add_emoji") {
 				const emoji = action.value;
 				this.quillEditor.insertEmbed(
-					this.quillEditor.getLength(),
+					this.quillEditor.getLength() -1,
 					"emojiBlot",
 					{ src: emoji.attributes.url, alt: emoji.attributes.code },
 					'api'

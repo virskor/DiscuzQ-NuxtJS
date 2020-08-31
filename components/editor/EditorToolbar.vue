@@ -38,7 +38,7 @@
 					</v-btn>
 				</template>
 
-				<EditorEmojiList @input="emojiSelection"></EditorEmojiList>
+				<EditorEmojiList @close="showEmojis = false" @input="emojiSelection"></EditorEmojiList>
 			</v-menu>
 
 			<v-btn :ripple="false" icon @click="toolbarEvent('upload_image')">
