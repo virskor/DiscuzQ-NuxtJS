@@ -63,6 +63,11 @@ export default {
             await this.$store.dispatch('bootstrapConfigs');
 
             /**
+             * 加载表情，异步
+             */
+            this.$store.dispatch('getEmojis');
+
+            /**
              * 要自动切换黑暗模式
              */
             this.$vuetify.theme.dark = this.appConf.dark;

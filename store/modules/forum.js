@@ -29,7 +29,7 @@ const actions = {
      * @param {*} param0 
      */
     async getForum({ commit }) {
-        let rs = await forumAPI.getForum();
+        const rs = await forumAPI.getForum();
         if (rs) {
             commit(types.MUTATION_FORUM, rs.data);
             return true;

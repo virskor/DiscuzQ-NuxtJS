@@ -31,6 +31,11 @@ export const GETTERS_LOGIN_USERID = "getters/loginUserID";
  */
 export const GETTERS_FILTER = "getters/filter";
 
+/**
+ * 表情数据
+ */
+export const GETTERS_EMOJIS = "getters/emojis";
+
 
 /**
  * 分类
@@ -48,3 +53,4 @@ export const MUTATION_LOGIN_USERID = "mutation/loginUserID";
 export const MUTATION_SITE_INFO = "mutation/siteInfo";
 export const MUTATION_CATEGORIES = "mutation/categories";
 export const MUTATION_FILTER = "mutation/filter";
+export const MUTATION_EMOJIS = "mutation/emojis";

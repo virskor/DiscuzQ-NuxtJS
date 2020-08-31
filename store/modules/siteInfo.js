@@ -24,7 +24,7 @@ const actions = {
      * @param {*} param0 
      */
     async getSiteInfo({ commit }) {
-        let rs = await siteInfoAPI.getSiteInfo();
+        const rs = await siteInfoAPI.getSiteInfo();
         if (rs) {
             commit(types.MUTATION_SITE_INFO, rs.data);
             return true;

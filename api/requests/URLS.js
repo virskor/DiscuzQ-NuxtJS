@@ -193,6 +193,12 @@ const URLS = {
      * https://discuz.com/api-docs/v1/TradePayOrder.html
      */
     ORDERS_PAY: `${APIHOST}${APIVERSION}/trade/pay/order`,
+
+    /**
+     * GET /api/emoji 表情列表
+     * https://discuz.com/api-docs/v1/EmojiList.html
+     */
+    EMOJI: `${APIHOST}${APIVERSION}/emoji`,
 }
 
 export default URLS

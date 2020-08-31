@@ -18,9 +18,9 @@
 				<v-list-item>
 					<v-card flat tile>
 						<p class="text-h5">2020-08-31</p>
+						<p>新增表情选择组件</p>
 						<p v-if="false">新增发帖</p>
 						<p v-if="false">新增发评论</p>
-						<p v-if="false">新增表情选择组件</p>
 						<p v-if="false">个人资料</p>
 						<p v-if="false">头像上传</p>
 					</v-card>

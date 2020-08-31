@@ -60,8 +60,34 @@ export default {
 				return;
 			}
 
+			if(this.quillEditor){
+				return;
+			}
+
 			const Quill = require("quill");
 			this.quillEditor = new Quill("#quill-editor", option);
+
+			/** inline blots */
+			const InlineBlot = Quill.import("blots/block");
+			class EmojiBlot extends InlineBlot {
+				static create(data) {
+					const node = super.create(data);
+					node.setAttribute("src", `${data.src}`);
+					node.setAttribute("alt", `${data.alt}`);
+					return node;
+				}
+				static value(domNode) {
+					const { src, alt, custom } = domNode.dataset;
+					return { src, alt, custom };
+				}
+			}
+			
+			/**
+			 * register blots
+			 */
+			EmojiBlot.blotName = "emojiBlot";
+			EmojiBlot.tagName = "img";
+			Quill.register({ "formats/emojiBlot": EmojiBlot });
 		},
 		/**
 		 * 工具栏点击事件
@@ -86,6 +112,17 @@ export default {
 
 			if (action.type == "format_underline") {
 				this.quillEditor.format("underline", action.value);
+				return;
+			}
+
+			if (action.type == "add_emoji") {
+				const emoji = action.value;
+				this.quillEditor.insertEmbed(
+					this.quillEditor.getLength(),
+					"emojiBlot",
+					{ src: emoji.attributes.url, alt: emoji.attributes.code },
+					'api'
+				);
 				return;
 			}
 
@@ -142,6 +179,10 @@ export default {
 <style lang="less">
 #quill-editor {
 	min-height: 100px;
+	font-size: 16px;
+	img {
+		width: 25px;
+	}
 }
 .ql-container.ql-snow,
 .ql-toolbar.ql-snow {
