@@ -81,6 +81,8 @@ export default {
 					return { src, alt, custom };
 				}
 			}
+
+			/** inline blots for urlLik */
 			
 			/**
 			 * register blots

@@ -2,7 +2,7 @@
 	<v-toolbar class="editor-toolbar" flat dense>
 		<div class="format-items">
 			<!--粗体-->
-			<!-- <v-btn
+			<v-btn
 				v-if="!showAdvancedButton"
 				:color="bold ? 'primary' :''"
 				icon
@@ -30,7 +30,7 @@
 				@click="toolbarEvent('format_underline')"
 			>
 				<v-icon>mdi-format-underline</v-icon>
-			</v-btn>-->
+			</v-btn>
 			<v-menu v-model="showEmojis" :close-on-content-click="false" :nudge-width="200" offset-y>
 				<template v-slot:activator="{ on, attrs }">
 					<v-btn :ripple="false" v-bind="attrs" v-on="on" icon>
@@ -41,13 +41,13 @@
 				<EditorEmojiList @close="showEmojis = false" @input="emojiSelection"></EditorEmojiList>
 			</v-menu>
 
-			<v-btn :ripple="false" icon @click="toolbarEvent('upload_image')">
+			<!-- <v-btn :ripple="false" icon @click="toolbarEvent('upload_image')">
 				<v-icon>mdi-image-area</v-icon>
 			</v-btn>
 
 			<v-btn v-if="allowVideo" :ripple="false" icon @click="toolbarEvent('upload_video')">
 				<v-icon>mdi-message-video</v-icon>
-			</v-btn>
+			</v-btn> -->
 
 			<v-badge color="amber" :content="`需支付：${price}`" v-if="allowPrice">
 				<v-btn :ripple="false" icon @click="toolbarEvent('set_price')">
