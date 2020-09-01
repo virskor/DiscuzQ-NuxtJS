@@ -3,15 +3,7 @@
 		<v-toolbar dense elevation="0">
 			<AppLogo />
 			<v-spacer></v-spacer>
-			<v-btn
-					@click="$router.push('/views/editor')"
-					elevation="0"
-					flat
-					bottom
-					rounded
-				>
-					发帖
-				</v-btn>
+			<v-btn @click="$router.push('/views/editor')" :elevation="0" depressed bottom rounded>发帖</v-btn>
 		</v-toolbar>
 		<v-card tile flat>
 			<v-list>

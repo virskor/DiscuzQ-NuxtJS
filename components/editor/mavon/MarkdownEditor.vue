@@ -4,7 +4,7 @@
 
 		<mavon-editor
 		ref='md'
-			:subfield="false"
+			:subfield="!lightMode"
 			:toolbars="toolbars"
 			:boxShadow="false"
 			v-model="markdown"
@@ -41,7 +41,9 @@ export default {
 		isReply: Boolean,
 	},
 	mounted() {
-		this.$nextTick(async () => {});
+		this.$nextTick(async () => {
+			this.appendToolbarItems();
+		});
 	},
 	computed: {
 		/**
@@ -77,7 +79,7 @@ export default {
 				code: true, // code
 				table: true, // 表格
 				fullscreen: true, // 全屏编辑
-				readmodel: true, // 沉浸式阅读
+				readmodel: false, // 沉浸式阅读
 				htmlcode: true, // 展示html源码
 				help: true, // 帮助
 				/* 1.3.5 */
@@ -99,30 +101,26 @@ export default {
 	},
 	methods: {
 		/**
+		 * 拓转mavon editor toolbar 选项
+		 */
+		appendToolbarItems(){
+			const {toolbarsFlag} = this;
+			if(!toolbarsFlag){
+				return;
+			}
+		},
+		/**
 		 * 工具栏点击事件
 		 */
 		async toolbarAction(action) {
 			/**
-			 * 处理用户点击全屏
+			 * 添加表情
 			 */
-			if (action.type == "fullscreen") {
-				return;
-			}
-
-			if (action.type == "format_bold") {
-				return;
-			}
-
-			if (action.type == "format_italic") {
-				return;
-			}
-
-			if (action.type == "format_underline") {
-				return;
-			}
-
 			if (action.type == "add_emoji") {
+				const {markdown} = this;
 				const emoji = action.value;
+
+				this.markdown = markdown + ` ${emoji.attributes.code} `;
 				return;
 			}
 
