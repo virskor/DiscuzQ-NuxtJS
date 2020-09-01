@@ -2,6 +2,16 @@
 	<v-navigation-drawer class="start-drawer" :width="300" v-model="show" app>
 		<v-toolbar dense elevation="0">
 			<AppLogo />
+			<v-spacer></v-spacer>
+			<v-btn
+					@click="$router.push('/views/editor')"
+					elevation="0"
+					flat
+					bottom
+					rounded
+				>
+					发帖
+				</v-btn>
 		</v-toolbar>
 		<v-card tile flat>
 			<v-list>

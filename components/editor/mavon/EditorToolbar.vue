@@ -1,27 +1,6 @@
 <template>
 	<v-toolbar class="editor-toolbar" flat dense>
 		<div class="format-items">
-			<!--粗体-->
-			<v-btn
-				v-if="!lightMode"
-				:color="bold ? 'primary' :''"
-				icon
-				:ripple="false"
-				@click="toolbarEvent('format_bold')"
-			>
-				<v-icon>mdi-format-bold</v-icon>
-			</v-btn>
-
-			<v-btn
-				v-if="!lightMode"
-				:color="italic ? 'primary' :''"
-				icon
-				:ripple="false"
-				@click="toolbarEvent('format_italic')"
-			>
-				<v-icon>mdi-format-italic</v-icon>
-			</v-btn>
-
 			<!-- 
 			<v-btn
 				v-if="!showAdvancedButton"
@@ -51,24 +30,23 @@
 				<v-icon>mdi-message-video</v-icon>
 			</v-btn>-->
 
-			<v-badge color="amber" :content="`需支付：${price}`" v-if="allowPrice">
-				<v-btn :ripple="false" icon @click="toolbarEvent('set_price')">
-					<v-icon>mdi-currency-usd</v-icon>
-				</v-btn>
-			</v-badge>
+			<v-btn :ripple="false" icon @click="toolbarEvent('set_price')">
+				<v-icon>mdi-currency-usd</v-icon>
+			</v-btn>
+			<v-chip color="amber" v-if="allowPrice && price > 0" label>{{`需支付：${price}`}}</v-chip>
 		</div>
 		<v-spacer></v-spacer>
 
-		<v-btn :ripple="false" v-if="showAdvancedButton" @click="$router.push('/views/editor')" text>高级</v-btn>
+		<v-btn :ripple="false" v-if="showAdvancedButton" @click="$router.push('/views/editor')" text>高级模式</v-btn>
 
 		<CategoriesSelectionList></CategoriesSelectionList>
-		<v-btn @click="pub" depressed rounded color="primary">发布</v-btn>
+		<v-btn @click="pub" depressed rounded color="primary">{{saveButtonCaption}}</v-btn>
 	</v-toolbar>
 </template>
 
 <script>
 import CategoriesSelectionList from "~/components/categories/CategoriesSelectionList";
-import EditorEmojiList from "~/components/editor/quillEditor/EditorEmojiList";
+import EditorEmojiList from "~/components/editor/mavon/EditorEmojiList";
 
 export default {
 	props: {
@@ -131,6 +109,17 @@ export default {
 
 			return lightMode ? true : false;
 		},
+		/**
+		 * saveButtonCaption
+		 */
+		saveButtonCaption(){
+			const {isReply, lightMode} = this;
+			if(isReply){
+				return '回复';
+			}
+
+			return lightMode ? '发动态' : '发帖';
+		}
 	},
 	methods: {
 		/**
@@ -144,25 +133,6 @@ export default {
 		 */
 		toolbarEvent(type) {
 			const { toggle_exclusive } = this;
-
-			if (type == "format_bold") {
-				this.bold = !this.bold;
-				this.$emit("action", { type, value: this.bold });
-				return;
-			}
-
-			if (type == "format_italic") {
-				this.italic = !this.italic;
-				this.$emit("action", { type, value: this.italic });
-				return;
-			}
-
-			if (type == "format_underline") {
-				this.underline = !this.underline;
-				this.$emit("action", { type, value: this.underline });
-				return;
-			}
-
 			this.$emit("action", { type });
 		},
 		/**

@@ -19,7 +19,7 @@
 					<v-card flat tile>
 						<p class="text-h5">2020-09-01</p>
 						<p>表情组件修复</p>
-						<p>将Delta数据转化为markdown</p>
+						<p>编辑器转化为markdown</p>
 						<p>优化ThreadCard传参，解决顶置帖子标题未显示的BUG</p>
 						<p v-if="false">新增发评论</p>
 						<p v-if="false">个人资料</p>

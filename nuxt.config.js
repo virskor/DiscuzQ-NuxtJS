@@ -62,7 +62,7 @@ module.exports = {
     { src: '~/plugins/tcaptcha', ssr: false },
     { src: '~/plugins/gotop', ssr: false },
     { src: '~/plugins/photoswipe', ssr: false },
-    { src: '~/plugins/quill', ssr: false },
+    { src: '~/plugins/mavon', ssr: false },
   ],
   /*
   ** Auto import components

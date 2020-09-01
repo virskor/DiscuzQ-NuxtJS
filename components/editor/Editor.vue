@@ -4,7 +4,7 @@
 			<v-overlay v-if="!hasLogined" absolute :opacity=".1" :value="true">
 				<v-btn @click="login" depressed rounded color="primary">登录来发布或评论</v-btn>
 			</v-overlay>
-			<QuillEditor
+			<MarkdownEditor
 				@addAttachements="addAttachements"
 				@input="pub"
 				@price="setPrice"
@@ -12,7 +12,7 @@
 				v-model="content"
 				:lightMode="lightMode"
 				:isReply="isReply"
-			></QuillEditor>
+			></MarkdownEditor>
 		</v-card>
 	</client-only>
 </template>
@@ -26,7 +26,7 @@ import { mapGetters } from "vuex";
  *
  * https://github.com/sparksuite/simplemde-markdown-editor
  */
-import QuillEditor from "~/components/editor/quillEditor/QuillEditor";
+import MarkdownEditor from "~/components/editor/mavon/MarkdownEditor";
 
 export default {
 	name: "Editor",
@@ -122,5 +122,8 @@ export default {
 			this.title = val;
 		},
 	},
+	components: {
+		MarkdownEditor
+	}
 };
 </script>

@@ -11,6 +11,11 @@
 import Editor from "~/components/editor/Editor";
 
 export default {
+	mounted() {
+		this.$nextTick(async () => {
+			// await this.$store.dispatch("shouldLogin");
+		});
+	},
 	components: {
 		Editor,
 	},
