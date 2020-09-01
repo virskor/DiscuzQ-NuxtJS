@@ -17,12 +17,17 @@
 			<v-list>
 				<v-list-item>
 					<v-card flat tile>
-						<p class="text-h5">2020-08-31</p>
-						<p>新增表情选择组件</p>
-						<p v-if="false">新增发帖</p>
+						<p class="text-h5">2020-09-01</p>
+						<p>表情组件修复</p>
 						<p v-if="false">新增发评论</p>
 						<p v-if="false">个人资料</p>
 						<p v-if="false">头像上传</p>
+					</v-card>
+				</v-list-item>
+				<v-list-item>
+					<v-card flat tile>
+						<p class="text-h5">2020-08-31</p>
+						<p>新增表情选择组件</p>
 					</v-card>
 				</v-list-item>
 				<v-list-item>

@@ -3,7 +3,7 @@
 		<div class="format-items">
 			<!--粗体-->
 			<v-btn
-				v-if="!showAdvancedButton"
+				v-if="!lightMode"
 				:color="bold ? 'primary' :''"
 				icon
 				:ripple="false"
@@ -13,7 +13,7 @@
 			</v-btn>
 
 			<v-btn
-				v-if="!showAdvancedButton"
+				v-if="!lightMode"
 				:color="italic ? 'primary' :''"
 				icon
 				:ripple="false"
@@ -22,6 +22,7 @@
 				<v-icon>mdi-format-italic</v-icon>
 			</v-btn>
 
+			<!-- 
 			<v-btn
 				v-if="!showAdvancedButton"
 				:color="underline ? 'primary' :''"
@@ -30,7 +31,8 @@
 				@click="toolbarEvent('format_underline')"
 			>
 				<v-icon>mdi-format-underline</v-icon>
-			</v-btn>
+			</v-btn>-->
+
 			<v-menu v-model="showEmojis" :close-on-content-click="false" :nudge-width="200" offset-y>
 				<template v-slot:activator="{ on, attrs }">
 					<v-btn :ripple="false" v-bind="attrs" v-on="on" icon>
@@ -47,7 +49,7 @@
 
 			<v-btn v-if="allowVideo" :ripple="false" icon @click="toolbarEvent('upload_video')">
 				<v-icon>mdi-message-video</v-icon>
-			</v-btn> -->
+			</v-btn>-->
 
 			<v-badge color="amber" :content="`需支付：${price}`" v-if="allowPrice">
 				<v-btn :ripple="false" icon @click="toolbarEvent('set_price')">
@@ -79,13 +81,17 @@ export default {
 		 */
 		allowPrice: Boolean,
 		/**
-		 * 显示高级模式
-		 */
-		showAdvancedButton: Boolean,
-		/**
 		 * 设置的价格
 		 */
 		price: String,
+		/**
+		 * 是否是回复模式
+		 */
+		isReply: Boolean,
+		/**
+		 * 精简模式将不支持输入标题，等，适用于快速发帖，回复嵌入
+		 */
+		lightMode: Boolean,
 	},
 	data() {
 		return {
@@ -113,6 +119,19 @@ export default {
 			showEmojis: false,
 		};
 	},
+	computed: {
+		/**
+		 * 是否显示高级选项
+		 */
+		showAdvancedButton() {
+			const { isReply, lightMode } = this;
+			if (isReply) {
+				return false;
+			}
+
+			return lightMode ? true : false;
+		},
+	},
 	methods: {
 		/**
 		 * 点击发布按钮
@@ -120,6 +139,9 @@ export default {
 		pub() {
 			this.$emit("pub");
 		},
+		/**
+		 * 工具栏事件
+		 */
 		toolbarEvent(type) {
 			const { toggle_exclusive } = this;
 
@@ -143,6 +165,9 @@ export default {
 
 			this.$emit("action", { type });
 		},
+		/**
+		 * 选中表情
+		 */
 		emojiSelection(e) {
 			this.$emit("action", { type: "add_emoji", value: e });
 		},

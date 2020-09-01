@@ -80,6 +80,7 @@ export default {
 			if (thread) {
 				return true;
 			}
+			return false;
 		},
 	},
 	methods: {

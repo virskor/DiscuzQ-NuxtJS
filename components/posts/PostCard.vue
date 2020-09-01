@@ -3,7 +3,7 @@
 		<!--评论header 用户信息和操作条-->
 
 		<v-list-item>
-			<v-list-item-avatar :size="50" title>
+			<v-list-item-avatar :size="50" tile title>
 				<Avatar :user="user"></Avatar>
 			</v-list-item-avatar>
 

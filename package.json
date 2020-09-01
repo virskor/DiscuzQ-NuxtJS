@@ -30,6 +30,7 @@
     "nuxt": "^2.14.0",
     "qrcode": "^1.4.4",
     "quill": "^1.3.7",
+    "tc-player-plus": "^1.0.3",
     "vue-gotop": "^1.0.2",
     "vue-pswipe": "^0.15.0",
     "vue-swal": "^1.0.0",

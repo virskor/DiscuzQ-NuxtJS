@@ -8,7 +8,8 @@
 		<EditorToolbar
 			:allowPrice="!isReply"
 			:allowVideo="!isReply"
-			:showAdvancedButton="lightMode && !isReply"
+			:isReply="isReply"
+			:lightMode="lightMode"
 			:price="price"
 			@action="toolbarAction"
 			@pub="pub"
@@ -18,6 +19,7 @@
 
 <script>
 import EditorToolbar from "~/components/editor/EditorToolbar";
+import EditorContentFormater from "~/components/editor/EditorContentFormater";
 
 export default {
 	props: {
@@ -60,7 +62,7 @@ export default {
 				return;
 			}
 
-			if(this.quillEditor){
+			if (this.quillEditor) {
 				return;
 			}
 
@@ -83,7 +85,7 @@ export default {
 			}
 
 			/** inline blots for urlLik */
-			
+
 			/**
 			 * register blots
 			 */
@@ -120,10 +122,10 @@ export default {
 			if (action.type == "add_emoji") {
 				const emoji = action.value;
 				this.quillEditor.insertEmbed(
-					this.quillEditor.getLength() -1,
+					this.quillEditor.getLength() - 1,
 					"emojiBlot",
 					{ src: emoji.attributes.url, alt: emoji.attributes.code },
-					'api'
+					"api"
 				);
 				return;
 			}
@@ -164,9 +166,11 @@ export default {
 			const { quillEditor } = this;
 			const { fromDelta } = require("delta-markdown-for-quill");
 			try {
-				// const markdown = fromDelta(quillEditor.getContents());
-				// console.log(markdown, quillEditor.getContents());
-				this.$emit("input", quillEditor.getText());
+				const contents = quillEditor.getContents();
+				const markdown = EditorContentFormater.formDelta(contents);
+				console.log(markdown);
+
+				this.$emit("input", markdown);
 			} catch (e) {
 				console.log(e);
 			}
@@ -174,6 +178,7 @@ export default {
 	},
 	components: {
 		EditorToolbar,
+		EditorContentFormater
 	},
 };
 </script>

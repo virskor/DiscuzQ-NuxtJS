@@ -9,7 +9,8 @@
 			webkit-playsinline
 			:width="width"
 			:height="height"
-		></video>
+		>
+		正在加载播放器，如果加载失败，请刷新...</video>
 	</div>
 </template>
 
@@ -99,7 +100,7 @@ export default {
 			const appID = forum.attributes.qcloud.qcloud_vod_sub_app_id || "";
 			const fileID = threadVideo.attributes.file_id || "";
 
-			this.player = TCPlayer(playerID, {
+			this.player = new TCPlayer(playerID, {
 				// player-container-id 为播放器容器 ID，必须与 html 中一致
 				fileID, // 请传入需要播放的视频 filID（必须）
 				appID, // 请传入点播账号的 appID（必须）
@@ -127,6 +128,7 @@ export default {
 	.block {
 		width: 100%;
 	}
+	margin-top: -1px;
 }
 .fullbackground {
 	background-color: #000000;

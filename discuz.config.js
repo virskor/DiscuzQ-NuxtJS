@@ -124,13 +124,13 @@ module.exports = {
         qq: false,
     },
     /**
-     * 主题色调主题
+     * 主题色调
      */
     theme: {
         themes: {
           light: {
             /**
-             * primary 主色调
+             * primary
              */
             primary: '#1878f3',
             secondary: '#424242',

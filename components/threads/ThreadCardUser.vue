@@ -1,7 +1,7 @@
 <template>
 	<v-list v-if="user" subheader>
 		<v-list-item>
-			<v-list-item-avatar :size="50">
+			<v-list-item-avatar tile :size="50">
 				<Avatar :user="user"></Avatar>
 			</v-list-item-avatar>
 
