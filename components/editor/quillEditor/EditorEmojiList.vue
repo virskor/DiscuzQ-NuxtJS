@@ -22,7 +22,7 @@
 import * as types from "~/store/vuex-types";
 import { mapGetters } from "vuex";
 
-import EditorEmojiList from "~/components/editor/EditorEmojiList";
+import EditorEmojiList from "~/components/editor/quillEditor/EditorEmojiList";
 
 export default {
 	computed: {

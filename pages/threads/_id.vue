@@ -42,12 +42,7 @@
 					<ThreadContents
 						class="pl-5 pr-5 text mb-3"
 						:thread="thread"
-						:title="thread.attributes.title || ''"
-						:contents="firstPost.attributes.contentHtml || ''"
-						:isSticky="thread.attributes.isSticky"
-						:isEssence="thread.attributes.isEssence"
-						:shouldPay="thread.attributes.price != '0.00'"
-						:hideContents="false"
+						:firstPost="firstPost"
 					></ThreadContents>
 					<!--附件-->
 					<ThreadAttachments :attachments="attachments"></ThreadAttachments>

@@ -17,7 +17,7 @@ export default {
         contents.forEach((it) => {
             const insert = it.insert;
             const attributes = it.attributes;
-            //console.log(it, insert);
+            console.log(it, insert);
 
             if (typeof insert == "string") {
                 if (attributes) {

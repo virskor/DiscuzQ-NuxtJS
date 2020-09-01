@@ -7,10 +7,11 @@
 			<QuillEditor
 				@addAttachements="addAttachements"
 				@input="pub"
+				@price="setPrice"
+				@title="setThreadTitle"
 				v-model="content"
 				:lightMode="lightMode"
 				:isReply="isReply"
-				@price="setPrice"
 			></QuillEditor>
 		</v-card>
 	</client-only>
@@ -25,7 +26,7 @@ import { mapGetters } from "vuex";
  *
  * https://github.com/sparksuite/simplemde-markdown-editor
  */
-import QuillEditor from "~/components/editor/QuillEditor";
+import QuillEditor from "~/components/editor/quillEditor/QuillEditor";
 
 export default {
 	name: "Editor",
@@ -61,7 +62,7 @@ export default {
 			/**
 			 * 价格
 			 */
-			price: '0.00'
+			price: "0.00",
 		};
 	},
 	computed: {
@@ -100,19 +101,25 @@ export default {
 		/**
 		 * 设置价格
 		 */
-		setPrice(price){
+		setPrice(price) {
 			this.price = price;
 		},
 		/**
 		 * pub 发布
 		 */
 		pub() {
-			const { content } = this;
+			const { content, title } = this;
 			if (!this.$_.trim(content)) {
 				this.$swal("请输入内容后再继续");
 				return;
 			}
-			this.$swal(`即将支持您发布\r\n${content}`);
+			this.$swal(`即将支持您发布\r\n${title}\r\n${content}`);
+		},
+		/**
+		 * 设置主题标题
+		 */
+		setThreadTitle(val) {
+			this.title = val;
 		},
 	},
 };

@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<v-text-field class="ma-3" v-if="!lightMode" label="标题" placeholder="请输入主题的标题"></v-text-field>
+		<v-text-field class="ma-3" @input="setTitle" v-if="!lightMode" label="标题" placeholder="请输入主题的标题"></v-text-field>
 
 		<div id="quill-editor" class="quill-editor"></div>
 
@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import EditorToolbar from "~/components/editor/EditorToolbar";
-import EditorContentFormater from "~/components/editor/EditorContentFormater";
+import EditorToolbar from "~/components/editor/quillEditor/EditorToolbar";
+import EditorContentFormater from "~/components/editor/quillEditor/EditorContentFormater";
 
 export default {
 	props: {
@@ -175,6 +175,12 @@ export default {
 				console.log(e);
 			}
 		},
+		/**
+		 * 设置标题
+		 */
+		setTitle(val){
+			this.$emit('title', val);
+		}
 	},
 	components: {
 		EditorToolbar,

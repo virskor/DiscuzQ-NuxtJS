@@ -23,9 +23,7 @@
 			class="pl-4 pr-5 pb-2"
 			isFloor
 			:thread="thread"
-			:hideContents="thread.attributes.isSticky || false"
-			:title="thread.attributes.title||''"
-			:contents="firstPost.attributes.contentHtml || ''"
+			:firstPost="firstPost"
 		></ThreadContents>
 
 		<!--附件-->

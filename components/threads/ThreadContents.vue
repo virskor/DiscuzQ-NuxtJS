@@ -36,38 +36,71 @@ import CategoriesLabel from "~/components/categories/CategoriesLabel";
 export default {
 	props: {
 		/**
-		 * 用于渲染的内容数据
-		 */
-		contents: String,
-		/**
 		 * 是否是楼层
 		 */
 		isFloor: Boolean,
-		/**
-		 * 标题
-		 */
-		title: String,
-		/**
-		 * 隐藏contents
-		 */
-		hideContents: Boolean,
-
 		/**
 		 * 主题
 		 */
 		thread: Object,
 		/**
-		 * 是否显示顶置图标
+		 * post
 		 */
-		isSticky: Boolean,
+		firstPost: Object,
+	},
+	computed: {
 		/**
-		 * 是否显示精华
+		 * 是否隐藏内容
 		 */
-		isEssence: Boolean,
+		hideContents() {
+			const { isFloor, title, thread, isSticky } = this;
+			if(!isFloor){
+				return false;
+			}
+			
+			if (title && isSticky) {
+				return true;
+			}
+
+			if (isFloor && title) {
+				return true;
+			}
+
+			return false;
+		},
+		/** 内容 */
+		contents() {
+			const { firstPost } = this;
+			return firstPost.attributes.contentHtml || "";
+		},
 		/**
-		 * shouldPay
+		 * 文章标题
 		 */
-		shouldPay: Boolean,
+		title() {
+			const { thread } = this;
+			return thread.attributes.title || "";
+		},
+		/**
+		 * 是否是付费贴
+		 */
+		shouldPay() {
+			const { thread } = this;
+			return thread.attributes.price != "0.00";
+		},
+		/**
+		 * 是否是顶置的帖子
+		 */
+		isSticky() {
+			const { thread } = this;
+			return thread.attributes.isSticky;
+		},
+		/**
+		 * 是否加精华
+		 */
+		isEssence() {
+			const { thread } = this;
+			return thread.attributes.isEssence;
+		},
 	},
 	methods: {
 		/**

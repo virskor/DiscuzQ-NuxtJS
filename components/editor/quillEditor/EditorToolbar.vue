@@ -68,7 +68,7 @@
 
 <script>
 import CategoriesSelectionList from "~/components/categories/CategoriesSelectionList";
-import EditorEmojiList from "~/components/editor/EditorEmojiList";
+import EditorEmojiList from "~/components/editor/quillEditor/EditorEmojiList";
 
 export default {
 	props: {

@@ -6,9 +6,7 @@
 				class="pl-5 pr-5"
 				isFloor
 				:thread="thread"
-				:hideContents="thread.attributes.isSticky"
-				:title="thread.attributes.title||''"
-				:contents="firstPost.attributes.contentHtml || ''"
+				:firstPost="firstPost"
 			></ThreadContents>
 	</v-card>
 </template>

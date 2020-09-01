@@ -18,12 +18,7 @@
 				class="pl-5 pr-5"
 				isFloor
 				:thread="thread"
-				:hideContents="thread.attributes.isSticky"
-				:title="thread.attributes.title||''"
-				:contents="firstPost.attributes.contentHtml || ''"
-				:isSticky="thread.attributes.isSticky"
-				:isEssence="thread.attributes.isEssence"
-				:shouldPay="shouldPay"
+				:firstPost="firstPost"
 			></ThreadContents>
 
 			<!--
@@ -78,13 +73,6 @@ export default {
 		...mapGetters({
 			appConf: types.GETTERS_APPCONF,
 		}),
-		/**
-		 * 是否是付费贴
-		 */
-		shouldPay(){
-			const {thread} = this;
-			return thread.attributes.price != '0.00';
-		},
 		shouldContinueToPay(){
 			const {thread} = this;
 			return thread.attributes.price != '0.00' && !thread.attributes.paid;
