@@ -1,16 +1,6 @@
 <template>
 	<v-toolbar class="editor-toolbar" flat dense>
 		<div class="format-items">
-			<!-- 
-			<v-btn
-				v-if="!showAdvancedButton"
-				:color="underline ? 'primary' :''"
-				icon
-				:ripple="false"
-				@click="toolbarEvent('format_underline')"
-			>
-				<v-icon>mdi-format-underline</v-icon>
-			</v-btn>-->
 
 			<v-menu v-model="showEmojis" :close-on-content-click="false" :nudge-width="200" offset-y>
 				<template v-slot:activator="{ on, attrs }">
@@ -37,7 +27,7 @@
 		</div>
 		<v-spacer></v-spacer>
 
-		<v-btn :ripple="false" v-if="showAdvancedButton" @click="$router.push('/views/editor')" text>高级模式</v-btn>
+		<v-btn :ripple="false" v-if="showAdvancedButton" @click="$router.push('/views/editor')" text>高级</v-btn>
 
 		<!--分类选择-->
 		<CategoriesSelectionList @category="(c) => $emit('category', c)" v-if="!isReply"></CategoriesSelectionList>

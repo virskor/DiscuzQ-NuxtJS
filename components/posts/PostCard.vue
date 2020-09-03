@@ -32,8 +32,11 @@
 				</v-row>
 			</v-list-item-action>
 		</v-list-item>
+
 		<!--显示评论内容-->
 		<PostContent :thread="thread" :post="post"></PostContent>
+		<!--附件-->
+		<Attachments :attachments="attachments"></Attachments>
 	</v-card>
 </template>
 
@@ -42,6 +45,7 @@ import PostContent from "~/components/posts/PostCard";
 import PostLikeButton from "~/components/posts/PostLikeButton";
 import PostaReplyButton from "~/components/posts/PostaReplyButton";
 import Avatar from "~/components/users/Avatar";
+import Attachments from "~/components/threads/attachments/Attachments";
 
 export default {
 	props: {
@@ -62,12 +66,17 @@ export default {
 		 * 关联的主题
 		 */
 		thread: Object,
+		/**
+		 * 关联的附件
+		 */
+		attachments: Array,
 	},
 	components: {
 		PostContent,
 		Avatar,
 		PostLikeButton,
 		PostaReplyButton,
+		Attachments,
 	},
 };
 </script>

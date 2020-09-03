@@ -14,18 +14,13 @@
             渲染用户发布的帖子内容
 			如果是顶置的帖子，那么就不渲染内容
 			-->
-			<ThreadContents
-				class="pl-5 pr-5"
-				isFloor
-				:thread="thread"
-				:firstPost="firstPost"
-			></ThreadContents>
+			<ThreadContents class="pl-5 pr-5" isFloor :thread="thread" :firstPost="firstPost"></ThreadContents>
 
 			<!--
 			渲染图片
 			如果是顶置的帖子，那么就不渲染附件
 			-->
-			<ThreadAttachments grid v-if="!thread.attributes.isSticky" :attachments="attachments"></ThreadAttachments>
+			<Attachments grid v-if="!thread.attributes.isSticky" :attachments="attachments"></Attachments>
 
 			<!--渲染视频-->
 			<Player class="pl-5 pr-5 mt-2 rounded-lg" :threadVideo="threadVideo"></Player>
@@ -40,7 +35,7 @@ import * as types from "~/store/vuex-types";
 import { mapGetters } from "vuex";
 
 import ThreadCardUser from "~/components/threads/ThreadCardUser";
-import ThreadAttachments from "~/components/threads/attachments/ThreadAttachments";
+import Attachments from "~/components/threads/attachments/Attachments";
 import ThreadCardQuickActions from "~/components/threads/ThreadCardQuickActions";
 import ThreadContents from "~/components/threads/ThreadContents";
 import Player from "~/components/player/Player";
@@ -73,26 +68,26 @@ export default {
 		...mapGetters({
 			appConf: types.GETTERS_APPCONF,
 		}),
-		shouldContinueToPay(){
-			const {thread} = this;
-			return thread.attributes.price != '0.00' && !thread.attributes.paid;
+		shouldContinueToPay() {
+			const { thread } = this;
+			return thread.attributes.price != "0.00" && !thread.attributes.paid;
 		},
-		showHideThread(){
-			const {appConf, shouldContinueToPay} = this;
-			if(!appConf.removeChargedThreads){
+		showHideThread() {
+			const { appConf, shouldContinueToPay } = this;
+			if (!appConf.removeChargedThreads) {
 				return false;
 			}
 
-			if(appConf.removeChargedThreads && !shouldContinueToPay){
+			if (appConf.removeChargedThreads && !shouldContinueToPay) {
 				return false;
 			}
 
 			return true;
-		}
+		},
 	},
 	components: {
 		ThreadCardUser,
-		ThreadAttachments,
+		Attachments,
 		ThreadCardQuickActions,
 		ThreadContents,
 		Player,

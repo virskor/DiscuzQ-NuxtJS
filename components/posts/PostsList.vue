@@ -20,6 +20,7 @@
 						:replyToUser="mapReplyToUser(post)"
 						:user="user"
 						:key="i"
+						:attachments="mapAttachments(post)"
 					></PostCard>
 				</var-box>
 			</template>
@@ -116,6 +117,19 @@ export default {
 		mapPostUser(id) {
 			const { included } = this;
 			return included.find((it) => it.type == "users" && it.id == id);
+		},
+		/**
+		 * 取得主题关联的附件
+		 */
+		mapAttachments(post) {
+			const { included } = this;
+
+			let images = post.relationships.images.data || [];
+			images = images.map((it) => it.id); /// map出ID
+
+			return included.filter(
+				(it) => it.id == images.find((el) => el == it.id)
+			);
 		},
 		/**
 		 * 取出回复关联的用户

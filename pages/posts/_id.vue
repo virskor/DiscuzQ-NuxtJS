@@ -21,6 +21,9 @@
 					<ThreadCardUser :firstPost="postData.data" :user="postRelatedUser"></ThreadCardUser>
 					<!--该评论关联的内容-->
 					<PostContent :thread="threadData.data" :post="postData.data"></PostContent>
+					<!--附件-->
+					<Attachments :attachments="attachments"></Attachments>
+					
 					<!--显示关联的原帖-->
 					<ThreadCardSimplified
 						class="ma-4"
@@ -43,6 +46,7 @@ import ThreadCardSimplified from "~/components/threads/ThreadCardSimplified";
 import ThreadCardUser from "~/components/threads/ThreadCardUser";
 import PostContent from "~/components/posts/PostContent";
 import PostsList from "~/components/posts/PostsList";
+import Attachments from "~/components/threads/attachments/Attachments";
 
 export default {
 	validate({ params }) {
@@ -96,6 +100,19 @@ export default {
 				(el) => el.type == "users" && el.id == relatedUser.id
 			);
 		},
+		/**
+		 * 取得主题关联的附件
+		 */
+		attachments() {
+			const { postData } = this;
+
+			let images = postData.data.relationships.images.data || [];
+			images = images.map((it) => it.id); /// map出ID
+
+			return postData.included.filter(
+				(it) => it.id == images.find((el) => el == it.id)
+			);
+		},
 	},
 	async asyncData({ query,params, error }) {
 		try {
@@ -136,6 +153,7 @@ export default {
 		ThreadCardUser,
 		PostContent,
 		PostsList,
+		Attachments
 	},
 };
 </script>
