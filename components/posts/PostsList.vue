@@ -1,5 +1,7 @@
 <template>
 	<div>
+		<Editor @onPosted="onPosted" lightMode :post="relatedPost" :thread="thread"></Editor>
+
 		<v-toolbar flat>
 			<v-toolbar-title>评论 ({{meta ? meta.postCount : 0}})</v-toolbar-title>
 			<v-spacer></v-spacer>
@@ -9,7 +11,6 @@
 		</v-toolbar>
 		<!--渲染评论列表-->
 		<template v-if="!$_.isEmpty(posts)">
-			<Editor @onPosted="onPosted" lightMode :post="relatedPost" :thread="thread"></Editor>
 			<template v-for="(post, i) in posts">
 				<var-box :user="mapPostUser(post.relationships.user.data.id)" :key="i" v-slot="{ user }">
 					<PostCard
@@ -42,7 +43,6 @@
 		</template>
 
 		<template v-else>
-			<Editor @onPosted="onPosted" lightMode :thread="thread" :post="relatedPost"></Editor>
 			<NoPosts v-if="!loading"></NoPosts>
 		</template>
 	</div>

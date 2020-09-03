@@ -23,7 +23,6 @@
 			<!--拓展菜单，包含编辑等功能-->
 			<ThreadCardQuickActionsExt :thread="thread" v-if="showExt"></ThreadCardQuickActionsExt>
 		</v-card-actions>
-		<v-divider v-if="showViewCount"></v-divider>
 	</div>
 </template>
 
