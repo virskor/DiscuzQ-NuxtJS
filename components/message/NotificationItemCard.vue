@@ -21,7 +21,7 @@
 		</v-list>
 		<div class="pl-5 mb-4">
 			<div
-			class="clickable"
+				class="clickable"
 				@click="openRelatedThreadOrPost"
 				v-html="notification.attributes.post_content || notification.attributes.content || '无通知内容'"
 			></div>
@@ -100,7 +100,11 @@ export default {
 			 */
 			if (notification.attributes.post_id) {
 				this.$router.push({
-					path: `/posts/${notification.attributes.reply_post_id || notification.attributes.post_id}`,
+					path: `/posts/${
+						notification.attributes.reply_post_id
+							? notification.attributes.reply_post_id
+							: notification.attributes.post_id
+					}`,
 					query: { threadID: notification.attributes.thread_id },
 				});
 				return;

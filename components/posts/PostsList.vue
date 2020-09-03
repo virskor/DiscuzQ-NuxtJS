@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<Editor @onPosted="onPosted" lightMode :post="relatedPost" :thread="thread"></Editor>
+		<Editor @onPosted="loadMorePosts(true)" lightMode :post="relatedPost" :thread="thread"></Editor>
 
 		<v-toolbar flat>
 			<v-toolbar-title>评论 ({{meta ? meta.postCount : 0}})</v-toolbar-title>
@@ -177,18 +177,6 @@ export default {
 					data: [...postsData.data, ...rs.data],
 					included: [...postsData.included, ...rs.included],
 				};
-			}
-		},
-		/**
-		 * 用户发布评论成功
-		 * 
-		 * 刷新数据列表，重新渲染视图
-		 *
-		 * rs包含 post，included
-		 */
-		onPosted(rs) {
-			if (this.$_.isEmpty(rs)) {
-				return;
 			}
 		},
 	},

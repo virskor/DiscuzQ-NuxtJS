@@ -178,7 +178,26 @@ export default {
 			 */
 			if (isReply) {
 				const rs = await this.createPost();
-				this.$emit("onPosted", rs);
+				await this.$swal(
+					"回复成功!",
+					"回复成功，刷新或关闭对话框来查看!",
+					"success"
+				);
+
+				// if (!this.$_.isEmpty(post)) {
+				// 	this.$router.push({
+				// 		path: `/posts/${post.id}`,
+				// 		query: { threadID: thread.id },
+				// 	});
+				// 	return;
+				// }
+
+				// this.$router.push({
+				// 	path: `/posts/${rs.data.id}`,
+				// 	query: { threadID: thread.id },
+				// });
+
+				this.$emit("onPosted");
 				return;
 			}
 
@@ -191,8 +210,7 @@ export default {
 
 				const jump = await this.$swal({
 					title: "发布成功",
-					text:
-						"继续发帖，或者前往查看刚才发布的帖子",
+					text: "继续发帖，或者前往查看刚才发布的帖子",
 					icon: "success",
 					buttons: {
 						cancel: "继续发帖",
@@ -325,11 +343,6 @@ export default {
 				 * 成功发布评论
 				 */
 				this.content = "";
-				await this.$swal(
-					"回复成功!",
-					"回复成功，刷新或关闭对话框来查看!",
-					"success"
-				);
 				return rs;
 			}
 		},

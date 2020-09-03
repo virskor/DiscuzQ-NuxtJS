@@ -4,7 +4,7 @@
 
 		<div class="container text-center pt-5">
 			<div v-if="error.statusCode === 404">
-				<h1>页面丢失或未完成开发 :(</h1>
+				<h1>Not Found</h1>
 				<p>
 					<span class="title blue-grey--text">{{error.message}}</span>
 				</p>

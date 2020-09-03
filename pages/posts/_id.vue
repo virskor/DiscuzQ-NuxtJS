@@ -57,9 +57,11 @@ export default {
 	data() {
 		return {
 			threadID: this.$route.query.threadID || "",
+
 			postID: this.$route.params.id || 0,
 			/**
 			 * 主题信息
+			 * 将被Async data覆盖
 			 */
 			threadData: null,
 			/**
@@ -74,7 +76,6 @@ export default {
 	},
 	mounted() {
 		this.$nextTick(async () => {
-			await this.getThreadWithNoPosts();
 			await this.getPosts();
 			this.loading = false;
 		});
@@ -96,23 +97,25 @@ export default {
 			);
 		},
 	},
-	methods: {
-		/**
-		 * 获取不包含评论的主题信息
-		 */
-		async getThreadWithNoPosts() {
-			const { threadID } = this;
-			const rs = await threadsAPI.getThreadNoPosts(threadID, {
+	async asyncData({ query,params, error }) {
+		try {
+			const rs = await threadsAPI.getThreadNoPosts(query.threadID, {
 				"filter[isDeleted]": "no",
 			});
 
-			if (rs) {
-				this.threadData = rs;
-				return true;
+			if (!rs) {
+				return error({
+					statusCode: 404,
+					message: "该主题暂时无法查看或已经被删除",
+				});
 			}
 
-			return false;
-		},
+			return { threadData: rs };
+		} catch (error) {
+			throw error;
+		}
+	},
+	methods: {
 		/**
 		 * get posts
 		 * 获取关联的评论
