@@ -9,10 +9,17 @@
 		</v-toolbar>
 		<!--渲染评论列表-->
 		<template v-if="!$_.isEmpty(posts)">
-			<Editor lightMode :thread="thread" :post="post"></Editor>
+			<Editor @onPosted="onPosted" lightMode :post="relatedPost" :thread="thread"></Editor>
 			<template v-for="(post, i) in posts">
 				<var-box :user="mapPostUser(post.relationships.user.data.id)" :key="i" v-slot="{ user }">
-					<PostCard v-if="user" :thread="thread" :post="post" :replyToUser="mapReplyToUser(post)" :user="user" :key="i"></PostCard>
+					<PostCard
+						v-if="user"
+						:thread="thread"
+						:post="post"
+						:replyToUser="mapReplyToUser(post)"
+						:user="user"
+						:key="i"
+					></PostCard>
 				</var-box>
 			</template>
 
@@ -35,7 +42,7 @@
 		</template>
 
 		<template v-else>
-			<Editor lightMode :thread="thread" :post="post"></Editor>
+			<Editor @onPosted="onPosted" lightMode :thread="thread" :post="relatedPost"></Editor>
 			<NoPosts v-if="!loading"></NoPosts>
 		</template>
 	</div>
@@ -45,7 +52,7 @@
 import PostCard from "~/components/posts/PostCard";
 import NoPosts from "~/components/posts/NoPosts";
 import PostsFilter from "~/components/posts/PostsFilter";
-import postAPI from "~/api/post";
+import postsAPI from "~/api/posts";
 import Editor from "~/components/editor/Editor";
 
 export default {
@@ -57,7 +64,7 @@ export default {
 		/**
 		 * post
 		 */
-		post: Object,
+		relatedPost: Object,
 	},
 	data() {
 		return {
@@ -113,15 +120,17 @@ export default {
 		/**
 		 * 取出回复关联的用户
 		 */
-		mapReplyToUser(post){
+		mapReplyToUser(post) {
 			//replyUserId
 			const replyUserId = post.attributes.replyUserId;
-			if(!replyUserId){
-				return null
+			if (!replyUserId) {
+				return null;
 			}
 
 			const { included } = this;
-			return included.find((it) => it.type == "users" && it.id == replyUserId);
+			return included.find(
+				(it) => it.type == "users" && it.id == replyUserId
+			);
 		},
 		/**
 		 * load more posts
@@ -131,7 +140,7 @@ export default {
 				this.pageNumber = 1;
 				this.postsData = null;
 			}
-			const { pageNumber, thread, postsData, sort, post } = this;
+			const { pageNumber, thread, postsData, sort, relatedPost } = this;
 
 			this.loading = true;
 
@@ -146,13 +155,14 @@ export default {
 			};
 
 			/**
-			 *关联回复 
+			 *关联回复
 			 */
-			if(post){
-				data['filter[reply]'] = post.id;
+			if (relatedPost) {
+				data["filter[reply]"] = relatedPost.id;
+				data["filter[isComment]"] = "yes";
 			}
 
-			const rs = await postAPI.getThreadPosts(data);
+			const rs = await postsAPI.getThreadPosts(data);
 
 			this.loading = false;
 
@@ -169,12 +179,24 @@ export default {
 				};
 			}
 		},
+		/**
+		 * 用户发布评论成功
+		 * 
+		 * 刷新数据列表，重新渲染视图
+		 *
+		 * rs包含 post，included
+		 */
+		onPosted(rs) {
+			if (this.$_.isEmpty(rs)) {
+				return;
+			}
+		},
 	},
 	components: {
 		PostCard,
 		NoPosts,
 		PostsFilter,
-		Editor
+		Editor,
 	},
 };
 </script>

@@ -17,13 +17,19 @@
 			<v-list>
 				<v-list-item>
 					<v-card flat tile>
+						<p class="text-h5">2020-09-03</p>
+						<p>新增发评论，支持发布评论，增加楼层评论按钮</p>
+						<p v-if="false">个人资料</p>
+						<p v-if="false">头像上传</p>
+						<p v-if="false">附件上传</p>
+					</v-card>
+				</v-list-item>
+				<v-list-item>
+					<v-card flat tile>
 						<p class="text-h5">2020-09-01</p>
 						<p>表情组件修复</p>
 						<p>编辑器转化为markdown</p>
 						<p>优化ThreadCard传参，解决顶置帖子标题未显示的BUG</p>
-						<p v-if="false">新增发评论</p>
-						<p v-if="false">个人资料</p>
-						<p v-if="false">头像上传</p>
 					</v-card>
 				</v-list-item>
 				<v-list-item>

@@ -1,9 +1,15 @@
 <template>
 	<div class="markdown-editor">
-		<v-text-field class="mt-3 ml-3 mr-3" @input="setTitle" v-if="!lightMode" label="标题" placeholder="请输入帖子的标题(可选)"></v-text-field>
+		<v-text-field
+			class="mt-3 ml-3 mr-3"
+			@input="setTitle"
+			v-if="!lightMode"
+			label="标题"
+			placeholder="请输入帖子的标题(可选)"
+		></v-text-field>
 
 		<mavon-editor
-		ref='md'
+			ref="md"
 			:subfield="!lightMode"
 			:toolbars="toolbars"
 			:boxShadow="false"
@@ -49,14 +55,14 @@ export default {
 		/**
 		 * 启用工具栏
 		 */
-		toolbarsFlag(){
-			const {isReply, lightMode} = this;
-			if(isReply){
+		toolbarsFlag() {
+			const { isReply, lightMode } = this;
+			if (isReply) {
 				return true;
 			}
 
 			return lightMode ? false : true;
-		}
+		},
 	},
 	data() {
 		return {
@@ -103,9 +109,9 @@ export default {
 		/**
 		 * 拓转mavon editor toolbar 选项
 		 */
-		appendToolbarItems(){
-			const {toolbarsFlag} = this;
-			if(!toolbarsFlag){
+		appendToolbarItems() {
+			const { toolbarsFlag } = this;
+			if (!toolbarsFlag) {
 				return;
 			}
 		},
@@ -117,7 +123,7 @@ export default {
 			 * 添加表情
 			 */
 			if (action.type == "add_emoji") {
-				const {markdown} = this;
+				const { markdown } = this;
 				const emoji = action.value;
 
 				this.markdown = markdown + ` ${emoji.attributes.code} `;
@@ -156,14 +162,20 @@ export default {
 		 * 仅当用户点击pub按钮后才进行input事件传递
 		 */
 		pub() {
-			const {markdown} = this;
-			this.$emit('input', markdown);
+			const { markdown } = this;
+			this.$emit("input", markdown);
 		},
 		/**
 		 * 设置标题
 		 */
 		setTitle(val) {
 			this.$emit("title", val);
+		},
+	},
+	watch: {
+		value() {
+			const { value } = this;
+			this.markdown = value;
 		},
 	},
 	components: {
@@ -173,8 +185,8 @@ export default {
 </script>
 
 <style lang="less">
-.markdown-editor{
-	.v-note-wrapper{
+.markdown-editor {
+	.v-note-wrapper {
 		min-height: 100px !important;
 	}
 }

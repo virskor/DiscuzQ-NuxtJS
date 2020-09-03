@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import postAPI from "~/api/post";
+import postsAPI from "~/api/posts";
 
 export default {
 	props: {
@@ -50,7 +50,7 @@ export default {
 			const { post, isLiked } = this;
 			this.loading = true;
 
-			const rs = await postAPI.like(post.id, !isLiked);
+			const rs = await postsAPI.like(post.id, !isLiked);
 
 			this.loading = false;
 			if (rs) {

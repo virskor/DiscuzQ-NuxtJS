@@ -24,8 +24,12 @@
 			</v-list-item-content>
 
 			<v-list-item-action>
-				<!--赞-->
-				<PostLikeButton :post="post"></PostLikeButton>
+				<v-row>
+					<!--评论-->
+					<PostaReplyButton :thread="thread" :post="post"></PostaReplyButton>
+					<!--赞-->
+					<PostLikeButton :post="post"></PostLikeButton>
+				</v-row>
 			</v-list-item-action>
 		</v-list-item>
 		<!--显示评论内容-->
@@ -36,6 +40,7 @@
 <script>
 import PostContent from "~/components/posts/PostCard";
 import PostLikeButton from "~/components/posts/PostLikeButton";
+import PostaReplyButton from "~/components/posts/PostaReplyButton";
 import Avatar from "~/components/users/Avatar";
 
 export default {
@@ -62,6 +67,7 @@ export default {
 		PostContent,
 		Avatar,
 		PostLikeButton,
+		PostaReplyButton,
 	},
 };
 </script>

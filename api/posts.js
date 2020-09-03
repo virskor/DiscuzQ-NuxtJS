@@ -4,6 +4,15 @@ import RequestIncludes from '~/api/requests/requestIncludes';
 
 
 export default {
+     /**
+     * 创建回复
+     */
+    create(data) {
+        return Request.post({
+            url: URLS.POSTS,
+            data,
+        });
+    },
     /**
      * like
      * 点赞反选

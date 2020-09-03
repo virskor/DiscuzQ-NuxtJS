@@ -30,7 +30,7 @@
 						:thread="threadData.data"
 					></ThreadCardSimplified>
 				</v-card>
-				<PostsList :post="postData.data" :thread="threadData.data"></PostsList>
+				<PostsList :relatedPost="postData.data" :thread="threadData.data"></PostsList>
 			</div>
 		</v-container>
 	</div>
@@ -38,7 +38,7 @@
 
 <script>
 import threadsAPI from "~/api/threads";
-import postsAPI from "~/api/post";
+import postsAPI from "~/api/posts";
 import ThreadCardSimplified from "~/components/threads/ThreadCardSimplified";
 import ThreadCardUser from "~/components/threads/ThreadCardUser";
 import PostContent from "~/components/posts/PostContent";

@@ -5,10 +5,11 @@
 				<v-btn @click="login" depressed rounded color="primary">登录来发布或评论</v-btn>
 			</v-overlay>
 			<MarkdownEditor
-				@addAttachements="addAttachements"
 				@input="pub"
 				@price="setPrice"
 				@title="setThreadTitle"
+				@addAttachments="addAttachments"
+				@removeAttachments="removeAttachments"
 				v-model="content"
 				:lightMode="lightMode"
 				:isReply="isReply"
@@ -27,6 +28,7 @@ import { mapGetters } from "vuex";
  * https://github.com/sparksuite/simplemde-markdown-editor
  */
 import MarkdownEditor from "~/components/editor/mavon/MarkdownEditor";
+import postsAPI from '~/api/posts';
 
 export default {
 	name: "Editor",
@@ -63,6 +65,10 @@ export default {
 			 * 价格
 			 */
 			price: "0.00",
+			/**
+			 * 附件
+			 */
+			attachments: [],
 		};
 	},
 	computed: {
@@ -95,10 +101,6 @@ export default {
 			});
 		},
 		/**
-		 * 添加附件
-		 */
-		addAttachements() {},
-		/**
 		 * 设置价格
 		 */
 		setPrice(price) {
@@ -107,12 +109,58 @@ export default {
 		/**
 		 * pub 发布
 		 */
-		pub() {
-			const { content, title } = this;
+		async pub() {
+			const { content, title, price, attachments, isReply, thread, post } = this;
 			if (!this.$_.trim(content)) {
 				this.$swal("请输入内容后再继续");
 				return;
 			}
+
+			/**
+			 * 发布回复
+			 */
+			if(isReply){
+				if(this.$_.isEmpty(thread)){
+					await this.$swal("未正确关联主题数据");
+					return;
+				}
+
+				let data = {
+					type: "posts",
+					attributes: {content},
+					relationships: {
+						attachments,
+						thread: {
+							data: {
+								type: 'threads',
+								id: thread.id
+							}
+						}
+					}
+				};
+
+				/**
+				 * isComment
+				 */
+				if(!this.$_.isEmpty(post)){
+					data.attributes['isComment'] = true;
+					data.attributes['replyId'] = post.id;
+				}
+
+				const rs = await postsAPI.create(data);
+				if(rs){
+					/**
+					 * 成功发布评论
+					 */
+					this.$emit('onPosted', rs);	
+					this.content = '';
+					await this.$swal("回复成功!", "回复成功，刷新或关闭对话框来查看!", "success");
+				}
+				return;
+			}
+
+			/** 发布主题 */
+
 			this.$swal(`即将支持您发布\r\n${title}\r\n${content}`);
 		},
 		/**
@@ -121,6 +169,14 @@ export default {
 		setThreadTitle(val) {
 			this.title = val;
 		},
+		/**
+		 * 新增附件
+		 */
+		addAttachments(){},
+		/**
+		 * 移除附件
+		 */
+		removeAttachments(){}
 	},
 	components: {
 		MarkdownEditor
