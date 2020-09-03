@@ -1,5 +1,12 @@
 <template>
-	<v-card :ripple="false" elevation="0" class="post-card pb-2 pt-2" tile :id="`post-${post.id}`">
+	<v-card
+		v-if="!fakeDelect"
+		:ripple="false"
+		elevation="0"
+		class="post-card pb-2 pt-2"
+		tile
+		:id="`post-${post.id}`"
+	>
 		<!--评论header 用户信息和操作条-->
 
 		<v-list-item>
@@ -25,10 +32,12 @@
 
 			<v-list-item-action>
 				<v-row>
-					<!--评论-->
-					<PostaReplyButton :thread="thread" :post="post"></PostaReplyButton>
 					<!--赞-->
 					<PostLikeButton :post="post"></PostLikeButton>
+					<!--评论-->
+					<PostReplyButton :thread="thread" :post="post"></PostReplyButton>
+					<!--删除-->
+					<PostDeleteButton @delete="(result) => fakeDelect = result" :post="post"></PostDeleteButton>
 				</v-row>
 			</v-list-item-action>
 		</v-list-item>
@@ -43,7 +52,8 @@
 <script>
 import PostContent from "~/components/posts/PostCard";
 import PostLikeButton from "~/components/posts/PostLikeButton";
-import PostaReplyButton from "~/components/posts/PostaReplyButton";
+import PostReplyButton from "~/components/posts/PostReplyButton";
+import PostDeleteButton from "~/components/posts/PostDeleteButton";
 import Avatar from "~/components/users/Avatar";
 import Attachments from "~/components/threads/attachments/Attachments";
 
@@ -71,12 +81,21 @@ export default {
 		 */
 		attachments: Array,
 	},
+	data() {
+		return {
+			/**
+			 * 被删除时，隐藏
+			 */
+			fakeDelect: false,
+		};
+	},
 	components: {
 		PostContent,
 		Avatar,
 		PostLikeButton,
-		PostaReplyButton,
+		PostReplyButton,
 		Attachments,
+		PostDeleteButton,
 	},
 };
 </script>

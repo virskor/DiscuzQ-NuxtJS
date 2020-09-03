@@ -72,6 +72,10 @@ export default {
 		async getWallet() {
 			const { user } = this;
 
+			if(!user){
+				return;
+			}
+
 			this.loading = true;
 
 			const rs = await walletAPI.getUserWallet(user.id);

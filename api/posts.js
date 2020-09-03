@@ -14,6 +14,15 @@ export default {
         });
     },
     /**
+     * 删除评论
+     * @param {*} postID 
+     */
+    delete(postID) {
+        return Request.delete({
+            url: `${URLS.POSTS}/${postID}`,
+        });
+    },
+    /**
      * like
      * 点赞反选
      */

@@ -1,25 +1,27 @@
 <template>
 	<v-card class="mx-auto userHomePageBanner" tile flat>
 		<v-list-item class="grow">
-				<v-list-item-avatar :size="60" tile>
-					<Avatar :user="user"></Avatar>
-				</v-list-item-avatar>
+			<v-list-item-avatar :size="60" tile>
+				<Avatar :user="user"></Avatar>
+			</v-list-item-avatar>
 
-				<v-list-item-content>
-					<v-list-item-title>
-						<span class="font-weight-black text-h6">{{user.attributes.username}}</span>
-						<span
-							v-if="!$_.isEmpty(user.attributes.signature)"
-						>({{user.attributes.signature}})</span>
-					</v-list-item-title>
-					<v-list-item-subtitle>{{group.attributes.name}}</v-list-item-subtitle>
-				</v-list-item-content>
+			<v-list-item-content>
+				<v-list-item-title>
+					<span class="font-weight-black text-h6">{{user.attributes.username}}</span>
+					<span v-if="!$_.isEmpty(user.attributes.signature)">({{user.attributes.signature}})</span>
+				</v-list-item-title>
+				<v-list-item-subtitle>{{group.attributes.name}}</v-list-item-subtitle>
+			</v-list-item-content>
 
-				<v-list-item-action>
+			<v-list-item-action>
+				<v-row>
 					<!--关注按钮-->
 					<UserFollowButton :user="user"></UserFollowButton>
-				</v-list-item-action>
-			</v-list-item>
+					<!--关注按钮-->
+					<UsersModifyProfilesButton :relatedUser="user"></UsersModifyProfilesButton>
+				</v-row>
+			</v-list-item-action>
+		</v-list-item>
 	</v-card>
 </template>
 
@@ -29,6 +31,7 @@ import { mapGetters } from "vuex";
 
 import Avatar from "~/components/users/Avatar";
 import UserFollowButton from "~/components/users/follow/UserFollowButton";
+import UsersModifyProfilesButton from "~/components/users/UsersModifyProfilesButton";
 
 export default {
 	props: {
@@ -43,7 +46,8 @@ export default {
 	},
 	components: {
 		Avatar,
-		UserFollowButton
+		UserFollowButton,
+		UsersModifyProfilesButton,
 	},
 	computed: {
 		...mapGetters({

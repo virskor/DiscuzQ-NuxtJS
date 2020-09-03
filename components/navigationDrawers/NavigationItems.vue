@@ -32,6 +32,11 @@ export default {
 				},
 				{ divider: true },
 				{
+					icon: "icon-gerenziliao2",
+					text: "个人资料",
+					route: "/users/profiles",
+				},
+				{
 					icon: "icon-shezhi1",
 					text: "设置",
 					route: "/views/settings",

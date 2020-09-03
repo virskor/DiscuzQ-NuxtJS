@@ -1,5 +1,5 @@
 <template>
-	<div v-if="hasLogined" class="ml-2">
+	<div class="ml-2">
 		<v-menu top offset-y>
 			<template v-slot:activator="{ on, attrs }">
 				<v-btn text v-bind="attrs" v-on="on">
@@ -8,7 +8,7 @@
 			</template>
 
 			<v-list>
-				<v-list-item @click="deleteThread" v-if="canDelete">
+				<v-list-item  @click="deleteThread" v-if="canDelete">
 					<v-list-item-title>删除该主题</v-list-item-title>
 				</v-list-item>
 				<v-list-item @click="showQrCode = true">
@@ -58,7 +58,10 @@ export default {
 		 * 用户是否有删除权限
 		 */
 		canDelete() {
-			const { thread } = this;
+			const { thread, hasLogined } = this;
+			if(!hasLogined){
+				return false;
+			}
 			return thread.attributes.canDelete;
 		},
 	},

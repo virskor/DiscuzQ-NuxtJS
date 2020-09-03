@@ -24,6 +24,10 @@ export default {
 		 * 头像大小
 		 */
 		size: Number,
+		/**
+		 * preventClick
+		 */
+		preventClick: Boolean,
 	},
 	data() {
 		return {
@@ -44,7 +48,7 @@ export default {
 		 */
 		userAvatar() {
 			const { user, emptyAvatar } = this;
-			
+
 			if (this.$_.isEmpty(user)) {
 				return emptyAvatar;
 			}
@@ -74,7 +78,10 @@ export default {
 		 * 想要打开用户主页
 		 */
 		onWantOpenUserHomePage() {
-			const { user } = this;
+			const { user, preventClick } = this;
+			if(preventClick){
+				return;
+			}
 			this.$router.push({ path: `/users/${user.id || 0}` });
 		},
 	},

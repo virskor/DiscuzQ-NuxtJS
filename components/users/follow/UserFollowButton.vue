@@ -7,7 +7,7 @@
 			:ripple="false"
 			depressed
 		>
-			<v-icon :color="isFollowed ? 'primary' : ''">mdi-account-plus</v-icon>
+			<v-icon left :color="isFollowed ? 'primary' : ''">mdi-account-plus</v-icon>
 			<span :class="isFollowed ? 'primary--text' : ''">{{followStatusSpan}}</span>
 		</v-btn>
 	</v-row>
