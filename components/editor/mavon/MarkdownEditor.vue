@@ -26,6 +26,7 @@
 			:lightMode="lightMode"
 			:price="price"
 			@action="toolbarAction"
+			@category="(c) => $emit('category', c)"
 			@pub="pub"
 		></EditorToolbar>
 	</div>

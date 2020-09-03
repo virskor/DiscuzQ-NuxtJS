@@ -39,7 +39,9 @@
 
 		<v-btn :ripple="false" v-if="showAdvancedButton" @click="$router.push('/views/editor')" text>高级模式</v-btn>
 
-		<CategoriesSelectionList></CategoriesSelectionList>
+		<!--分类选择-->
+		<CategoriesSelectionList @category="(c) => $emit('category', c)" v-if="!isReply"></CategoriesSelectionList>
+
 		<v-btn @click="pub" depressed rounded color="primary">{{saveButtonCaption}}</v-btn>
 	</v-toolbar>
 </template>
@@ -112,14 +114,14 @@ export default {
 		/**
 		 * saveButtonCaption
 		 */
-		saveButtonCaption(){
-			const {isReply, lightMode} = this;
-			if(isReply){
-				return '回复';
+		saveButtonCaption() {
+			const { isReply, lightMode } = this;
+			if (isReply) {
+				return "回复";
 			}
 
-			return lightMode ? '发动态' : '发帖';
-		}
+			return lightMode ? "发动态" : "发帖";
+		},
 	},
 	methods: {
 		/**

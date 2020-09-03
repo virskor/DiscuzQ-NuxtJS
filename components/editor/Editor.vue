@@ -6,8 +6,9 @@
 			</v-overlay>
 			<MarkdownEditor
 				@input="pub"
-				@price="setPrice"
-				@title="setThreadTitle"
+				@price="(p) => price = p"
+				@title="(t) => title = t"
+				@category="(c) => category = c"
 				@addAttachments="addAttachments"
 				@removeAttachments="removeAttachments"
 				v-model="content"
@@ -30,6 +31,7 @@ import { mapGetters } from "vuex";
 import MarkdownEditor from "~/components/editor/mavon/MarkdownEditor";
 import postsAPI from "~/api/posts";
 import threadsAPI from "~/api/threads";
+import Captcha from "~/utils/captcha";
 
 export default {
 	name: "Editor",
@@ -57,6 +59,13 @@ export default {
 	},
 	data() {
 		return {
+			/**
+			 * 分类
+			 */
+			category: null,
+			/**
+			 * 要发布的内容
+			 */
 			content: "",
 			/**
 			 * 标题
@@ -73,11 +82,11 @@ export default {
 			/**
 			 * 经度
 			 */
-			longitude: null,
+			longitude: 0,
 			/**
 			 * 纬度
 			 */
-			latitude: null,
+			latitude: 0,
 			/**
 			 * address
 			 * 经纬度坐标对应的地址（如：广东省深圳市深南大道 10000 号）
@@ -92,8 +101,16 @@ export default {
 	},
 	computed: {
 		...mapGetters({
+			forum: types.GETTERS_FORUM,
 			user: types.GETTERS_USER,
 		}),
+		/**
+		 * Captcha App ID
+		 */
+		captchaAppID() {
+			const { forum } = this;
+			return forum.attributes.qcloud.qcloud_captcha_app_id;
+		},
 		hasLogined() {
 			const { user } = this;
 			return !this.$_.isEmpty(user);
@@ -139,12 +156,6 @@ export default {
 			});
 		},
 		/**
-		 * 设置价格
-		 */
-		setPrice(price) {
-			this.price = price;
-		},
-		/**
 		 * pub 发布
 		 */
 		async pub() {
@@ -176,7 +187,25 @@ export default {
 			 */
 			const rs = await this.createThread();
 			if (rs) {
-				this.$emit("onThreadCreated", rs);
+				//this.$emit("onThreadCreated", rs);
+
+				const jump = await this.$swal({
+					title: "发布成功",
+					text:
+						"继续发帖，或者前往查看刚才发布的帖子",
+					icon: "success",
+					buttons: {
+						cancel: "继续发帖",
+						catch: {
+							text: "前往查看",
+						},
+					},
+					dangerMode: true,
+				});
+
+				if (jump) {
+					this.$router.push(`/threads/${rs.data.id}`);
+				}
 				return;
 			}
 
@@ -199,6 +228,8 @@ export default {
 				latitude,
 				address,
 				location,
+				captchaAppID,
+				category,
 			} = this;
 
 			let data = {
@@ -212,14 +243,40 @@ export default {
 					latitude,
 					address,
 					location,
+					captcha_ticket: "",
+					captcha_rand_str: "",
+					/**
+					 * 付费主题可免费阅读字数
+					 */
+					free_words: 0,
 				},
 				relationships: {
 					attachments,
-					category: {},
+					category,
 				},
 			};
 
-			console.log(data);
+			/**
+			 * 补全腾讯云验证码
+			 */
+			if (captchaAppID) {
+				try {
+					let captchaResult = await this.requestUserCaptcha();
+					data.attributes["captcha_ticket"] = captchaResult.ticket;
+					data.attributes["captcha_rand_str"] = captchaResult.randstr;
+				} catch (err) {
+					console.error(err);
+					return;
+				}
+			}
+
+			const rs = await threadsAPI.create(data);
+			if (rs) {
+				this.content = "";
+				this.title = "";
+				this.price = "0.00";
+				return rs;
+			}
 		},
 		/**
 		 * 发布评论
@@ -277,10 +334,25 @@ export default {
 			}
 		},
 		/**
-		 * 设置主题标题
+		 * request user captcha actions
+		 * return object
 		 */
-		setThreadTitle(val) {
-			this.title = val;
+		async requestUserCaptcha() {
+			const { captchaAppID } = this;
+
+			if (!captchaAppID) {
+				return null;
+			}
+
+			try {
+				const captcha = new Captcha({
+					appId: captchaAppID,
+				});
+				const res = await captcha.showCaptcha();
+				return res;
+			} catch (err) {
+				throw err;
+			}
 		},
 		/**
 		 * 新增附件
