@@ -13,7 +13,7 @@
 			</template>
 			<v-list>
 				<template v-for="(c, i) in categories">
-					<v-list-item v-if="c.id != 0" @click="selected(c)" :key="i">
+					<v-list-item v-if="c.id != 0 && c.attributes.canCreateThread" @click="selected(c)" :key="i">
 						<v-list-item-title>{{ c.attributes.name }}</v-list-item-title>
 					</v-list-item>
 				</template>

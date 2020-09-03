@@ -4,14 +4,14 @@
 		<v-card-title>
 			<v-list-item class="pa-0">
 				<v-list-item-content class="pa-0">
-					<v-list-item-title class="headline">
-						<span class="text-h5 font-weight-black">#{{topic.attributes.content || ""}}#</span>
+					<v-list-item-title @click="$router.push(`/topics/${topic.id}`)" class="headline">
+						<span class="text-h5 primary--text clickable font-weight-black">#{{topic.attributes.content || ""}}#</span>
 					</v-list-item-title>
 					<v-list-item-subtitle>最近发布：{{$C.formatDateTime(topic.attributes.updated_at)}}</v-list-item-subtitle>
 				</v-list-item-content>
 				<v-list-item-action>
 					<v-btn @click="$router.push(`/topics/${topic.id}`)" color="primary" text>
-						查看
+						详情
 					</v-btn>
 				</v-list-item-action>
 			</v-list-item>

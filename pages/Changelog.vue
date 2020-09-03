@@ -13,9 +13,17 @@
 				<p>剩余未完成或计划近期完成的：新增 编辑帖子或评论</p>
 				<p>剩余未完成或计划近期完成的：使用零钱包，及支付密码输入组件</p>
 				<p>剩余未完成或计划近期完成的：经典模式布局(类似Discuz!X布局 Pro)</p>
-				<p>剩余未完成或计划近期完成的：个人资料</p>
 			</v-card>
 			<v-list>
+				<v-list-item>
+					<v-card flat tile>
+						<p class="text-h5">2020-09-04</p>
+						<p v-if="false">文件上传类</p>
+						<p v-if="false">头像上传组件</p>
+						<p v-if="false">附件，视频，图片上传</p>
+						<p v-if="false">个人资料</p>
+					</v-card>
+				</v-list-item>
 				<v-list-item>
 					<v-card flat tile>
 						<p class="text-h5">2020-09-03</p>
@@ -24,8 +32,7 @@
 						<p>新增发帖支持</p>
 						<p>补全评论附件显示</p>
 						<p>新增删除评论</p>
-						<p v-if="false">头像上传</p>
-						<p v-if="false">附件上传</p>
+						<p>修复发帖分类选择权限问题</p>
 					</v-card>
 				</v-list-item>
 				<v-list-item>
