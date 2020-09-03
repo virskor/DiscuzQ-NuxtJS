@@ -19,6 +19,7 @@
 					<v-card flat tile>
 						<p class="text-h5">2020-09-03</p>
 						<p>新增发评论，支持发布评论，增加楼层评论按钮</p>
+						<p>无法查看消息关联的评论的BUG</p>
 						<p v-if="false">个人资料</p>
 						<p v-if="false">头像上传</p>
 						<p v-if="false">附件上传</p>

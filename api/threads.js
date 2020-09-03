@@ -3,6 +3,12 @@ import RequestIncludes from '~/api/requests/requestIncludes';
 import URLS from '~/api/requests/URLS';
 
 export default {
+    create(data) {
+        return Request.post({
+            url: URLS.THREADS,
+            data,
+        });
+    },
     /**
      * get threads
      * return PROMISE

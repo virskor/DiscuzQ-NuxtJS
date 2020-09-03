@@ -100,7 +100,7 @@ export default {
 			 */
 			if (notification.attributes.post_id) {
 				this.$router.push({
-					path: `/posts/${notification.attributes.post_id}`,
+					path: `/posts/${notification.attributes.reply_post_id || notification.attributes.post_id}`,
 					query: { threadID: notification.attributes.thread_id },
 				});
 				return;
