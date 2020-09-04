@@ -179,26 +179,28 @@ export default {
 			 */
 			if (isReply) {
 				const rs = await this.createPost();
-				await this.$swal(
-					"回复成功!",
-					"回复成功，刷新或关闭对话框来查看!",
-					"success"
-				);
+				if (rs) {
+					await this.$swal(
+						"回复成功!",
+						"回复成功，刷新或关闭对话框来查看!",
+						"success"
+					);
 
-				// if (!this.$_.isEmpty(post)) {
-				// 	this.$router.push({
-				// 		path: `/posts/${post.id}`,
-				// 		query: { threadID: thread.id },
-				// 	});
-				// 	return;
-				// }
+					// if (!this.$_.isEmpty(post)) {
+					// 	this.$router.push({
+					// 		path: `/posts/${post.id}`,
+					// 		query: { threadID: thread.id },
+					// 	});
+					// 	return;
+					// }
 
-				// this.$router.push({
-				// 	path: `/posts/${rs.data.id}`,
-				// 	query: { threadID: thread.id },
-				// });
+					// this.$router.push({
+					// 	path: `/posts/${rs.data.id}`,
+					// 	query: { threadID: thread.id },
+					// });
 
-				this.$emit("onPosted");
+					this.$emit("onPosted");
+				}
 				return;
 			}
 
@@ -227,10 +229,6 @@ export default {
 				}
 				return;
 			}
-
-			/** 发布主题 */
-
-			this.$swal(`未能发布\r\n${title}\r\n${content}`);
 		},
 		/**
 		 * 发布主题
