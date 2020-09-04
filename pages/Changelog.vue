@@ -18,6 +18,7 @@
 				<v-list-item>
 					<v-card flat tile>
 						<p class="text-h5">2020-09-04</p>
+						<p>手机浏览时，增加底部导航条</p>
 						<p v-if="false">文件上传类</p>
 						<p v-if="false">头像上传组件</p>
 						<p v-if="false">附件，视频，图片上传</p>

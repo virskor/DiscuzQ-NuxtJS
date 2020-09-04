@@ -8,7 +8,7 @@
 					<v-toolbar-title>修改个人资料</v-toolbar-title>
 				</v-toolbar>
 				<v-list>
-					<ProfileEditField label="个性签名"></ProfileEditField>
+					<ProfileEditField attribute="signature" label="个性签名"></ProfileEditField>
 				</v-list>
 			</v-card>
 		</v-container>

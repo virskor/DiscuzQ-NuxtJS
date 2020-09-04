@@ -7,14 +7,26 @@
 			<!--经典模式下，不显示-->
 			<EndDrawer v-if="!appConf.classicalTheme" v-model="showEndDrawer" />
 
+			<!--底部菜单，仅手机显示-->
+			<BottomNavigation @start="() => showStartDrawer = true" @end="() => showEndDrawer = true"></BottomNavigation>
+
 			<!--路由渲染-->
 			<v-main app>
 				<template v-if="!forum && !loadForumFailed || loadingUser">
-					<v-sheet class="px-3 pt-3 pb-12">
-						<center>
-							<v-progress-circular :size="50" color="primary" indeterminate></v-progress-circular>
-						</center>
-					</v-sheet>
+					<!--加载中-->
+					<v-dialog
+						:value="!forum && !loadForumFailed || loadingUser"
+						hide-overlay
+						persistent
+						width="300"
+					>
+						<v-card color="primary" dark>
+							<v-card-text>
+								请稍等
+								<v-progress-linear indeterminate color="white" class="mb-0"></v-progress-linear>
+							</v-card-text>
+						</v-card>
+					</v-dialog>
 				</template>
 
 				<!--加载forum对象失败-->
@@ -55,6 +67,7 @@ import { mapGetters } from "vuex";
 import StartDrawer from "~/components/navigationDrawers/StartDrawer";
 import EndDrawer from "~/components/navigationDrawers/EndDrawer";
 import AppFooter from "~/components/AppFooter";
+import BottomNavigation from "~/components/common/BottomNavigation";
 import DefaultMixins from "~/layouts/default.mixins";
 
 export default {
@@ -121,6 +134,7 @@ export default {
 		EndDrawer,
 		StartDrawer,
 		AppFooter,
+		BottomNavigation,
 	},
 };
 </script>
