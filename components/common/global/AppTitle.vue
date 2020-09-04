@@ -86,5 +86,6 @@ export default {
 <style lang="less">
 .app-title {
 	border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
+	box-shadow: 0 2px 7px 0 rgba(5,34,97,.1);
 }
 </style>

@@ -9,20 +9,25 @@
 			<v-card tile flat class="pl-4">
 				<p>剩余未完成或计划近期完成的：私信</p>
 				<p>剩余未完成或计划近期完成的：冻结明细，提现，流水等</p>
-				<p>剩余未完成或计划近期完成的：非图片的附件渲染</p>
 				<p>剩余未完成或计划近期完成的：新增 编辑帖子或评论</p>
 				<p>剩余未完成或计划近期完成的：使用零钱包，及支付密码输入组件</p>
-				<p>剩余未完成或计划近期完成的：经典模式布局(类似Discuz!X布局 Pro)</p>
+				<p>剩余未完成或计划近期完成的：实名认证</p>
 			</v-card>
 			<v-list>
+				<v-list-item>
+					<v-card flat tile>
+						<p class="text-h5">2020-09-05</p>
+						<p>计划完成的：附件，视频，图片上传</p>
+						<p>计划完成的：非图片的附件渲染</p>
+						<p>计划完成的：个人资料</p>
+					</v-card>
+				</v-list-item>
 				<v-list-item>
 					<v-card flat tile>
 						<p class="text-h5">2020-09-04</p>
 						<p>手机浏览时，增加底部导航条</p>
 						<p>头像上传组件</p>
 						<p>文件上传类</p>
-						<p v-if="false">附件，视频，图片上传</p>
-						<p v-if="false">个人资料</p>
 					</v-card>
 				</v-list-item>
 				<v-list-item>
