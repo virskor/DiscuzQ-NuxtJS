@@ -204,7 +204,7 @@ export default {
             if (opts.failed) {
                 return opts.failed(err);
             }
-            
+
         }).catch(_ => {
             requestFilter.pop(opts);
         });
@@ -247,11 +247,52 @@ export default {
         });
     },
 
-
-     /**
-     * DELETE 请求
-     * DELETE 默认发送json object数据
+    /**
+     * Upload 上传文件
+     * @param {*} opts 
      */
+    upload(opts) {
+        const opt = this.resetOpts(opts);
+
+        return instance.post(
+            opt.url,
+            opt.formData,
+            {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                },
+                timeout,
+            }
+
+        ).then((res) => {
+            requestFilter.pop(opt);
+            return res.data;
+        }, (err) => {
+            requestFilter.pop(opt);
+
+            /** 401不要处理，在interceptor处理 */
+            if (err.response.status == 401) {
+                return;
+            }
+
+
+            if (opt.failed) {
+                return opt.failed(err);
+            }
+
+            if (err.response.data) {
+                this.showError(err.response.data.errors[0].code, err.response.data.errors);
+            }
+        }).catch(_ => {
+            requestFilter.pop(opt);
+        });
+    },
+
+
+    /**
+    * DELETE 请求
+    * DELETE 默认发送json object数据
+    */
     delete(opts) {
         const opt = this.resetOpts(opts);
 
@@ -274,7 +315,7 @@ export default {
             if (opt.failed) {
                 return opt.failed(err);
             }
-            
+
             if (err.response.data) {
                 this.showError(err.response.data.errors[0].code, err.response.data.errors);
             }

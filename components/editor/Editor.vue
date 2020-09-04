@@ -9,8 +9,8 @@
 				@price="(p) => price = p"
 				@title="(t) => title = t"
 				@category="(c) => category = c"
-				@addAttachments="addAttachments"
-				@removeAttachments="removeAttachments"
+				@attachments="addAttachments"
+				@del-attachments="removeAttachments"
 				v-model="content"
 				:lightMode="lightMode"
 				:isReply="isReply"
@@ -31,6 +31,7 @@ import { mapGetters } from "vuex";
 import MarkdownEditor from "~/components/editor/mavon/MarkdownEditor";
 import postsAPI from "~/api/posts";
 import threadsAPI from "~/api/threads";
+import attachmentsAPI from "~/api/attachments";
 import Captcha from "~/utils/captcha";
 
 export default {
@@ -370,11 +371,22 @@ export default {
 		/**
 		 * 新增附件
 		 */
-		addAttachments() {},
+		addAttachments(a) {
+			this.attachments.push(a);
+		},
 		/**
 		 * 移除附件
 		 */
-		removeAttachments() {},
+		async removeAttachments(a) {
+			const { attachments } = this;
+
+			if (this.$_.isEmpty(a)) {
+				return;
+			}
+			await attachmentsAPI.delete(a.id);
+
+			this.attachments = attachments.filter((el) => el.id != a.id);
+		},
 	},
 	components: {
 		MarkdownEditor,

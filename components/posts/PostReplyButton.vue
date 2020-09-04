@@ -1,5 +1,5 @@
 <template>
-	<v-row no-gutters align="center" class="mr-2" justify="end">
+	<v-row v-if="post.type == 'posts'" no-gutters align="center" class="mr-2" justify="end">
 		<v-btn @click="reply" color="transparent" :ripple="false" depressed>
 			<v-icon>mdi-twitter-retweet</v-icon>
 			<span>{{post.attributes.replyCount || 0}}</span>

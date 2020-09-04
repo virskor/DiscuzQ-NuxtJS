@@ -199,6 +199,12 @@ const URLS = {
      * https://discuz.com/api-docs/v1/EmojiList.html
      */
     EMOJI: `${APIHOST}${APIVERSION}/emoji`,
+
+    /**
+     * POST DELETE /api/attachments 附件
+     * https://discuz.com/api-docs/v1/AttachmentCreate.html
+     */
+    ATTACHMENTS: `${APIHOST}${APIVERSION}/attachments`,
 }
 
 export default URLS

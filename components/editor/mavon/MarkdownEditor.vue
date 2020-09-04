@@ -28,6 +28,8 @@
 			@action="toolbarAction"
 			@category="(c) => $emit('category', c)"
 			@pub="pub"
+			@attachments="(a) => $emit('attachments', a)"
+			@del-attachments="(a) => $emit('del-attachments', a)"
 		></EditorToolbar>
 	</div>
 </template>

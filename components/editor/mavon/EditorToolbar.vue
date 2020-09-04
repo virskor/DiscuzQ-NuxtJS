@@ -12,17 +12,14 @@
 				<EditorEmojiList @close="showEmojis = false" @input="emojiSelection"></EditorEmojiList>
 			</v-menu>
 
-			<!-- <v-btn :ripple="false" icon @click="toolbarEvent('upload_image')">
-				<v-icon>mdi-image-area</v-icon>
-			</v-btn>
-
-			<v-btn v-if="allowVideo" :ripple="false" icon @click="toolbarEvent('upload_video')">
+			<!-- <v-btn v-if="allowVideo" :ripple="false" icon>
 				<v-icon>mdi-message-video</v-icon>
-			</v-btn>-->
+			</v-btn> -->
 
 			<v-btn :ripple="false" icon @click="toolbarEvent('set_price')">
 				<v-icon>mdi-currency-usd</v-icon>
 			</v-btn>
+
 			<v-chip color="amber" v-if="allowPrice && price > 0" label>{{`需支付：${price}`}}</v-chip>
 		</div>
 		<v-spacer></v-spacer>

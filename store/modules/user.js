@@ -94,6 +94,19 @@ const actions = {
     },
 
     /**
+     * 
+     * @param {*} param0 
+     * @param {*} data 
+     */
+    updateCurrentUser({ commit}, {user}){
+        if(_.isEmpty(user)){
+            return false;
+        }
+
+        commit(types.MUTATION_USER, user);
+    },
+
+    /**
      * 使用短信验证码登录
      * 注意：
      * data包含 mobile, code, type
