@@ -40,6 +40,11 @@ export default {
 				return;
 			}
 
+			/// comment-posts 不跳转
+			if(post.type != "posts"){
+				return;
+			}
+
 			this.$router.push({
 				path: `/posts/${post.id}`,
 				query: { threadID: thread.id },
