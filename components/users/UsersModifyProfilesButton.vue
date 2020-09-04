@@ -27,6 +27,10 @@ export default {
          */
 		showButton() {
 			const { relatedUser, user } = this;
+			if(!user){
+				return false;
+			}
+			
 			if (!relatedUser) {
 				return true;
 			}
