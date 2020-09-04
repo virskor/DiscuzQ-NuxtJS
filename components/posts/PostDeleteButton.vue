@@ -3,6 +3,9 @@
 </template>
 
 <script>
+import * as types from "~/store/vuex-types";
+import { mapGetters } from "vuex";
+
 import postsAPI from "~/api/posts";
 
 export default {
@@ -11,17 +14,33 @@ export default {
 		 * 评论
 		 */
 		post: Object,
-    },
-    computed: {
-        canDelete(){
-            const {post} = this;
-            if(!post){
-                return false;
-            }
+	},
+	computed: {
+		...mapGetters({
+			user: types.GETTERS_USER,
+		}),
+		// canDelete(){
+		//     const {post} = this;
+		//     if(!post){
+		//         return false;
+		//     }
 
-            return post.attributes.canDelete;
-        }
-    },
+		//     return post.attributes.canDelete;
+		// }
+		/**
+		 * 后端接口反馈数据有误，前端先自行判断
+		 * todo: 使用后端返回数据
+		 */
+		canDelete() {
+			const { post, user } = this;
+			if (!post || !user) {
+				return false;
+			}
+
+			const relatedUserID = post.relationships.user.data.id;
+			return user.id == relatedUserID;
+		},
+	},
 	methods: {
 		/**
 		 * 删除评论
@@ -29,8 +48,7 @@ export default {
 		async deletePost() {
 			const willDelete = await this.$swal({
 				title: "确定删除吗?",
-				text:
-					"删除后，这个评论无法恢复",
+				text: "删除后，这个评论无法恢复",
 				icon: "info",
 				buttons: {
 					cancel: "取消",

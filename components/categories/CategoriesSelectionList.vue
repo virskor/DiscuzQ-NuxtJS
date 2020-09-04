@@ -7,6 +7,7 @@
 					rounded
 					color="primary"
 					dark
+					:loading="loading"
 					v-bind="attrs"
 					v-on="on"
 				>{{selectedItem ? `发布到：${selectedItem.attributes.name }`: '选择分类'}}</v-btn>
@@ -34,12 +35,18 @@ export default {
 	},
 	mounted() {
 		this.$nextTick(async () => {
+			await this.$store.dispatch("getCategories");
+			this.loading = false;
 			this.init();
 		});
 	},
 	data() {
 		return {
 			selectedItem: null,
+			/**
+			 * loading categories
+			 */
+			loading: true,
 		};
 	},
 	methods: {
