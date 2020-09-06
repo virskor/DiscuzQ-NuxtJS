@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<AppTitle  title="首页">
+		<AppTitle  :title="`${forum.attributes.set_site.site_name || '首页'}`">
 			<ThreadsFilters />
 		</AppTitle>
 		<v-alert class="ma-0" tile text dense dark type="info">
@@ -15,6 +15,9 @@
 </template>
 
 <script>
+import * as types from "~/store/vuex-types";
+import { mapGetters } from "vuex";
+
 import ThreadList from "~/components/threads/ThreadsList";
 import Editor from "~/components/editor/Editor";
 import ThreadsFilters from "~/components/threads/ThreadsFilters";
@@ -28,7 +31,11 @@ export default {
 
 	components: { ThreadList, Editor, ThreadsFilters },
 
-	mounted() {},
+	computed: {
+		...mapGetters({
+			forum: types.GETTERS_FORUM,
+		}),
+	},
 
 	methods: {},
 };

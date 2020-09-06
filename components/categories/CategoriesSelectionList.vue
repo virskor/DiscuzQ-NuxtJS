@@ -1,26 +1,28 @@
 <template>
-	<div class="mr-2">
-		<v-menu offset-y>
-			<template v-slot:activator="{ on, attrs }">
-				<v-btn
-					text
-					rounded
-					color="primary"
-					dark
-					:loading="loading"
-					v-bind="attrs"
-					v-on="on"
-				>{{selectedItem ? `发布到：${selectedItem.attributes.name }`: '选择分类'}}</v-btn>
-			</template>
-			<v-list>
-				<template v-for="(c, i) in categories">
-					<v-list-item v-if="c.id != 0 && c.attributes.canCreateThread" @click="selected(c)" :key="i">
-						<v-list-item-title>{{ c.attributes.name }}</v-list-item-title>
-					</v-list-item>
+	<keep-alive>
+		<div class="mr-2">
+			<v-menu offset-y>
+				<template v-slot:activator="{ on, attrs }">
+					<v-btn
+						text
+						rounded
+						color="primary"
+						dark
+						:loading="loading"
+						v-bind="attrs"
+						v-on="on"
+					>{{selectedItem ? `发布到：${selectedItem.attributes.name }`: '选择分类'}}</v-btn>
 				</template>
-			</v-list>
-		</v-menu>
-	</div>
+				<v-list>
+					<template v-for="(c, i) in categories">
+						<v-list-item v-if="c.id != 0 && c.attributes.canCreateThread" @click="selected(c)" :key="i">
+							<v-list-item-title>{{ c.attributes.name }}</v-list-item-title>
+						</v-list-item>
+					</template>
+				</v-list>
+			</v-menu>
+		</div>
+	</keep-alive>
 </template>
 
 <script>

@@ -7,10 +7,10 @@
 			冻结金额{{$C.formatAmounts(wallet.freeze_amount)}}元
 		</v-card-subtitle>
 
-		<v-card-actions>
+		<!-- <v-card-actions>
 			<v-btn @click="$router.push('/wallet/cash')" color="primary" rounded depressed>申请提现</v-btn>
             <v-btn @click="$router.push('/wallet/freeze')" text small color="primary">查看冻结明细</v-btn>
-		</v-card-actions>
+		</v-card-actions> -->
 	</v-card>
 </template>
 

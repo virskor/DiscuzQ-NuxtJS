@@ -1,41 +1,59 @@
 <template>
-	<v-toolbar class="editor-toolbar" flat dense>
-		<div class="format-items">
+	<div>
+		<v-toolbar class="editor-toolbar" flat dense>
+			<div class="format-items">
+				<v-menu v-model="showEmojis" :close-on-content-click="false" :nudge-width="200" offset-y>
+					<template v-slot:activator="{ on, attrs }">
+						<v-btn :ripple="false" v-bind="attrs" v-on="on" icon>
+							<v-icon>mdi-emoticon-happy</v-icon>
+						</v-btn>
+					</template>
 
-			<v-menu v-model="showEmojis" :close-on-content-click="false" :nudge-width="200" offset-y>
-				<template v-slot:activator="{ on, attrs }">
-					<v-btn :ripple="false" v-bind="attrs" v-on="on" icon>
-						<v-icon>mdi-emoticon-happy</v-icon>
-					</v-btn>
-				</template>
+					<EditorEmojiList @close="showEmojis = false" @input="emojiSelection"></EditorEmojiList>
+				</v-menu>
 
-				<EditorEmojiList @close="showEmojis = false" @input="emojiSelection"></EditorEmojiList>
-			</v-menu>
+				<!--图片上传-->
+				<v-btn
+					@click="showEditorImagesUploader = !showEditorImagesUploader"
+					:color="showEditorImagesUploader ? 'primary' : ''"
+					:ripple="false"
+					icon
+				>
+					<v-icon>mdi-image-area</v-icon>
+				</v-btn>
 
-			<!-- <v-btn v-if="allowVideo" :ripple="false" icon>
+				<!-- <v-btn v-if="allowVideo" :ripple="false" icon>
 				<v-icon>mdi-message-video</v-icon>
-			</v-btn> -->
+				</v-btn>-->
 
-			<v-btn :ripple="false" icon @click="toolbarEvent('set_price')">
-				<v-icon>mdi-currency-usd</v-icon>
-			</v-btn>
+				<v-btn :ripple="false" icon @click="toolbarEvent('set_price')">
+					<v-icon>mdi-currency-usd</v-icon>
+				</v-btn>
 
-			<v-chip color="amber" v-if="allowPrice && price > 0" label>{{`需支付：${price}`}}</v-chip>
-		</div>
-		<v-spacer></v-spacer>
+				<v-chip color="amber" v-if="allowPrice && price > 0" label>{{`需支付：${price}`}}</v-chip>
+			</div>
+			<v-spacer></v-spacer>
 
-		<v-btn :ripple="false" v-if="showAdvancedButton" @click="$router.push('/views/editor')" text>高级</v-btn>
+			<v-btn :ripple="false" v-if="showAdvancedButton" @click="$router.push('/views/editor')" text>高级</v-btn>
 
-		<!--分类选择-->
-		<CategoriesSelectionList @category="(c) => $emit('category', c)" v-if="!isReply"></CategoriesSelectionList>
+			<!--分类选择-->
+			<CategoriesSelectionList @category="(c) => $emit('category', c)" v-if="!isReply"></CategoriesSelectionList>
 
-		<v-btn @click="pub" depressed rounded color="primary">{{saveButtonCaption}}</v-btn>
-	</v-toolbar>
+			<v-btn @click="pub" depressed rounded color="primary">{{saveButtonCaption}}</v-btn>
+		</v-toolbar>
+
+		<EditorImagesUploader
+			@attachments="(a) => $emit('attachments', a)"
+			@del-attachments="(a) => $emit('del-attachments', a)"
+			v-show="showEditorImagesUploader"
+		></EditorImagesUploader>
+	</div>
 </template>
 
 <script>
 import CategoriesSelectionList from "~/components/categories/CategoriesSelectionList";
 import EditorEmojiList from "~/components/editor/mavon/EditorEmojiList";
+import EditorImagesUploader from "~/components/editor/mavon/EditorImagesUploader";
 
 export default {
 	props: {
@@ -84,6 +102,10 @@ export default {
 			 * show emoji
 			 */
 			showEmojis: false,
+			/**
+			 * show EditorImagesUploader
+			 */
+			showEditorImagesUploader: false,
 		};
 	},
 	computed: {
@@ -134,6 +156,7 @@ export default {
 	components: {
 		CategoriesSelectionList,
 		EditorEmojiList,
+		EditorImagesUploader,
 	},
 };
 </script>

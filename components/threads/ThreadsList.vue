@@ -99,7 +99,9 @@ export default {
 			meta: null,
 		};
 	},
-
+	destroyed(){
+		this.threadsData = null;
+	},
 	mounted() {
 		this.$nextTick(async () => {
 			this.getThreads();

@@ -56,9 +56,9 @@ export default {
      * 删除附件
      * @param {*} formData 
      */
-    delete(id) {
+    delete(attachment) {
         return Request.delete({
-            url: `${URLS.ATTACHMENTS}/${id}`
+            url: `${URLS.ATTACHMENTS}/${attachment.id}`
         });
     }
 }

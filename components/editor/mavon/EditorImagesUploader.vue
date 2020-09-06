@@ -1,5 +1,8 @@
 <template>
-  <div></div>
+	<div class="pa-3">
+		<v-divider></v-divider>
+		即将支持
+	</div>
 </template>
 
 <script>
@@ -7,11 +10,8 @@
 /// del-attachments
 import attachmentsAPI from "~/api/attachments";
 
-export default {
-
-}
+export default {};
 </script>
 
 <style>
-
 </style>

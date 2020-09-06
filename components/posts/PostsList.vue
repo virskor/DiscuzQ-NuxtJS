@@ -94,6 +94,9 @@ export default {
 			await this.loadMorePosts();
 		});
 	},
+	destroyed(){
+		this.postsData = null;
+	},
 	computed: {
 		/**
 		 * 评论

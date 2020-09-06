@@ -41,7 +41,7 @@
 				<!--经典模式下，增加v-container-->
 				<nuxt v-if="forum && !loadForumFailed && !loadingUser && !appConf.classicalTheme"></nuxt>
 				<v-container v-else-if="forum && !loadForumFailed && !loadingUser">
-					<nuxt></nuxt>
+					<nuxt-child></nuxt-child>
 				</v-container>
 
 				<!--返回顶部按钮-->
