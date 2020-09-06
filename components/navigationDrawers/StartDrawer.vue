@@ -28,7 +28,7 @@
 								<v-list-item-title
 									:class="!item.color &&  $route.path == item.route  ? 'primary--text font-weight-bold' : 'font-weight-bold'"
 								>
-									<v-badge v-if="item.badge" color="red" :content="item.badge">{{ item.text }}</v-badge>
+									<v-badge v-if="item.notificationBadge && !$_.isEmpty(typeUnreadNotifications)" color="red" dot>{{ item.text }}</v-badge>
 									<span v-else>{{ item.text }}</span>
 								</v-list-item-title>
 							</v-list-item-content>
@@ -66,14 +66,14 @@ export default {
 			return this.$C.isMobile() ? 300 : 440;
 		},
 		/**
-		 * 未读消息数量
+		 * 未读消息列表
 		 */
-		unreadNotifications() {
-			const { hasLogined, user } = this;
-			if (!hasLogined) {
-				return 0;
+		typeUnreadNotifications() {
+			const { user } = this;
+			if(!user){
+				return null;
 			}
-			return user.attributes.unreadNotifications || 0;
+			return user.attributes.typeUnreadNotifications;
 		},
 	},
 	data() {

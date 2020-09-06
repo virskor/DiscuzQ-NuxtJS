@@ -10,10 +10,14 @@
 					<v-list-item-title v-text="item.caption"></v-list-item-title>
 				</v-list-item-content>
 				<v-list-item-action>
-					<!-- <v-badge color="red" content="6">
+					<v-badge
+						v-if="!$_.isEmpty(typeUnreadNotifications) && typeUnreadNotifications[item.value]"
+						color="red"
+						:content="typeUnreadNotifications[item.value]"
+					>
 						<v-icon>mdi-chevron-right</v-icon>
-					</v-badge> -->
-					<v-icon>mdi-chevron-right</v-icon>
+					</v-badge>
+					<v-icon v-else>mdi-chevron-right</v-icon>
 				</v-list-item-action>
 			</v-list-item>
 		</v-list-item-group>
@@ -49,15 +53,17 @@ export default {
 		 */
 		typeUnreadNotifications() {
 			const { user } = this;
-
-			return user.attributes.typeUnreadNotifications || [];
+			return user.attributes.typeUnreadNotifications;
 		},
 	},
 	methods: {
-		openMessageList(m){
-			this.$router.push({path: '/views/noticelist', query: {type: m.value, title: m.caption}});
-		}
-	}
+		openMessageList(m) {
+			this.$router.push({
+				path: "/views/noticelist",
+				query: { type: m.value, title: m.caption },
+			});
+		},
+	},
 };
 </script>
 

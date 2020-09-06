@@ -2,6 +2,7 @@
 <script>
 export default {
 	data() {
+		const {typeUnreadNotifications} = this;
 		return {
 			navigationItems: [
 				{ icon: "icon-home", text: "首页", route: "/" },
@@ -16,7 +17,7 @@ export default {
 					icon: "icon-tongzhi",
 					text: "消息提醒",
 					route: "/views/notices",
-					badge: this.unreadNotifications,
+					notificationBadge: true,
 				},
 				{ divider: true },
 				{
