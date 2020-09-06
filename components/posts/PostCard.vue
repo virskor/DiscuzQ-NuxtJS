@@ -55,7 +55,7 @@ import PostLikeButton from "~/components/posts/PostLikeButton";
 import PostReplyButton from "~/components/posts/PostReplyButton";
 import PostDeleteButton from "~/components/posts/PostDeleteButton";
 import Avatar from "~/components/users/Avatar";
-import Attachments from "~/components/threads/attachments/Attachments";
+import Attachments from "~/components/attachments/Attachments";
 
 export default {
 	props: {

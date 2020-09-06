@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "axios-auth-refresh": "^3.0.0",
     "babel-polyfill": "^6.26.0",
     "clipboardy": "^2.3.0",
     "crypto-js": "^4.0.0",

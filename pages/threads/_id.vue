@@ -73,7 +73,7 @@
 import threadsAPI from "~/api/threads";
 
 import ThreadCardUser from "~/components/threads/ThreadCardUser";
-import Attachments from "~/components/threads/attachments/Attachments";
+import Attachments from "~/components/attachments/Attachments";
 import ThreadContents from "~/components/threads/ThreadContents";
 import ThreadCardQuickActions from "~/components/threads/ThreadCardQuickActions";
 import PostsList from "~/components/posts/PostsList";

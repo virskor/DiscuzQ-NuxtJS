@@ -35,7 +35,7 @@ import * as types from "~/store/vuex-types";
 import { mapGetters } from "vuex";
 
 import ThreadCardUser from "~/components/threads/ThreadCardUser";
-import Attachments from "~/components/threads/attachments/Attachments";
+import Attachments from "~/components/attachments/Attachments";
 import ThreadCardQuickActions from "~/components/threads/ThreadCardQuickActions";
 import ThreadContents from "~/components/threads/ThreadContents";
 import Player from "~/components/player/Player";

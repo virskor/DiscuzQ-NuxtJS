@@ -46,7 +46,7 @@ import ThreadCardSimplified from "~/components/threads/ThreadCardSimplified";
 import ThreadCardUser from "~/components/threads/ThreadCardUser";
 import PostContent from "~/components/posts/PostContent";
 import PostsList from "~/components/posts/PostsList";
-import Attachments from "~/components/threads/attachments/Attachments";
+import Attachments from "~/components/attachments/Attachments";
 
 export default {
 	validate({ params }) {

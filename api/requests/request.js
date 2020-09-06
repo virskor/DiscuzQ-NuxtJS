@@ -3,6 +3,8 @@ import _ from 'lodash';
 import RequestIncludes from '~/api/requests/requestIncludes';
 import Authorization from '~/utils/authorization';
 import mapRequestErrors from '~/api/requests/requestErrors';
+import createAuthRefreshInterceptor from 'axios-auth-refresh';
+import URLS from '~/api/requests/URLS';
 
 /**
  * axios 实例
@@ -41,7 +43,8 @@ const redirectToLogin = async () => {
     }
 }
 
-const refreshAccessToken = async () => {
+const refreshAuthLogic = async failedRequest => {
+
     if (process.client) {
         /**
          * 从客户端取得refresh_token
@@ -54,7 +57,24 @@ const refreshAccessToken = async () => {
         /**
          * todo: 尝试刷新accesstoken
          */
-        return;
+        const data = {
+            attributes: {
+                grant_type: "refresh_token",
+                refresh_token: getAccessToken.attributes.refresh_token
+            }
+        };
+
+        try {
+            const rs = await axios.post(URLS.REFRESH_TOKEN, { data });
+            if (rs) {
+                new Authorization().setAccessToken(rs.data);
+                failedRequest.response.config.headers['Authorization'] = 'Bearer ' + rs.data.attributes.access_token;
+                return Promise.resolve();
+            }
+        } catch (e) {
+            new Authorization().clear();
+            redirectToLogin();
+        }
     }
 
     return;
@@ -88,40 +108,10 @@ instance.interceptors.request.use(
         Promise.reject(error)
     });
 
-
 /**
- * response interceptor
+ * token刷新
  */
-instance.interceptors.response.use((response) => response, async (error) => {
-    const originalRequest = error.config;
-    if (error.response.status === 401) {
-
-        //console.log(error.response);
-
-        try {
-            const access_token = await refreshAccessToken();
-            if (access_token) {
-                axios.defaults.headers.common['Authorization'] = 'Bearer ' + access_token;
-
-                /**
-                 * 继续之前的请求
-                 */
-                return instance(originalRequest);
-            }
-        } catch (e) {
-            console.log(e);
-        }
-
-
-        /**
-         * token 刷新失败，跳转到登录页面
-         */
-        await redirectToLogin();
-
-    }
-
-    return Promise.reject(error);
-});
+createAuthRefreshInterceptor(instance, refreshAuthLogic);
 
 /**
  * 防止请求重复发送

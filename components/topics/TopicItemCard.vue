@@ -39,7 +39,7 @@
 
 <script>
 import ThreadContents from "~/components/threads/ThreadContents";
-import Attachments from "~/components/threads/attachments/Attachments";
+import Attachments from "~/components/attachments/Attachments";
 
 export default {
 	props: {

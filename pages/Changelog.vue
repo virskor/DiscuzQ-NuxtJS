@@ -16,7 +16,8 @@
 			<v-list>
 				<v-list-item>
 					<v-card flat tile>
-						<p class="text-h5">2020-09-05</p>
+						<p class="text-h5">2020-09-06</p>
+						<p>补全refresh-token请求</p>
 						<p>计划完成的：附件，视频，图片上传</p>
 						<p>计划完成的：非图片的附件渲染</p>
 						<p>计划完成的：个人资料</p>
