@@ -1,31 +1,29 @@
 <template>
-	<keep-alive>
-		<div>
-			<v-divider v-if="showViewCount"></v-divider>
-			<v-card-actions :class="showViewCount ? null: 'pa-0'">
-				<span
-					v-if="showViewCount"
-					class="ml-3 v-list-item__subtitle"
-				>查看：{{thread.attributes.viewCount || 0}}次&nbsp;&nbsp;评论：{{thread.attributes.postCount - 1 || 0}}条</span>
-				<v-spacer></v-spacer>
-				<!-- <v-btn icon>
+	<div>
+		<v-divider v-if="showViewCount"></v-divider>
+		<v-card-actions :class="showViewCount ? null: 'pa-0'">
+			<span
+				v-if="showViewCount"
+				class="ml-3 v-list-item__subtitle"
+			>查看：{{thread.attributes.viewCount || 0}}次&nbsp;&nbsp;评论：{{thread.attributes.postCount - 1 || 0}}条</span>
+			<v-spacer></v-spacer>
+			<!-- <v-btn icon>
 				<v-icon>mdi-flag</v-icon>
 			</v-btn>
-				-->
-				<PostLikeButton :post="firstPost"></PostLikeButton>
+			-->
+			<PostLikeButton :post="firstPost"></PostLikeButton>
 
-				<ThreadFavoriteButton :thread="thread"></ThreadFavoriteButton>
+			<ThreadFavoriteButton :thread="thread"></ThreadFavoriteButton>
 
-				<!--分享-->
-				<v-btn color="transparent" @click="share" depressed>
-					<v-icon>mdi-share-outline</v-icon>
-				</v-btn>
+			<!--分享-->
+			<v-btn color="transparent" @click="share" depressed>
+				<v-icon>mdi-share-outline</v-icon>
+			</v-btn>
 
-				<!--拓展菜单，包含编辑等功能-->
-				<ThreadCardQuickActionsExt :thread="thread" v-if="showExt"></ThreadCardQuickActionsExt>
-			</v-card-actions>
-		</div>
-	</keep-alive>
+			<!--拓展菜单，包含编辑等功能-->
+			<ThreadCardQuickActionsExt :thread="thread" v-if="showExt"></ThreadCardQuickActionsExt>
+		</v-card-actions>
+	</div>
 </template>
 
 <script>

@@ -99,7 +99,7 @@ export default {
 			meta: null,
 		};
 	},
-	destroyed(){
+	beforeDestroy(){
 		this.threadsData = null;
 	},
 	mounted() {

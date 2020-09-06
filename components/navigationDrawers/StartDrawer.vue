@@ -6,12 +6,10 @@
 				<v-spacer></v-spacer>
 				<v-btn
 					@click="$router.push('/views/editor')"
-					:elevation="0"
+					depressed
 					color="primary"
-					text
-					bottom
 					rounded
-				>发帖</v-btn>
+				><v-icon left>mdi-plus-circle-outline</v-icon>发帖</v-btn>
 			</v-toolbar>
 			<v-card tile flat>
 				<v-list>

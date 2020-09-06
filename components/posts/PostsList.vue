@@ -94,7 +94,7 @@ export default {
 			await this.loadMorePosts();
 		});
 	},
-	destroyed(){
+	beforeDestroy(){
 		this.postsData = null;
 	},
 	computed: {

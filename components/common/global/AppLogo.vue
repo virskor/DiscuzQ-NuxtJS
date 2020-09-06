@@ -1,9 +1,11 @@
 <template>
-	<keep-alive>
-		<div :style="`width: ${width || 40}px;height: ${width || 40}`" @click="onWantPushRoute" class="logo">
-			<v-img :lazy-src="siteLogo" :src="siteLogo" />
-		</div>
-	</keep-alive>
+	<div
+		:style="`width: ${width || 40}px;height: ${width || 40}`"
+		@click="onWantPushRoute"
+		class="logo"
+	>
+		<v-img :lazy-src="siteLogo" :src="siteLogo" />
+	</div>
 </template>
 
 <script>
