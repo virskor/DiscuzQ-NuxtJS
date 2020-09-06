@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import PaymentMixin from "~/components/financial/mixins/Payment.mixin";
+import PaymentMixin from "~/components/mixins/financial/Payment.mixin";
 import CreateOrderDialog from "~/components/financial/orders/CreateOrderDialog";
 
 export default {

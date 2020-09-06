@@ -45,7 +45,7 @@
 						:firstPost="firstPost"
 					></ThreadContents>
 					<!--附件-->
-					<Attachments :attachments="attachments"></Attachments>
+					<AttachmentImages :attachments="attachments"></AttachmentImages>
 
 					<div>
 						<!--打赏-->
@@ -73,7 +73,7 @@
 import threadsAPI from "~/api/threads";
 
 import ThreadCardUser from "~/components/threads/ThreadCardUser";
-import Attachments from "~/components/attachments/Attachments";
+import AttachmentImages from "~/components/attachments/AttachmentImages";
 import ThreadContents from "~/components/threads/ThreadContents";
 import ThreadCardQuickActions from "~/components/threads/ThreadCardQuickActions";
 import PostsList from "~/components/posts/PostsList";
@@ -224,7 +224,7 @@ export default {
 	},
 	components: {
 		ThreadCardUser,
-		Attachments,
+		AttachmentImages,
 		ThreadContents,
 		ThreadCardQuickActions,
 		PostsList,

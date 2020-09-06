@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import PaymentMixin from "~/components/financial/mixins/Payment.mixin";
+import PaymentMixin from "~/components/mixins/financial/Payment.mixin";
 
 export default {
 	mixins: [PaymentMixin],

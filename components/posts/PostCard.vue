@@ -45,7 +45,7 @@
 		<!--显示评论内容-->
 		<PostContent :thread="thread" :post="post"></PostContent>
 		<!--附件-->
-		<Attachments :attachments="attachments"></Attachments>
+		<AttachmentImages :attachments="attachments"></AttachmentImages>
 	</v-card>
 </template>
 
@@ -55,7 +55,7 @@ import PostLikeButton from "~/components/posts/PostLikeButton";
 import PostReplyButton from "~/components/posts/PostReplyButton";
 import PostDeleteButton from "~/components/posts/PostDeleteButton";
 import Avatar from "~/components/users/Avatar";
-import Attachments from "~/components/attachments/Attachments";
+import AttachmentImages from "~/components/attachments/AttachmentImages";
 
 export default {
 	props: {
@@ -94,7 +94,7 @@ export default {
 		Avatar,
 		PostLikeButton,
 		PostReplyButton,
-		Attachments,
+		AttachmentImages,
 		PostDeleteButton,
 	},
 };

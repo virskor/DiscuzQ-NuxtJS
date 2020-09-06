@@ -22,7 +22,7 @@
 					<!--该评论关联的内容-->
 					<PostContent :thread="threadData.data" :post="postData.data"></PostContent>
 					<!--附件-->
-					<Attachments :attachments="attachments"></Attachments>
+					<AttachmentImages :attachments="attachments"></AttachmentImages>
 					
 					<!--显示关联的原帖-->
 					<ThreadCardSimplified
@@ -46,7 +46,7 @@ import ThreadCardSimplified from "~/components/threads/ThreadCardSimplified";
 import ThreadCardUser from "~/components/threads/ThreadCardUser";
 import PostContent from "~/components/posts/PostContent";
 import PostsList from "~/components/posts/PostsList";
-import Attachments from "~/components/attachments/Attachments";
+import AttachmentImages from "~/components/attachments/AttachmentImages";
 
 export default {
 	validate({ params }) {
@@ -153,7 +153,7 @@ export default {
 		ThreadCardUser,
 		PostContent,
 		PostsList,
-		Attachments
+		AttachmentImages
 	},
 };
 </script>

@@ -20,7 +20,7 @@
 			渲染图片
 			如果是顶置的帖子，那么就不渲染附件
 			-->
-			<Attachments grid v-if="!thread.attributes.isSticky" :attachments="attachments"></Attachments>
+			<AttachmentImages grid v-if="!thread.attributes.isSticky" :attachments="attachments"></AttachmentImages>
 
 			<!--渲染视频-->
 			<Player class="pl-5 pr-5 mt-2 rounded-lg" :threadVideo="threadVideo"></Player>
@@ -35,7 +35,7 @@ import * as types from "~/store/vuex-types";
 import { mapGetters } from "vuex";
 
 import ThreadCardUser from "~/components/threads/ThreadCardUser";
-import Attachments from "~/components/attachments/Attachments";
+import AttachmentImages from "~/components/attachments/AttachmentImages";
 import ThreadCardQuickActions from "~/components/threads/ThreadCardQuickActions";
 import ThreadContents from "~/components/threads/ThreadContents";
 import Player from "~/components/player/Player";
@@ -87,7 +87,7 @@ export default {
 	},
 	components: {
 		ThreadCardUser,
-		Attachments,
+		AttachmentImages,
 		ThreadCardQuickActions,
 		ThreadContents,
 		Player,

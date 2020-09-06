@@ -2,7 +2,7 @@
 	<client-only>
 		<v-card outlined flat>
 			<v-overlay v-if="!hasLogined" absolute :opacity=".1" :value="true">
-				<v-btn @click="login" depressed rounded color="primary">登录来发布或评论</v-btn>
+				<v-btn @click="login" depressed rounded color="primary">登录来继续</v-btn>
 			</v-overlay>
 			<MarkdownEditor
 				@input="pub"

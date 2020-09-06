@@ -6,7 +6,12 @@
 					<v-subheader>推荐的用户</v-subheader>
 				</v-col>
 				<v-col cols="6" class="text-right">
-					<v-btn @click="$router.push('/search/users')" color="primary" small text>更多</v-btn>
+					<v-row>
+						<v-btn :disabled="disableChange" @click="listRecommendUsers(true)" small text>
+							<v-icon left>mdi-sync</v-icon>换一换
+						</v-btn>
+						<v-btn @click="$router.push('/search/users')" color="primary" small text>更多</v-btn>
+					</v-row>
 				</v-col>
 			</v-row>
 			<template v-if="loading">
@@ -64,18 +69,37 @@ export default {
 			this.listRecommendUsers();
 		});
 	},
+	computed: {
+		/**
+		 * 禁止换一换
+		 */
+		disableChange() {
+			const { meta, pageNumber } = this;
+			if (!meta) {
+				return false;
+			}
+
+			return pageNumber >= meta.pageCount ? true : false;
+		},
+	},
 	data() {
 		return {
 			loading: true,
 			pageLimit: 6,
+			pageNumber: 1,
 			recommendUserlist: [],
+			meta: null,
 		};
 	},
 	methods: {
-		async listRecommendUsers() {
-			const { pageLimit } = this;
+		/**
+		 * isChange 换一换
+		 */
+		async listRecommendUsers(isChange) {
+			const { pageLimit, pageNumber } = this;
 
 			const rs = await usersAPI.searchUsers({
+				"page[number]": isChange ? pageNumber + 1 : pageNumber,
 				"page[limit]": pageLimit,
 				//"filter[isReal]": "yes", /// 尝试推荐实名用户
 				"filter[status]": 0, /// 用户状态要正常
@@ -83,6 +107,8 @@ export default {
 			this.loading = false;
 			if (rs) {
 				this.recommendUserlist = rs.data || [];
+				this.meta = rs.meta;
+				this.pageNumber = pageNumber + 1;
 			}
 		},
 		/**

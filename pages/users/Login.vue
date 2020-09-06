@@ -58,8 +58,8 @@
 <script>
 import * as types from "~/store/vuex-types";
 import { mapGetters } from "vuex";
-import WechatLogin from "~/components/users/mixins/WechatLogin.mixins";
-import AlreadyLoginNotice from "~/components/users/mixins/AlreadyLoginNotice.mixins";
+import WechatLogin from "~/components/mixins/users/WechatLogin.mixins";
+import AlreadyLoginNotice from "~/components/mixins/users/AlreadyLoginNotice.mixins";
 
 export default {
 	mixins: [WechatLogin, AlreadyLoginNotice],

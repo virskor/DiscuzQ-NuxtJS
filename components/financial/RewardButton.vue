@@ -30,15 +30,13 @@
 			:amount="$C.formatAmounts(amount)"
 			:thread="thread"
 		></CreateOrderDialog>
-
-		
 	</div>
 </template>
 
 <script>
 import RewardDialogItems from "~/components/financial/RewardDialogItems";
 import CreateOrderDialog from "~/components/financial/orders/CreateOrderDialog";
-import PaymentMixin from "~/components/financial/mixins/Payment.mixin";
+import PaymentMixin from "~/components/mixins/financial/Payment.mixin";
 
 export default {
 	mixins: [PaymentMixin],
@@ -77,7 +75,7 @@ export default {
 			const result = await this.pay(payment.order, payment.method.type);
 
 			this.loading = false;
-			if(result){
+			if (result) {
 				/**
 				 * 支付完成回调
 				 */

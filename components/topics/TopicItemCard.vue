@@ -27,7 +27,7 @@
 		></ThreadContents>
 
 		<!--附件-->
-		<Attachments grid :attachments="attachments"></Attachments>
+		<AttachmentImages grid :attachments="attachments"></AttachmentImages>
 
 		<!--话题热度概览-->
 		<p class="v-list-item__subtitle pl-4">
@@ -39,7 +39,7 @@
 
 <script>
 import ThreadContents from "~/components/threads/ThreadContents";
-import Attachments from "~/components/attachments/Attachments";
+import AttachmentImages from "~/components/attachments/AttachmentImages";
 
 export default {
 	props: {
@@ -62,7 +62,7 @@ export default {
 	},
 	components: {
 		ThreadContents,
-		Attachments,
+		AttachmentImages,
 	},
 };
 </script>

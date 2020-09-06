@@ -58,8 +58,8 @@ import * as types from "~/store/vuex-types";
 import { mapGetters } from "vuex";
 import Captcha from "~/utils/captcha";
 import smsAPI from "~/api/sms";
-import WechatLogin from "~/components/users/mixins/WechatLogin.mixins";
-import AlreadyLoginNotice from "~/components/users/mixins/AlreadyLoginNotice.mixins";
+import WechatLogin from "~/components/mixins/users/WechatLogin.mixins";
+import AlreadyLoginNotice from "~/components/mixins/users/AlreadyLoginNotice.mixins";
 
 /**
  * sms verify type

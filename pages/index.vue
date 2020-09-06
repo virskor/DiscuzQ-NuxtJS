@@ -4,11 +4,10 @@
 			<ThreadsFilters />
 		</AppTitle>
 		<v-alert class="ma-0" tile text dense dark type="info">
-			第三方PC模板，现在您可以使用的功能并不完整。这个项目不保证上线时间。演示数据来自discuz.chat
+			第三方PC模板，现在您可以使用的功能并不完整，亦或者存在BUG。我们将于9月15日左右发布。演示数据来自discuz.chat
 		</v-alert>
 
 		<v-container fluid>
-			<Editor lightMode></Editor>
 			<ThreadList/>
 		</v-container>
 	</div>
@@ -19,7 +18,6 @@ import * as types from "~/store/vuex-types";
 import { mapGetters } from "vuex";
 
 import ThreadList from "~/components/threads/ThreadsList";
-import Editor from "~/components/editor/Editor";
 import ThreadsFilters from "~/components/threads/ThreadsFilters";
 
 export default {
@@ -29,7 +27,7 @@ export default {
 		};
 	},
 
-	components: { ThreadList, Editor, ThreadsFilters },
+	components: { ThreadList, ThreadsFilters },
 
 	computed: {
 		...mapGetters({
