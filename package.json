@@ -11,7 +11,9 @@
   "scripts": {
     "dev": "node ./discuz.serve.js",
     "build": "nuxt build",
+    "build-spa": "nuxt build --spa",
     "start": "nuxt start",
+    "start-spa": "nuxt start --spa",
     "serve": "cross-env NODE_ENV=production node ./discuz.serve.js",
     "generate": "nuxt generate",
     "test": "jest",

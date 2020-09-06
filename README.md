@@ -4,7 +4,10 @@ DiscuzQ 基于NuxtJS并支持后端渲染的PC HOME，来自第三方。
 
 ## 版权提示
 目前我们将抽出部分PR，先完成一个Lite的版本，仅支持渲染帖子部分基础功能，后续将逐渐拓展feature。  
-本打算出个Pro收费的。收毛费，免费，随便玩
+本打算出个Pro收费的。收毛费，免费，随便玩。  
+谢谢打赏  
+<p><img width="200px" src="./assets/wechat.png"/> </p>
+
 
 ### 已预授权域名查询（赞助者）
 www.dehong.ren  
@@ -32,6 +35,7 @@ yarn serve
 ```  
 然后访问 http://127.0.0.1:3333 即可使用，nginx配置参考nginx.frontend.conf
 
+### 构建方式
 ```bash
 # install dependencies
 $ yarn install
@@ -44,6 +48,9 @@ $ yarn dev
 # 参考nuxt.js命令进行编译
 $ yarn build
 
+# 如果要生成单页面应用
+$ yarn build-spa
+
 # 注意：yarn serve 会开启 后端api 代理，如果不需要则使用yarn start
 # 生产环境下，请使用yarn serve来运行，这样便可以SSR
 $ yarn serve
@@ -52,6 +59,9 @@ $ yarn serve
 # 直接将Nuxtjs作为中间件运行在express.js，并不支持SSR
 # 通常用于测试生产下是否能够正常运行，在进行部署
 $ yarn start
+
+# 单页面应用
+$ yarn start-spa
 
 # generate static project
 $ yarn generate
