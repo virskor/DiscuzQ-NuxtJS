@@ -1,14 +1,6 @@
 <template>
 	<div>
-		<v-row v-if="subHeader" align="center">
-			<v-col cols="6">
-				<v-subheader>站点信息</v-subheader>
-			</v-col>
-			<v-col cols="6" class="text-right">
-				<v-btn @click="$router.push('/views/siteinfo')" color="primary" small text>更多</v-btn>
-			</v-col>
-		</v-row>
-		<v-card v-if="forum" class="text-center" tile flat>
+		<div v-if="forum" class="text-center" tile flat>
 			<!--允许嵌入-->
 			<slot/>
 
@@ -32,7 +24,7 @@
 					</p>
 				</v-col>
 			</v-row>
-		</v-card>
+		</div>
 	</div>
 </template>
 

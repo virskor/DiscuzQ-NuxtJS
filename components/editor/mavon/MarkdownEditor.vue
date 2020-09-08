@@ -191,6 +191,7 @@ export default {
 .markdown-editor {
 	.v-note-wrapper {
 		min-height: 100px !important;
+		border-radius: 0;
 	}
 }
 </style>

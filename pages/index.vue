@@ -1,14 +1,25 @@
 <template>
 	<div>
-		<AppTitle  :title="`${forum.attributes.set_site.site_name || '首页'}`">
+		<AppTitle :title="`${forum.attributes.set_site.site_name || '首页'}`">
 			<ThreadsFilters />
 		</AppTitle>
-		<v-alert class="ma-0" tile text dense dark type="info">
-			第三方PC模板，现在您可以使用的功能并不完整，亦或者存在BUG。我们将于9月15日左右发布。演示数据来自discuz.chat
-		</v-alert>
+		<v-alert
+			class="ma-0"
+			tile
+			text
+			dense
+			dark
+			type="info"
+		>第三方PC模板，现在您可以使用的功能并不完整，亦或者存在BUG。我们将于9月15日左右发布。演示数据来自discuz.chat</v-alert>
 
 		<v-container fluid>
-			<ThreadList/>
+			<v-card flat>
+				<Editor lightMode></Editor>
+			</v-card>
+		</v-container>
+
+		<v-container fluid>
+			<ThreadList />
 		</v-container>
 	</div>
 </template>
@@ -19,6 +30,7 @@ import { mapGetters } from "vuex";
 
 import ThreadList from "~/components/threads/ThreadsList";
 import ThreadsFilters from "~/components/threads/ThreadsFilters";
+import Editor from "~/components/editor/Editor";
 
 export default {
 	head() {
@@ -27,7 +39,7 @@ export default {
 		};
 	},
 
-	components: { ThreadList, ThreadsFilters },
+	components: { ThreadList, ThreadsFilters, Editor },
 
 	computed: {
 		...mapGetters({

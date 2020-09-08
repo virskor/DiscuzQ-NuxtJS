@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<v-card flat tile>
+		<div>
 			<v-row align="center">
 				<v-col cols="6">
 					<v-subheader>推荐的用户</v-subheader>
@@ -54,7 +54,7 @@
 					</v-list>
 				</template>
 			</template>
-		</v-card>
+		</div>
 	</div>
 </template>
 

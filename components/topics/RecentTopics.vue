@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<v-card flat tile>
+		<div>
 			<v-row align="center">
 				<v-col cols="6">
 					<v-subheader>时下流行的话题</v-subheader>
@@ -29,8 +29,8 @@
 					</center>
 				</template>
 				<template v-else>
-					<v-row class="pl-3">
-						<v-col cols="6" class="pa-1" v-for="(topic, i) in topicsList" :key="i">
+					<v-list dense>
+						<v-list-item cols="6" class="pa-1" v-for="(topic, i) in topicsList" :key="i">
 							<nuxt-link :to="`/topics/${topic.id}`">
 								<v-chip class="clickable" outlined color="transparent" text-color="primary">
 									<v-avatar color="primary" left>
@@ -39,11 +39,11 @@
 									{{topic.attributes.content}}
 								</v-chip>
 							</nuxt-link>
-						</v-col>
-					</v-row>
+						</v-list-item>
+					</v-list>
 				</template>
 			</template>
-		</v-card>
+		</div>
 	</div>
 </template>
 

@@ -1,25 +1,23 @@
 <template>
-	<div>
-		<div class="app-title">
-			<v-toolbar dense :color="appbarColor" :dark="appConf.appbarDark" flat>
-				<v-btn v-if="showArrow && $route.path != '/'" @click="$router.go(-1)" color="primary" icon>
-					<v-icon>mdi-arrow-left</v-icon>
-				</v-btn>
+	<v-app-bar :color="appbarColor || 'white'" app flat class="app-title">
+		<v-toolbar :color="appbarColor || 'white'" :dark="appConf.appbarDark" dense flat>
+			<v-btn v-if="showArrow && $route.path != '/'" @click="$router.go(-1)" color="primary" icon>
+				<v-icon>mdi-arrow-left</v-icon>
+			</v-btn>
 
-				<v-toolbar-title class="font-weight-black">{{title}}</v-toolbar-title>
-				<v-spacer />
+			<v-toolbar-title class="font-weight-black">{{title}}</v-toolbar-title>
+			<v-spacer />
 
-				<slot />
+			<slot />
 
-				<!--拓展菜单-->
-				<ExtendedNav v-if="!hideExtendedNav"></ExtendedNav>
+			<!--拓展菜单-->
+			<ExtendedNav v-if="!hideExtendedNav"></ExtendedNav>
 
-				<!--用户登录状态栏-->
-				<UserStatusBar />
-			</v-toolbar>
-		</div>
+			<!--用户登录状态栏-->
+			<UserStatusBar />
+		</v-toolbar>
 		<ClassicalNav v-if="appConf.classicalTheme"></ClassicalNav>
-	</div>
+	</v-app-bar>
 </template>
 
 <script>
@@ -86,6 +84,13 @@ export default {
 <style lang="less">
 .app-title {
 	border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
-	box-shadow: 0 2px 7px 0 rgba(5,34,97,.1);
+	z-index: 9!important;
+	.v-toolbar__content{
+		margin: 0;
+		padding:0;
+		header{
+			padding: 0px 16px;
+		}
+	}
 }
 </style>

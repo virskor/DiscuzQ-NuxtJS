@@ -1,19 +1,17 @@
 <template>
 	<keep-alive>
-		<v-navigation-drawer clipped class="end-drawer" :width="300" app v-model="show" right>
-			<v-toolbar v-if="$route.path.indexOf('/search/') < 0" dense elevation="0">
+		<v-navigation-drawer class="end-drawer" :width="300" app v-model="show" right>
+			<v-toolbar v-if="$route.path.indexOf('/search/') < 0" elevation="0">
 				<SearchField />
 			</v-toolbar>
 
-			<v-card tile flat>
-				<v-list>
-					<SiteInfo subHeader></SiteInfo>
-					<v-divider></v-divider>
+			<v-list>
+				<SiteInfo subHeader></SiteInfo>
+				<v-divider></v-divider>
 
-					<RecentTopics></RecentTopics>
-					<UserRecommendList></UserRecommendList>
-				</v-list>
-			</v-card>
+				<RecentTopics></RecentTopics>
+				<UserRecommendList></UserRecommendList>
+			</v-list>
 		</v-navigation-drawer>
 	</keep-alive>
 </template>

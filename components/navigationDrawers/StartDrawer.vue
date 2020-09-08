@@ -1,48 +1,43 @@
 <template>
 	<keep-alive>
-		<v-navigation-drawer class="start-drawer" :width="300" v-model="show" clipped app>
-			<v-toolbar dense elevation="0">
+		<v-navigation-drawer class="start-drawer" :width="300" v-model="show" app>
+			<v-toolbar elevation="0">
 				<AppLogo />
 				<v-spacer></v-spacer>
-				<v-btn
-					@click="$router.push('/views/editor')"
-					depressed
-					color="primary"
-					rounded
-				><v-icon left>mdi-plus-circle-outline</v-icon>发帖</v-btn>
+				<v-btn @click="$router.push('/views/editor')" depressed color="primary" rounded>
+					<v-icon left>mdi-plus-circle-outline</v-icon>发帖
+				</v-btn>
 			</v-toolbar>
-			<v-card tile flat>
-				<v-list>
-					<template v-for="(item, i) in navigationItems">
-						<template v-if="item.shouldLogin && !hasLogined"></template>
-						<template v-else>
-							<v-divider v-if="item.divider" :key="i" dark></v-divider>
-							<v-list-item :ripple="false" @click="onSelected(item)" v-else :key="i">
-								<v-list-item-action v-if="item.icon">
-									<i
-										:class="!item.color && $route.path == item.route ? `primary--text iconfont icon-menu ${item.icon}`:`iconfont icon-menu ${item.icon}`"
-									></i>
-								</v-list-item-action>
-								<v-list-item-content>
-									<v-list-item-title
-										:class="!item.color &&  $route.path == item.route  ? 'primary--text font-weight-bold' : 'font-weight-bold'"
-									>
-										<v-badge
-											v-if="item.notificationBadge && !$_.isEmpty(typeUnreadNotifications)"
-											color="red"
-											dot
-										>{{ item.text }}</v-badge>
-										<span v-else>{{ item.text }}</span>
-									</v-list-item-title>
-								</v-list-item-content>
-							</v-list-item>
-						</template>
+			<v-list>
+				<template v-for="(item, i) in navigationItems">
+					<template v-if="item.shouldLogin && !hasLogined"></template>
+					<template v-else>
+						<v-divider v-if="item.divider" :key="i" dark></v-divider>
+						<v-list-item :ripple="false" @click="onSelected(item)" v-else :key="i">
+							<v-list-item-action v-if="item.icon">
+								<i
+									:class="!item.color && $route.path == item.route ? `primary--text iconfont icon-menu ${item.icon}`:`iconfont icon-menu ${item.icon}`"
+								></i>
+							</v-list-item-action>
+							<v-list-item-content>
+								<v-list-item-title
+									:class="!item.color &&  $route.path == item.route  ? 'primary--text font-weight-bold' : 'font-weight-bold'"
+								>
+									<v-badge
+										v-if="item.notificationBadge && !$_.isEmpty(typeUnreadNotifications)"
+										color="red"
+										dot
+									>{{ item.text }}</v-badge>
+									<span v-else>{{ item.text }}</span>
+								</v-list-item-title>
+							</v-list-item-content>
+						</v-list-item>
 					</template>
-					<v-list-item>
-						<DarkSwitcher showLabel></DarkSwitcher>
-					</v-list-item>
-				</v-list>
-			</v-card>
+				</template>
+				<v-list-item>
+					<DarkSwitcher showLabel></DarkSwitcher>
+				</v-list-item>
+			</v-list>
 		</v-navigation-drawer>
 	</keep-alive>
 </template>
