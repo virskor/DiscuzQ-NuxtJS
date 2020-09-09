@@ -83,6 +83,16 @@ export default {
 			method: null,
 		};
 	},
+	mounted(){
+		this.$nextTick(()=>{
+			/**
+			 * 默认选中
+			 */
+			
+			const {paymentMethods} = this;
+			this.method = paymentMethods[0];
+		});
+	},
 	methods: {
 		/**
 		 * 关闭并停止创建订单
