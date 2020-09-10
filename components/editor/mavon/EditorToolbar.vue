@@ -45,6 +45,7 @@
 		<EditorImagesUploader
 			@attachments="(a) => $emit('attachments', a)"
 			@del-attachments="(a) => $emit('del-attachments', a)"
+			:uploadType="uploadTypes.UPLOAD_TYPE_THREAD_IMAGES"
 			v-show="showEditorImagesUploader"
 		></EditorImagesUploader>
 	</div>
@@ -53,7 +54,8 @@
 <script>
 import CategoriesSelectionList from "~/components/categories/CategoriesSelectionList";
 import EditorEmojiList from "~/components/editor/mavon/EditorEmojiList";
-import EditorImagesUploader from "~/components/editor/mavon/EditorImagesUploader";
+import EditorImagesUploader from "~/components/editor/uploader/EditorImagesUploader";
+import attachmentsAPI from "~/api/attachments";
 
 export default {
 	props: {
@@ -106,6 +108,11 @@ export default {
 			 * show EditorImagesUploader
 			 */
 			showEditorImagesUploader: false,
+
+			/**
+			 * 上传类型
+			 */
+			uploadTypes: attachmentsAPI.types
 		};
 	},
 	computed: {
