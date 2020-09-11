@@ -84,11 +84,11 @@ export default {
 <style lang="less">
 .app-title {
 	border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
-	z-index: 9!important;
-	.v-toolbar__content{
+	z-index: 9 !important;
+	.v-toolbar__content {
 		margin: 0;
-		padding:0;
-		header{
+		padding: 0;
+		header {
 			padding: 0px 16px;
 		}
 	}

@@ -16,12 +16,18 @@
 			<v-list>
 				<v-list-item>
 					<v-card flat tile>
-						<p class="text-h5">2020-09-11</p>
-						<p>新增图片上传</p>
+						<p class="text-h5">2020-09-12</p>
 						<p>计划完成的：新增附件上传</p>
 						<p>计划完成的：新增视频上传</p>
 						<p>计划完成的：非图片的附件渲染</p>
 						<p>计划完成的：个人资料</p>
+					</v-card>
+				</v-list-item>
+				<v-list-item>
+					<v-card flat tile>
+						<p class="text-h5">2020-09-11</p>
+						<p>新增图片上传</p>
+						<p>收起顶置的帖子</p>
 					</v-card>
 				</v-list-item>
 				<v-list-item>

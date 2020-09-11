@@ -1,7 +1,7 @@
 <template>
 	<div class="text-center mt-3 ">
-		<v-btn :disabled="canContinue" color="primary" rounded :loading="waiting" text @click="next">
-			{{!canContinue ? (caption || '加载更多'): '没有更多了'}}
+		<v-btn :disabled="canContinue" color="primary" rounded outlined :loading="waiting" @click="next">
+			{{!canContinue ? (caption || '查看更多'): '没有更多了'}}
 			<slot />
 		</v-btn>
 	</div>

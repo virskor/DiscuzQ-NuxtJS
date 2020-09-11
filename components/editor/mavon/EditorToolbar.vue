@@ -108,6 +108,7 @@ export default {
 			 * show EditorImagesUploader
 			 */
 			showEditorImagesUploader: false,
+			
 
 			/**
 			 * 上传类型

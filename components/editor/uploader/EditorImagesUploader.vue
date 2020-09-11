@@ -1,8 +1,9 @@
 <template>
 	<div class="pa-3">
 		<v-divider></v-divider>
-		<!--预览已经上传的附件-->
+		<!--预览已经上传的附件 仅上传为图片时-->
 		<AttachmentImages
+			v-if="uploadType == uploadTypes.UPLOAD_TYPE_THREAD_IMAGES"
 			class="mt-4"
 			unLimited
 			canRemove
@@ -116,7 +117,6 @@ export default {
 		 */
 		async removeAttachment(a) {
 			const { attachments } = this;
-			
 
 			if (this.$_.isEmpty(a)) {
 				return;

@@ -2,8 +2,9 @@
 	<!--收藏-->
 	<v-btn :loading="loading" color="transparent" @click="favorite" depressed>
 		<i
-			:class="`iconfont ${ isFavorite ? 'icon-collection-fill amber--text':'icon-collection'} icon-medium`"
+			:class="`iconfont ${ isFavorite ? 'icon-collection-fill amber--text':'icon-collection'} v-icon notranslate v-icon--left`"
 		></i>
+		收藏
 	</v-btn>
 </template>
 

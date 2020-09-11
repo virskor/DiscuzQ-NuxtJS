@@ -39,7 +39,7 @@ export default {
 		};
 	},
 
-	components: { ThreadList, ThreadsFilters, Editor },
+	components: { ThreadList, ThreadsFilters, Editor, },
 
 	computed: {
 		...mapGetters({

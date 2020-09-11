@@ -17,7 +17,7 @@
 
 			<!--分享-->
 			<v-btn color="transparent" @click="share" depressed>
-				<v-icon>mdi-share-outline</v-icon>
+				<v-icon left>mdi-share-outline</v-icon> 分享
 			</v-btn>
 
 			<!--拓展菜单，包含编辑等功能-->

@@ -30,7 +30,7 @@
 				</template>
 				<template v-else>
 					<v-list dense>
-						<v-list-item cols="6" class="pa-1" v-for="(topic, i) in topicsList" :key="i">
+						<v-list-item  dense cols="6" class="pa-0 pr-2 pl-2" v-for="(topic, i) in topicsList" :key="i">
 							<nuxt-link :to="`/topics/${topic.id}`">
 								<v-chip class="clickable" outlined color="transparent" text-color="primary">
 									<v-avatar color="primary" left>
@@ -39,6 +39,10 @@
 									{{topic.attributes.content}}
 								</v-chip>
 							</nuxt-link>
+							<v-spacer></v-spacer>
+							<v-list-item-action>
+								<span class="v-list-item__subtitle">{{topic.attributes.thread_count}}</span>
+							</v-list-item-action>
 						</v-list-item>
 					</v-list>
 				</template>

@@ -1,6 +1,5 @@
 <template>
 	<v-toolbar color="mb-2" flat rounded>
-		<SearchField></SearchField>
 		<v-spacer></v-spacer>
 		<v-btn depressed>
 			快捷导弹
@@ -10,13 +9,11 @@
 </template>
 
 <script>
-import SearchField from "~/components/SearchField";
 import NavigationItems from "~/components/navigationDrawers/NavigationItems";
 
 export default {
     mixins: [NavigationItems],
 	components: {
-		SearchField,
 	},
 };
 </script>

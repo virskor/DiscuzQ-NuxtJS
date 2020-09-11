@@ -46,9 +46,15 @@
 							</v-list-item-content>
 
 							<v-list-item-icon>
-								<v-btn :ripple="false" icon rounded @click="visit(user)" small>
-									<v-icon>mdi-chevron-right</v-icon>
-								</v-btn>
+								<v-btn
+									:ripple="false"
+									depressed
+									color="primary"
+									text
+									rounded
+									@click="visit(user)"
+									small
+								>查看TA</v-btn>
 							</v-list-item-icon>
 						</v-list-item>
 					</v-list>

@@ -3,7 +3,6 @@
 		flat
 		solo-inverted
 		hide-details
-		rounded
 		dense
 		prepend-inner-icon="mdi-magnify"
 		label="输入关键字搜索"
