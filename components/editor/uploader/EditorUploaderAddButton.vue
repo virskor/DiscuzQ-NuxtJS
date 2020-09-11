@@ -1,9 +1,9 @@
 <template>
 	<div>
-		<v-btn @click="pick" class="ma-4" :loading="loading" depressed>
+		<v-btn rounded color="primary" @click="pick" class="mt-4" :loading="loading" depressed>
 			<v-icon left>mdi-plus</v-icon>添加
 		</v-btn>
-		<input hidden @change="upload" name="file" :accept="accept" id="file-picker" type="file" />
+		<input hidden @input="upload" name="file" :accept="accept" id="file-picker" type="file" />
 	</div>
 </template>
 

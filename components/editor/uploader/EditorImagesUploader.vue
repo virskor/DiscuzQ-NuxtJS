@@ -1,14 +1,18 @@
 <template>
 	<div class="pa-3">
 		<v-divider></v-divider>
-		<v-row>
-			<!--预览已经上传的附件-->
-			<v-card v-for="(a, i) in attachments" flat :key="i">
-				<EditorUploaderPreview @del-attachments="removeAttachment" :attachment="a"></EditorUploaderPreview>
-			</v-card>
+		<!--预览已经上传的附件-->
+		<AttachmentImages
+			class="mt-4"
+			unLimited
+			canRemove
+			grid
+			@del-attachments="removeAttachment"
+			:attachments="attachments"
+		></AttachmentImages>
 
-			<EditorUploaderAddButton :uploadType="type" @attachment="addAttachment"></EditorUploaderAddButton>
-		</v-row>
+		<EditorUploaderAddButton :uploadType="type" @attachment="addAttachment"></EditorUploaderAddButton>
+
 		<div class="mt-3">温馨提示：上传的{{uploadTypeCaption}}不应该涉及违规，版权争议等违反用户协议的内容，否则将承担法律责任。</div>
 	</div>
 </template>
@@ -19,6 +23,7 @@
 import attachmentsAPI from "~/api/attachments";
 import EditorUploaderAddButton from "~/components/editor/uploader/EditorUploaderAddButton";
 import EditorUploaderPreview from "~/components/editor/uploader/EditorUploaderPreview";
+import AttachmentImages from "~/components/attachments/AttachmentImages";
 
 export default {
 	props: {
@@ -109,11 +114,23 @@ export default {
 		/**
 		 * 移除附件
 		 */
-		removeAttachment(a) {},
+		async removeAttachment(a) {
+			const { attachments } = this;
+			
+
+			if (this.$_.isEmpty(a)) {
+				return;
+			}
+
+			await attachmentsAPI.delete(a);
+
+			this.attachments = attachments.filter((el) => el.id != a.id);
+		},
 	},
 	components: {
 		EditorUploaderAddButton,
 		EditorUploaderPreview,
+		AttachmentImages,
 	},
 };
 </script>

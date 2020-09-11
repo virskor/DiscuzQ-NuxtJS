@@ -20,7 +20,7 @@
 			渲染图片
 			如果是顶置的帖子，那么就不渲染附件
 			-->
-			<AttachmentImages grid v-if="!thread.attributes.isSticky" :attachments="attachments"></AttachmentImages>
+			<AttachmentImages class="pl-5 pr-5" grid v-if="!thread.attributes.isSticky" :attachments="attachments"></AttachmentImages>
 
 			<!--渲染视频-->
 			<Player class="pl-5 pr-5 mt-2 rounded-lg" :threadVideo="threadVideo"></Player>

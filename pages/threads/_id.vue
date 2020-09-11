@@ -45,7 +45,7 @@
 						:firstPost="firstPost"
 					></ThreadContents>
 					<!--附件-->
-					<AttachmentImages :attachments="attachments"></AttachmentImages>
+					<AttachmentImages class="pl-5 pr-5" :attachments="attachments"></AttachmentImages>
 
 					<div>
 						<!--打赏-->

@@ -268,10 +268,17 @@ export default {
 					free_words: 0,
 				},
 				relationships: {
-					attachments,
+					attachments: {
+						data: attachments,
+					},
 					category,
 				},
 			};
+
+			// 调试用
+			// debugger
+			// console.log(data);
+			// return;
 
 			/**
 			 * 补全腾讯云验证码
@@ -318,7 +325,9 @@ export default {
 				type: "posts",
 				attributes: { content },
 				relationships: {
-					attachments,
+					attachments: {
+						data: attachments,
+					},
 					thread: {
 						data: {
 							type: "threads",
@@ -370,18 +379,17 @@ export default {
 		 * 新增附件
 		 */
 		addAttachments(a) {
-			this.attachments.push(a);
+			this.attachments.push({ type: "attachments", id: a.id });
 		},
 		/**
 		 * 移除附件
 		 */
-		async removeAttachments(a) {
+		removeAttachments(a) {
 			const { attachments } = this;
 
 			if (this.$_.isEmpty(a)) {
 				return;
 			}
-			await attachmentsAPI.delete(a.id);
 
 			this.attachments = attachments.filter((el) => el.id != a.id);
 		},
