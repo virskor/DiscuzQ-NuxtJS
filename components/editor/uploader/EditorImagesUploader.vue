@@ -3,11 +3,11 @@
 		<v-divider></v-divider>
 		<v-row>
 			<!--预览已经上传的附件-->
-			<v-card v-for="(a, i) in attachments" :key="i">
-				<EditorUploaderPreview @del-attachments="remove" :attachment="a"></EditorUploaderPreview>
+			<v-card v-for="(a, i) in attachments" flat :key="i">
+				<EditorUploaderPreview @del-attachments="removeAttachment" :attachment="a"></EditorUploaderPreview>
 			</v-card>
 
-			<EditorUploaderAddButton :uploadType="type" @add="add"></EditorUploaderAddButton>
+			<EditorUploaderAddButton :uploadType="type" @attachment="addAttachment"></EditorUploaderAddButton>
 		</v-row>
 		<div class="mt-3">温馨提示：上传的{{uploadTypeCaption}}不应该涉及违规，版权争议等违反用户协议的内容，否则将承担法律责任。</div>
 	</div>
@@ -98,7 +98,7 @@ export default {
 		/**
 		 * 添加附件
 		 */
-		add(a) {
+		addAttachment(a) {
 			if (this.$_.isEmpty(a)) {
 				return;
 			}
@@ -109,7 +109,7 @@ export default {
 		/**
 		 * 移除附件
 		 */
-		remove(a) {},
+		removeAttachment(a) {},
 	},
 	components: {
 		EditorUploaderAddButton,

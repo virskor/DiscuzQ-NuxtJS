@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<v-btn @click="pick" class="ma-4" depressed>
+		<v-btn @click="pick" class="ma-4" :loading="loading" depressed>
 			<v-icon left>mdi-plus</v-icon>添加
 		</v-btn>
 		<input hidden @change="upload" name="file" :accept="accept" id="file-picker" type="file" />
@@ -39,21 +39,6 @@ export default {
 			const { uploadType, uploadTypes, forum } = this;
 			const set_attach = forum.attributes.set_attach;
 
-			if (uploadType == uploadTypes.UPLOAD_TYPE_THREAD_VIDEO) {
-				return "video/*";
-			}
-
-			if (uploadType == uploadTypes.UPLOAD_TYPE_THREAD_ATTACHMENT) {
-				return set_attach.support_file_ext;
-			}
-
-			if (
-				uploadType == uploadTypes.UPLOAD_TYPE_THREAD_IMAGES ||
-				uploadType == uploadTypes.UPLOAD_TYPE_MESSAGE_IMAGES
-			) {
-				return set_attach.support_img_ext;
-			}
-
 			return "image/*";
 		},
 	},
@@ -71,6 +56,18 @@ export default {
 		 */
 		async upload(file) {
 			const { uploadType } = this;
+			this.loading = true;
+
+			let formData = new FormData();
+			formData.append("file", file.srcElement.files[0]);
+			formData.append("type", uploadType);
+
+			const rs = await attachmentsAPI.upload(formData);
+			this.loading = false;
+
+			if (rs) {
+				this.$emit("attachment", rs.data);
+			}
 		},
 	},
 };
