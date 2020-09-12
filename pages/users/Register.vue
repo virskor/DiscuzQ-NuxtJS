@@ -2,7 +2,7 @@
 	<div class="registerForm">
 		<AppTitle title="注册"></AppTitle>
 
-		<v-container fluid>
+		<v-container>
 			<v-row v-if="registerClosed" align="center" justify="center">
 				<v-alert dense type="info">注册服务暂停</v-alert>
 			</v-row>

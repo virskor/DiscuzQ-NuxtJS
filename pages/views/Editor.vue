@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<AppTitle showExtendedNav title="编辑器"></AppTitle>
-		<v-container fluid>
+		<v-container>
 			<Editor></Editor>
 		</v-container>
 	</div>

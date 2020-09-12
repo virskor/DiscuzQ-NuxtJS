@@ -2,7 +2,7 @@
 	<div>
 		<AppTitle title="个人资料"></AppTitle>
 
-		<v-container fluid>
+		<v-container>
 			<v-card flat tile>
 				<v-toolbar flat tile>
 					<v-toolbar-title>修改个人资料</v-toolbar-title>

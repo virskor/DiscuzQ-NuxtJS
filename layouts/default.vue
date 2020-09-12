@@ -2,7 +2,7 @@
 	<div class="discuz">
 		<v-app>
 			<!--底部菜单，仅手机显示-->
-			<BottomNavigation @start="() => showStartDrawer = true" @end="() => showEndDrawer = true"></BottomNavigation>
+			<BottomNavigation @start="() => showStartDrawer = true"></BottomNavigation>
 
 			<!--路由渲染-->
 			<v-main app>
@@ -38,9 +38,6 @@
 				<!--路由-->
 				<nuxt :class="nuxtBackground" v-if="forum && !loadForumFailed && !loadingUser"></nuxt>
 
-				<!--经典模式下，不显示-->
-				<EndDrawer v-model="showEndDrawer" />
-
 				<!--返回顶部按钮-->
 				<client-only>
 					<go-top id="goTop" :duration="1000">
@@ -62,7 +59,6 @@ import * as types from "~/store/vuex-types";
 import { mapGetters } from "vuex";
 
 import StartDrawer from "~/components/navigationDrawers/StartDrawer";
-import EndDrawer from "~/components/navigationDrawers/EndDrawer";
 import AppFooter from "~/components/AppFooter";
 import BottomNavigation from "~/components/common/BottomNavigation";
 import DefaultMixins from "~/layouts/default.mixins";
@@ -73,7 +69,6 @@ export default {
 		return {
 			loadForumFailed: false,
 			showStartDrawer: false,
-			showEndDrawer: false,
 			//showbackIcon: false,
 			/**
 			 * loadingUser 结束后，路由才会进行渲染
@@ -129,9 +124,6 @@ export default {
 	methods: {
 		toggleDrawers() {
 			this.showStartDrawer = !this.showStartDrawer;
-			if (!this.$C.isMobile()) {
-				this.showEndDrawer = !this.showEndDrawer;
-			}
 		},
 	},
 	watch: {
@@ -140,7 +132,6 @@ export default {
 		// }
 	},
 	components: {
-		EndDrawer,
 		StartDrawer,
 		AppFooter,
 		BottomNavigation,

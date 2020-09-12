@@ -13,7 +13,7 @@
 			></v-text-field>
 		</AppTitle>
 
-		<v-container fluid>
+		<v-container>
 			<UserSearchList :keyword="keyword"></UserSearchList>
 		</v-container>
 	</div>

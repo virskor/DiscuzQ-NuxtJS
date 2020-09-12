@@ -17,7 +17,7 @@
 		</div>
 		
 		<!--渲染消息列表-->
-		<template v-if="!$_.isEmpty(notifications)">
+		<v-container v-if="!$_.isEmpty(notifications)">
 			<template v-for="(n, i) in notifications">
 				<NotificationItemCard :notification="n" :type="type"  :key="i"></NotificationItemCard>
 			</template>
@@ -29,7 +29,7 @@
 				:length="meta ? meta.pageCount : 1"
 				v-model="pageNumber"
 			></MorePage>
-		</template>
+		</v-container>
 
 		<template v-else>
 			<EmptyBox v-if="!loading"></EmptyBox>

@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div>
+		<v-card tile flat>
 			<v-row align="center">
 				<v-col cols="6">
 					<v-subheader class="font-weight-black">推荐话题</v-subheader>
@@ -47,7 +47,7 @@
 					</v-list>
 				</template>
 			</template>
-		</div>
+		</v-card>
 	</div>
 </template>
 

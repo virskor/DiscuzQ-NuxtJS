@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<AppTitle showExtendedNav title="站点信息"></AppTitle>
-		<v-container fluid>
+		<v-container>
 			<!--顶部-->
 			<SiteInfo>
 				<center>

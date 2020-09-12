@@ -23,7 +23,7 @@
 			</v-btn>
 		</AppTitle>
 
-		<v-container fluid>
+		<v-container>
 			<!--话题列表-->
 			<template>
 				<!--没有可用的数据-->

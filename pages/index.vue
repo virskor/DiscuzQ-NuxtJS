@@ -12,12 +12,20 @@
 			type="info"
 		>第三方PC模板，现在您可以使用的功能并不完整，亦或者存在BUG。我们将于9月15日左右发布。演示数据来自discuz.chat</v-alert>
 
-		<v-container fluid>
+		<v-container>
 			<Editor lightMode></Editor>
 		</v-container>
 
-		<v-container>
-			<ThreadList />
+		<v-container grid-list-md>
+			<v-layout row wrap>
+				<v-flex md12 lg9>
+					<ThreadList />
+				</v-flex>
+
+				<v-flex class="hidden-md-and-down" md3>
+					<HomePageDrawer />
+				</v-flex>
+			</v-layout>
 		</v-container>
 	</div>
 </template>
@@ -29,6 +37,7 @@ import { mapGetters } from "vuex";
 import ThreadList from "~/components/threads/ThreadsList";
 import ThreadsFilters from "~/components/threads/ThreadsFilters";
 import Editor from "~/components/editor/Editor";
+import HomePageDrawer from "~/components/navigationDrawers/HomePageDrawer";
 
 export default {
 	head() {
@@ -37,7 +46,12 @@ export default {
 		};
 	},
 
-	components: { ThreadList, ThreadsFilters, Editor, },
+	components: { 
+		ThreadList, 
+		ThreadsFilters, 
+		Editor, 
+		HomePageDrawer 
+	},
 
 	computed: {
 		...mapGetters({

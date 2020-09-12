@@ -2,7 +2,7 @@
 	<div class="loginForm">
 		<AppTitle title="用户登录"></AppTitle>
 
-		<v-container fluid>
+		<v-container>
 			<v-row align="center" justify="center">
 				<v-col cols="12" sm="12" md="6">
 					<v-card flat>

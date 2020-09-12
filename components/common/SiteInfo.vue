@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div v-if="forum" class="text-center" tile flat>
+		<v-card v-if="forum" class="text-center" tile flat>
 			<!--允许嵌入-->
 			<slot/>
 
@@ -24,7 +24,7 @@
 					</p>
 				</v-col>
 			</v-row>
-		</div>
+		</v-card>
 	</div>
 </template>
 

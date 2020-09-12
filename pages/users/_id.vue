@@ -3,10 +3,10 @@
 		<AppTitle title="用户主页">
 			<ThreadsFilters v-show="false"></ThreadsFilters>
 		</AppTitle>
-		<v-container fluid>
+		<v-container>
 			<UserHomepageBanner :user="currentUser" :group="userGroup"></UserHomepageBanner>
 		</v-container>
-		<v-container fluid>
+		<v-container>
 			<div v-if="!$_.isEmpty(currentUser)">
 				<v-tabs fixed-tabs v-model="tab" color="primary" icons-and-text>
 					<v-tab v-for="item in items" :key="item.tab">
@@ -15,7 +15,7 @@
 					</v-tab>
 				</v-tabs>
 
-				<v-tabs-items v-model="tab">
+				<v-tabs-items color="transparent" v-model="tab">
 					<v-tab-item>
 						<!--主题列表-->
 						<ThreadList class="pa-2" :filterUserID="currentUser.id" />

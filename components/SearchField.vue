@@ -4,8 +4,9 @@
 		solo-inverted
 		hide-details
 		dense
+		rounded
 		prepend-inner-icon="mdi-magnify"
-		label="输入关键字搜索"
+		label="搜索帖子"
 		class="hidden-sm-and-down"
 		v-model="keyword"
 		@keydown.enter="showResult"

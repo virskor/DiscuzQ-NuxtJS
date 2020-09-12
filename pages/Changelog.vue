@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<AppTitle title="更新日志"></AppTitle>
-		<v-container fluid>
+		<v-container>
 			<v-card tile flat>
 				<v-card-title>最新上传的代码</v-card-title>
 				<v-card-subtitle>我们为您列出最近上传的代码中包含的更新。仅为您提供参考，这是第三方的PC DESKTOP版本，暂时无法用于生产。您可以再Github上关注，以便第一时间知道是否可用于生产 {{githubUrl}}。我们所有的功能，将在9月15日前完成。</v-card-subtitle>

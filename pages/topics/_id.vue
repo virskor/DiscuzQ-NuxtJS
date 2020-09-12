@@ -3,7 +3,7 @@
 		<AppTitle title="话题详情">
 			<ThreadsFilters />
 		</AppTitle>
-		<v-container fluid>
+		<v-container>
 			<TopicDetailCard :topicID="topicID"></TopicDetailCard>
 			<ThreadList :topicID="topicID" />
 		</v-container>

@@ -10,10 +10,10 @@
 				>{{cat.attributes.name}}</v-tab>
 			</template>
 		</v-tabs>
-		<v-tabs-items v-model="tab">
+		<v-tabs-items color="transparent" v-model="tab">
 			<template v-for="(cat, i) in categories">
 				<v-tab-item :key="i">
-					<v-container fluid>
+					<v-container>
 						<ThreadList :category="category"></ThreadList>
 					</v-container>
 				</v-tab-item>

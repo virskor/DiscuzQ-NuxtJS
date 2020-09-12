@@ -15,7 +15,7 @@
 			<ThreadsFilters />
 		</AppTitle>
 
-		<v-container fluid>
+		<v-container>
 			<ThreadList
 				:keyword="keyword"
 			></ThreadList>

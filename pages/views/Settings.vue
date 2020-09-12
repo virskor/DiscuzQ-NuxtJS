@@ -3,7 +3,7 @@
 		<AppTitle showExtendedNav title="偏好设置"></AppTitle>
 		<v-alert text tile dense type="info">部分设置在您下次清除浏览器缓存，重新访问时将会失效</v-alert>
 
-		<v-container fluid>
+		<v-container>
 			<v-list>
 				<v-subheader>应用偏好</v-subheader>
 				<v-list-item-group color="primary">
