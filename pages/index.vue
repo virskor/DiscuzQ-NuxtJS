@@ -13,12 +13,10 @@
 		>第三方PC模板，现在您可以使用的功能并不完整，亦或者存在BUG。我们将于9月15日左右发布。演示数据来自discuz.chat</v-alert>
 
 		<v-container fluid>
-			<v-card flat>
-				<Editor lightMode></Editor>
-			</v-card>
+			<Editor lightMode></Editor>
 		</v-container>
 
-		<v-container fluid>
+		<v-container>
 			<ThreadList />
 		</v-container>
 	</div>

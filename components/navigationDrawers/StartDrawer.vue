@@ -1,6 +1,6 @@
 <template>
 	<keep-alive>
-		<v-navigation-drawer class="start-drawer" :width="300" v-model="show" app>
+		<v-navigation-drawer class="start-drawer" :width="280" app v-model="show">
 			<v-toolbar elevation="0">
 				<AppLogo />
 				<v-spacer></v-spacer>

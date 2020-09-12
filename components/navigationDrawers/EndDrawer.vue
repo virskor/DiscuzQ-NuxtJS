@@ -1,6 +1,6 @@
 <template>
 	<keep-alive>
-		<v-navigation-drawer class="end-drawer" :width="300" app v-model="show" right>
+		<v-navigation-drawer class="end-drawer" :width="280" v-model="show" app right>
 			<v-toolbar v-if="$route.path.indexOf('/search/') < 0" elevation="0">
 				<SearchField />
 			</v-toolbar>

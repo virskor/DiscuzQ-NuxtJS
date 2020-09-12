@@ -16,7 +16,7 @@
 			<!--用户登录状态栏-->
 			<UserStatusBar />
 		</v-toolbar>
-		<ClassicalNav v-if="appConf.classicalTheme"></ClassicalNav>
+		<!-- <ClassicalNav v-if="appConf.classicalTheme"></ClassicalNav> -->
 	</v-app-bar>
 </template>
 
@@ -26,7 +26,7 @@ import { mapGetters } from "vuex";
 
 import UserStatusBar from "~/components/users/UserStatusBar";
 import ExtendedNav from "~/components/common/global/ExtendedNav";
-import ClassicalNav from "~/components/common/ClassicalNav";
+//import ClassicalNav from "~/components/common/ClassicalNav";
 
 export default {
 	props: {
@@ -76,7 +76,7 @@ export default {
 	components: {
 		UserStatusBar,
 		ExtendedNav,
-		ClassicalNav,
+		//ClassicalNav,
 	},
 };
 </script>

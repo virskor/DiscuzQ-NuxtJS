@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<v-toolbar class="editor-toolbar" flat dense>
+		<v-toolbar class="editor-toolbar" color="transparent" flat dense>
 			<div class="format-items">
 				<v-menu v-model="showEmojis" :close-on-content-click="false" :nudge-width="200" offset-y>
 					<template v-slot:activator="{ on, attrs }">
@@ -34,7 +34,7 @@
 			</div>
 			<v-spacer></v-spacer>
 
-			<v-btn :ripple="false" v-if="showAdvancedButton" @click="$router.push('/views/editor')" text>高级</v-btn>
+			<v-btn class="hidden-sm-and-down" :ripple="false" v-if="showAdvancedButton" @click="$router.push('/views/editor')" text>高级</v-btn>
 
 			<!--分类选择-->
 			<CategoriesSelectionList @category="(c) => $emit('category', c)" v-if="!isReply"></CategoriesSelectionList>

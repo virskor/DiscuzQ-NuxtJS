@@ -1,6 +1,8 @@
 <template>
 	<div>
 		<Editor @onPosted="loadMorePosts(true)" lightMode :post="relatedPost" :thread="thread"></Editor>
+		
+		<v-divider></v-divider>
 
 		<v-toolbar flat>
 			<v-toolbar-title>评论 ({{meta ? meta.postCount : 0}})</v-toolbar-title>
@@ -9,6 +11,7 @@
 				<PostsFilter @input="loadMorePosts(true)" v-model="sort"></PostsFilter>
 			</v-toolbar-items>
 		</v-toolbar>
+		
 		<!--渲染评论列表-->
 		<template v-if="!$_.isEmpty(posts)">
 			<template v-for="(post, i) in posts">

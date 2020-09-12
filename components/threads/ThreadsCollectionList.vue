@@ -16,7 +16,7 @@
 		<div v-else>
 			<template>
 				<!--帖子列表-->
-				<v-list v-if="!$_.isEmpty(threadsData)">
+				<div v-if="!$_.isEmpty(threadsData)">
 					<v-card flat tile>
 						<v-card-title>{{!meta ? 0 : meta.threadCount}}个收藏</v-card-title>
 					</v-card>
@@ -29,7 +29,7 @@
 						:attachments="mapAttachments(thread)"
 						:threadVideo="mapThreadVideo(thread)"
 					></ThreadCard>
-				</v-list>
+				</div>
 
 				<!--没有数据-->
 				<EmptyBox :refresh="false" v-else-if="!loading"></EmptyBox>

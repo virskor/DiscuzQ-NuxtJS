@@ -3,7 +3,7 @@
 		<div>
 			<v-row align="center">
 				<v-col cols="6">
-					<v-subheader>时下流行的话题</v-subheader>
+					<v-subheader class="font-weight-black">推荐话题</v-subheader>
 				</v-col>
 				<v-col cols="6" class="text-right">
 					<v-btn @click="$router.push('/views/topics')" color="primary" small text>更多</v-btn>

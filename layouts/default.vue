@@ -1,12 +1,6 @@
 <template>
 	<div class="discuz">
-		<v-app :dark="appConf.dark">
-			<!--经典模式下，不显示-->
-			<StartDrawer v-if="!appConf.classicalTheme" v-model="showStartDrawer" />
-
-			<!--经典模式下，不显示-->
-			<EndDrawer v-if="!appConf.classicalTheme" v-model="showEndDrawer" />
-
+		<v-app>
 			<!--底部菜单，仅手机显示-->
 			<BottomNavigation @start="() => showStartDrawer = true" @end="() => showEndDrawer = true"></BottomNavigation>
 
@@ -38,9 +32,14 @@
 					</v-sheet>
 				</template>
 
-				<!--经典模式下，增加v-container-->
-				<nuxt v-if="forum && !loadForumFailed && !loadingUser && !appConf.classicalTheme"></nuxt>
-				<nuxt-child v-else-if="forum && !loadForumFailed && !loadingUser"></nuxt-child>
+				<!--经典模式下，不显示-->
+				<StartDrawer v-model="showStartDrawer" />
+
+				<!--路由-->
+				<nuxt :class="nuxtBackground" v-if="forum && !loadForumFailed && !loadingUser"></nuxt>
+
+				<!--经典模式下，不显示-->
+				<EndDrawer v-model="showEndDrawer" />
 
 				<!--返回顶部按钮-->
 				<client-only>
@@ -110,6 +109,18 @@ export default {
 			appConf: types.GETTERS_APPCONF,
 			forum: types.GETTERS_FORUM,
 		}),
+		/**
+		 * router background
+		 */
+		nuxtBackground(){
+			const {appConf} = this;
+
+			if(appConf.dark){
+				return 'black';
+			}
+
+			return 'grey lighten-4 fill-height';
+		},
 		siteClosed() {
 			const { forum } = this;
 			return forum == null ? false : forum.attributes.set_site.site_close;
@@ -139,7 +150,7 @@ export default {
 
 <style lang="less">
 .discuz {
-	.theme--light.v-app-bar.v-toolbar.v-sheet {
+	.v-app-bar.v-toolbar.v-sheet {
 		border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
 		//box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.02), 0px 4px 5px 0px rgba(0, 0, 0, 0.04), 0px 1px 10px 0px rgba(0, 0, 0, 0.22) !important;
 	}

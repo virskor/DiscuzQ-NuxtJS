@@ -16,7 +16,7 @@
 		<div v-else>
 			<template>
 				<!--帖子列表-->
-				<v-list v-if="!$_.isEmpty(threadsData)">
+				<div v-if="!$_.isEmpty(threadsData)">
 					<ThreadCard
 						v-for="(thread, i) in threadsData.data"
 						:key="i"
@@ -26,7 +26,7 @@
 						:attachments="mapAttachments(thread)"
 						:threadVideo="mapThreadVideo(thread)"
 					></ThreadCard>
-				</v-list>
+				</div>
 
 				<!--没有数据-->
 				<EmptyBox :refresh="false" v-else-if="!loading"></EmptyBox>

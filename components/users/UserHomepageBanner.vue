@@ -1,5 +1,5 @@
 <template>
-	<v-card class="mx-auto userHomePageBanner" tile flat>
+	<v-card class="mx-auto userHomePageBanner pa-4" tile flat>
 		<v-list-item class="grow">
 			<v-list-item-avatar :size="60" tile>
 				<Avatar :user="user"></Avatar>
@@ -14,17 +14,16 @@
 			</v-list-item-content>
 
 			<v-list-item-action>
-				<SendPrivateMessageButton :targetUser="user"></SendPrivateMessageButton>
-			</v-list-item-action>
-		</v-list-item>
-		<v-card-actions>
-			<v-row>
+				<v-row>
 					<!--关注按钮-->
 					<UserFollowButton :user="user"></UserFollowButton>
 					<!--关注按钮-->
 					<UsersModifyProfilesButton :relatedUser="user"></UsersModifyProfilesButton>
+					<!--发私信-->
+					<SendPrivateMessageButton :targetUser="user"></SendPrivateMessageButton>
 				</v-row>
-		</v-card-actions>
+			</v-list-item-action>
+		</v-list-item>
 	</v-card>
 </template>
 
@@ -52,7 +51,7 @@ export default {
 		Avatar,
 		UserFollowButton,
 		UsersModifyProfilesButton,
-		SendPrivateMessageButton
+		SendPrivateMessageButton,
 	},
 	computed: {
 		...mapGetters({

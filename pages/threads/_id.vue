@@ -28,7 +28,7 @@
 		<!--渲染视频-->
 		<Player v-if="threadVideo" class="pa-4" block height="600" :threadVideo="threadVideo"></Player>
 
-		<v-container fluid>
+		<v-container>
 			<!--渲染发布用户的信息-->
 			<ThreadCardUser :firstPost="firstPost" :user="author" allowFollow></ThreadCardUser>
 
@@ -39,11 +39,7 @@
 			如果是顶置的帖子，那么就不渲染内容
 				-->
 				<v-card tile flat>
-					<ThreadContents
-						class="pl-5 pr-5 text mb-3"
-						:thread="thread"
-						:firstPost="firstPost"
-					></ThreadContents>
+					<ThreadContents class="pl-5 pr-5 text mb-3" :thread="thread" :firstPost="firstPost"></ThreadContents>
 					<!--附件-->
 					<AttachmentImages class="pl-5 pr-5" :attachments="attachments"></AttachmentImages>
 
@@ -62,7 +58,9 @@
 					<ThreadCardQuickActions showExt showViewCount :firstPost="firstPost" :thread="thread"></ThreadCardQuickActions>
 				</v-card>
 			</template>
+		</v-container>
 
+		<v-container>
 			<!--评论列表-->
 			<PostsList v-if="!$_.isEmpty(thread)" :thread="thread"></PostsList>
 		</v-container>

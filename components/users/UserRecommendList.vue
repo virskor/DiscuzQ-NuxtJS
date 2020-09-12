@@ -3,10 +3,11 @@
 		<div>
 			<v-row align="center">
 				<v-col cols="6">
-					<v-subheader>推荐的用户</v-subheader>
+					<v-subheader class="font-weight-black">推荐的用户</v-subheader>
 				</v-col>
 				<v-col cols="6" class="text-right">
 					<v-row>
+						<v-spacer></v-spacer>
 						<v-btn :disabled="disableChange" @click="listRecommendUsers(true)" small text>
 							<v-icon left>mdi-sync</v-icon>换一换
 						</v-btn>
