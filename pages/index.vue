@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<AppTitle :title="`${forum.attributes.set_site.site_name || '首页'}`">
+			<SearchField/>
 			<ThreadsFilters />
 		</AppTitle>
 		<v-alert
@@ -50,7 +51,7 @@ export default {
 		ThreadList, 
 		ThreadsFilters, 
 		Editor, 
-		HomePageDrawer 
+		HomePageDrawer,
 	},
 
 	computed: {

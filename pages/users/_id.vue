@@ -15,7 +15,7 @@
 					</v-tab>
 				</v-tabs>
 
-				<v-tabs-items color="transparent" v-model="tab">
+				<v-tabs-items v-model="tab">
 					<v-tab-item>
 						<!--主题列表-->
 						<ThreadList class="pa-2" :filterUserID="currentUser.id" />

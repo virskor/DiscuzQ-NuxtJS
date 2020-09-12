@@ -3,7 +3,6 @@
 		<AppTitle showExtendedNav :title="title"></AppTitle>
 		<v-container>
 			<MessageTypesMenuList></MessageTypesMenuList>
-			<PrivateMessagesList></PrivateMessagesList>
 		</v-container>
 	</div>
 </template>
@@ -13,7 +12,6 @@ import * as types from "~/store/vuex-types";
 import { mapGetters } from "vuex";
 
 import MessageTypesMenuList from "~/components/message/MessageTypesMenuList";
-import PrivateMessagesList from "~/components/message/PrivateMessagesList";
 
 export default {
 	computed: {
@@ -49,7 +47,6 @@ export default {
 	},
 	components: {
 		MessageTypesMenuList,
-		PrivateMessagesList,
 	},
 };
 </script>

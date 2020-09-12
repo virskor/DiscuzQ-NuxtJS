@@ -1,6 +1,8 @@
 <template>
 	<div v-if="thread">
-		<AppTitle title="帖子详情"></AppTitle>
+		<AppTitle title="帖子详情">
+			<SearchField />
+		</AppTitle>
 		<v-alert
 			class="ma-0"
 			v-if="thread.type == 2 && threadVideo.attributes.status == 0"

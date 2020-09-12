@@ -1,16 +1,18 @@
 <template>
-	<v-app-bar
-		:color="appbarColor || 'white'"
-		app
-		flat
-		class="app-title"
-	>
+	<v-app-bar :color="appbarColor || 'white'" app flat class="app-title">
 		<v-toolbar :color="appbarColor || 'white'" :dark="appConf.appbarDark" dense flat>
+
+			<!--返回按钮-->
 			<v-btn v-if="showArrow && $route.path != '/'" @click="$router.go(-1)" icon>
 				<v-icon>mdi-arrow-left</v-icon>
 			</v-btn>
 
+			<!--app logo-->
+			<AppLogo v-if="$C.isMobile()" class="mr-4" />
+
+			<!--当前页面的标题-->
 			<v-toolbar-title class="font-weight-black">{{title}}</v-toolbar-title>
+
 			<v-spacer />
 
 			<slot />

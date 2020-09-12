@@ -15,7 +15,6 @@
 </template>
 
 <script>
-import SearchField from "~/components/SearchField";
 import RecentTopics from "~/components/topics/RecentTopics";
 import UserRecommendList from "~/components/users/UserRecommendList";
 import SiteInfo from "~/components/common/SiteInfo";
@@ -27,7 +26,6 @@ export default {
 		},
 	},
 	components: {
-		SearchField,
 		UserRecommendList,
 		RecentTopics,
 		SiteInfo,
