@@ -2,18 +2,13 @@
 	<div>
 		<!--简化顶置主题-->
 		<div v-if="isSticky">
-			<div
-				@click="$router.push({
-				path: `/threads/${thread.id || 0}`,
-			})"
-				class="pb-2 pt-2 ml-5"
-				v-if="title"
-			>
+			<div @click="$router.push(`/threads/${thread.id || 0}`)" class="pb-2 pt-2 ml-5" v-if="title">
 				<v-chip label outlined class="mb-1" color="primary" small>顶置</v-chip>
 				<span class="font-weight-black clickable" v-html=" title || formatRichText(contents)"></span>
 			</div>
 			<v-divider></v-divider>
 		</div>
+
 		<!--普通-->
 		<v-card
 			:ripple="false"

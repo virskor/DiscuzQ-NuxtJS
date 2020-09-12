@@ -4,9 +4,10 @@
 			<ThreadsFilters v-show="false"></ThreadsFilters>
 		</AppTitle>
 		<v-container fluid>
+			<UserHomepageBanner :user="currentUser" :group="userGroup"></UserHomepageBanner>
+		</v-container>
+		<v-container fluid>
 			<div v-if="!$_.isEmpty(currentUser)">
-				<UserHomepageBanner :user="currentUser" :group="userGroup"></UserHomepageBanner>
-
 				<v-tabs fixed-tabs v-model="tab" color="primary" icons-and-text>
 					<v-tab v-for="item in items" :key="item.tab">
 						{{ item.tab }}
@@ -20,7 +21,7 @@
 						<ThreadList class="pa-2" :filterUserID="currentUser.id" />
 					</v-tab-item>
 					<v-tab-item>
-						<FollowersList  :user="currentUser"></FollowersList>
+						<FollowersList :user="currentUser"></FollowersList>
 					</v-tab-item>
 					<v-tab-item>
 						<FollowersList :user="currentUser" fromUser></FollowersList>
@@ -55,7 +56,7 @@ import UserHomepageBanner from "~/components/users/UserHomepageBanner";
 import ThreadList from "~/components/threads/ThreadsList";
 import ThreadsFilters from "~/components/threads/ThreadsFilters";
 import FollowersList from "~/components/users/follow/FollowersList";
-import ThreadsLikesList from '~/components/threads/ThreadsLikesList';
+import ThreadsLikesList from "~/components/threads/ThreadsLikesList";
 
 export default {
 	validate({ params }) {
@@ -126,7 +127,7 @@ export default {
 		ThreadList,
 		ThreadsFilters,
 		FollowersList,
-		ThreadsLikesList
+		ThreadsLikesList,
 	},
 };
 </script>

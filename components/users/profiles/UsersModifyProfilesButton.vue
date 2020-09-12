@@ -1,5 +1,5 @@
 <template>
-	<v-btn v-if="showButton" @click="$router.push(`/users/profiles`)" text>
+	<v-btn v-if="showButton" color="primary" rounded @click="$router.push(`/users/profiles`)" text>
 		<v-icon left>mdi-tooltip-edit</v-icon>修改资料
 	</v-btn>
 </template>
@@ -21,16 +21,16 @@ export default {
 	computed: {
 		...mapGetters({
 			user: types.GETTERS_USER,
-        }),
-        /**
-         * 是否显示编辑个人资料
-         */
+		}),
+		/**
+		 * 是否显示编辑个人资料
+		 */
 		showButton() {
 			const { relatedUser, user } = this;
-			if(!user){
+			if (!user) {
 				return false;
 			}
-			
+
 			if (!relatedUser) {
 				return true;
 			}

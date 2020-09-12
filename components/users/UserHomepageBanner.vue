@@ -14,14 +14,17 @@
 			</v-list-item-content>
 
 			<v-list-item-action>
-				<v-row>
+				<SendPrivateMessageButton :targetUser="user"></SendPrivateMessageButton>
+			</v-list-item-action>
+		</v-list-item>
+		<v-card-actions>
+			<v-row>
 					<!--关注按钮-->
 					<UserFollowButton :user="user"></UserFollowButton>
 					<!--关注按钮-->
 					<UsersModifyProfilesButton :relatedUser="user"></UsersModifyProfilesButton>
 				</v-row>
-			</v-list-item-action>
-		</v-list-item>
+		</v-card-actions>
 	</v-card>
 </template>
 
@@ -31,7 +34,8 @@ import { mapGetters } from "vuex";
 
 import Avatar from "~/components/users/Avatar";
 import UserFollowButton from "~/components/users/follow/UserFollowButton";
-import UsersModifyProfilesButton from "~/components/users/UsersModifyProfilesButton";
+import UsersModifyProfilesButton from "~/components/users/profiles/UsersModifyProfilesButton";
+import SendPrivateMessageButton from "~/components/message/SendPrivateMessageButton";
 
 export default {
 	props: {
@@ -48,6 +52,7 @@ export default {
 		Avatar,
 		UserFollowButton,
 		UsersModifyProfilesButton,
+		SendPrivateMessageButton
 	},
 	computed: {
 		...mapGetters({

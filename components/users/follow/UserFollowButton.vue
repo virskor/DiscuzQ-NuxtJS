@@ -2,7 +2,9 @@
 	<v-row no-gutters align="center" class="mr-2" justify="end">
 		<v-btn
 			:loading="loading"
-			color="transparent"
+			color="primary"
+			rounded
+			text
 			@click="toggleFollowButton"
 			:ripple="false"
 			depressed
