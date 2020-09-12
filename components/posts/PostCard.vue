@@ -45,7 +45,7 @@
 		<!--显示评论内容-->
 		<PostContent :thread="thread" :post="post"></PostContent>
 		<!--附件-->
-		<AttachmentImages :attachments="attachments"></AttachmentImages>
+		<AttachmentImages class="pl-5 pr-5" :attachments="attachments"></AttachmentImages>
 	</v-card>
 </template>
 

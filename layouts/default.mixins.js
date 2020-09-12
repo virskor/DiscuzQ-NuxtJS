@@ -12,6 +12,7 @@ export default {
 
             if (!this.$C.isMobile()) {
                 this.showStartDrawer = true;
+                this.showEndDrawer = true;
             }
 
             //await this.$store.dispatch("getSiteInfo");

@@ -1,7 +1,6 @@
 <template>
-	<v-app-bar :color="appbarColor || 'white'" app flat class="app-title">
+	<v-app-bar :color="appbarColor || 'white'" app flat clipped-right class="app-title">
 		<v-toolbar :color="appbarColor || 'white'" :dark="appConf.appbarDark" dense flat>
-
 			<!--返回按钮-->
 			<v-btn v-if="showArrow && $route.path != '/'" @click="$router.go(-1)" icon>
 				<v-icon>mdi-arrow-left</v-icon>

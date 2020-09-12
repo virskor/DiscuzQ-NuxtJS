@@ -1,7 +1,7 @@
 <template>
 	<keep-alive>
 		<v-navigation-drawer class="start-drawer" :width="280" app v-model="show">
-			<v-toolbar elevation="0">
+			<v-toolbar flat>
 				<AppLogo />
 				<v-spacer></v-spacer>
 				<v-btn @click="$router.push('/views/editor')" depressed color="primary" rounded>
@@ -77,7 +77,7 @@ export default {
 	},
 	data() {
 		return {
-			show: true,
+			show: false,
 		};
 	},
 	components: {

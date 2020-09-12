@@ -33,7 +33,8 @@
 				</template>
 
 				<!--经典模式下，不显示-->
-				<StartDrawer v-model="showStartDrawer" />
+				<StartDrawer v-model="showStartDrawer"></StartDrawer>
+				<EndDrawer v-model="showEndDrawer"></EndDrawer>
 
 				<!--路由-->
 				<nuxt :class="nuxtBackground" v-if="forum && !loadForumFailed && !loadingUser"></nuxt>
@@ -59,6 +60,7 @@ import * as types from "~/store/vuex-types";
 import { mapGetters } from "vuex";
 
 import StartDrawer from "~/components/navigationDrawers/StartDrawer";
+import EndDrawer from "~/components/navigationDrawers/EndDrawer";
 import AppFooter from "~/components/AppFooter";
 import BottomNavigation from "~/components/common/BottomNavigation";
 import DefaultMixins from "~/layouts/default.mixins";
@@ -69,6 +71,7 @@ export default {
 		return {
 			loadForumFailed: false,
 			showStartDrawer: false,
+			showEndDrawer: false,
 			//showbackIcon: false,
 			/**
 			 * loadingUser 结束后，路由才会进行渲染
@@ -135,6 +138,7 @@ export default {
 		StartDrawer,
 		AppFooter,
 		BottomNavigation,
+		EndDrawer
 	},
 };
 </script>
