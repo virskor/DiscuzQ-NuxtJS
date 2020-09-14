@@ -24,7 +24,7 @@
 				<!--该评论关联的内容-->
 				<PostContent :thread="threadData.data" :post="postData.data"></PostContent>
 				<!--附件-->
-				<AttachmentImages :attachments="attachments"></AttachmentImages>
+				<AttachmentImages class="pl-5 pr-5" :attachments="attachments"></AttachmentImages>
 
 				<!--显示关联的原帖-->
 				<ThreadCardSimplified
