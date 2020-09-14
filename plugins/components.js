@@ -6,6 +6,8 @@ import VarBox from "~/components/common/global/VarBox";
 import MorePage from "~/components/common/global/MorePage";
 import EmptyBox from "~/components/common/global/EmptyBox";
 import SearchField from "~/components/common/global/SearchField";
+import AppFooter from "~/components/common/global/AppFooter";
+
 /**
  * 注册全局组件
  * 
@@ -17,3 +19,4 @@ Vue.component('VarBox', VarBox);
 Vue.component('MorePage', MorePage);
 Vue.component('EmptyBox', EmptyBox);
 Vue.component('SearchField', SearchField);
+Vue.component('AppFooter', AppFooter);

@@ -34,9 +34,12 @@
 						</v-list-item>
 					</template>
 				</template>
+				<v-divider></v-divider>
 				<v-list-item>
 					<DarkSwitcher showLabel></DarkSwitcher>
 				</v-list-item>
+				<v-divider class="mt-4 mb-2"></v-divider>
+				<AppFooter></AppFooter>
 			</v-list>
 		</v-navigation-drawer>
 	</keep-alive>

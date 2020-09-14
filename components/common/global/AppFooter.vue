@@ -1,11 +1,11 @@
 <template>
-	<div class="qui-footer" v-if="forum">
+	<div class="qui-footer v-list-item__subtitle" v-if="forum">
 		<v-footer color="transparent" padless>
 			<v-col
-				class="text-center pb-0"
+				class="pb-0"
 				cols="12"
-			>Copyright © 2013-{{ new Date().getFullYear() }} {{forum.attributes.set_site.site_name}}. All Rights Reserved.</v-col>
-			<v-col class="text-center pt-0" cols="12">
+			>Copyright © 2013-{{ new Date().getFullYear() }} {{forum.attributes.set_site.site_name}}.</v-col>
+			<v-col class="pt-0" cols="12">
 				<p>
 					<!-- <span>用户：{{forum.attributes.other.count_users}}</span>
 					<span>主题：{{forum.attributes.other.count_threads}}</span>
@@ -22,7 +22,7 @@
 					>{{forum.attributes.set_site.site_record}}</a>
 				</p>
 			</v-col>
-			<v-col class="text-center pt-0" cols="12">Powered by Discuz!Q & Dehong.ren</v-col>
+			<v-col class="pt-0" cols="12">Powered by Discuz!Q & Dehong.ren</v-col>
 		</v-footer>
 	</div>
 </template>

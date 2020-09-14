@@ -37,7 +37,9 @@
 				<!-- <EndDrawer v-model="showEndDrawer"></EndDrawer> -->
 
 				<!--路由-->
-				<nuxt :class="nuxtBackground" v-if="forum && !loadForumFailed && !loadingUser"></nuxt>
+				<nuxt :class="nuxtBackground" v-if="forum && !loadForumFailed && !loadingUser">
+				</nuxt>
+
 
 				<!--返回顶部按钮-->
 				<client-only>
@@ -47,9 +49,7 @@
 						</v-btn>
 					</go-top>
 				</client-only>
-
-				<!--应用底部导航-->
-				<AppFooter />
+			
 			</v-main>
 		</v-app>
 	</div>
@@ -61,7 +61,6 @@ import { mapGetters } from "vuex";
 
 import StartDrawer from "~/components/navigationDrawers/StartDrawer";
 import EndDrawer from "~/components/navigationDrawers/EndDrawer";
-import AppFooter from "~/components/AppFooter";
 import BottomNavigation from "~/components/common/BottomNavigation";
 import DefaultMixins from "~/layouts/default.mixins";
 
@@ -136,7 +135,6 @@ export default {
 	},
 	components: {
 		StartDrawer,
-		AppFooter,
 		BottomNavigation,
 		EndDrawer
 	},
