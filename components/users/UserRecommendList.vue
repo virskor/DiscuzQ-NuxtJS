@@ -2,17 +2,14 @@
 	<div>
 		<v-card tile flat>
 			<v-row align="center">
-				<v-col cols="6">
-					<v-subheader class="font-weight-black">推荐的用户</v-subheader>
+				<v-col cols="5">
+					<v-subheader class="font-weight-black">推荐用户</v-subheader>
 				</v-col>
-				<v-col cols="6" class="text-right">
-					<v-row>
-						<v-spacer></v-spacer>
-						<v-btn :disabled="disableChange" @click="listRecommendUsers(true)" small text>
-							<v-icon left>mdi-sync</v-icon>换一换
-						</v-btn>
-						<v-btn @click="$router.push('/search/users')" color="primary" small text>更多</v-btn>
-					</v-row>
+				<v-col cols="7" class="text-right">
+					<v-btn :disabled="disableChange" @click="listRecommendUsers(true)" small text>
+						<v-icon left>mdi-sync</v-icon>换一换
+					</v-btn>
+					<v-btn @click="$router.push('/search/users')" color="primary" small text>更多</v-btn>
 				</v-col>
 			</v-row>
 			<template v-if="loading">
@@ -92,7 +89,7 @@ export default {
 	data() {
 		return {
 			loading: true,
-			pageLimit: 6,
+			pageLimit: 15,
 			pageNumber: 1,
 			recommendUserlist: [],
 			meta: null,
