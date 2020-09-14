@@ -3,7 +3,7 @@
 		<v-navigation-drawer class="end-drawer" :width="150" app right v-model="show">
 			<v-toolbar flat>
 			</v-toolbar>
-			<v-list>
+			<v-list color="transparent">
 				<v-list-item>
 					<v-list-item-title>暂无私信</v-list-item-title>
 				</v-list-item>
