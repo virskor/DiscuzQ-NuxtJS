@@ -106,5 +106,23 @@ export default {
             ]
         });
     },
+    /**
+     * modify profile
+     * fields: {
+     * username: ''
+     * }
+     */
+    profile(user, fields) {
+        const data = { 
+            id: user.id, 
+            type: "users", 
+            attributes: { ...fields } 
+        };
+
+        return Request.patch({
+            url: `${URLS.USER}/${user.id}`,
+            data,
+        });
+    },
 
 }

@@ -42,16 +42,17 @@
 								>注册</v-btn>
 							</p>
 							<p align="center" v-if="!$C.isMobile() && allowWechatLogin">
-								<v-btn rounded depressed large icon @click="wechatLogin" dark color="green">
+								<!--todo API暂不可用，屏蔽-->
+								<!--<v-btn rounded depressed large icon @click="wechatLogin" dark color="green">
 									<i class="iconfont icon-weixin1"></i>
-								</v-btn>
+								</v-btn>-->
 							</p>
 						</div>
 					</v-card>
 				</v-col>
 			</v-row>
 
-
+			<!--todo API暂不可用，屏蔽-->
 			<WechatLoginScanner v-if="allowWechatLogin" v-model="overlay"></WechatLoginScanner>
 		</v-container>
 	</div>

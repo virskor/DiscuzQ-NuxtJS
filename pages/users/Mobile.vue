@@ -41,9 +41,9 @@
 								<v-btn :loading="loading" rounded depressed large block @click="verify" color="primary">登录</v-btn>
 							</p>
 							<p align="center" v-if="!$C.isMobile() && allowWechatLogin">
-								<v-btn rounded depressed large icon @click="wechatLogin" dark color="green">
+								<!-- <v-btn rounded depressed large icon @click="wechatLogin" dark color="green">
 									<i class="iconfont icon-weixin1"></i>
-								</v-btn>
+								</v-btn> -->
 							</p>
 						</div>
 					</v-card>

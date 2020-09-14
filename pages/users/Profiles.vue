@@ -19,7 +19,7 @@
 					</v-list-item>
 					<v-divider></v-divider>
 					<!--个性签名-->
-					<ProfileEditField attribute="signature" label="个性签名"></ProfileEditField>
+					<ProfileEditField attribute="signature" :singleLine="false" label="个性签名"></ProfileEditField>
 				</v-list>
 			</v-card>
 		</v-container>

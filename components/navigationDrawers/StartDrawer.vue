@@ -4,7 +4,7 @@
 			<v-toolbar flat>
 				<AppLogo />
 				<v-spacer></v-spacer>
-				<v-btn @click="$router.push('/views/editor')" depressed color="primary" rounded>
+				<v-btn @click="$router.push('/views/editor')" depressed color="primary" outlined rounded>
 					<v-icon left>mdi-plus-circle-outline</v-icon>发帖
 				</v-btn>
 			</v-toolbar>
