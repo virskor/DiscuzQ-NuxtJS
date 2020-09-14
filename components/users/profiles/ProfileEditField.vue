@@ -2,7 +2,7 @@
 	<div>
 		<v-dialog v-model="showDialog" persistent max-width="490">
 			<template v-slot:activator="{ on, attrs }">
-				<v-list-item @click="showDialog = true">
+				<v-list-item :disabled="disabled" @click="showDialog = true">
 					<v-list-item-content>
 						<v-list-item-title>{{label || "未知的选项"}}</v-list-item-title>
 					</v-list-item-content>
@@ -56,7 +56,11 @@ export default {
 		/**
 		 * single line
 		 */
-		singleLine: Boolean
+		singleLine: Boolean,
+		/**
+		 * disabled
+		 */
+		disabled: Boolean
 	},
 	data() {
 		return {

@@ -18,6 +18,16 @@
 						</v-list-item-action>
 					</v-list-item>
 					<v-divider></v-divider>
+					<!--用户名-->
+					<!--用户名仅允许修改一次-->
+					<ProfileEditField
+						attribute="username"
+						:disabled="user ? !user.attributes.canEditUsername : true"
+						:actionName="user ? user.attributes.username : '修改'"
+						singleLine
+						label="用户名"
+					></ProfileEditField>
+					<v-divider></v-divider>
 					<!--个性签名-->
 					<ProfileEditField attribute="signature" :singleLine="false" label="个性签名"></ProfileEditField>
 				</v-list>
@@ -27,6 +37,9 @@
 </template>
 
 <script>
+import * as types from "~/store/vuex-types";
+import { mapGetters } from "vuex";
+
 import ProfileEditField from "~/components/users/profiles/ProfileEditField";
 import AvatarPicker from "~/components/users/AvatarPicker";
 
@@ -41,9 +54,14 @@ export default {
 			await this.$store.dispatch("shouldLogin");
 		});
 	},
+	computed: {
+		...mapGetters({
+			user: types.GETTERS_USER,
+		}),
+	},
 	components: {
 		ProfileEditField,
-		AvatarPicker
+		AvatarPicker,
 	},
 };
 </script>
