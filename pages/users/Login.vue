@@ -23,8 +23,9 @@
 						</v-card-text>
 						<div class="loginFormActions">
 							<p>
-								如您
-								<nuxt-link to="/users/reset">忘记密码</nuxt-link>点击来修改
+								使用
+								<nuxt-link :to="{ path: '/users/mobile', query: { force: true }}">手机登录</nuxt-link>，或
+								<nuxt-link to="/users/reset">修改密码</nuxt-link>
 							</p>
 							<p>如果不是自己的计算机，请使用无痕模式来访问</p>
 							<p>
@@ -49,6 +50,7 @@
 					</v-card>
 				</v-col>
 			</v-row>
+
 
 			<WechatLoginScanner v-if="allowWechatLogin" v-model="overlay"></WechatLoginScanner>
 		</v-container>
@@ -86,11 +88,6 @@ export default {
 			 * 用于登录后回调到登录前要继续操作的页面
 			 */
 			callback: this.$route.query.callback,
-			/**
-			 * force
-			 * 强制使用用户名密码登录
-			 */
-			force: this.$route.query.force,
 		};
 	},
 	computed: {
@@ -111,14 +108,6 @@ export default {
 
 			return forum.attributes.set_reg.register_close;
 		},
-	},
-	beforeCreate() {
-		this.$nextTick(async () => {
-			const { registerClosed, force } = this;
-			if (registerClosed && !force) {
-				this.$router.push("/users/mobile");
-			}
-		});
 	},
 	mounted() {
 		this.$nextTick(async () => {

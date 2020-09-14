@@ -33,7 +33,8 @@
 						<div class="loginFormActions">
 							<p>
 								使用
-								<nuxt-link :to="{ path: '/users/login', query: { force: true }}">用户名密码</nuxt-link>来登录
+								<nuxt-link :to="{ path: '/users/login', query: { force: true }}">用户名密码登录</nuxt-link>，或
+								<nuxt-link to="/users/reset">修改密码</nuxt-link>
 							</p>
 							<p>如果不是自己的计算机，请使用无痕模式来访问</p>
 							<p>
