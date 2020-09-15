@@ -8,6 +8,7 @@
 			@click="toggleFollowButton"
 			:ripple="false"
 			depressed
+			:disabled="disabled"
 		>
 			<v-icon left :color="isFollowed ? 'primary' : ''">mdi-account-plus</v-icon>
 			<span :class="isFollowed ? 'primary--text' : ''">{{followStatusSpan}}</span>
@@ -16,6 +17,9 @@
 </template>
 
 <script>
+import * as types from "~/store/vuex-types";
+import { mapGetters } from "vuex";
+
 import usersAPI from "~/api/users";
 
 export default {
@@ -42,6 +46,17 @@ export default {
 		};
 	},
 	computed: {
+		...mapGetters({
+			currentUser: types.GETTERS_USER,
+		}),
+		/**
+		 * 是否禁止
+		 */
+		disabled(){
+			const {user, currentUser} = this;
+
+			return currentUser.id == user.id;
+		},
 		/**
 		 * 是否已经关注
 		 */

@@ -4,14 +4,6 @@
 			<SearchField/>
 			<ThreadsFilters />
 		</AppTitle>
-		<v-alert
-			class="ma-0"
-			tile
-			text
-			dense
-			dark
-			type="info"
-		>第三方PC模板，现在您可以使用的功能并不完整，亦或者存在BUG。我们将于9月15日左右发布。演示数据来自discuz.chat</v-alert>
 
 		<v-container>
 			<Editor lightMode></Editor>
