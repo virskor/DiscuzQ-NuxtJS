@@ -16,7 +16,7 @@
 		<div v-else>
 			<template>
 				<!--帖子列表-->
-				<div v-if="!$_.isEmpty(threadsData)">
+				<div v-if="!$_.isEmpty(threadsData) && !$_.isEmpty(threadsData.data)">
 					<v-card flat tile>
 						<v-card-title>{{!meta ? 0 : meta.threadCount}}个收藏</v-card-title>
 					</v-card>

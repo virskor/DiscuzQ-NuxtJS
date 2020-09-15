@@ -16,7 +16,7 @@
 		<div v-else>
 			<template>
 				<!--帖子列表-->
-				<div v-if="!$_.isEmpty(threadsData)">
+				<div v-if="!$_.isEmpty(threadsData) && !$_.isEmpty(threadsData.data)">
 					<ThreadCard
 						v-for="(thread, i) in threadsData.data"
 						:key="i"
