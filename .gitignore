@@ -90,4 +90,5 @@ sw.*
 *.swp
 
 ssh
+ssh-clodra
 cloud.config.js
