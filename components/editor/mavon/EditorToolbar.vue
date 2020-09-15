@@ -34,7 +34,13 @@
 			</div>
 			<v-spacer></v-spacer>
 
-			<v-btn class="hidden-sm-and-down" :ripple="false" v-if="showAdvancedButton" @click="$router.push('/views/editor')" text>高级</v-btn>
+			<v-btn
+				class="hidden-sm-and-down"
+				:ripple="false"
+				v-if="showAdvancedButton"
+				@click="$router.push('/views/editor')"
+				text
+			>高级</v-btn>
 
 			<!--分类选择-->
 			<CategoriesSelectionList @category="(c) => $emit('category', c)" v-if="!isReply"></CategoriesSelectionList>
@@ -43,8 +49,6 @@
 		</v-toolbar>
 
 		<EditorImagesUploader
-			@attachments="(a) => $emit('attachments', a)"
-			@del-attachments="(a) => $emit('del-attachments', a)"
 			:uploadType="uploadTypes.UPLOAD_TYPE_THREAD_IMAGES"
 			v-show="showEditorImagesUploader"
 		></EditorImagesUploader>
@@ -108,12 +112,11 @@ export default {
 			 * show EditorImagesUploader
 			 */
 			showEditorImagesUploader: false,
-			
 
 			/**
 			 * 上传类型
 			 */
-			uploadTypes: attachmentsAPI.types
+			uploadTypes: attachmentsAPI.types,
 		};
 	},
 	computed: {

@@ -3,6 +3,7 @@
 		<v-text-field
 			class="mt-3 ml-3 mr-3"
 			@input="setTitle"
+			:value="editor.title"
 			v-if="!lightMode"
 			label="标题"
 			placeholder="请输入帖子的标题(可选)"
@@ -28,18 +29,17 @@
 			@action="toolbarAction"
 			@category="(c) => $emit('category', c)"
 			@pub="pub"
-			@attachments="(a) => $emit('attachments', a)"
-			@del-attachments="(a) => $emit('del-attachments', a)"
 		></EditorToolbar>
 	</div>
 </template>
 
 <script>
+import * as types from "~/store/vuex-types";
+import { mapGetters } from "vuex";
 import EditorToolbar from "~/components/editor/mavon/EditorToolbar";
 
 export default {
 	props: {
-		value: String,
 		/**
 		 * 精简模式将不支持输入标题，等，适用于快速发帖，回复嵌入
 		 */
@@ -55,6 +55,9 @@ export default {
 		});
 	},
 	computed: {
+		...mapGetters({
+			editor: types.GETTERS_EDITOR,
+		}),
 		/**
 		 * 启用工具栏
 		 */
@@ -164,23 +167,39 @@ export default {
 		 * 发布
 		 * 仅当用户点击pub按钮后才进行input事件传递
 		 */
-		pub() {
+		async pub() {
 			const { markdown } = this;
-			this.$emit("input", markdown);
+			await this.$store.dispatch("updateContent", markdown);
+			this.$emit("pub");
 		},
 		/**
 		 * 设置标题
 		 */
-		setTitle(val) {
-			this.$emit("title", val);
+		async setTitle(val) {
+			await this.$store.dispatch("updateTitle", val);
 		},
 	},
 	watch: {
-		value() {
-			const { value } = this;
-			this.markdown = value;
+		editor: {
+			/**
+			 * 目的是为了实现编辑器发布后，editor状态中的content被清空时需要重构编辑器视图
+			 */
+			handler(newEditor) {
+				const {markdown} = this;
+				if(!this.$_.isEmpty(newEditor.content)){
+					return;
+				}
+
+				if(this.$_.isEmpty(markdown)){
+					return;
+				}
+				
+				this.markdown = '';
+			},
+			deep: true
 		},
 	},
+
 	components: {
 		EditorToolbar,
 	},

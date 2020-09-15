@@ -29,6 +29,7 @@ export default {
 
 			/** 上传中 */
 			loading: false,
+
 		};
 	},
 	computed: {
@@ -66,7 +67,7 @@ export default {
 			this.loading = false;
 
 			if (rs) {
-				this.$emit("attachment", rs.data);
+				await this.$store.dispatch('addAttachment', rs.data);
 			}
 		},
 	},

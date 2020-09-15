@@ -54,6 +54,9 @@ export default {
 		 */
 		disabled(){
 			const {user, currentUser} = this;
+			if(!currentUser){
+				return false;
+			}
 
 			return currentUser.id == user.id;
 		},

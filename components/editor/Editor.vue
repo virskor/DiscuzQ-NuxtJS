@@ -5,13 +5,9 @@
 				<v-btn @click="login" depressed rounded color="primary">登录来继续</v-btn>
 			</v-overlay>
 			<MarkdownEditor
-				@input="pub"
+				@pub="pub"
 				@price="(p) => price = p"
-				@title="(t) => title = t"
 				@category="(c) => category = c"
-				@attachments="addAttachments"
-				@del-attachments="removeAttachments"
-				v-model="content"
 				:lightMode="lightMode"
 				:isReply="isReply"
 			></MarkdownEditor>
@@ -65,21 +61,9 @@ export default {
 			 */
 			category: null,
 			/**
-			 * 要发布的内容
-			 */
-			content: "",
-			/**
-			 * 标题
-			 */
-			title: "",
-			/**
 			 * 价格
 			 */
 			price: "0.00",
-			/**
-			 * 附件
-			 */
-			attachments: [],
 			/**
 			 * 经度
 			 */
@@ -104,6 +88,7 @@ export default {
 		...mapGetters({
 			forum: types.GETTERS_FORUM,
 			user: types.GETTERS_USER,
+			editor: types.GETTERS_EDITOR,
 		}),
 		/**
 		 * Captcha App ID
@@ -133,13 +118,13 @@ export default {
 		 * todo: 视频
 		 */
 		type() {
-			const { title, attachments } = this;
+			const { editor } = this;
 
-			if (!this.$_.isEmpty(attachments)) {
+			if (!this.$_.isEmpty(editor.attachments)) {
 				return 3;
 			}
 
-			if (this.$_.isEmpty(title)) {
+			if (this.$_.isEmpty(editor.title)) {
 				return 0;
 			}
 
@@ -157,19 +142,18 @@ export default {
 			});
 		},
 		/**
+		 * 重新初始化编辑器
+		 */
+		async reload() {
+			await this.$store.dispatch('clearEditor');
+		},
+		/**
 		 * pub 发布
 		 */
 		async pub() {
-			const {
-				content,
-				title,
-				price,
-				attachments,
-				isReply,
-				thread,
-				post,
-			} = this;
-			if (!this.$_.trim(content)) {
+			const { price, editor, isReply, thread, post } = this;
+
+			if (!this.$_.trim(editor.content)) {
 				this.$swal("请输入内容后再继续");
 				return;
 			}
@@ -235,10 +219,8 @@ export default {
 		 */
 		async createThread() {
 			const {
-				content,
-				title,
 				price,
-				attachments,
+				editor,
 				isReply,
 				type,
 				longitude,
@@ -253,9 +235,7 @@ export default {
 				type: "threads",
 				attributes: {
 					type,
-					title,
-					price,
-					content,
+					...editor,
 					longitude,
 					latitude,
 					address,
@@ -269,11 +249,16 @@ export default {
 				},
 				relationships: {
 					attachments: {
-						data: attachments,
+						data: editor.attachments,
 					},
 					category,
 				},
 			};
+
+			/**
+			 * 删除不必要的属性
+			 */
+			delete data.attributes.attachments
 
 			// 调试用
 			// debugger
@@ -296,9 +281,8 @@ export default {
 
 			const rs = await threadsAPI.create(data);
 			if (rs) {
-				this.content = "";
-				this.title = "";
 				this.price = "0.00";
+				await this.reload();
 				return rs;
 			}
 		},
@@ -306,15 +290,7 @@ export default {
 		 * 发布评论
 		 */
 		async createPost() {
-			const {
-				content,
-				title,
-				price,
-				attachments,
-				isReply,
-				thread,
-				post,
-			} = this;
+			const { price, editor, isReply, thread, post } = this;
 
 			if (this.$_.isEmpty(thread)) {
 				await this.$swal("未正确关联主题数据");
@@ -323,10 +299,10 @@ export default {
 
 			let data = {
 				type: "posts",
-				attributes: { content },
+				attributes: { content: editor.content },
 				relationships: {
 					attachments: {
-						data: attachments,
+						data: editor.attachments,
 					},
 					thread: {
 						data: {
@@ -336,6 +312,11 @@ export default {
 					},
 				},
 			};
+
+			/**
+			 * 删除不必要的属性
+			 */
+			delete data.attributes.attachments
 
 			/**
 			 * isComment
@@ -350,7 +331,7 @@ export default {
 				/**
 				 * 成功发布评论
 				 */
-				this.content = "";
+				await this.reload();
 				return rs;
 			}
 		},
@@ -374,24 +355,6 @@ export default {
 			} catch (err) {
 				throw err;
 			}
-		},
-		/**
-		 * 新增附件
-		 */
-		addAttachments(a) {
-			this.attachments.push({ type: "attachments", id: a.id });
-		},
-		/**
-		 * 移除附件
-		 */
-		removeAttachments(a) {
-			const { attachments } = this;
-
-			if (this.$_.isEmpty(a)) {
-				return;
-			}
-
-			this.attachments = attachments.filter((el) => el.id != a.id);
 		},
 	},
 	components: {

@@ -42,6 +42,11 @@ export const GETTERS_EMOJIS = "getters/emojis";
  * 
  */
 export const GETTERS_CATEGORIES = "getters/categories";
+/**
+ * 编辑器
+ * 
+ */
+export const GETTERS_EDITOR = "getters/editor";
 
 /** 
  * Mutations 对应setter
@@ -54,3 +59,4 @@ export const MUTATION_SITE_INFO = "mutation/siteInfo";
 export const MUTATION_CATEGORIES = "mutation/categories";
 export const MUTATION_FILTER = "mutation/filter";
 export const MUTATION_EMOJIS = "mutation/emojis";
+export const MUTATION_EDITOR = "mutation/editor";

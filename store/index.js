@@ -5,6 +5,7 @@ import siteInfo from '~/store/modules/siteInfo';
 import categories from '~/store/modules/categories';
 import filter from '~/store/modules/filter';
 import emojis from '~/store/modules/emojis';
+import editor from '~/store/modules/editor';
 import _ from 'lodash';
 
 export const modules = {
@@ -14,5 +15,6 @@ export const modules = {
     siteInfo,
     categories,
     filter,
-    emojis
+    emojis,
+    editor
 };

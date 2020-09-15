@@ -12,13 +12,16 @@
 			:attachments="attachments"
 		></AttachmentImages>
 
-		<EditorUploaderAddButton :uploadType="type" @attachment="addAttachment"></EditorUploaderAddButton>
+		<EditorUploaderAddButton :uploadType="type"></EditorUploaderAddButton>
 
 		<div class="mt-3">温馨提示：上传的{{uploadTypeCaption}}不应该涉及违规，版权争议等违反用户协议的内容，否则将承担法律责任。</div>
 	</div>
 </template>
 
 <script>
+import * as types from "~/store/vuex-types";
+import { mapGetters } from "vuex";
+
 /// attachments
 /// del-attachments
 import attachmentsAPI from "~/api/attachments";
@@ -41,7 +44,6 @@ export default {
 	},
 	data() {
 		return {
-			attachments: [],
 			/**
 			 * 上传类型
 			 *
@@ -56,6 +58,14 @@ export default {
 		};
 	},
 	computed: {
+		...mapGetters({
+			editor: types.GETTERS_EDITOR
+		}),
+		attachments(){
+			const {editor} = this;
+			return editor.attachments;
+		},
+		/**
 		/**
 		 * 上传类型标签
 		 */
@@ -102,29 +112,10 @@ export default {
 	},
 	methods: {
 		/**
-		 * 添加附件
-		 */
-		addAttachment(a) {
-			if (this.$_.isEmpty(a)) {
-				return;
-			}
-
-			this.attachments.push(a);
-			this.$emit("attachments", a);
-		},
-		/**
 		 * 移除附件
 		 */
 		async removeAttachment(a) {
-			const { attachments } = this;
-
-			if (this.$_.isEmpty(a)) {
-				return;
-			}
-
-			await attachmentsAPI.delete(a);
-
-			this.attachments = attachments.filter((el) => el.id != a.id);
+			await this.$store.dispatch('removeAttachment', a);
 		},
 	},
 	components: {

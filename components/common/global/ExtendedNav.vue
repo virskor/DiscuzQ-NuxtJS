@@ -1,16 +1,14 @@
 <template>
-	<keep-alive>
-		<v-toolbar-items class="hidden-sm-and-down">
-			<v-btn
-				@click="clickItem(n)"
-				depressed
-				text
-				color="primary"
-				v-for="(n, i) in navs"
-				:key="i"
-			>{{n.caption || ''}}</v-btn>
-		</v-toolbar-items>
-	</keep-alive>
+	<v-toolbar-items class="hidden-sm-and-down">
+		<v-btn
+			@click="clickItem(n)"
+			depressed
+			text
+			color="primary"
+			v-for="(n, i) in navs"
+			:key="i"
+		>{{n.caption || ''}}</v-btn>
+	</v-toolbar-items>
 </template>
 
 <script>
