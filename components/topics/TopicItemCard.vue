@@ -27,7 +27,7 @@
 		></ThreadContents>
 
 		<!--附件-->
-		<AttachmentImages grid :attachments="attachments"></AttachmentImages>
+		<AttachmentImages class="pl-5 pr-5" grid :attachments="attachments"></AttachmentImages>
 
 		<!--话题热度概览-->
 		<p class="v-list-item__subtitle pl-4">

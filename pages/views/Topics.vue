@@ -44,16 +44,14 @@
 				</template>
 
 				<!--分页组件-->
-				<v-pagination
-					v-model="pageNumber"
+				<MorePage
+					caption="加载更多"
+					:loading="loading"
+					@input="getTopicList"
 					v-if="topicsList"
-					:length="topicsList.meta.pageCount"
-					:total-visible="7"
-					class="my-4"
-					flat
-					@input="onPageChanged"
-					elevation-1
-				></v-pagination>
+					:length="meta ? meta.pageCount : 1"
+					v-model="pageNumber"
+				></MorePage>
 			</template>
 		</v-container>
 	</div>
@@ -83,7 +81,7 @@ export default {
 				});
 			}
 
-			return { topicsList: rs };
+			return { topicsList: rs, meta: rs.meta };
 		} catch (error) {
 			throw error;
 		}
@@ -101,12 +99,20 @@ export default {
 			/**
 			 * 页码
 			 */
-			pageNumber: Number(this.$route.query.page || 0) || 1,
+			pageNumber: 1,
 			/**
 			 * 话题列表数据
 			 * 注意初始化时，将被async data 覆盖
 			 */
 			topicsList: [],
+			/**
+			 * loading
+			 */
+			loading: false,
+			/**
+			 * 分页数据
+			 */
+			meta: null,
 		};
 	},
 	computed: {
@@ -169,39 +175,36 @@ export default {
 			);
 		},
 		/**
-		 * 用户翻页
-		 */
-		async onPageChanged(number) {
-			await this.$router.push({
-				path: "/views/topics",
-				query: { page: number },
-			});
-			await this.getTopicList();
-		},
-		/**
 		 * get topic list
 		 * 获取话题列表
 		 */
 		async getTopicList() {
-			const { keyword, sort, pageNumber } = this;
+			const { keyword, sort, pageNumber, topicsList } = this;
+
+			this.loading = true;
 
 			const rs = await topicsAPI.getTopics({
 				sort,
 				"filter[content]": keyword,
 				"page[number]": pageNumber,
 			});
+
+			this.loading = false;
+
 			if (rs) {
-				this.topicsList = rs;
-				this.gotop();
-			}
-		},
-		/**
-		 * 返回顶部
-		 */
-		gotop() {
-			const gotop = document.getElementById("goTop");
-			if (gotop) {
-				gotop.click();
+				this.meta = rs.meta;
+
+				if (!topicsList) {
+					this.topicsList = rs;
+					return;
+				}
+
+				if (!this.$_.isEmpty(rs.data)) {
+					this.topicsList = {
+						data: [...topicsList.data, ...rs.data],
+						included: [...topicsList.included, ...rs.included],
+					};
+				}
 			}
 		},
 	},

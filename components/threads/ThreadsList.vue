@@ -235,15 +235,6 @@ export default {
 				}
 			}
 		},
-		/**
-		 * 返回顶部
-		 */
-		gotop() {
-			const gotop = document.getElementById("goTop");
-			if (gotop) {
-				gotop.click();
-			}
-		},
 	},
 
 	watch: {
