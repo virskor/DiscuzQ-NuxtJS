@@ -127,7 +127,7 @@ export default {
 			 * 是否为顶 yes no
 			 * 默认为 ''
 			 */
-			isSticky: "no",
+			isSticky: "",
 			/**
 			 * 是否被删除
 			 * 默认为no 强制
