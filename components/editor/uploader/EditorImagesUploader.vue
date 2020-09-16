@@ -59,11 +59,18 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			editor: types.GETTERS_EDITOR
+			editor: types.GETTERS_EDITOR,
 		}),
-		attachments(){
-			const {editor} = this;
-			return editor.attachments;
+		/**
+		 * 仅筛选图片用于预览
+		 */
+		attachments() {
+			const { editor, uploadTypes } = this;
+			const attachments = editor.attachments;
+			return attachments.filter(
+				(el) =>
+					el.attributes.type == uploadTypes.UPLOAD_TYPE_THREAD_IMAGES
+			);
 		},
 		/**
 		/**
@@ -115,7 +122,7 @@ export default {
 		 * 移除附件
 		 */
 		async removeAttachment(a) {
-			await this.$store.dispatch('removeAttachment', a);
+			await this.$store.dispatch("removeAttachment", a);
 		},
 	},
 	components: {

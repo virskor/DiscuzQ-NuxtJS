@@ -28,7 +28,15 @@
 		</div>
 
 		<!--渲染视频-->
-		<Player v-if="threadVideo" class="pa-4" block height="600" :threadVideo="threadVideo"></Player>
+		<Player
+			v-if="threadVideo"
+			:thread="thread"
+			:threadVideo="threadVideo"
+			hideThumb
+			class="pa-4"
+			block
+			height="600"
+		></Player>
 
 		<v-container>
 			<!--渲染发布用户的信息-->

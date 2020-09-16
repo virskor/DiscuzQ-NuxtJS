@@ -28,6 +28,14 @@
 						label="用户名"
 					></ProfileEditField>
 					<v-divider></v-divider>
+					<ProfileEditField
+						attribute="mobile"
+						disabled
+						:actionName="user ? user.attributes.mobile : '修改'"
+						singleLine
+						label="手机号码"
+					></ProfileEditField>
+					<v-divider></v-divider>
 					<!--个性签名-->
 					<ProfileEditField attribute="signature" :singleLine="false" label="个性签名"></ProfileEditField>
 				</v-list>

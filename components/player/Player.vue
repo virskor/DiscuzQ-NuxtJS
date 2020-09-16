@@ -1,7 +1,22 @@
 <template>
-	<div :class="`thread-video ${block? 'fullbackground' : ''}`">
+	<div v-if="threadVideo" :class="`thread-video ${block? 'fullbackground' : ''}`">
+		<v-card max-width="300" tile flat v-show="!clickedToPlay && !hideThumb" color="#000000" dark>
+			<p class="text-center">
+				<v-img
+					class="clickable"
+					:lazy-src="threadVideo.attributes.cover_url"
+					:src="threadVideo.attributes.cover_url"
+				></v-img>
+				<v-overlay absolute :opacity=".2" :value="true">
+					<v-btn icon @click="play">
+						<v-icon large>mdi-play-circle</v-icon>
+					</v-btn>
+				</v-overlay>
+			</p>
+		</v-card>
+
 		<video
-			v-if="showThreadVideo"
+			v-show="showThreadVideo"
 			:id="playerID"
 			preload="auto"
 			:class="`${block ? 'block': ''}`"
@@ -9,8 +24,7 @@
 			webkit-playsinline
 			:width="width"
 			:height="height"
-		>
-		正在加载播放器，如果加载失败，请刷新...</video>
+		>正在加载播放器，如果加载失败，请刷新...</video>
 	</div>
 </template>
 
@@ -20,6 +34,10 @@ import { mapGetters } from "vuex";
 
 export default {
 	props: {
+		/**
+		 * 关联的主题
+		 */
+		thread: Object,
 		/**
 		 * 帖子关联视频模型
 		 */
@@ -36,6 +54,14 @@ export default {
 		 * block
 		 */
 		block: Boolean,
+		/**
+		 * hideThumb
+		 */
+		hideThumb: Boolean,
+		/**
+		 * 是否是主题卡
+		 */
+		isThreadCard: Boolean
 	},
 	computed: {
 		...mapGetters({
@@ -45,9 +71,13 @@ export default {
 		 * thread video is available or not
 		 */
 		showThreadVideo() {
-			const { forum, threadVideo } = this;
+			const { forum, threadVideo, clickedToPlay, hideThumb } = this;
 
 			if (!threadVideo) {
+				return false;
+			}
+
+			if (!hideThumb && !clickedToPlay) {
 				return false;
 			}
 
@@ -84,16 +114,29 @@ export default {
 	data() {
 		return {
 			player: null,
+			clickedToPlay: false,
 		};
 	},
 	methods: {
 		/**
+		 * play
+		 */
+		play() {
+			const {thread, isThreadCard} = this;
+			if(isThreadCard){
+				this.$router.push(`/threads/${thread.id}`);
+				return;
+			}
+
+			this.clickedToPlay = true;
+		},
+		/**
 		 * 创建播放器
 		 */
 		createPlayerInstance() {
-			const { forum, threadVideo, showThreadVideo, playerID } = this;
+			const { forum, threadVideo, showThreadVideo, playerID, isThreadCard } = this;
 
-			if (!showThreadVideo) {
+			if (!showThreadVideo || isThreadCard) {
 				return;
 			}
 

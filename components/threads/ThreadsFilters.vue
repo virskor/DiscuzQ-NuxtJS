@@ -26,7 +26,7 @@
 								<v-row class="ml-0 mr-0" justify="start">
 									<v-btn
 										class="mr-2 mt-2"
-										:color="categoryId && categoryId == it.id ? 'primary' : 'default'"
+										:color="categoryId == it.id ? 'primary' : 'default'"
 										@click="categoryId = it.id"
 										depressed
 										rounded
@@ -127,7 +127,7 @@ export default {
 			 * 是否为顶 yes no
 			 * 默认为 ''
 			 */
-			isSticky: "",
+			isSticky: "no",
 			/**
 			 * 是否被删除
 			 * 默认为no 强制
@@ -166,7 +166,7 @@ export default {
 		 */
 		async enSureUpdateFilter() {
 			const {
-				categoryid,
+				categoryId,
 				isApproved,
 				isEssence,
 				isSticky,
@@ -176,7 +176,7 @@ export default {
 			} = this;
 
 			await this.$store.dispatch("updateFilter", {
-				categoryid,
+				categoryId,
 				isApproved,
 				isEssence,
 				isSticky,

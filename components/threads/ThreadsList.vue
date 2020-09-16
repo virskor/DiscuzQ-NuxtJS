@@ -99,7 +99,7 @@ export default {
 			meta: null,
 		};
 	},
-	beforeDestroy(){
+	beforeDestroy() {
 		this.threadsData = null;
 	},
 	mounted() {
@@ -250,6 +250,8 @@ export default {
 		 * 筛选器变化
 		 */
 		filter() {
+			this.threadsData = null;
+			this.pageNumber = 1;
 			this.getThreads();
 		},
 		/**

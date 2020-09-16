@@ -39,7 +39,12 @@
 				></AttachmentImages>
 
 				<!--渲染视频-->
-				<Player class="pl-5 pr-5 mt-2 rounded-lg" :threadVideo="threadVideo"></Player>
+				<Player
+					class="pl-5 pr-5 mt-2 rounded-lg"
+					isThreadCard
+					:thread="thread"
+					:threadVideo="threadVideo"
+				></Player>
 			</div>
 			<!---渲染点赞评论分享-->
 			<ThreadCardQuickActions :firstPost="firstPost" :thread="thread"></ThreadCardQuickActions>
