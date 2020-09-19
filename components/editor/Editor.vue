@@ -120,7 +120,8 @@ export default {
 		type() {
 			const { editor } = this;
 
-			if (!this.$_.isEmpty(editor.attachments)) {
+			const uploadTypeImages  = attachmentsAPI.types.UPLOAD_TYPE_THREAD_IMAGES;
+			if (!this.$_.isEmpty(editor.attachments.find(a => a.type == uploadTypeImages))) {
 				return 3;
 			}
 

@@ -1,6 +1,7 @@
 <template>
 	<div class="pa-3">
 		<v-divider></v-divider>
+		<v-toolbar-title class="mt-3">{{uploadTypeCaption}}</v-toolbar-title>
 		<!--预览已经上传的附件 仅上传为图片时-->
 		<AttachmentImages
 			v-if="uploadType == uploadTypes.UPLOAD_TYPE_THREAD_IMAGES"
@@ -12,7 +13,7 @@
 			:attachments="attachments"
 		></AttachmentImages>
 
-		<EditorUploaderAddButton :uploadType="type"></EditorUploaderAddButton>
+		<EditorUploaderAddButton :label="`添加${uploadTypeCaption}`" :uploadType="type"></EditorUploaderAddButton>
 
 		<div class="mt-3">温馨提示：上传的{{uploadTypeCaption}}不应该涉及违规，版权争议等违反用户协议的内容，否则将承担法律责任。</div>
 	</div>
@@ -26,7 +27,6 @@ import { mapGetters } from "vuex";
 /// del-attachments
 import attachmentsAPI from "~/api/attachments";
 import EditorUploaderAddButton from "~/components/editor/uploader/EditorUploaderAddButton";
-import EditorUploaderPreview from "~/components/editor/uploader/EditorUploaderPreview";
 import AttachmentImages from "~/components/attachments/AttachmentImages";
 
 export default {
@@ -65,11 +65,11 @@ export default {
 		 * 仅筛选图片用于预览
 		 */
 		attachments() {
-			const { editor, uploadTypes } = this;
+			const { editor, type } = this;
 			const attachments = editor.attachments;
 			return attachments.filter(
 				(el) =>
-					el.attributes.type == uploadTypes.UPLOAD_TYPE_THREAD_IMAGES
+					el.attributes.type == type
 			);
 		},
 		/**
@@ -127,7 +127,6 @@ export default {
 	},
 	components: {
 		EditorUploaderAddButton,
-		EditorUploaderPreview,
 		AttachmentImages,
 	},
 };

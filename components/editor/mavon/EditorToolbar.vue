@@ -1,64 +1,89 @@
 <template>
 	<div>
-		<v-toolbar class="editor-toolbar" color="transparent" flat dense>
-			<div class="format-items">
-				<v-menu v-model="showEmojis" :close-on-content-click="false" :nudge-width="200" offset-y>
-					<template v-slot:activator="{ on, attrs }">
-						<v-btn :ripple="false" v-bind="attrs" v-on="on" icon>
-							<v-icon>mdi-emoticon-happy</v-icon>
+		<div class="editor-toolbar" color="transparent" flat dense>
+			<v-layout row wrap>
+				<v-flex pl-2 md12 lg9>
+					<div class="format-items">
+						<v-menu v-model="showEmojis" :close-on-content-click="false" :nudge-width="200" offset-y>
+							<template v-slot:activator="{ on, attrs }">
+								<v-btn :ripple="false" v-bind="attrs" v-on="on" icon>
+									<v-icon>mdi-emoticon-happy</v-icon>
+								</v-btn>
+							</template>
+
+							<EditorEmojiList @close="showEmojis = false" @input="emojiSelection"></EditorEmojiList>
+						</v-menu>
+
+						<!--图片上传-->
+						<v-btn
+							@click="wantUploadFiles(true)"
+							:color="showEditorImagesUploader ? 'primary' : ''"
+							:ripple="false"
+							icon
+						>
+							<v-icon>mdi-image-area</v-icon>
 						</v-btn>
-					</template>
 
-					<EditorEmojiList @close="showEmojis = false" @input="emojiSelection"></EditorEmojiList>
-				</v-menu>
+						<!--附件上传-->
+						<v-btn
+							@click="wantUploadFiles(false)"
+							:color="showAttachmentsUploader ? 'primary' : ''"
+							:ripple="false"
+							icon
+						>
+							<v-icon>mdi-attachment</v-icon>
+						</v-btn>
 
-				<!--图片上传-->
-				<v-btn
-					@click="showEditorImagesUploader = !showEditorImagesUploader"
-					:color="showEditorImagesUploader ? 'primary' : ''"
-					:ripple="false"
-					icon
-				>
-					<v-icon>mdi-image-area</v-icon>
-				</v-btn>
-
-				<!-- <v-btn v-if="allowVideo" :ripple="false" icon>
+						<!-- <v-btn v-if="allowVideo" :ripple="false" icon>
 				<v-icon>mdi-message-video</v-icon>
-				</v-btn>-->
+						</v-btn>-->
 
-				<v-btn :ripple="false" icon @click="toolbarEvent('set_price')">
-					<v-icon>mdi-currency-usd</v-icon>
-				</v-btn>
+						<v-btn :ripple="false" icon @click="toolbarEvent('set_price')">
+							<v-icon>mdi-currency-usd</v-icon>
+						</v-btn>
 
-				<v-chip color="amber" v-if="allowPrice && price > 0" label>{{`需支付：${price}`}}</v-chip>
-			</div>
-			<v-spacer></v-spacer>
+						<v-chip color="amber" v-if="allowPrice && price > 0" label>{{`需支付：${price}`}}</v-chip>
+					</div>
+				</v-flex>
+				<v-flex md-12 lg3>
+					<v-row>
+						<v-btn
+							class="hidden-sm-and-down"
+							:ripple="false"
+							v-if="showAdvancedButton"
+							@click="$router.push('/views/editor')"
+							text
+						>高级</v-btn>
 
-			<v-btn
-				class="hidden-sm-and-down"
-				:ripple="false"
-				v-if="showAdvancedButton"
-				@click="$router.push('/views/editor')"
-				text
-			>高级</v-btn>
+						<!--分类选择-->
+						<CategoriesSelectionList @category="(c) => $emit('category', c)" v-if="!isReply"></CategoriesSelectionList>
 
-			<!--分类选择-->
-			<CategoriesSelectionList @category="(c) => $emit('category', c)" v-if="!isReply"></CategoriesSelectionList>
-
-			<v-btn @click="pub" depressed rounded color="primary">{{saveButtonCaption}}</v-btn>
-		</v-toolbar>
+						<v-btn @click="pub" depressed rounded color="primary">{{saveButtonCaption}}</v-btn>
+					</v-row>
+				</v-flex>
+			</v-layout>
+		</div>
 
 		<EditorImagesUploader
 			:uploadType="uploadTypes.UPLOAD_TYPE_THREAD_IMAGES"
 			v-show="showEditorImagesUploader"
 		></EditorImagesUploader>
+
+		<EditorAttachmentsUploader
+			:uploadType="uploadTypes.UPLOAD_TYPE_THREAD_IMAGES"
+			v-show="showAttachmentsUploader"
+		></EditorAttachmentsUploader>
 	</div>
 </template>
 
 <script>
+import * as types from "~/store/vuex-types";
+import { mapGetters } from "vuex";
+
 import CategoriesSelectionList from "~/components/categories/CategoriesSelectionList";
 import EditorEmojiList from "~/components/editor/mavon/EditorEmojiList";
 import EditorImagesUploader from "~/components/editor/uploader/EditorImagesUploader";
+import EditorAttachmentsUploader from "~/components/editor/uploader/EditorAttachmentsUploader";
 import attachmentsAPI from "~/api/attachments";
 
 export default {
@@ -114,12 +139,28 @@ export default {
 			showEditorImagesUploader: false,
 
 			/**
+			 * 显示上传附件
+			 */
+			showAttachmentsUploader: false,
+
+			/**
 			 * 上传类型
 			 */
 			uploadTypes: attachmentsAPI.types,
 		};
 	},
 	computed: {
+		...mapGetters({
+			editor: types.GETTERS_EDITOR,
+		}),
+		/**
+		 * 附件
+		 */
+		attachments() {
+			const { editor, type } = this;
+			const attachments = editor.attachments;
+			return attachments;
+		},
 		/**
 		 * 是否显示高级选项
 		 */
@@ -163,11 +204,31 @@ export default {
 		emojiSelection(e) {
 			this.$emit("action", { type: "add_emoji", value: e });
 		},
+		/**
+		 * want upload files
+		 * 如果上传图片，则不能上传附件
+		 * 如果上传附件，则不能上传图片
+		 */
+		wantUploadFiles(isImage) {
+			const { attachments, uploadTypes } = this;
+
+			if (isImage) {
+				const { showEditorImagesUploader } = this;
+				this.showEditorImagesUploader = !showEditorImagesUploader;
+				this.showAttachmentsUploader = false;
+				return;
+			}
+
+			const { showAttachmentsUploader } = this;
+			this.showAttachmentsUploader = !showAttachmentsUploader;
+			this.showEditorImagesUploader = false;
+		},
 	},
 	components: {
 		CategoriesSelectionList,
 		EditorEmojiList,
 		EditorImagesUploader,
+		EditorAttachmentsUploader,
 	},
 };
 </script>
