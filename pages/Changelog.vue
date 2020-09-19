@@ -17,8 +17,15 @@
 				<p>剩余未完成或计划近期完成的：非图片的附件渲染</p>
 				<p>剩余未完成或计划近期完成的：修改密码，修改手机号</p>
 				<p>剩余未完成或计划近期完成的：腾讯LBS支持</p>
+				<p>剩余未完成或计划近期完成的：举报和拉黑</p>
 			</v-card>
 			<v-list>
+				<v-list-item>
+					<v-card flat tile>
+						<p class="text-h5">2020-09-19</p>
+						<p>编辑器黑暗模式兼容</p>
+					</v-card>
+				</v-list-item>
 				<v-list-item>
 					<v-card flat tile>
 						<p class="text-h5">2020-09-16</p>

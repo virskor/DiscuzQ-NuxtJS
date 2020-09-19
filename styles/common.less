@@ -13,6 +13,19 @@ a {
     text-decoration: none;
 }
 
+pre {
+    padding: 13px;
+    margin: 1em 0px;
+    overflow: auto;
+    font-size: 20px;
+    white-space: pre;
+    background: #f5f5f5;
+}
+
+code{
+    background-color: transparent!important;
+}
+
 .text-shadow {
     text-shadow: 1px 1px 1em rgba(0, 0, 0, .38);
 }
@@ -38,46 +51,54 @@ a {
     width: 25px;
 }
 
+/*
+* vuetify js 
+*/
+
 .v-pagination__navigation,
 .v-pagination__item--active,
 .v-pagination__item {
     box-shadow: none !important;
 }
 
+/*
+* player
+*/
 .tcp-skin,
 .video-js,
 .vjs-tech {
     border-radius: 8px !important;
 }
 
+/*
+* Editor
+*/
 .v-note-wrapper,
 .v-note-op {
     border-radius: 0;
 }
-
 .v-note-wrapper.shadow {
     border: none;
     background: transparent;
 }
-
 .v-note-wrapper {
     z-index: 4 !important;
     border: none !important;
 }
 
+.theme--dark{
+    .content-input,.content-input-wrapper,.v-note-wrapper{
+        background-color: transparent !important;
+    }
+    .auto-textarea-input{
+        color: #f5f5f5 !important;
+    }
+}
+
+
+/*
+* gotopjs
+*/
 .gotop {
     margin-bottom: 40px;
-}
-
-pre {
-    padding: 13px;
-    margin: 1em 0px;
-    overflow: auto;
-    font-size: 20px;
-    white-space: pre;
-    background: #f5f5f5;
-}
-
-code{
-    background-color: transparent!important;
 }
