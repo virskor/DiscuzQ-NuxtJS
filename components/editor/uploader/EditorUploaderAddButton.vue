@@ -42,20 +42,20 @@ export default {
 		}),
 		accept() {
 			const { uploadType, uploadTypes, forum } = this;
-			const set_attach = forum.attributes.set_attach;
+			const setAttach = forum.attributes.set_attach;
 
 			/**
 			 * 限制仅允许的图片类型
 			 */
 			if(uploadType == uploadTypes.UPLOAD_TYPE_THREAD_ATTACHMENT){
-				const support_file_ext = set_attach.support_file_ext;
+				const support_file_ext = setAttach.support_file_ext;
 				return support_file_ext.split(',').map(it => `.${it}`);
 			}
 
 			/**
 			 * 限制仅允许的附件类型
 			 */
-			const support_img_ext = set_attach.support_img_ext;
+			const support_img_ext = setAttach.support_img_ext;
 			return support_img_ext.split(',').map(it => `.${it}`);
 		},
 		inputID(){
@@ -77,11 +77,28 @@ export default {
 		 * 上传
 		 */
 		async upload(file) {
-			const { uploadType } = this;
+			const { uploadType, forum } = this;
+			const setAttach = forum.attributes.set_attach;
+			const supportMaxSize = setAttach.support_max_size * 1024;
+
+			/**
+			 * 要上传的文件和大小
+			 */
+			const uploadFile = file.srcElement.files[0];
+			const uploadFileSize = uploadFile.size / 1024;
+
+			/**
+			 * 检测文件大小
+			 */
+			if( uploadFileSize > supportMaxSize){
+				this.$swal(`文件不得超过${supportMaxSize}/Kb`);
+				return;
+			}
+
 			this.loading = true;
 
 			let formData = new FormData();
-			formData.append("file", file.srcElement.files[0]);
+			formData.append("file", uploadFile);
 			formData.append("type", uploadType);
 
 			const rs = await attachmentsAPI.upload(formData);

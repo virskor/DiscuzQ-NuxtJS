@@ -91,6 +91,9 @@ export default {
 			const { forum } = this;
 			return forum.attributes.qcloud.qcloud_captcha_app_id;
 		},
+		/**
+		 * 是否已经登录
+		 */
 		hasLogined() {
 			const { user } = this;
 			return !this.$_.isEmpty(user);
