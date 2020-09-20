@@ -36,8 +36,18 @@
 					<PostLikeButton :post="post"></PostLikeButton>
 					<!--评论-->
 					<PostReplyButton :thread="thread" :post="post"></PostReplyButton>
-					<!--删除-->
-					<PostDeleteButton @delete="(result) => fakeDelect = result" :post="post"></PostDeleteButton>
+					<v-menu top offset-y>
+						<template v-slot:activator="{ on, attrs }">
+							<v-btn text v-bind="attrs" v-on="on">更多</v-btn>
+						</template>
+
+						<v-list>
+							<v-list-item @click="$router.push(`/reports/?post_id=${post.id}`)">
+								<v-list-item-title>举报评论</v-list-item-title>
+							</v-list-item>
+							<PostDeleteButton @delete="(result) => fakeDelect = result" :post="post"></PostDeleteButton>
+						</v-list>
+					</v-menu>
 				</v-row>
 			</v-list-item-action>
 		</v-list-item>

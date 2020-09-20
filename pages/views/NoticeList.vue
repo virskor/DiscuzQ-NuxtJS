@@ -2,7 +2,7 @@
 	<div>
 		<AppTitle :title="title"></AppTitle>
 
-		<div v-if="loading && pageNumber == 1">
+		<v-container v-if="loading && pageNumber == 1">
 			<template>
 				<v-sheet class="px-3 pb-3">
 					<v-skeleton-loader
@@ -14,7 +14,7 @@
 					></v-skeleton-loader>
 				</v-sheet>
 			</template>
-		</div>
+		</v-container>
 		
 		<!--渲染消息列表-->
 		<v-container v-if="!$_.isEmpty(notifications)">

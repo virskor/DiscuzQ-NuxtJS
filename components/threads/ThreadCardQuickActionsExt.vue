@@ -8,6 +8,9 @@
 			</template>
 
 			<v-list>
+				<v-list-item  @click="$router.push(`/reports/?thread_id=${thread.id}`)">
+					<v-list-item-title>举报</v-list-item-title>
+				</v-list-item>
 				<v-list-item  @click="deleteThread" v-if="canDelete">
 					<v-list-item-title>删除该主题</v-list-item-title>
 				</v-list-item>

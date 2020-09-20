@@ -79,7 +79,7 @@ export default {
 				return '互相关注';
 			}
 
-			return isFollowed ? '已关注': '关注TA';
+			return isFollowed ? '已关注': '关注';
 		}
 	},
 	methods: {

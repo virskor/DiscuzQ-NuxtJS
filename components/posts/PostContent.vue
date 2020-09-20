@@ -5,7 +5,8 @@
 			@click="onTapUrl"
 			class="clickable ma-2 pl-3"
 			v-html="formatRichText(post.attributes.contentHtml || '')"
-		></div>
+		>
+		</div>
 		<div @click="onTapUrl" v-if="post.type == 'posts' && post.attributes.replyCount > 0">
 			<v-btn text color="primary">查看{{post.attributes.replyCount}}条评论</v-btn>
 		</div>

@@ -1,5 +1,8 @@
 <template>
-	<v-btn v-if="canDelete" @click="deletePost" text color="red">删除</v-btn>
+	<v-btn v-if="canDelete && isButton" @click="deletePost" depressed text color="red">删除评论</v-btn>
+	<v-list-item v-else-if="canDelete" @click="deletePost">
+		<v-list-item-title>删除评论</v-list-item-title>
+	</v-list-item>
 </template>
 
 <script>
@@ -14,6 +17,10 @@ export default {
 		 * 评论
 		 */
 		post: Object,
+		/**
+		 * 是否使用按钮样式
+		 */
+		isButton: Boolean,
 	},
 	computed: {
 		...mapGetters({
