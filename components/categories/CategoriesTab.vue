@@ -1,6 +1,6 @@
 <template>
 	<div v-if="categories">
-		<v-tabs v-model="tab" background-color="primary" dark centered show-arrows>
+		<v-tabs v-model="tab" :vertical="!$C.isMobile()" show-arrows>
 			<template v-for="(cat, i) in categories">
 				<v-tab
 					class="text-h5 font-weight-bold"
@@ -8,17 +8,14 @@
 					:ripple="false"
 					@click="onChanged(cat)"
 				>{{cat.attributes.name}}</v-tab>
+
+				<v-tab-item :key="i">
+					<v-container>
+						<ThreadList :category="cat"></ThreadList>
+					</v-container>
+				</v-tab-item>
 			</template>
 		</v-tabs>
-		<v-container>
-			<v-tabs-items v-model="tab">
-				<template v-for="(cat, i) in categories">
-					<v-tab-item :key="i">
-						<ThreadList :category="category"></ThreadList>
-					</v-tab-item>
-				</template>
-			</v-tabs-items>
-		</v-container>
 	</div>
 </template>
 

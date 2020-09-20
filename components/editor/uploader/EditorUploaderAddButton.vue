@@ -78,7 +78,15 @@ export default {
 		 */
 		async upload(file) {
 			const { uploadType, forum } = this;
+			
+			/**
+			 * 附件配置
+			 */
 			const setAttach = forum.attributes.set_attach;
+
+			/**
+			 * 限制上传的大小
+			 */
 			const supportMaxSize = setAttach.support_max_size * 1024;
 
 			/**
