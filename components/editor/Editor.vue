@@ -114,11 +114,24 @@ export default {
 		type() {
 			const { editor } = this;
 
+			/**
+			 * 如果用户上传了图片，则为图片贴
+			 */
 			const uploadTypeImages  = attachmentsAPI.types.UPLOAD_TYPE_THREAD_IMAGES;
 			if (!this.$_.isEmpty(editor.attachments.find(a => a.type == uploadTypeImages))) {
 				return 3;
 			}
 
+			/**
+			 * 如果用户上传了附件，则为帖子
+			 */
+			if (!this.$_.isEmpty(editor.attachments)) {
+				return 1;
+			}
+
+			/**
+			 * 如果用户没有上传图片，且没有标题，则为文字
+			 */
 			if (this.$_.isEmpty(editor.title)) {
 				return 0;
 			}
@@ -222,6 +235,13 @@ export default {
 				category,
 			} = this;
 
+			const attachments = editor.attachments.map((a)=>{
+				return {
+					id: a.id,
+					type: "attachments"
+				}
+			});
+
 			let data = {
 				type: "threads",
 				attributes: {
@@ -236,7 +256,7 @@ export default {
 				},
 				relationships: {
 					attachments: {
-						data: editor.attachments,
+						data: attachments,
 					},
 					category,
 				},
@@ -284,12 +304,19 @@ export default {
 				return;
 			}
 
+			const attachments = editor.attachments.map((a)=>{
+				return {
+					id: a.id,
+					type: "attachments"
+				}
+			});
+
 			let data = {
 				type: "posts",
 				attributes: { content: editor.content },
 				relationships: {
 					attachments: {
-						data: editor.attachments,
+						data: attachments,
 					},
 					thread: {
 						data: {

@@ -6,7 +6,7 @@
 		</AppTitle>
 
 		<v-container>
-			<Editor enableAttachment enablePrice lightMode></Editor>
+			<Editor enablePrice lightMode></Editor>
 		</v-container>
 
 		<v-container grid-list-md>

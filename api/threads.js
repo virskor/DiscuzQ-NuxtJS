@@ -39,6 +39,7 @@ export default {
                 RequestIncludes.USERS_GROUPS,
                 RequestIncludes.FIRST_POST,
                 RequestIncludes.FIRST_POST_IMAGES,
+                RequestIncludes.FIRST_POST_ATTACHMENTS,
                 RequestIncludes.CATEGORY,
                 RequestIncludes.THREAD_VIDEO,
                 RequestIncludes.USERS_GROUPS_PERMISSION_WITHOUT_CATEGORIES,
@@ -46,7 +47,7 @@ export default {
                 RequestIncludes.POSTS_USER,
                 RequestIncludes.POSTS_IMAGES,
                 RequestIncludes.USERS_GROUPS,
-                RequestIncludes.REWARDED_USERS
+                RequestIncludes.REWARDED_USERS,
             ],
         });
     },

@@ -51,7 +51,13 @@
 				<v-card tile flat>
 					<ThreadContents class="pl-5 pr-5 text mb-3" :thread="thread" :firstPost="firstPost"></ThreadContents>
 					<!--附件-->
-					<AttachmentImages class="pl-5 pr-5" :attachments="attachments"></AttachmentImages>
+					<AttachmentImages class="pl-5 pr-5" :attachments="images"></AttachmentImages>
+					<!--附件文件-->
+					<template v-for="(a, i) in attachments">
+						<div :key="i" class="pl-5 pr-5">
+							<ThreadAttchmentsFileIcon enableDownload disableRemove class="mr-2 mb-2" :attachment="a"></ThreadAttchmentsFileIcon>
+						</div>
+					</template>
 
 					<div>
 						<!--打赏-->
@@ -89,6 +95,8 @@ import Player from "~/components/player/Player";
 import RewardButton from "~/components/financial/RewardButton";
 import RewardedUsers from "~/components/financial/RewardedUsers";
 import BuyThreadButton from "~/components/financial/BuyThreadButton";
+import attachmentsAPI from "~/api/attachments";
+import ThreadAttchmentsFileIcon from "~/components/attachments/ThreadAttchmentsFileIcon";
 
 const defaultTitle = "帖子详情";
 
@@ -123,6 +131,14 @@ export default {
 					content: "Home page description",
 				},
 			],
+		};
+	},
+	data() {
+		return {
+			/**
+			 * 上传类型
+			 */
+			uploadTypes: attachmentsAPI.types,
 		};
 	},
 	computed: {
@@ -180,7 +196,7 @@ export default {
 		/**
 		 * 取得主题关联的附件
 		 */
-		attachments() {
+		images() {
 			const { included, thread, firstPost } = this;
 			if (!firstPost) {
 				return [];
@@ -191,6 +207,24 @@ export default {
 			return included.filter(
 				(it) => it.id == firstPostImages.find((el) => el == it.id)
 			);
+		},
+		/**
+		 * 上传的文件附件
+		 */
+		attachments() {
+			const { included, uploadTypes } = this;
+			if (!included) {
+				return [];
+			}
+
+			const attachments = included.filter(
+				(it) =>
+					it.type == "attachments" &&
+					it.attributes.type ==
+						uploadTypes.UPLOAD_TYPE_THREAD_ATTACHMENT
+			);
+
+			return attachments || [];
 		},
 		/**
 		 * 打赏的用户
@@ -240,6 +274,7 @@ export default {
 		RewardButton,
 		RewardedUsers,
 		BuyThreadButton,
+		ThreadAttchmentsFileIcon,
 	},
 };
 </script>
