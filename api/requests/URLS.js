@@ -205,6 +205,12 @@ const URLS = {
      * https://discuz.com/api-docs/v1/AttachmentCreate.html
      */
     ATTACHMENTS: `${APIHOST}${APIVERSION}/attachments`,
+
+    /**
+     * POST DELETE /api/reports 举报
+     * https://discuz.com/api-docs/v1/AttachmentCreate.html
+     */
+    REPORTS: `${APIHOST}${APIVERSION}/reports`,
 }
 
 export default URLS

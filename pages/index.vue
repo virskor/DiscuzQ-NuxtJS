@@ -1,12 +1,12 @@
 <template>
 	<div>
 		<AppTitle :title="`${forum.attributes.set_site.site_name || '首页'}`">
-			<SearchField/>
+			<SearchField />
 			<ThreadsFilters />
 		</AppTitle>
 
 		<v-container>
-			<Editor lightMode></Editor>
+			<Editor enableAttachment enablePrice lightMode></Editor>
 		</v-container>
 
 		<v-container grid-list-md>
@@ -39,10 +39,10 @@ export default {
 		};
 	},
 
-	components: { 
-		ThreadList, 
-		ThreadsFilters, 
-		Editor, 
+	components: {
+		ThreadList,
+		ThreadsFilters,
+		Editor,
 		HomePageDrawer,
 	},
 

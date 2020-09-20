@@ -107,7 +107,7 @@ module.exports = {
         useShortDoctype: true
       }
     },
-    extractCSS: true,
+    extractCSS: false,
     /*
     ** You can extend webpack config here
     */

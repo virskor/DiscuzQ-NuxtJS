@@ -1,7 +1,38 @@
 import * as types from '@/store/vuex-types'
 import attachmentsAPI from "~/api/attachments";
 
-const defaultEditorData = { title: '', attachments: [], content: '' };
+const defaultEditorData = {
+    /**
+     * 标题
+     */
+    title: '', 
+    /**
+     * 附件
+     */
+    attachments: [], 
+    /**
+     * 主题内容
+     */
+    content: '',			
+    /**
+    * 经度
+    */
+    longitude: 0,
+    /**
+    * 纬度
+    */
+    latitude: 0,
+    /**
+    * address
+    * 经纬度坐标对应的地址（如：广东省深圳市深南大道 10000 号）
+    */
+    address: "",
+    /**
+    * location
+    * 经纬度坐标对应的位置（如：腾讯大厦）
+    */
+    location: "",
+};
 
 const state = () => {
     return {
@@ -40,18 +71,18 @@ const actions = {
      * @param {*} param0 
      * @param {*} attachment 
      */
-    updateTitle({commit }, title) {
+    updateTitle({ commit }, title) {
         commit(types.MUTATION_EDITOR, {
             title
         });
     },
-    
+
     /**
      * 更新内容
      * @param {*} param0 
      * @param {*} attachment 
      */
-    updateContent({commit }, content) {
+    updateContent({ commit }, content) {
         commit(types.MUTATION_EDITOR, {
             content
         });

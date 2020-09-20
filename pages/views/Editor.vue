@@ -2,7 +2,7 @@
 	<div>
 		<AppTitle showExtendedNav title="编辑器"></AppTitle>
 		<v-container>
-			<Editor></Editor>
+			<Editor enablePrice enableAttachment></Editor>
 		</v-container>
 	</div>
 </template>

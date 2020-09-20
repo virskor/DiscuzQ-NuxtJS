@@ -29,6 +29,8 @@
 			@action="toolbarAction"
 			@category="(c) => $emit('category', c)"
 			@pub="pub"
+			:enableAttachment="enableAttachment"
+			:enablePrice="enablePrice"
 		></EditorToolbar>
 	</div>
 </template>
@@ -48,6 +50,15 @@ export default {
 		 * 是否是回复模式
 		 */
 		isReply: Boolean,
+		/**
+		 * enable upload attachment
+		 * 是否允许上传附件
+		 */
+		enableAttachment: Boolean,
+		/**
+		 * 是否允许设置价格
+		 */
+		enablePrice: Boolean
 	},
 	mounted() {
 		this.$nextTick(async () => {

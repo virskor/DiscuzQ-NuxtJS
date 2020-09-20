@@ -1,8 +1,8 @@
 <template>
-	<div>
-		<div class="editor-toolbar" color="transparent" flat dense>
+	<div class="editor-toolbar">
+		<v-container fluid grid-list-md>
 			<v-layout row wrap>
-				<v-flex pl-2 md12 lg9>
+				<v-flex pl-2 md12 lg6>
 					<div class="format-items">
 						<v-menu v-model="showEmojis" :close-on-content-click="false" :nudge-width="200" offset-y>
 							<template v-slot:activator="{ on, attrs }">
@@ -26,6 +26,7 @@
 
 						<!--附件上传-->
 						<v-btn
+							v-if="enableAttachment"
 							@click="wantUploadFiles(false)"
 							:color="showAttachmentsUploader ? 'primary' : ''"
 							:ripple="false"
@@ -38,17 +39,16 @@
 				<v-icon>mdi-message-video</v-icon>
 						</v-btn>-->
 
-						<v-btn :ripple="false" icon @click="toolbarEvent('set_price')">
+						<v-btn v-if="enablePrice" :ripple="false" icon @click="toolbarEvent('set_price')">
 							<v-icon>mdi-currency-usd</v-icon>
 						</v-btn>
 
 						<v-chip color="amber" v-if="allowPrice && price > 0" label>{{`需支付：${price}`}}</v-chip>
 					</div>
 				</v-flex>
-				<v-flex md-12 lg3>
-					<v-row>
+				<v-flex md-12 lg6>
+					<v-row justify="end">
 						<v-btn
-							class="hidden-sm-and-down"
 							:ripple="false"
 							v-if="showAdvancedButton"
 							@click="$router.push('/views/editor')"
@@ -62,7 +62,7 @@
 					</v-row>
 				</v-flex>
 			</v-layout>
-		</div>
+		</v-container>
 
 		<EditorImagesUploader
 			:uploadType="uploadTypes.UPLOAD_TYPE_THREAD_IMAGES"
@@ -108,6 +108,15 @@ export default {
 		 * 精简模式将不支持输入标题，等，适用于快速发帖，回复嵌入
 		 */
 		lightMode: Boolean,
+		/**
+		 * enable upload attachment
+		 * 是否允许上传附件
+		 */
+		enableAttachment: Boolean,
+		/**
+		 * 是否允许设置价格
+		 */
+		enablePrice: Boolean
 	},
 	data() {
 		return {

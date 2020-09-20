@@ -4,12 +4,15 @@
 			<v-overlay v-if="!hasLogined" absolute :opacity=".1" :value="true">
 				<v-btn @click="login" depressed rounded color="primary">登录来继续</v-btn>
 			</v-overlay>
+
 			<MarkdownEditor
 				@pub="pub"
 				@price="(p) => price = p"
 				@category="(c) => category = c"
 				:lightMode="lightMode"
 				:isReply="isReply"
+				:enableAttachment="enableAttachment"
+				:enablePrice="enablePrice"
 			></MarkdownEditor>
 		</v-card>
 	</client-only>
@@ -50,6 +53,15 @@ export default {
 		 * 编辑数据时，区分thread, post 传入thread则编辑thread, 传入post则编辑Post
 		 */
 		isEditMode: Boolean,
+		/**
+		 * enable upload attachment
+		 * 是否允许上传附件
+		 */
+		enableAttachment: Boolean,
+		/**
+		 * 是否允许设置价格
+		 */
+		enablePrice: Boolean
 	},
 	mounted() {
 		this.$nextTick(async () => {});
@@ -64,24 +76,6 @@ export default {
 			 * 价格
 			 */
 			price: "0.00",
-			/**
-			 * 经度
-			 */
-			longitude: 0,
-			/**
-			 * 纬度
-			 */
-			latitude: 0,
-			/**
-			 * address
-			 * 经纬度坐标对应的地址（如：广东省深圳市深南大道 10000 号）
-			 */
-			address: "",
-			/**
-			 * location
-			 * 经纬度坐标对应的位置（如：腾讯大厦）
-			 */
-			location: "",
 		};
 	},
 	computed: {
@@ -224,10 +218,6 @@ export default {
 				editor,
 				isReply,
 				type,
-				longitude,
-				latitude,
-				address,
-				location,
 				captchaAppID,
 				category,
 			} = this;
@@ -237,10 +227,6 @@ export default {
 				attributes: {
 					type,
 					...editor,
-					longitude,
-					latitude,
-					address,
-					location,
 					captcha_ticket: "",
 					captcha_rand_str: "",
 					/**
