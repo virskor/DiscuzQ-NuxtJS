@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<AppTitle showExtendedNav title="版块分类">
-			<ThreadsFilters />
+			<ThreadsFiltersMenu v-if="$C.isMobile()" />
 		</AppTitle>
 		<CategoriesTab />
 	</div>
@@ -9,7 +9,7 @@
 
 <script>
 import CategoriesTab from "~/components/categories/CategoriesTab";
-import ThreadsFilters from "~/components/threads/ThreadsFilters";
+import ThreadsFiltersMenu from "~/components/threads/ThreadsFiltersMenu";
 
 export default {
 	head() {
@@ -19,7 +19,7 @@ export default {
 	},
 	components: {
 		CategoriesTab,
-		ThreadsFilters,
+		ThreadsFiltersMenu,
 	},
 };
 </script>

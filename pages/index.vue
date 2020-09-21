@@ -2,7 +2,7 @@
 	<div>
 		<AppTitle :title="`${forum.attributes.set_site.site_name || '首页'}`">
 			<SearchField />
-			<ThreadsFilters />
+			<ThreadsFiltersMenu v-if="$C.isMobile()" />
 		</AppTitle>
 
 		<v-container>
@@ -28,7 +28,7 @@ import * as types from "~/store/vuex-types";
 import { mapGetters } from "vuex";
 
 import ThreadList from "~/components/threads/ThreadsList";
-import ThreadsFilters from "~/components/threads/ThreadsFilters";
+import ThreadsFiltersMenu from "~/components/threads/ThreadsFiltersMenu";
 import Editor from "~/components/editor/Editor";
 import HomePageDrawer from "~/components/navigationDrawers/HomePageDrawer";
 
@@ -41,7 +41,7 @@ export default {
 
 	components: {
 		ThreadList,
-		ThreadsFilters,
+		ThreadsFiltersMenu,
 		Editor,
 		HomePageDrawer,
 	},

@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<AppTitle title="用户主页">
-			<ThreadsFilters v-show="false"></ThreadsFilters>
+			<ThreadsFiltersMenu v-show="false"></ThreadsFiltersMenu>
 		</AppTitle>
 		<v-container>
 			<UserHomepageBanner :user="currentUser" :group="userGroup"></UserHomepageBanner>
@@ -54,7 +54,7 @@ import { mapGetters } from "vuex";
 import usersAPI from "~/api/users";
 import UserHomepageBanner from "~/components/users/UserHomepageBanner";
 import ThreadList from "~/components/threads/ThreadsList";
-import ThreadsFilters from "~/components/threads/ThreadsFilters";
+import ThreadsFiltersMenu from "~/components/threads/ThreadsFiltersMenu";
 import FollowersList from "~/components/users/follow/FollowersList";
 import ThreadsLikesList from "~/components/threads/ThreadsLikesList";
 
@@ -125,7 +125,7 @@ export default {
 	components: {
 		UserHomepageBanner,
 		ThreadList,
-		ThreadsFilters,
+		ThreadsFiltersMenu,
 		FollowersList,
 		ThreadsLikesList,
 	},

@@ -12,7 +12,7 @@
 				prepend-inner-icon="mdi-magnify"
 			></v-text-field>
 
-			<ThreadsFilters />
+			<ThreadsFiltersMenu />
 		</AppTitle>
 
 		<v-container>
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import ThreadsFilters from "~/components/threads/ThreadsFilters";
+import ThreadsFiltersMenu from "~/components/threads/ThreadsFiltersMenu";
 import ThreadList from "~/components/threads/ThreadsList";
 
 export default {
@@ -39,7 +39,7 @@ export default {
 			keyword: this.$route.query.keyword || "",
 		};
 	},
-	components: { ThreadsFilters, ThreadList },
+	components: { ThreadsFiltersMenu, ThreadList },
 };
 </script>
 

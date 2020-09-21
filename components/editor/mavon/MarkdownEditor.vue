@@ -197,6 +197,7 @@ export default {
 			 */
 			handler(newEditor) {
 				const {markdown} = this;
+				
 				if(!this.$_.isEmpty(newEditor.content)){
 					return;
 				}

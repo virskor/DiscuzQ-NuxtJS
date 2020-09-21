@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<AppTitle title="话题详情">
-			<ThreadsFilters />
+			<ThreadsFiltersMenu />
 		</AppTitle>
 		<v-container>
 			<TopicDetailCard :topicID="topicID"></TopicDetailCard>
@@ -15,7 +15,7 @@ import * as types from "~/store/vuex-types";
 import { mapGetters } from "vuex";
 
 import ThreadList from "~/components/threads/ThreadsList";
-import ThreadsFilters from "~/components/threads/ThreadsFilters";
+import ThreadsFiltersMenu from "~/components/threads/ThreadsFiltersMenu";
 import TopicDetailCard from "~/components/topics/TopicDetailCard";
 
 export default {
@@ -31,7 +31,7 @@ export default {
 	},
 	components: {
 		ThreadList,
-		ThreadsFilters,
+		ThreadsFiltersMenu,
 		TopicDetailCard,
 	},
 };

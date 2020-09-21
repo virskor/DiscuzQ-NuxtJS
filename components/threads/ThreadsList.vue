@@ -1,5 +1,8 @@
 <template>
 	<div>
+
+		<ThreadFiltersMenuDesktop></ThreadFiltersMenuDesktop>
+
 		<div v-if="loading && pageNumber == 1">
 			<template>
 				<v-sheet class="px-3 pb-3">
@@ -52,6 +55,7 @@ import threadsAPI from "~/api/threads";
 import _ from "lodash";
 
 import ThreadCard from "~/components/threads/ThreadCard";
+import ThreadFiltersMenuDesktop from "~/components/threads/ThreadFiltersMenuDesktop";
 
 export default {
 	props: {
@@ -268,6 +272,7 @@ export default {
 
 	components: {
 		ThreadCard,
+		ThreadFiltersMenuDesktop
 	},
 };
 </script>

@@ -21,6 +21,12 @@
 			<v-list>
 				<v-list-item>
 					<v-card flat tile>
+						<p class="text-h5">2020-09-21</p>
+						<p>PC端筛选器优化</p>
+					</v-card>
+				</v-list-item>
+				<v-list-item>
+					<v-card flat tile>
 						<p class="text-h5">2020-09-20</p>
 						<p>编辑器新增部分属性，隐藏部分选项</p>
 						<p>新增举报帖子，用户，评论</p>
