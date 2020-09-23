@@ -9,16 +9,8 @@
 			<Editor enablePrice lightMode></Editor>
 		</v-container>
 
-		<v-container grid-list-md>
-			<v-layout row wrap>
-				<v-flex md12 lg9>
-					<ThreadList />
-				</v-flex>
-
-				<v-flex class="hidden-md-and-down" md3>
-					<HomePageDrawer />
-				</v-flex>
-			</v-layout>
+		<v-container>
+			<ThreadList />
 		</v-container>
 	</div>
 </template>
@@ -30,7 +22,6 @@ import { mapGetters } from "vuex";
 import ThreadList from "~/components/threads/ThreadsList";
 import ThreadsFiltersMenu from "~/components/threads/ThreadsFiltersMenu";
 import Editor from "~/components/editor/Editor";
-import HomePageDrawer from "~/components/navigationDrawers/HomePageDrawer";
 
 export default {
 	head() {
@@ -43,7 +34,6 @@ export default {
 		ThreadList,
 		ThreadsFiltersMenu,
 		Editor,
-		HomePageDrawer,
 	},
 
 	computed: {

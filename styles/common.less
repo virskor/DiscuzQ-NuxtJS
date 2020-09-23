@@ -22,8 +22,8 @@ pre {
     background: #f5f5f5;
 }
 
-code{
-    background-color: transparent!important;
+code {
+    background-color: transparent !important;
 }
 
 .text-shadow {
@@ -77,23 +77,31 @@ code{
 .v-note-op {
     border-radius: 0;
 }
+
 .v-note-wrapper.shadow {
     border: none;
     background: transparent;
 }
+
 .v-note-wrapper {
     z-index: 4 !important;
     border: none !important;
 }
 
-.theme--dark{
-    .v-note-op{
+.theme--dark {
+    .v-note-op {
         color: #333333 !important;
     }
-    .v-show-content, .content-input,.content-input-wrapper,.v-note-wrapper{
+
+    .v-show-content,
+    .content-input,
+    .content-input-wrapper,
+    .v-note-wrapper {
         background-color: transparent !important;
     }
-    .v-show-content, .auto-textarea-input{
+
+    .v-show-content,
+    .auto-textarea-input {
         color: #f5f5f5 !important;
     }
 }
@@ -104,4 +112,18 @@ code{
 */
 .gotop {
     margin-bottom: 40px;
+}
+
+/*
+* Mediaqueries
+*/
+@media only screen and (min-width: 1260px) {
+
+    .v-main,
+    .start-drawer,
+    .end-drawer,
+    .app-title {
+        margin-left: 100px;
+        margin-right: 100px;
+    }
 }

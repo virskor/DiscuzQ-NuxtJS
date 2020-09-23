@@ -32,7 +32,7 @@
 					<v-list dense>
 						<v-list-item  dense cols="6" class="pa-0 pr-2 pl-2" v-for="(topic, i) in topicsList" :key="i">
 							<nuxt-link :to="`/topics/${topic.id}`">
-								<v-chip class="clickable" outlined color="transparent" text-color="primary">
+								<v-chip class="clickable" color="blue lighten-5" text-color="primary">
 									<v-avatar color="primary" left>
 										<i class="iconfont white--text icon-huati2"></i>
 									</v-avatar>

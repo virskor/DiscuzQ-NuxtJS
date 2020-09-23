@@ -6,7 +6,15 @@
 			<v-card flat>
 				<v-card-title>{{title}}的ID：{{thread_id || post_id || user_id}}</v-card-title>
 				<v-card-text>
-					<v-textarea label="举报的原因(必填)" v-model="reason" hint="请描述举报的理由，以便我们审核"></v-textarea>
+					<v-radio-group v-model="selectedReason">
+						<v-radio v-for="(p, i) in presetReasons" :key="i" :label="p" :value="p"></v-radio>
+					</v-radio-group>
+					<v-textarea
+						label="更加详细的信息"
+						v-model="reason"
+						hint="请描述举报的理由，以便我们审核"
+						clearable
+					></v-textarea>
 				</v-card-text>
 				<v-card-actions>
 					<v-btn @click="report" depressed rounded large color="primary">提交举报信息</v-btn>
@@ -47,6 +55,22 @@ export default {
 			 * 原因
 			 */
 			reason: "",
+			/**
+			 * presetReasons
+			 */
+			presetReasons: [
+				"广告垃圾",
+				"恶意灌水",
+				"违规内容",
+				"重复发帖",
+				"言语攻击",
+				"暴恐谣言",
+				"其他",
+			],
+			/**
+			 * 用户选择的理由
+			 */
+			selectedReason: "其他",
 		};
 	},
 	computed: {
@@ -95,7 +119,14 @@ export default {
 		 * 提交举报数据
 		 */
 		async report() {
-			const { thread_id, post_id, user_id, reason, type } = this;
+			const {
+				thread_id,
+				post_id,
+				user_id,
+				reason,
+				type,
+				selectedReason,
+			} = this;
 
 			if (this.$_.isEmpty(reason)) {
 				this.$swal("请填写举报的理由");
@@ -106,7 +137,7 @@ export default {
 				thread_id,
 				post_id,
 				user_id,
-				reason,
+				reason: `${selectedReason} - ${reason}`,
 				type,
 			});
 

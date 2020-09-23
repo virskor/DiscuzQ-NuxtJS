@@ -34,7 +34,7 @@
 
 				<!--经典模式下，不显示-->
 				<StartDrawer v-model="showStartDrawer"></StartDrawer>
-				<!-- <EndDrawer v-model="showEndDrawer"></EndDrawer> -->
+				<EndDrawer v-model="showEndDrawer"></EndDrawer>
 
 				<!--路由-->
 				<nuxt :class="nuxtBackground" v-if="forum && !loadForumFailed && !loadingUser">

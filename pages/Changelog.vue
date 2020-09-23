@@ -15,10 +15,16 @@
 				<p>剩余未完成或计划近期完成的：新增视频上传</p>
 				<p>剩余未完成或计划近期完成的：修改密码，修改手机号</p>
 				<p>剩余未完成或计划近期完成的：腾讯LBS支持</p>
-				<p>剩余未完成或计划近期完成的：拉黑</p>
 				<p>剩余未完成或计划近期完成的：站点付费模式</p>
 			</v-card>
 			<v-list>
+				<v-list-item>
+					<v-card flat tile>
+						<p class="text-h5">2020-09-23</p>
+						<p>优化举报表单</p>
+						<p>剩余未完成或计划近期完成的：拉黑</p>
+					</v-card>
+				</v-list-item>
 				<v-list-item>
 					<v-card flat tile>
 						<p class="text-h5">2020-09-21</p>

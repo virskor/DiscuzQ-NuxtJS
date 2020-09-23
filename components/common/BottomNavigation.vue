@@ -1,5 +1,5 @@
 <template>
-	<v-bottom-navigation grow app color="primary" class="hidden-lg-and-up">
+	<v-bottom-navigation grow app color="primary" class="hidden-lg-and-up bottom-navigation">
 		<v-btn @click="$emit('start')">
 			<span>发现</span>
 			<v-icon>mdi-compass-outline</v-icon>
@@ -15,5 +15,8 @@ export default {
 };
 </script>
 
-<style>
+<style lang="less">
+.bottom-navigation{
+	z-index: 9 !important;
+}
 </style>
