@@ -2,7 +2,7 @@
 	<div class="text-center mb-4 mt-4">
 		<v-dialog v-model="rewardDialog" persistent max-width="500">
 			<template v-slot:activator="{ on, attrs }">
-				<v-btn :loading="loading" v-bind="attrs" v-on="on" depressed rounded large dark color="red">
+				<v-btn :loading="loading" v-bind="attrs" v-on="on" depressed large dark color="red">
 					<v-icon left>mdi-currency-usd</v-icon>打赏该主题
 				</v-btn>
 			</template>

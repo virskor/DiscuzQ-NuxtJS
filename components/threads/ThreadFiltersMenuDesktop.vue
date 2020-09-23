@@ -8,7 +8,6 @@
 					@click="toggleIsEssence"
 					depressed
 					text
-					rounded
 				>所有</v-btn>
 				<v-btn
 					class="mr-2"
@@ -16,7 +15,6 @@
 					@click="toggleIsEssence"
 					depressed
 					text
-					rounded
 				>精华</v-btn>
 				<v-btn
 					class="mr-2"
@@ -25,11 +23,10 @@
 					:color="fromUserId == user.id ? 'primary' : 'default'"
 					depressed
 					text
-					rounded
 				>只看已关注</v-btn>
 				<v-menu offset-y bottom left>
 					<template v-slot:activator="{ on, attrs }">
-						<v-btn depressed rounded text v-bind="attrs" v-on="on">
+						<v-btn depressed text v-bind="attrs" v-on="on">
 							<v-icon left>mdi-chevron-down</v-icon>类型
 						</v-btn>
 					</template>
@@ -43,13 +40,17 @@
 							v-for="(it,i) in types"
 							:key="i"
 						>
-							<v-list-item-title :class="type == it.value ? 'primary--text' : 'default--text'">  {{it.caption}}  </v-list-item-title>
+							<v-list-item-title
+								:class="type == it.value ? 'primary--text' : 'default--text'"
+							>{{it.caption}}</v-list-item-title>
 						</v-list-item>
 					</v-list>
 				</v-menu>
 
 				<v-spacer></v-spacer>
-				<v-btn depressed @click="enSureUpdateFilter" color="primary" rounded>筛选并查询</v-btn>
+				<v-btn depressed @click="enSureUpdateFilter" icon color="primary">
+					<v-icon>mdi-magnify</v-icon>
+				</v-btn>
 			</v-row>
 		</v-card-actions>
 	</v-card>

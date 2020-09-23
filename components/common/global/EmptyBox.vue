@@ -4,7 +4,7 @@
 			<img width="150px" src="~/assets/empty.png" />
 			<p class="text-h4 font-weight-black">{{title || '没有更多啦'}}</p>
 			<p v-if="refresh">
-				<v-btn depressed color="primary" rounded @click="wantRefresh">刷新试试</v-btn>
+				<v-btn depressed color="primary" @click="wantRefresh">刷新试试</v-btn>
 			</p>
 			<p>
 				<v-btn @click="$router.go(-1)" text color="primary">返回上一页</v-btn>

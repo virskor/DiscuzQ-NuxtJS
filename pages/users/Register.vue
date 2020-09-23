@@ -33,11 +33,10 @@
 								<a href="https://app.clodra.com/policies/policy.html" target="_blank">用户协议</a>
 							</p>
 							<p>
-								<v-btn rounded :loading="loading" depressed large block @click="register" color="primary">注册</v-btn>
+								<v-btn :loading="loading" depressed large block @click="register" color="primary">注册</v-btn>
 							</p>
 							<p>
 								<v-btn
-									rounded
 									depressed
 									large
 									block

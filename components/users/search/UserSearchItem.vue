@@ -21,7 +21,7 @@
 			<v-list-item-action>
 				<!--关注按钮-->
 				<UserFollowButton v-if="showFollowButton" :user="user"></UserFollowButton>
-				<v-btn v-if="!showFollowButton" text rounded color="primary" @click="visit(user)" small>查看Ta</v-btn>
+				<v-btn v-if="!showFollowButton" text color="primary" @click="visit(user)" small>查看Ta</v-btn>
 			</v-list-item-action>
 		</v-list-item>
 	</div>

@@ -1,5 +1,5 @@
 <template>
-	<v-btn v-if="showButton" color="primary" rounded @click="$router.push(`/users/profiles`)" text>
+	<v-btn v-if="showButton" color="primary" @click="$router.push(`/users/profiles`)" text>
 		<v-icon left>mdi-tooltip-edit</v-icon>资料
 	</v-btn>
 </template>

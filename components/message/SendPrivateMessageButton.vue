@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<v-btn @click="sendMessage" text color="primary" rounded depressed>
+		<v-btn @click="sendMessage" text color="primary" depressed>
 			<v-icon left>mdi-message</v-icon>私信
 		</v-btn>
 	</div>

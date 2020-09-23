@@ -1,6 +1,6 @@
 <template>
 	<div class="text-center mt-3 ">
-		<v-btn block :disabled="canContinue" color="primary" rounded outlined :loading="waiting" @click="next">
+		<v-btn block :disabled="canContinue" color="primary" outlined :loading="waiting" @click="next">
 			{{!canContinue ? (caption || '查看更多'): '没有更多了'}}
 			<slot />
 		</v-btn>

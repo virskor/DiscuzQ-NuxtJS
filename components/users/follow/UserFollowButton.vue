@@ -3,7 +3,6 @@
 		<v-btn
 			:loading="loading"
 			color="primary"
-			rounded
 			text
 			@click="toggleFollowButton"
 			:ripple="false"

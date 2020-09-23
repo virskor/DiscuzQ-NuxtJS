@@ -17,8 +17,8 @@
 					></v-textarea>
 				</v-card-text>
 				<v-card-actions>
-					<v-btn @click="report" depressed rounded large color="primary">提交举报信息</v-btn>
-					<v-btn @click="$router.go(-1)" depressed rounded large>取消</v-btn>
+					<v-btn @click="report" depressed large color="primary">提交举报信息</v-btn>
+					<v-btn @click="$router.go(-1)" depressed large>取消</v-btn>
 				</v-card-actions>
 			</v-card>
 		</v-container>

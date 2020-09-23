@@ -17,7 +17,7 @@
 			<v-card-actions>
 				<v-spacer></v-spacer>
 				<v-btn :disabled="creating" text @click="close">取消</v-btn>
-				<v-btn :loading="creating" dark depressed rounded color="primary" @click="create">确认支付</v-btn>
+				<v-btn :loading="creating" dark depressed color="primary" @click="create">确认支付</v-btn>
 			</v-card-actions>
 		</v-card>
 	</v-dialog>

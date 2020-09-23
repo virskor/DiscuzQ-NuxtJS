@@ -4,7 +4,6 @@
 			<template v-slot:activator="{ on, attrs }">
 				<v-btn
 					text
-					rounded
 					color="primary"
 					dark
 					:loading="loading"

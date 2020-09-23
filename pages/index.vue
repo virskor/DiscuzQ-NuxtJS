@@ -6,10 +6,7 @@
 		</AppTitle>
 
 		<v-container>
-			<Editor enablePrice lightMode></Editor>
-		</v-container>
-
-		<v-container>
+			<Editor class="mb-2" enablePrice lightMode></Editor>
 			<ThreadList />
 		</v-container>
 	</div>

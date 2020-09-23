@@ -1,11 +1,11 @@
 <template>
 	<div class="userStatusBar">
 		<div v-if="!hasLogined">
-			<v-btn depressed rounded color="primary" @click="login">登录</v-btn>
+			<v-btn depressed small color="primary" @click="login">登录</v-btn>
 			<!-- <v-btn depressed text small color="primary" @click="register">注册</v-btn> -->
 		</div>
 		<div v-else>
-			<v-btn outlined rounded color="transparent" dark>
+			<v-btn outlined color="transparent" dark>
 				<Avatar :size="40" :user="user" />
 			</v-btn>
 		</div>

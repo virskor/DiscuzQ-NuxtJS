@@ -58,7 +58,7 @@
 						<!--分类选择-->
 						<CategoriesSelectionList @category="(c) => $emit('category', c)" v-if="!isReply"></CategoriesSelectionList>
 
-						<v-btn @click="pub" depressed rounded color="primary">{{saveButtonCaption}}</v-btn>
+						<v-btn @click="pub" depressed color="primary">{{saveButtonCaption}}</v-btn>
 					</v-row>
 				</v-flex>
 			</v-layout>

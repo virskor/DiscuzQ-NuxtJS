@@ -1,8 +1,10 @@
 <template>
 	<client-only>
 		<v-card class="pa-2" flat>
-			<v-overlay v-if="!hasLogined" absolute :opacity=".1" :value="true">
-				<v-btn @click="login" depressed rounded color="primary">登录来继续</v-btn>
+			<v-overlay v-if="!hasLogined" absolute :opacity=".2" :value="true">
+				<v-btn @click="login" light depressed color="white">
+					登录来发布 <v-icon right>mdi-arrow-right-box</v-icon>
+				</v-btn>
 			</v-overlay>
 
 			<MarkdownEditor
@@ -61,7 +63,7 @@ export default {
 		/**
 		 * 是否允许设置价格
 		 */
-		enablePrice: Boolean
+		enablePrice: Boolean,
 	},
 	mounted() {
 		this.$nextTick(async () => {});
@@ -120,8 +122,13 @@ export default {
 			/**
 			 * 如果用户上传了图片，则为图片贴
 			 */
-			const uploadTypeImages  = attachmentsAPI.types.UPLOAD_TYPE_THREAD_IMAGES;
-			if (!this.$_.isEmpty(editor.attachments.find(a => a.type == uploadTypeImages))) {
+			const uploadTypeImages =
+				attachmentsAPI.types.UPLOAD_TYPE_THREAD_IMAGES;
+			if (
+				!this.$_.isEmpty(
+					editor.attachments.find((a) => a.type == uploadTypeImages)
+				)
+			) {
 				return 3;
 			}
 
@@ -156,7 +163,7 @@ export default {
 		 * 重新初始化编辑器
 		 */
 		async reload() {
-			await this.$store.dispatch('clearEditor');
+			await this.$store.dispatch("clearEditor");
 		},
 		/**
 		 * pub 发布
@@ -238,11 +245,11 @@ export default {
 				category,
 			} = this;
 
-			const attachments = editor.attachments.map((a)=>{
+			const attachments = editor.attachments.map((a) => {
 				return {
 					id: a.id,
-					type: "attachments"
-				}
+					type: "attachments",
+				};
 			});
 
 			let data = {
@@ -268,7 +275,7 @@ export default {
 			/**
 			 * 删除不必要的属性
 			 */
-			delete data.attributes.attachments
+			delete data.attributes.attachments;
 
 			// 调试用
 			// debugger
@@ -307,11 +314,11 @@ export default {
 				return;
 			}
 
-			const attachments = editor.attachments.map((a)=>{
+			const attachments = editor.attachments.map((a) => {
 				return {
 					id: a.id,
-					type: "attachments"
-				}
+					type: "attachments",
+				};
 			});
 
 			let data = {
@@ -333,7 +340,7 @@ export default {
 			/**
 			 * 删除不必要的属性
 			 */
-			delete data.attributes.attachments
+			delete data.attributes.attachments;
 
 			/**
 			 * isComment

@@ -7,7 +7,6 @@
 					v-bind="attrs"
 					v-on="on"
 					depressed
-					rounded
 					large
 					dark
 					color="amber"
@@ -22,7 +21,7 @@
 				<v-card-actions>
 					<v-spacer></v-spacer>
 					<v-btn text @click="dialog = false">取消</v-btn>
-					<v-btn color="amber" rounded depressed dark @click="openRewardDialog">继续支付</v-btn>
+					<v-btn color="amber" depressed dark @click="openRewardDialog">继续支付</v-btn>
 				</v-card-actions>
 			</v-card>
 		</v-dialog>

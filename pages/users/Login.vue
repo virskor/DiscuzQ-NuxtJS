@@ -29,13 +29,12 @@
 							</p>
 							<p>如果不是自己的计算机，请使用无痕模式来访问</p>
 							<p>
-								<v-btn :loading="loading" rounded depressed large block @click="login" color="primary">登录</v-btn>
+								<v-btn :loading="loading" depressed large block @click="login" color="primary">登录</v-btn>
 							</p>
 							<p>
 								<v-btn
 									depressed
 									large
-									rounded
 									block
 									@click="$router.push('/users/register')"
 									color="default"

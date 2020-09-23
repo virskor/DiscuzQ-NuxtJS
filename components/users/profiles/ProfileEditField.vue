@@ -8,7 +8,7 @@
 					</v-list-item-content>
 
 					<v-list-item-action>
-						<v-btn :ripple="false" text v-bind="attrs" v-on="on" rounded small>
+						<v-btn :ripple="false" text v-bind="attrs" v-on="on" small>
 							{{actionName || "修改"}}
 							<v-icon right>mdi-chevron-right</v-icon>
 						</v-btn>
@@ -25,7 +25,7 @@
 				<v-card-actions>
 					<v-spacer></v-spacer>
 					<v-btn color="primary" text @click="showDialog = false">取消</v-btn>
-					<v-btn color="primary" rounded depressed dark @click="save">完成并保存</v-btn>
+					<v-btn color="primary" depressed dark @click="save">完成并保存</v-btn>
 				</v-card-actions>
 			</v-card>
 		</v-dialog>

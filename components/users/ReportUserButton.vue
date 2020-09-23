@@ -1,5 +1,5 @@
 <template>
-	<v-btn text rounded depressed @click="$router.push(`/reports/?user_id=${user.id}`)">
+	<v-btn text depressed @click="$router.push(`/reports/?user_id=${user.id}`)">
 		<v-icon left>mdi-flag</v-icon>举报
 	</v-btn>
 </template>

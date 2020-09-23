@@ -49,7 +49,6 @@
 									depressed
 									color="primary"
 									text
-									rounded
 									@click="visit(user)"
 									small
 								>查看TA</v-btn>

@@ -4,7 +4,6 @@
 		solo-inverted
 		hide-details
 		dense
-		rounded
 		prepend-inner-icon="mdi-magnify"
 		label="搜索帖子"
 		class="hidden-sm-and-down"

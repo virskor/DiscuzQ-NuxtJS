@@ -2,7 +2,7 @@
 	<div>
 		<v-menu v-model="menu" :close-on-content-click="false" :nudge-width="200" offset-y>
 			<template v-slot:activator="{ on, attrs }">
-				<v-btn v-bind="attrs" v-on="on" depressed text rounded small color="primary">
+				<v-btn v-bind="attrs" v-on="on" depressed text small color="primary">
 					<i class="iconfont icon-Filter"></i>
 				</v-btn>
 			</template>
@@ -29,7 +29,6 @@
 										:color="categoryId == it.id ? 'primary' : 'default'"
 										@click="categoryId = it.id"
 										depressed
-										rounded
 										outlined
 										v-for="(it,i) in categories"
 										:key="i"
@@ -51,7 +50,6 @@
 									:color="type == it.value ? 'primary' : 'default'"
 									@click="type = it.value"
 									depressed
-									rounded
 									outlined
 									v-for="(it,i) in types"
 									:key="i"
@@ -71,7 +69,6 @@
 									:color="isEssence == 'yes' ? 'primary' : 'default'"
 									@click="toggleIsEssence"
 									depressed
-									rounded
 									outlined
 								>精华</v-btn>
 								<v-btn
@@ -80,7 +77,6 @@
 									@click="toggleFromUserID"
 									:color="fromUserId == user.id ? 'primary' : 'default'"
 									depressed
-									rounded
 									outlined
 								>只看已关注</v-btn>
 							</v-list-item-subtitle>
@@ -91,8 +87,8 @@
 				<v-card-actions>
 					<v-spacer></v-spacer>
 
-					<v-btn depressed rounded @click="menu = false">关闭</v-btn>
-					<v-btn depressed @click="enSureUpdateFilter" color="primary" rounded>筛选并查询</v-btn>
+					<v-btn depressed @click="menu = false">关闭</v-btn>
+					<v-btn depressed @click="enSureUpdateFilter" color="primary">筛选并查询</v-btn>
 				</v-card-actions>
 			</v-card>
 		</v-menu>

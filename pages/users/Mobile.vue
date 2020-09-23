@@ -38,7 +38,7 @@
 							</p>
 							<p>如果不是自己的计算机，请使用无痕模式来访问</p>
 							<p>
-								<v-btn :loading="loading" rounded depressed large block @click="verify" color="primary">登录</v-btn>
+								<v-btn :loading="loading" depressed large block @click="verify" color="primary">登录</v-btn>
 							</p>
 							<p align="center" v-if="!$C.isMobile() && allowWechatLogin">
 								<!-- <v-btn rounded depressed large icon @click="wechatLogin" dark color="green">

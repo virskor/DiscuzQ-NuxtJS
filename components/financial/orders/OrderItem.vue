@@ -16,7 +16,6 @@
 		<v-card-actions>
 			<v-btn
 				@click="payOrder"
-				rounded
 				:loading="loading"
 				depressed
 				color="primary"

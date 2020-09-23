@@ -2,7 +2,7 @@
 	<div>
 		<v-menu v-model="menu" :close-on-content-click="false" :nudge-width="300" offset-y>
 			<template v-slot:activator="{ on, attrs }">
-				<v-btn v-bind="attrs" v-on="on" depressed text rounded small color="primary">
+				<v-btn v-bind="attrs" v-on="on" depressed text small color="primary">
 					<i class="iconfont icon-Filter"></i>
 				</v-btn>
 			</template>
@@ -41,8 +41,8 @@
 				<v-card-actions>
 					<v-spacer></v-spacer>
 
-					<v-btn depressed rounded @click="menu = false">关闭</v-btn>
-					<v-btn depressed @click="enSureUpdateFilter" color="primary" rounded>筛选并查询</v-btn>
+					<v-btn depressed @click="menu = false">关闭</v-btn>
+					<v-btn depressed @click="enSureUpdateFilter" color="primary">筛选并查询</v-btn>
 				</v-card-actions>
 			</v-card>
 		</v-menu>
