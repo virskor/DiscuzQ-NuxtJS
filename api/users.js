@@ -124,5 +124,26 @@ export default {
             data,
         });
     },
+    /**
+     * 屏蔽
+     */
+    deny(user) {
+        const data = {
+            type: `users/${user.id}/deny`,
+            attributes: {  }
+        };
 
+        return Request.post({
+            url: `${URLS.USER}/${user.id}/deny`,
+            data,
+        });
+    },
+    /**
+     * 取消屏蔽
+     */
+    undeny(user) {
+        return Request.delete({
+            url: `${URLS.USER}/${user.id}/deny`,
+        });
+    },
 }

@@ -23,6 +23,8 @@
 				<SendPrivateMessageButton :targetUser="user"></SendPrivateMessageButton>
 				<!--举报按钮-->
 				<ReportUserButton :user="user"></ReportUserButton>
+				<!--屏蔽拉黑用户-->
+				<UserBlockButton :user="user"></UserBlockButton>
 			</v-row>
 		</v-card-actions>
 	</v-card>
@@ -37,6 +39,7 @@ import UserFollowButton from "~/components/users/follow/UserFollowButton";
 import UsersModifyProfilesButton from "~/components/users/profiles/UsersModifyProfilesButton";
 import ReportUserButton from "~/components/users/ReportUserButton";
 import SendPrivateMessageButton from "~/components/message/SendPrivateMessageButton";
+import UserBlockButton from "~/components/users/UserBlockButton";
 
 export default {
 	props: {
@@ -54,7 +57,8 @@ export default {
 		UserFollowButton,
 		UsersModifyProfilesButton,
 		SendPrivateMessageButton,
-		ReportUserButton
+		ReportUserButton,
+		UserBlockButton
 	},
 	computed: {
 		...mapGetters({

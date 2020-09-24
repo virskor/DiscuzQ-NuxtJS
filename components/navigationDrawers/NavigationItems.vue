@@ -34,7 +34,7 @@ export default {
 				{ divider: true },
 				{
 					icon: "icon-gerenziliao2",
-					text: "个人资料",
+					text: "账户管理",
 					route: "/users/profiles",
 				},
 				{

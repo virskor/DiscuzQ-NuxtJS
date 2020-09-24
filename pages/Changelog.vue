@@ -20,9 +20,14 @@
 			<v-list>
 				<v-list-item>
 					<v-card flat tile>
+						<p class="text-h5">2020-09-24</p>
+						<p>新增拉黑屏蔽用户</p>
+					</v-card>
+				</v-list-item>
+				<v-list-item>
+					<v-card flat tile>
 						<p class="text-h5">2020-09-23</p>
 						<p>优化举报表单</p>
-						<p>剩余未完成或计划近期完成的：拉黑</p>
 					</v-card>
 				</v-list-item>
 				<v-list-item>

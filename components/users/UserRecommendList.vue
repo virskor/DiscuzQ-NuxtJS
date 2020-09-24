@@ -1,63 +1,54 @@
 <template>
 	<div>
-		<v-card tile flat>
-			<v-row align="center">
-				<v-col cols="5">
-					<v-subheader class="font-weight-black">推荐用户</v-subheader>
-				</v-col>
-				<v-col cols="7" class="text-right">
-					<v-btn :disabled="disableChange" @click="listRecommendUsers(true)" small text>
-						<v-icon left>mdi-sync</v-icon>换一换
-					</v-btn>
-					<v-btn @click="$router.push('/search/users')" color="primary" small text>更多</v-btn>
-				</v-col>
-			</v-row>
-			<template v-if="loading">
-				<v-sheet class="px-3 pt-3 pb-3">
-					<v-skeleton-loader
-						v-for="(_, i) in pageLimit"
-						:key="i"
-						ref="skeleton"
-						type="list-item-avatar"
-						class="mx-auto"
-					></v-skeleton-loader>
-				</v-sheet>
+		<v-row align="center">
+			<v-col cols="5">
+				<v-subheader class="font-weight-black">推荐用户</v-subheader>
+			</v-col>
+			<v-col cols="7" class="text-right">
+				<v-btn :disabled="disableChange" @click="listRecommendUsers(true)" small text>
+					<v-icon left>mdi-sync</v-icon>换一换
+				</v-btn>
+				<v-btn @click="$router.push('/search/users')" color="primary" small text>更多</v-btn>
+			</v-col>
+		</v-row>
+		<template v-if="loading">
+			<v-sheet class="px-3 pt-3 pb-3">
+				<v-skeleton-loader
+					v-for="(_, i) in pageLimit"
+					:key="i"
+					ref="skeleton"
+					type="list-item-avatar"
+					class="mx-auto"
+				></v-skeleton-loader>
+			</v-sheet>
+		</template>
+		<template v-else>
+			<!--暂无可推荐的用户-->
+			<template v-if="!recommendUserlist.length">
+				<center>
+					<v-list-item-title>暂无推荐</v-list-item-title>
+				</center>
 			</template>
+			<!--渲染推荐的用户-->
 			<template v-else>
-				<!--暂无可推荐的用户-->
-				<template v-if="!recommendUserlist.length">
-					<center>
-						<v-list-item-title>暂无推荐</v-list-item-title>
-					</center>
-				</template>
-				<!--渲染推荐的用户-->
-				<template v-else>
-					<v-list>
-						<v-list-item v-for="(user, i) in recommendUserlist" :key="i">
-							<v-list-item-avatar :size="50" tile>
-								<Avatar :user="user"></Avatar>
-							</v-list-item-avatar>
+				<v-list>
+					<v-list-item v-for="(user, i) in recommendUserlist" :key="i">
+						<v-list-item-avatar :size="50" tile>
+							<Avatar :user="user"></Avatar>
+						</v-list-item-avatar>
 
-							<v-list-item-content>
-								<v-list-item-title class="font-weight-black">{{user.attributes.username}}</v-list-item-title>
-								<v-list-item-subtitle>{{user.attributes.signature|| ''}}</v-list-item-subtitle>
-							</v-list-item-content>
+						<v-list-item-content>
+							<v-list-item-title class="font-weight-black">{{user.attributes.username}}</v-list-item-title>
+							<v-list-item-subtitle>{{user.attributes.signature|| ''}}</v-list-item-subtitle>
+						</v-list-item-content>
 
-							<v-list-item-icon>
-								<v-btn
-									:ripple="false"
-									depressed
-									color="primary"
-									text
-									@click="visit(user)"
-									small
-								>查看TA</v-btn>
-							</v-list-item-icon>
-						</v-list-item>
-					</v-list>
-				</template>
+						<v-list-item-icon>
+							<v-btn :ripple="false" depressed color="primary" text @click="visit(user)" small>查看TA</v-btn>
+						</v-list-item-icon>
+					</v-list-item>
+				</v-list>
 			</template>
-		</v-card>
+		</template>
 	</div>
 </template>
 

@@ -1,8 +1,5 @@
 <template>
 	<div>
-		<v-toolbar elevation="0">
-			<SearchField />
-		</v-toolbar>
 
 		<v-list>
 			<SiteInfo subHeader></SiteInfo>
