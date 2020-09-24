@@ -41,6 +41,25 @@
 				</v-list>
 			</v-card>
 		</v-container>
+
+		<v-container>
+			<v-card flat tile>
+				<v-toolbar flat tile>
+					<v-toolbar-title>账户安全相关</v-toolbar-title>
+				</v-toolbar>
+				<v-list-item @click="$router.push('/users/deny')">
+					<v-list-item-content>
+						<v-list-item-title>我屏蔽的用户</v-list-item-title>
+					</v-list-item-content>
+					<v-list-item-action>
+						<v-btn :ripple="false" text small>
+							查看与修改
+							<v-icon right>mdi-chevron-right</v-icon>
+						</v-btn>
+					</v-list-item-action>
+				</v-list-item>
+			</v-card>
+		</v-container>
 	</div>
 </template>
 

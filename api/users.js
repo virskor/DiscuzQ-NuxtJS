@@ -113,10 +113,10 @@ export default {
      * }
      */
     profile(user, fields) {
-        const data = { 
-            id: user.id, 
-            type: "users", 
-            attributes: { ...fields } 
+        const data = {
+            id: user.id,
+            type: "users",
+            attributes: { ...fields }
         };
 
         return Request.patch({
@@ -130,7 +130,7 @@ export default {
     deny(user) {
         const data = {
             type: `users/${user.id}/deny`,
-            attributes: {  }
+            attributes: {}
         };
 
         return Request.post({
@@ -144,6 +144,15 @@ export default {
     undeny(user) {
         return Request.delete({
             url: `${URLS.USER}/${user.id}/deny`,
+        });
+    },
+    /**
+     * 被查询目标用户的黑名单列表
+     */
+    denyUsersList(user, data) {
+        return Request.get({
+            url: `${URLS.USER}/${user.id}/deny`,
+            data
         });
     },
 }

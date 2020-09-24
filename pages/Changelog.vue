@@ -22,6 +22,7 @@
 					<v-card flat tile>
 						<p class="text-h5">2020-09-24</p>
 						<p>新增拉黑屏蔽用户</p>
+						<p>新增我的屏蔽列表</p>
 					</v-card>
 				</v-list-item>
 				<v-list-item>
