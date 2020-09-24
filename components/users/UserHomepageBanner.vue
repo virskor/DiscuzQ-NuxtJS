@@ -20,7 +20,7 @@
 				<!--关注按钮-->
 				<UsersModifyProfilesButton :relatedUser="user"></UsersModifyProfilesButton>
 				<!--发私信-->
-				<SendPrivateMessageButton :targetUser="user"></SendPrivateMessageButton>
+				<!-- <SendPrivateMessageButton :targetUser="user"></SendPrivateMessageButton> -->
 				<!--举报按钮-->
 				<ReportUserButton :user="user"></ReportUserButton>
 				<!--屏蔽拉黑用户-->

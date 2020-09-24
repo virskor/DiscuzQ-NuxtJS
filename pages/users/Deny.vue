@@ -7,11 +7,11 @@
 				<v-toolbar-title>共屏蔽 {{meta ? meta.total : 0}} 人</v-toolbar-title>
 			</v-toolbar>
 
-			<v-card flat tile>
+			<v-card class="pb-3" flat tile>
 				<!--没有数据-->
 				<EmptyBox :refresh="false" v-if="$_.isEmpty(blockedUsers) && !loading"></EmptyBox>
 
-                <!--被屏蔽的用户列表-->
+				<!--被屏蔽的用户列表-->
 				<v-list v-else>
 					<UserDenyListItem v-for="(u, i) in blockedUsers" @undeny="onWantUndenyUser" :user="u" :key="i"></UserDenyListItem>
 				</v-list>
