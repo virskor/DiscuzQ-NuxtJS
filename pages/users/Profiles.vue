@@ -58,6 +58,8 @@
 						</v-btn>
 					</v-list-item-action>
 				</v-list-item>
+				<v-divider></v-divider>
+				<UserVerifyItem></UserVerifyItem>
 			</v-card>
 		</v-container>
 	</div>
@@ -68,6 +70,7 @@ import * as types from "~/store/vuex-types";
 import { mapGetters } from "vuex";
 
 import ProfileEditField from "~/components/users/profiles/ProfileEditField";
+import UserVerifyItem from "~/components/users/profiles/UserVerifyItem";
 import AvatarPicker from "~/components/users/AvatarPicker";
 
 export default {
@@ -89,6 +92,7 @@ export default {
 	components: {
 		ProfileEditField,
 		AvatarPicker,
+		UserVerifyItem
 	},
 };
 </script>

@@ -155,4 +155,17 @@ export default {
             data
         });
     },
+    /**
+     * 实名认证
+     */
+    verify(fields) {
+        const data = {
+            attributes: { ...fields }
+        };
+
+        return Request.patch({
+            url: `${URLS.USER}/real`,
+            data,
+        });
+    }
 }
