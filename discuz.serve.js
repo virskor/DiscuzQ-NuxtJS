@@ -17,16 +17,24 @@ const start = () => {
     const runNuxt = async (app) => {
         // Build only in dev mode
         if (config.dev) {
-            // api proxy
+             /**
+              * api proxy
+              * 是否启用接口代理
+             */
             if (discuzConfig.proxy.development) {
                 app.use('/api', createProxyMiddleware({ target: discuzConfig.proxy.development, changeOrigin: true }));
             }
+
             const builder = new Builder(nuxt);
             await builder.build();
         } else {
+            /**
+             * 是否启用接口代理
+             */
             if (discuzConfig.proxy.production) {
                 app.use('/api', createProxyMiddleware({ target: discuzConfig.proxy.production, changeOrigin: true }));
             }
+            
             await nuxt.ready();
         }
 
@@ -38,6 +46,7 @@ const start = () => {
 
     // Listen the server
     app.listen(port, host);
+    
     consola.ready({
         message: `Server listening on http://${host}:${port}`,
         badge: true

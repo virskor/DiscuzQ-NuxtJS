@@ -97,14 +97,14 @@ module.exports = {
     html: {
       minify: {
         collapseBooleanAttributes: true,
-        decodeEntities: true,
+        decodeEntities: false,
         minifyCSS: true,
         minifyJS: true,
         processConditionalComments: true,
         removeEmptyAttributes: true,
         removeRedundantAttributes: true,
         trimCustomFragments: true,
-        useShortDoctype: true
+        useShortDoctype: false
       }
     },
     extractCSS: false,

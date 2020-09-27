@@ -124,13 +124,6 @@ export default {
 		const { title } = this;
 		return {
 			title,
-			meta: [
-				{
-					hid: "description",
-					name: "description",
-					content: "Home page description",
-				},
-			],
 		};
 	},
 	data() {
