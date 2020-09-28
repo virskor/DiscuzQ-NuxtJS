@@ -63,6 +63,7 @@ module.exports = {
     { src: '~/plugins/gotop', ssr: false },
     { src: '~/plugins/photoswipe', ssr: false },
     { src: '~/plugins/mavon', ssr: false },
+    { src: '~/plugins/highlight', ssr: false },
   ],
   /*
   ** Auto import components
@@ -107,7 +108,7 @@ module.exports = {
         useShortDoctype: false
       }
     },
-    extractCSS: false,
+    extractCSS: true,
     /*
     ** You can extend webpack config here
     */

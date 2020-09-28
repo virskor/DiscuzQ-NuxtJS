@@ -47,7 +47,7 @@ module.exports = {
          * 域名为 protocol + domain 后不需添加 / path
          * 
          */
-        development: 'https://discuz.chat',
+        development: 'https://m.clodra.com',
 
         /**
          * 生产环境下不建议开启，
@@ -55,7 +55,7 @@ module.exports = {
          * production: null
          */
 
-        production: 'https://discuz.chat'
+        production: 'https://m.clodra.com'
     },
     /**
      * API path

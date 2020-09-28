@@ -5,8 +5,7 @@
 			@click="onTapUrl"
 			class="clickable ma-2 pl-3"
 			v-html="formatRichText(post.attributes.contentHtml || '')"
-		>
-		</div>
+		></div>
 		<div @click="onTapUrl" v-if="post.type == 'posts' && post.attributes.replyCount > 0">
 			<v-btn text color="primary">查看{{post.attributes.replyCount}}条评论</v-btn>
 		</div>
@@ -14,6 +13,7 @@
 </template>
 
 <script>
+import hljs from "highlight.js";
 import s9e from "~/utils/s9e";
 import urlParser from "~/utils/urlParser";
 
@@ -27,6 +27,13 @@ export default {
 		 * 关联的主题
 		 */
 		thread: Object,
+	},
+	mounted() {
+		this.$nextTick(async () => {
+			document.querySelectorAll("pre code").forEach((block) => {
+				hljs.highlightBlock(block);
+			});
+		});
 	},
 	methods: {
 		formatRichText(html) {
@@ -45,7 +52,7 @@ export default {
 			}
 
 			/// comment-posts 不跳转
-			if(post.type != "posts"){
+			if (post.type != "posts") {
 				return;
 			}
 

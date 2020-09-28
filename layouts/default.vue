@@ -64,6 +64,7 @@ import EndDrawer from "~/components/navigationDrawers/EndDrawer";
 import BottomNavigation from "~/components/common/BottomNavigation";
 import DefaultMixins from "~/layouts/default.mixins";
 
+
 export default {
 	mixins: [DefaultMixins],
 	data() {

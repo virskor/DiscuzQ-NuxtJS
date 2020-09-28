@@ -1,4 +1,5 @@
-@import 'github-markdown-css';
+@import '~/styles/github.css';
+@import 'highlight.js/styles/github.css';
 
 body {
     margin: 0;
@@ -11,20 +12,6 @@ body {
 
 a {
     text-decoration: none;
-}
-
-pre {
-    padding: 13px;
-    margin: 1em 0px;
-    overflow: auto;
-    font-size: 20px;
-    white-space: pre;
-    background: #f5f5f5;
-}
-
-code {
-    background-color: transparent !important;
-    padding: 0!important;
 }
 
 .text-shadow {
@@ -60,6 +47,21 @@ code {
 .v-pagination__item--active,
 .v-pagination__item {
     box-shadow: none !important;
+}
+
+.v-application {
+    pre {
+        overflow: auto;
+        white-space: pre;
+        background: #f5f5f5;
+    }
+    
+    code {
+        background-color: transparent !important;
+        padding: 0!important;
+        color: inherit!important;
+        font-weight: inherit!important;
+    }
 }
 
 /*

@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import hljs from 'highlight.js';
 import s9e from "~/utils/s9e";
 import urlParser from "~/utils/urlParser";
 import CategoriesLabel from "~/components/categories/CategoriesLabel";
@@ -48,16 +49,23 @@ export default {
 		 */
 		firstPost: Object,
 	},
+	mounted() {
+		this.$nextTick(async () => {
+			document.querySelectorAll("pre code").forEach((block) => {
+				hljs.highlightBlock(block);
+			});
+		});
+	},
 	computed: {
 		/**
 		 * 是否隐藏内容
 		 */
 		hideContents() {
 			const { isFloor, title, thread, isSticky } = this;
-			if(!isFloor){
+			if (!isFloor) {
 				return false;
 			}
-			
+
 			if (title && isSticky) {
 				return true;
 			}

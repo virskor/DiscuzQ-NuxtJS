@@ -16,7 +16,7 @@ const tags = {
                 return `<a href="${href}" class="content-member">${text}</a> `;
             });
         });
-    }
+    },
 };
 
 function parse(text) {
