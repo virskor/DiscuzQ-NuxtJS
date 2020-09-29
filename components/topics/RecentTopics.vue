@@ -29,7 +29,7 @@
 			</template>
 			<template v-else>
 				<v-list dense>
-					<v-list-item dense cols="6" class="pa-0 pr-2 pl-2" v-for="(topic, i) in topicsList" :key="i">
+					<v-list-item dense cols="6" class="pa-0 pr-2 pl-4" v-for="(topic, i) in topicsList" :key="i">
 						<nuxt-link :to="`/topics/${topic.id}`">
 							<v-chip label class="clickable" color="blue lighten-5" text-color="primary">
 								<v-avatar color="primary" left>
