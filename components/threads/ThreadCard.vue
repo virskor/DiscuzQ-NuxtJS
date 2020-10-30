@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<!--简化顶置主题-->
-		<v-card flat class="mb-2" v-if="isSticky">
+		<v-card flat v-if="isSticky">
 			<div @click="$router.push(`/threads/${thread.id || 0}`)" class="pb-1 pt-2 ml-5" v-if="title">
 				<v-chip label outlined class="mb-1" color="primary" small>顶置</v-chip>
 				<span class="font-weight-black clickable" v-html=" title || formatRichText(contents)"></span>
@@ -12,7 +12,7 @@
 		<!--普通-->
 		<v-card
 			:ripple="false"
-			class="thread-card mt-2 pb-2 pt-2 pr-2"
+			class="thread-card pb-2 pt-2 pr-2"
 			:id="`thread-${thread.id}`"
 			flat
 			v-else-if="!showHideThread"
@@ -48,6 +48,7 @@
 			</div>
 			<!---渲染点赞评论分享-->
 			<ThreadCardQuickActions :firstPost="firstPost" :thread="thread"></ThreadCardQuickActions>
+			<v-divider class="mt-1"></v-divider>
 		</v-card>
 	</div>
 </template>

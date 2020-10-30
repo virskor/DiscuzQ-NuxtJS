@@ -48,23 +48,8 @@ $ yarn dev
 # 参考nuxt.js命令进行编译
 $ yarn build
 
-# 如果要生成单页面应用
-$ yarn build-spa
-
-# 注意：yarn serve 会开启 后端api 代理，如果不需要则使用yarn start
-# 生产环境下，请使用yarn serve来运行，这样便可以SSR
-$ yarn serve
-
-# yarn serve 会运行应用为production，并启用后端接口的反向代理
-# 直接将Nuxtjs作为中间件运行在express.js，并不支持SSR
-# 通常用于测试生产下是否能够正常运行，在进行部署
+# yarn start 会运行应用为production，并启用后端接口的反向代理
 $ yarn start
-
-# 单页面应用
-$ yarn start-spa
-
-# generate static project
-$ yarn generate
 
 # 简单生成环境运行
 kill -9 $(lsof -i:3333 -t)
@@ -74,7 +59,7 @@ git clone https://github.com/virskor/DiscuzQ-NuxtJS.git /home/www
 cd /home/www
 yarn install
 yarn build
-nohup yarn serve &
+nohup yarn start &
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).

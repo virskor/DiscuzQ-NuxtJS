@@ -8,6 +8,13 @@ module.exports = {
   ** See https://nuxtjs.org/api/configuration-mode
   */
   mode: 'universal',
+  /**
+   * Enable SSR rendering
+   * This option is automatically set based on mode value if not provided. 
+   * This can be useful to dynamically enable/disable SSR on runtime after image builds 
+   * (with docker for example).
+   */
+  ssr: true,
   /*
   ** Nuxt target
   ** See https://nuxtjs.org/api/configuration-target
@@ -23,7 +30,6 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' },
-      { hid: 'description', name: 'description', content: discuzConfigs.ssr_description || '' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-png', href: '/logo.png' },
@@ -93,7 +99,7 @@ module.exports = {
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
-    parallel: false,
+    //parallel: false,
     publicPath: '/dist/',
     html: {
       minify: {

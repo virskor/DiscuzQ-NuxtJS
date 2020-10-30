@@ -7015,7 +7015,7 @@ numeral@^2.0.6:
   resolved "https://registry.npm.taobao.org/numeral/download/numeral-2.0.6.tgz#4ad080936d443c2561aed9f2197efffe25f4e506"
   integrity sha1-StCAk21EPCVhrtnyGX7//iX05QY=
 
-nuxt@^2.14.6:
+nuxt@^2.8.1:
   version "2.14.6"
   resolved "https://registry.npm.taobao.org/nuxt/download/nuxt-2.14.6.tgz#56ba99cbd055ebdb33250a4d1ed09f084ad7fa14"
   integrity sha1-VrqZy9BV69szJQpNHtCfCErX+hQ=
