@@ -11,7 +11,7 @@
 				<v-tabs fixed-tabs v-model="tab" color="primary" icons-and-text>
 					<v-tab v-for="item in items" :key="item.tab">
 						{{ item.tab }}
-						<p class="font-weight-bold text-h6">{{ currentUser.attributes[item.attribute] }}</p>
+						<p class="font-weight-bold">{{ currentUser.attributes[item.attribute] }}</p>
 					</v-tab>
 				</v-tabs>
 

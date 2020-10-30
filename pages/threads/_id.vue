@@ -1,6 +1,6 @@
 <template>
 	<div v-if="thread">
-		<AppTitle title="帖子详情">
+		<AppTitle :title="title || '帖子详情'">
 			<SearchField />
 		</AppTitle>
 		<v-alert
@@ -11,7 +11,8 @@
 			dense
 			dark
 			type="error"
-		>视频正在转码中，转码成功后才能正常显示！</v-alert>
+			>视频正在转码中，转码成功后才能正常显示！</v-alert
+		>
 
 		<v-alert
 			class="ma-0"
@@ -21,10 +22,15 @@
 			dense
 			dark
 			type="error"
-		>视频转码失败，转码成功才能正常显示！</v-alert>
+			>视频转码失败，转码成功才能正常显示！</v-alert
+		>
 
-		<div v-if="thread.attributes.price != '0.00' && !thread.attributes.paid">
-			<v-alert class="ma-0" tile dense dark type="warning">需要付费来 继续查看这个帖子或者包含的内容</v-alert>
+		<div
+			v-if="thread.attributes.price != '0.00' && !thread.attributes.paid"
+		>
+			<v-alert class="ma-0" tile dense dark type="warning"
+				>需要付费来 继续查看这个帖子或者包含的内容</v-alert
+			>
 		</div>
 
 		<!--渲染视频-->
@@ -40,7 +46,11 @@
 
 		<v-container>
 			<!--渲染发布用户的信息-->
-			<ThreadCardUser :firstPost="firstPost" :user="author" allowFollow></ThreadCardUser>
+			<ThreadCardUser
+				:firstPost="firstPost"
+				:user="author"
+				allowFollow
+			></ThreadCardUser>
 
 			<!--渲染内容-->
 			<template v-if="firstPost">
@@ -49,13 +59,25 @@
 			如果是顶置的帖子，那么就不渲染内容
 				-->
 				<v-card tile flat>
-					<ThreadContents class="pl-5 pr-5 text mb-3" :thread="thread" :firstPost="firstPost"></ThreadContents>
+					<ThreadContents
+						class="pl-5 pr-5 text mb-3"
+						:thread="thread"
+						:firstPost="firstPost"
+					></ThreadContents>
 					<!--附件-->
-					<AttachmentImages class="pl-5 pr-5" :attachments="images"></AttachmentImages>
+					<AttachmentImages
+						class="pl-5 pr-5"
+						:attachments="images"
+					></AttachmentImages>
 					<!--附件文件-->
 					<template v-for="(a, i) in attachments">
 						<div :key="i" class="pl-5 pr-5">
-							<ThreadAttchmentsFileIcon enableDownload disableRemove class="mr-2 mb-2" :attachment="a"></ThreadAttchmentsFileIcon>
+							<ThreadAttchmentsFileIcon
+								enableDownload
+								disableRemove
+								class="mr-2 mb-2"
+								:attachment="a"
+							></ThreadAttchmentsFileIcon>
 						</div>
 					</template>
 
@@ -68,10 +90,18 @@
 					</div>
 
 					<!--打赏记录-->
-					<RewardedUsers :rewardedUsers="mapRewardedUsers" :thread="thread"></RewardedUsers>
+					<RewardedUsers
+						:rewardedUsers="mapRewardedUsers"
+						:thread="thread"
+					></RewardedUsers>
 
 					<!---渲染点赞评论分享-->
-					<ThreadCardQuickActions showExt showViewCount :firstPost="firstPost" :thread="thread"></ThreadCardQuickActions>
+					<ThreadCardQuickActions
+						showExt
+						showViewCount
+						:firstPost="firstPost"
+						:thread="thread"
+					></ThreadCardQuickActions>
 				</v-card>
 			</template>
 		</v-container>
