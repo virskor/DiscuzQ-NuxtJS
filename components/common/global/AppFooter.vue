@@ -10,8 +10,8 @@
 					<!-- <span>用户：{{forum.attributes.other.count_users}}</span>
 					<span>主题：{{forum.attributes.other.count_threads}}</span>
 					<span>主题：{{forum.attributes.other.count_posts}}</span> -->
-					<a href="https://app.clodra.com/policies/privacy.html" target="_blank">隐私政策</a>
-					<a href="https://app.clodra.com/policies/policy.html" target="_blank">用户协议</a>
+					<nuxt-link to="/views/license/privacy">隐私政策</nuxt-link>
+					<nuxt-link to="/views/license/policy">用户协议</nuxt-link>
 				</p>
 
 				<p>
