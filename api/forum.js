@@ -15,4 +15,15 @@ export default {
             ],
         });
     },
+    getForumAndAgreements() {
+        return Request.get({
+            url: URLS.FORUM,
+            data: {
+                'filter[tag]': 'agreement'
+            },
+            includes: [
+                RequestIncludes.USERS,
+            ],
+        });
+    },
 }

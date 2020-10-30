@@ -284,6 +284,11 @@ const requestIncludes = {
     LAST_THREE_COMMENTS_REPLY_USER: 'lastThreeComments.replyUser',
 
     /**
+     * 用户协议
+     */
+    AGREEMENT: 'agreement',
+
+    /**
      * 将Includes转化为 queries
      * 
      */
