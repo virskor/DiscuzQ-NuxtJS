@@ -151,7 +151,9 @@ export default {
 		}
 	},
 	head() {
-		const { title } = this;
+		const { thread } = this;
+		const title = thread.attributes.title || defaultTitle;
+		
 		return {
 			title,
 		};

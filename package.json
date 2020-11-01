@@ -9,9 +9,9 @@
     }
   },
   "scripts": {
-    "dev": "node ./discuz.serve.js",
+    "dev": "nuxt",
     "build": "nuxt build",
-    "start": "cross-env NODE_ENV=production node ./discuz.serve.js",
+    "start": "nuxt start",
     "test": "jest",
     "refresh-cdn": "node ./tools/cdn.js"
   },

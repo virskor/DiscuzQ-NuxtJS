@@ -49,7 +49,7 @@
 
 				<v-spacer></v-spacer>
 				<v-btn depressed @click="enSureUpdateFilter" icon color="primary">
-					<v-icon>mdi-magnify</v-icon>
+					<v-icon>mdi-filter-variant</v-icon>
 				</v-btn>
 			</v-row>
 		</v-card-actions>
