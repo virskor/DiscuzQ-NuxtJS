@@ -4,30 +4,43 @@
 			<ThreadsFiltersMenu v-show="false"></ThreadsFiltersMenu>
 		</AppTitle>
 		<v-container>
-			<UserHomepageBanner :user="currentUser" :group="userGroup"></UserHomepageBanner>
+			<UserHomepageBanner
+				:user="currentUser"
+				:group="userGroup"
+			></UserHomepageBanner>
 		</v-container>
 		<v-container>
 			<div v-if="!$_.isEmpty(currentUser)">
 				<v-tabs fixed-tabs v-model="tab" color="primary" icons-and-text>
 					<v-tab v-for="item in items" :key="item.tab">
 						{{ item.tab }}
-						<p class="font-weight-bold">{{ currentUser.attributes[item.attribute] }}</p>
+						<p class="font-weight-bold">
+							{{ currentUser.attributes[item.attribute] }}
+						</p>
 					</v-tab>
 				</v-tabs>
 
 				<v-tabs-items v-model="tab">
 					<v-tab-item>
 						<!--主题列表-->
-						<ThreadList class="pa-2" :filterUserID="currentUser.id" />
+						<ThreadList
+							class="pa-2"
+							:filterUserID="currentUser.id"
+						/>
 					</v-tab-item>
 					<v-tab-item>
 						<FollowersList :user="currentUser"></FollowersList>
 					</v-tab-item>
 					<v-tab-item>
-						<FollowersList :user="currentUser" fromUser></FollowersList>
+						<FollowersList
+							:user="currentUser"
+							fromUser
+						></FollowersList>
 					</v-tab-item>
 					<v-tab-item>
-						<ThreadsLikesList :user="currentUser"></ThreadsLikesList>
+						<ThreadsLikesList
+							:user="currentUser"
+						></ThreadsLikesList>
 					</v-tab-item>
 				</v-tabs-items>
 			</div>
@@ -63,7 +76,7 @@ export default {
 		// 必须是number类型
 		return /^\d+$/.test(params.id);
 	},
-	async asyncData({ params, error }) {
+	async asyncData({ app, params, error }) {
 		try {
 			const rs = await usersAPI.getUser(params.id, {});
 			if (!rs) {
@@ -73,7 +86,11 @@ export default {
 				});
 			}
 
-			return { included: rs.included, currentUser: rs.data };
+			const currentUser = rs.data;
+			// ssr
+			app.head.title = `${currentUser.attributes.username || "用户"}的主页`;
+
+			return { included: rs.included, currentUser };
 		} catch (error) {
 			throw error;
 		}
@@ -82,7 +99,7 @@ export default {
 		const { currentUser } = this;
 
 		return {
-			title: `${currentUser.attributes.username || "用户"}主页`,
+			title: `${currentUser.attributes.username || "用户"}的主页`,
 		};
 	},
 	data() {
