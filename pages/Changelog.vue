@@ -28,6 +28,12 @@
 			<v-list>
 				<v-list-item>
 					<v-card flat tile>
+						<p class="text-h5">2020-11-01</p>
+						<p>支持SSR</p>
+					</v-card>
+				</v-list-item>
+				<v-list-item>
+					<v-card flat tile>
 						<p class="text-h5">2020-10-30</p>
 						<p>新增隐私政策，注册条款显示</p>
 					</v-card>
