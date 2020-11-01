@@ -127,6 +127,7 @@ import RewardedUsers from "~/components/financial/RewardedUsers";
 import BuyThreadButton from "~/components/financial/BuyThreadButton";
 import attachmentsAPI from "~/api/attachments";
 import ThreadAttchmentsFileIcon from "~/components/attachments/ThreadAttchmentsFileIcon";
+import { TITLE_MODE } from "highlight.js";
 
 const defaultTitle = "帖子详情";
 
@@ -144,14 +145,29 @@ export default {
 					message: "该主题暂时无法查看，请刷新重试",
 				});
 			}
-			
+
 			const thread = rs.data;
-			const title = thread.attributes.title || defaultTitle;
+			const included = rs.included;
+
+			let title = thread.attributes.title || "";
+			const firstPost = included.find(
+				(it) =>
+					it.type == "posts" &&
+					it.id == thread.relationships.firstPost.data.id
+			);
+
+			/**
+			 * 处理没有标题的帖子的SEO
+			 */
+			if (!title) {
+				title = firstPost.attributes.content;
+				title = `${title.substr(0, 30)}...`;
+			}
 
 			// ssr
 			app.head.title = title;
 
-			return { included: rs.included, thread};
+			return { included, thread };
 		} catch (error) {
 			throw error;
 		}
@@ -175,13 +191,23 @@ export default {
 		 * 计算帖子标题属性
 		 */
 		title() {
-			const { thread } = this;
+			const { thread, firstPost } = this;
 
 			if (!thread) {
 				return defaultTitle;
 			}
 
-			return thread.attributes.title || defaultTitle;
+			let title = thread.attributes.title || "";
+
+			/**
+			 * 处理没有标题的帖子的SEO
+			 */
+			if (!title) {
+				title = firstPost.attributes.content;
+				title = `${title.substr(0, 30)}...`;
+			}
+
+			return title || defaultTitle;
 		},
 		/**
 		 * author
