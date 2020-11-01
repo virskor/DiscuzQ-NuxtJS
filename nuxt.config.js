@@ -87,6 +87,10 @@ module.exports = {
   */
   modules: [
   ],
+  serverMiddleware: [
+    // API middleware
+    { path: '/api', handler: '~/server/proxy.js' },
+  ],
   /*
   ** vuetify module configuration
   ** https://github.com/nuxt-community/vuetify-module

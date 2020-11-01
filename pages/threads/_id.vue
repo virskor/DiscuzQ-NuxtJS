@@ -135,7 +135,7 @@ export default {
 		// 必须是number类型
 		return /^\d+$/.test(params.id);
 	},
-	async asyncData({ params, error }) {
+	async asyncData({ app, params, error }) {
 		try {
 			const rs = await threadsAPI.getThread(params.id, {});
 			if (!rs) {
@@ -144,8 +144,14 @@ export default {
 					message: "该主题暂时无法查看，请刷新重试",
 				});
 			}
+			
+			const thread = rs.data;
+			const title = thread.attributes.title || defaultTitle;
 
-			return { included: rs.included, thread: rs.data };
+			// ssr
+			app.head.title = title;
+
+			return { included: rs.included, thread};
 		} catch (error) {
 			throw error;
 		}

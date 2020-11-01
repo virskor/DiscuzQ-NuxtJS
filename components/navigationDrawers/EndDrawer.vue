@@ -1,10 +1,12 @@
 <template>
 	<v-navigation-drawer class="end-drawer" width="300" app right v-model="show">
+		<EndDrawerHeader/>
 		<HomePageDrawer />
 	</v-navigation-drawer>
 </template>
 
 <script>
+import EndDrawerHeader from "~/components/navigationDrawers/EndDrawerHeader";
 import HomePageDrawer from "~/components/navigationDrawers/HomePageDrawer";
 
 export default {
@@ -30,7 +32,8 @@ export default {
 		},
 	},
 	components: {
-		HomePageDrawer
+		HomePageDrawer,
+		EndDrawerHeader
 	}
 };
 </script>

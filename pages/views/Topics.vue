@@ -71,7 +71,10 @@ export default {
 			title: "话题列表",
 		};
 	},
-	async asyncData({ params, error }) {
+	async asyncData({ app, params, error }) {
+
+		app.head.title = "话题列表";
+
 		try {
 			const rs = await topicsAPI.getTopics();
 			if (!rs) {

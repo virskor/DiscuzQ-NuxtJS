@@ -12,6 +12,9 @@ import CategoriesTab from "~/components/categories/CategoriesTab";
 import ThreadsFiltersMenu from "~/components/threads/ThreadsFiltersMenu";
 
 export default {
+	asyncData({ app }) {
+		app.head.title = "版块分类";
+	},
 	head() {
 		return {
 			title: "分类",
