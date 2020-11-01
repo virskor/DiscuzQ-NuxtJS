@@ -61,6 +61,43 @@ yarn install
 yarn build
 nohup yarn start &
 ```
+### 使用腾讯云Serverless云函数部署（免购买服务器和运行环境）
+您可以参考这个连接，https://cloud.tencent.com/document/product/1154/44066 。或者直接参照下面的方式部署。 注意内存至少1024M。   
+通过 npm 全局安装 Serverless CLI：  
+```sh
+$ npm install -g serverless
+```
+要想使用项目中自带的yml文件，则直接执行部署，否则参照下面生成配置文件。  
+```
+$ sls deploy
+```
+在项目根目录创建 serverless.yml 文件：  
+```sh
+$ touch serverless.yml
+``` 
+在 serverless.yml 中进行如下配置：  
+```yml
+# serverless.yml
+component: nuxtjs # (必填) 组件名称，此处为 nuxtjs
+name: nuxtjsDemo # (必填) 实例名称
+org: orgDemo # (可选) 用于记录组织信息，默认值为您的腾讯云账户 APPID
+app: appDemo # (可选) 该 nuxt.js 项目名称
+stage: dev # (可选) 用于区分环境信息，默认值是 dev
+
+inputs:
+  src:
+    src: ./src
+    exclude:
+      - .env
+  region: ap-guangzhou
+  runtime: Nodejs10.15
+  apigatewayConf:
+    protocols:
+      - http
+      - https
+    environment: release
+```
+部署完成后，使用CDN访问部署生成的域名地址。并配置相同的回源host即可。   
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
 
