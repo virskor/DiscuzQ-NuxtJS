@@ -28,6 +28,12 @@
 			<v-list>
 				<v-list-item>
 					<v-card flat tile>
+						<p class="text-h5">2020-11-02</p>
+						<p>支持腾讯云serverless部署</p>
+					</v-card>
+				</v-list-item>
+				<v-list-item>
+					<v-card flat tile>
 						<p class="text-h5">2020-11-01</p>
 						<p>支持SSR</p>
 					</v-card>

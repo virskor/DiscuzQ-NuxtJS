@@ -16,7 +16,7 @@ let APIHOST = C.isDevelopement() ? discuzConf.APIPath.development : discuzConf.A
  */
 if (process.server) {
     if (!APIHOST) {
-        APIHOST = 'http://127.0.0.1:3333';
+        APIHOST = C.isDevelopement() ? discuzConf.proxy.development : discuzConf.proxy.production;
     }
 }
 
@@ -110,10 +110,10 @@ const URLS = {
     OAUTH_WECHAT_WEB_USER: `${APIHOST}${APIVERSION}/oauth/wechat/web/user`,
 
 
-     /**
-     * GET  /api/oauth/wechat/web/user/serach PC微信扫码登录查询用户扫码状态接口
-     * https://discuz.com/api-docs/v1/wechat-pc-user-search.html
-     */
+    /**
+    * GET  /api/oauth/wechat/web/user/serach PC微信扫码登录查询用户扫码状态接口
+    * https://discuz.com/api-docs/v1/wechat-pc-user-search.html
+    */
     OAUTH_WECHAT_WEB_USER_SEARCH: `${APIHOST}${APIVERSION}/oauth/wechat/web/user/serach`,
 
 
