@@ -3,8 +3,8 @@
 		<v-toolbar flat>
 			<AppLogo />
 			<v-spacer></v-spacer>
-			<v-btn @click="$router.push('/views/editor')" depressed outlined color="primary">
-				<v-icon left>mdi-book-open</v-icon> 发帖
+			<v-btn @click="$router.push('/views/editor')" small depressed color="primary">
+				<v-icon left>mdi-plus</v-icon> 发帖
 			</v-btn>
 		</v-toolbar>
 		<v-list>

@@ -21,11 +21,16 @@
 					剩余未完成或计划近期完成的：使用零钱包，及支付密码输入组件
 				</p>
 				<p>剩余未完成或计划近期完成的：新增视频上传</p>
-				<p>剩余未完成或计划近期完成的：修改密码，修改手机号</p>
 				<p>剩余未完成或计划近期完成的：腾讯LBS支持</p>
 				<p>剩余未完成或计划近期完成的：站点付费模式</p>
 			</v-card>
 			<v-list>
+				<v-list-item>
+					<v-card flat tile>
+						<p class="text-h5">2020-11-03</p>
+						<p>忘记密码时支持修改密码</p>
+					</v-card>
+				</v-list-item>
 				<v-list-item>
 					<v-card flat tile>
 						<p class="text-h5">2020-11-02</p>

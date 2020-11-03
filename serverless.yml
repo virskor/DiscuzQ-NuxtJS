@@ -5,8 +5,9 @@ app: appDemo # (可选) 该 nuxt.js 项目名称
 stage: release # (可选) 用于区分环境信息，默认值是 dev
 
 inputs:
-  memorySize: 1024
-  timeout: 60
+  functionConf:
+    memorySize: 1024
+    timeout: 60
   src:
     src: ./
     exclude:
