@@ -82,10 +82,10 @@ module.exports = {
         /**
          * 是否允许手机访问
          * 
-         * 如果为true，那么不会提示用户跳转到手机版
+         * 如果为true，则允许直接使用手机访问那么不会提示用户跳转到手机版
          * 如果为false，且配置了redirectDomain那么将在用户使用手机访问时，跳转到手机版继续
          */
-        enableMobile: false,
+        enableMobile: true,
         /**
          * 手机版下要跳转的域名
          * 不要加路径，仅协议+domain
@@ -105,9 +105,7 @@ module.exports = {
      * }
      */
     extendedNavigations: [
-        { caption: '开发者社区', href: 'https://www.clodra.com', newWidow: true },
-        { caption: '官方站点', href: 'https://discuz.chat', newWidow: true },
-        { caption: '获取源码', href: 'https://github.com/virskor/DiscuzQ-NuxtJS', newWidow: true }
+        { caption: '下载APP', href: 'https://app.clodra.com', newWidow: true },
     ],
     /**
      * analytics

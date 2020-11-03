@@ -1,36 +1,5 @@
 <template>
 	<div>
-		<v-container fluid>
-			<v-row align="center" justify="center">
-				<v-col class="pt-0" cols="12" md="12">
-					<v-card elevation="0" tile class="mx-auto">
-						<v-carousel
-							:continuous="false"
-							cycle
-							:show-arrows="true"
-							hide-delimiter-background
-							delimiter-icon="mdi-minus"
-							height="500"
-						>
-							<v-carousel-item v-for="(slide, i) in slides" :key="i">
-								<template>
-									<v-sheet tile>
-										<v-parallax width="100%" height="500" :src="slide.src" :lazy-src="slide.src">
-											<v-row class="fill-height" align="end" justify="start">
-												<v-col cols="12" md="12">
-													<div class="text-h1 font-weight-black pl-3 text-shadow">{{ slide.caption }}</div>
-													<div class="display-1 pl-3 text-shadow">{{ slide.subtitle }}</div>
-												</v-col>
-											</v-row>
-										</v-parallax>
-									</v-sheet>
-								</template>
-							</v-carousel-item>
-						</v-carousel>
-					</v-card>
-				</v-col>
-			</v-row>
-		</v-container>
 		<v-container>
 			<v-row align="center" justify="center">
 				<v-col cols="12" md="12">

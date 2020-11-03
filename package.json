@@ -13,6 +13,7 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "test": "jest",
+    "deploy": "sls deploy && yarn refresh-cdn",
     "refresh-cdn": "node ./tools/cdn.js"
   },
   "dependencies": {
