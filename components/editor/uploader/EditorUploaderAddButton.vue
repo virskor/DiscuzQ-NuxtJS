@@ -72,6 +72,14 @@ export default {
 			const file = document.getElementById(inputID);
 			file.click();
 		},
+		/**
+		 * 清除选中数据
+		 */
+		clear(){
+			const {inputID} = this;
+			const file = document.getElementById(inputID);
+			file.value = "";
+		},
 
 		/**
 		 * 上传
@@ -111,6 +119,9 @@ export default {
 
 			const rs = await attachmentsAPI.upload(formData);
 			this.loading = false;
+
+			/// 无论上传成功与否都清空避免无法正常上传
+			this.clear();
 
 			if (rs) {
 				await this.$store.dispatch('addAttachment', rs.data);

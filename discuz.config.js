@@ -2,7 +2,7 @@ module.exports = {
     /**
      * 用于后端渲染的站点名称
      */
-    ssr_sitename: 'Discuz!Q',
+    ssr_sitename: 'Clodra',
 
     /**
      * 用于后端渲染的 description
