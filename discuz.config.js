@@ -71,7 +71,7 @@ module.exports = {
      */
     APIPath: {
         development: '',
-        production: '',
+        production: 'https://m.clodra.com',
     },
 
     /**

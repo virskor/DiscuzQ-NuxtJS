@@ -101,6 +101,13 @@ inputs:
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
 
+### 腾讯云CDN跨域
+#### Response Header配置
+增加 |  Access-Control-Allow-Origin | https://www.example.com,https://app.example1.com  
+增加 |  Access-Control-Allow-Headers | DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization  
+
+增加 |  Access-Control-Allow-Methods | GET, POST, OPTIONS, PUT, DELETE, UPDATE, PATCH  
+增加 |  Access-Control-Allow-Credentials | true  
 ### 工具
 使用腾讯云CDN，可以编辑 cloud.config.js 来快速使用命令刷新cdn。拷贝cloud.config.js.bak文件并重新命名为 cloud.config.js。修改其中的SecretId等相关参数便可以使用下面的命令。  
 ```bash
