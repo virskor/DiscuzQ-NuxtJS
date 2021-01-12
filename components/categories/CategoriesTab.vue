@@ -1,6 +1,6 @@
 <template>
 	<div v-if="categories">
-		<v-tabs v-model="tab" :vertical="!$C.isMobile()" show-arrows>
+		<v-tabs v-model="tab" show-arrows>
 			<template v-for="(cat, i) in categories">
 				<v-tab
 					class="text-h5 font-weight-bold"
