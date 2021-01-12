@@ -287,12 +287,14 @@ export default {
 		mapRewardedUsers() {
 			const { included, thread } = this;
 
-			const relatedRewardedUsers =
-				thread.relationships.rewardedUsers.data;
+			let relatedRewardedUsers =
+				thread.relationships.rewardedUsers;
 
 			if (this.$_.isEmpty(relatedRewardedUsers)) {
 				return null;
 			}
+
+			relatedRewardedUsers = relatedRewardedUsers.data || [];
 
 			const users = relatedRewardedUsers.map((el) => el.id);
 			return users.map((u) =>
