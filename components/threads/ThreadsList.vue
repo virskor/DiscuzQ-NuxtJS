@@ -1,6 +1,5 @@
 <template>
 	<div>
-
 		<ThreadFiltersMenuDesktop></ThreadFiltersMenuDesktop>
 
 		<div v-if="loading && pageNumber == 1">
@@ -119,9 +118,7 @@ export default {
 		mapRelatedUser(thread) {
 			const { threadsData } = this;
 			return threadsData.included.find(
-				(it) =>
-					it.type == "users" &&
-					it.id == thread.relationships.user.data.id
+				(it) => it.type == "users" && it.id == thread.relationships.user.data.id
 			);
 		},
 		/**
@@ -131,8 +128,7 @@ export default {
 			const { threadsData } = this;
 			return threadsData.included.find(
 				(it) =>
-					it.type == "posts" &&
-					it.id == thread.relationships.firstPost.data.id
+					it.type == "posts" && it.id == thread.relationships.firstPost.data.id
 			);
 		},
 		mapThreadVideo(thread) {
@@ -272,7 +268,7 @@ export default {
 
 	components: {
 		ThreadCard,
-		ThreadFiltersMenuDesktop
+		ThreadFiltersMenuDesktop,
 	},
 };
 </script>

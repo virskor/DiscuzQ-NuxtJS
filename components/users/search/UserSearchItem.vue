@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<v-card flat tile>
 		<v-list-item>
 			<v-list-item-avatar tile :size="50">
 				<Avatar :user="user"></Avatar>
@@ -24,7 +24,7 @@
 				<v-btn v-if="!showFollowButton" text color="primary" @click="visit(user)" small>查看Ta</v-btn>
 			</v-list-item-action>
 		</v-list-item>
-	</div>
+	</v-card>
 </template>
 
 <script>
