@@ -4,6 +4,10 @@
 			<span>发现</span>
 			<v-icon>mdi-compass-outline</v-icon>
 		</v-btn>
+		<v-btn @click="getApp">
+			<span>APP</span>
+			<v-icon>mdi-download-outline</v-icon>
+		</v-btn>
 	</v-bottom-navigation>
 </template>
 
@@ -12,6 +16,12 @@ export default {
 	data() {
 		return {};
 	},
+	methods: {
+		getApp(){
+			let win = window.open();
+			win.location.href = "https://app.clodra.com";
+		}
+	}
 };
 </script>
 

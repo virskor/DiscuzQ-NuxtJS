@@ -4,7 +4,7 @@
 			<v-col
 				class="pb-0"
 				cols="12"
-			>Copyright © 2013-{{ new Date().getFullYear() }} {{forum.attributes.set_site.site_name}}.</v-col>
+			>Copyright © 2013-{{ new Date().getFullYear() }}</v-col>
 			<v-col class="pt-0" cols="12">
 				<p>
 					<!-- <span>用户：{{forum.attributes.other.count_users}}</span>
@@ -12,6 +12,7 @@
 					<span>主题：{{forum.attributes.other.count_posts}}</span> -->
 					<nuxt-link to="/views/license/privacy">隐私政策</nuxt-link>
 					<nuxt-link to="/views/license/policy">用户协议</nuxt-link>
+					<a target="_blank" href="https://app.clodra.com/helpcenter/">帮助中心</a>
 				</p>
 
 				<p>

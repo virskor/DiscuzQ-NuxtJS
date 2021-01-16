@@ -9,9 +9,11 @@ inputs:
     memorySize: 1024
     timeout: 60
   src:
+    hook: npm run build
     src: ./
     exclude:
       - .env
+      #- node_modules
   region: ap-beijing
   runtime: Nodejs12.16
   apigatewayConf:
