@@ -4,7 +4,7 @@
 		<v-card flat v-if="isSticky">
 			<div @click="$router.push(`/threads/${thread.id || 0}`)" class="pb-1 pt-2 ml-5" v-if="title">
 				<v-chip label outlined class="mb-1" color="primary" small>顶置</v-chip>
-				<span class="font-weight-black clickable" v-html=" title || formatRichText(contents)"></span>
+				<span class="font-weight-black clickable" v-html="title || formatRichText(summary)"></span>
 			</div>
 			<v-divider></v-divider>
 		</v-card>
@@ -107,9 +107,9 @@ export default {
 			return thread.attributes.title || "";
 		},
 		/** 内容 */
-		contents() {
+		summary() {
 			const { firstPost } = this;
-			return firstPost.attributes.contentHtml || "";
+			return firstPost.attributes.summary || "";
 		},
 		/**
 		 * 是否需要继续支付
