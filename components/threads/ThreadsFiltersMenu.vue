@@ -1,6 +1,11 @@
 <template>
 	<div>
-		<v-menu v-model="menu" :close-on-content-click="false" :nudge-width="200" offset-y>
+		<v-menu
+			v-model="menu"
+			:close-on-content-click="false"
+			:nudge-width="200"
+			offset-y
+		>
 			<template v-slot:activator="{ on, attrs }">
 				<v-btn v-bind="attrs" v-on="on" depressed text small color="primary">
 					<i class="iconfont icon-Filter"></i>
@@ -12,7 +17,9 @@
 					<v-list-item>
 						<v-list-item-content>
 							<v-list-item-title>筛选查询帖子</v-list-item-title>
-							<v-list-item-subtitle>根据选中的偏好，来为您展示帖子</v-list-item-subtitle>
+							<v-list-item-subtitle
+								>根据选中的偏好，来为您展示帖子</v-list-item-subtitle
+							>
 						</v-list-item-content>
 					</v-list-item>
 				</v-list>
@@ -30,9 +37,10 @@
 										@click="categoryId = it.id"
 										depressed
 										outlined
-										v-for="(it,i) in categories"
+										v-for="(it, i) in categories"
 										:key="i"
-									>{{it.attributes.name}}</v-btn>
+										>{{ it.attributes.name }}</v-btn
+									>
 								</v-row>
 							</v-list-item-subtitle>
 						</v-list-item-content>
@@ -51,9 +59,10 @@
 									@click="type = it.value"
 									depressed
 									outlined
-									v-for="(it,i) in types"
+									v-for="(it, i) in types"
 									:key="i"
-								>{{it.caption}}</v-btn>
+									>{{ it.caption }}</v-btn
+								>
 							</v-list-item-subtitle>
 						</v-list-item-content>
 					</v-list-item>
@@ -70,7 +79,8 @@
 									@click="toggleIsEssence"
 									depressed
 									outlined
-								>精华</v-btn>
+									>精华</v-btn
+								>
 								<v-btn
 									class="mr-2"
 									v-if="user"
@@ -78,7 +88,8 @@
 									:color="fromUserId == user.id ? 'primary' : 'default'"
 									depressed
 									outlined
-								>只看已关注</v-btn>
+									>只看已关注</v-btn
+								>
 							</v-list-item-subtitle>
 						</v-list-item-content>
 					</v-list-item>
@@ -88,7 +99,9 @@
 					<v-spacer></v-spacer>
 
 					<v-btn depressed @click="menu = false">关闭</v-btn>
-					<v-btn depressed @click="enSureUpdateFilter" color="primary">筛选并查询</v-btn>
+					<v-btn depressed @click="enSureUpdateFilter" color="primary"
+						>筛选并查询</v-btn
+					>
 				</v-card-actions>
 			</v-card>
 		</v-menu>
@@ -138,15 +151,15 @@ export default {
 			 * type
 			 * 类型：0 普通 1 长文 2 视频 3 图片
 			 */
-			type: '',
+			type: "",
 			/**
 			 * 类型选择列表
 			 */
 			types: [
-				{ caption: "普通", value: '0' },
-				{ caption: "长文", value: '1' },
-				{ caption: "视频", value: '2' },
-				{ caption: "图片", value: '3' },
+				{ caption: "普通", value: "0" },
+				{ caption: "长文", value: "1" },
+				{ caption: "视频", value: "2" },
+				{ caption: "图片", value: "3" },
 			],
 		};
 	},
@@ -216,9 +229,7 @@ export default {
 			 * 允许显示筛选器的路由
 			 */
 			const wantRemoveOnPathList = ["/views/categories"];
-			const match = wantRemoveOnPathList.find(
-				(it) => it == this.$route.path
-			);
+			const match = wantRemoveOnPathList.find((it) => it == this.$route.path);
 			return typeof match == "undefined" ? false : true;
 		},
 	},

@@ -5,7 +5,7 @@
 			class="text-h6 mb-1 font-weight-black clickable"
 			@click="onWantOpenThreadDetail"
 			v-if="title"
-		>{{title}}</div>
+		><span v-html="title"></span></div>
 		<!--标签-->
 		<div>
 			<v-chip label outlined v-if="isSticky" class="mb-1" color="primary" small>置顶</v-chip>
@@ -85,8 +85,8 @@ export default {
 		 * 文章标题
 		 */
 		title() {
-			const { thread } = this;
-			return thread.attributes.title || "";
+			const { thread, firstPost } = this;
+			return thread.attributes.title || firstPost.attributes.summary;
 		},
 		/**
 		 * 是否是付费贴

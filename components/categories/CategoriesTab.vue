@@ -6,6 +6,7 @@
 					class="text-h5 font-weight-bold"
 					:key="i"
 					:ripple="false"
+					v-if="cat.attributes.name != '我的'"
 					@click="onChanged(cat)"
 				>{{cat.attributes.name}}</v-tab>
 
