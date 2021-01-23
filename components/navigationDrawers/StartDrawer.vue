@@ -1,5 +1,5 @@
 <template>
-	<v-navigation-drawer class="start-drawer" app v-model="show">
+	<v-navigation-drawer class="start-drawer" app clipped v-model="show">
 		<v-toolbar flat>
 			<AppLogo />
 			<v-spacer></v-spacer>

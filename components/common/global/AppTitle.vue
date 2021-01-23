@@ -1,8 +1,8 @@
 <template>
-	<v-app-bar :color="appbarColor || 'white'" app flat class="app-title">
+	<v-app-bar :color="appbarColor || 'white'" app clipped-right clipped-left flat class="app-title">
 		<v-toolbar :color="appbarColor || 'white'" :dark="appConf.appbarDark" dense flat>
 			<!--返回按钮-->
-			<v-btn v-if="showArrow && $route.path != '/'" @click="$router.go(-1)" icon>
+			<v-btn v-if="showArrow && $route.path != '/' && $C.isMobile()" @click="$router.go(-1)" icon>
 				<v-icon>mdi-arrow-left</v-icon>
 			</v-btn>
 
@@ -89,7 +89,7 @@ export default {
 
 <style lang="less">
 .app-title {
-	border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
+	//border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
 	z-index: 9 !important;
 	.v-toolbar__content {
 		margin: 0;

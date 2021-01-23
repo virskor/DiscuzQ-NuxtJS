@@ -17,6 +17,7 @@
     "refresh-cdn": "node ./tools/cdn.js"
   },
   "dependencies": {
+    "@nuxtjs/vuetify": "^1.11.3",
     "axios": "^0.19.2",
     "axios-auth-refresh": "^3.0.0",
     "babel-polyfill": "^6.26.0",
@@ -37,7 +38,6 @@
     "vuex": "^3.5.1"
   },
   "devDependencies": {
-    "@nuxtjs/vuetify": "^1.11.2",
     "@vue/test-utils": "^1.0.3",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^26.1.0",
