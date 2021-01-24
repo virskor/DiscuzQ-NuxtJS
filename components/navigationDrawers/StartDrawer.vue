@@ -1,12 +1,5 @@
 <template>
 	<v-navigation-drawer class="start-drawer" app clipped v-model="show">
-		<v-toolbar flat>
-			<AppLogo />
-			<v-spacer></v-spacer>
-			<v-btn @click="$router.push('/views/editor')" small depressed color="primary">
-				<v-icon left>mdi-plus</v-icon> 发帖
-			</v-btn>
-		</v-toolbar>
 		<v-list>
 			<template v-for="(item, i) in navigationItems">
 				<template v-if="item.shouldLogin && !hasLogined"></template>

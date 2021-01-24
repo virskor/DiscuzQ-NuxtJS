@@ -3,6 +3,7 @@
 		<AppTitle :title="title || '帖子详情'">
 			<SearchField />
 		</AppTitle>
+
 		<v-alert
 			class="ma-0"
 			v-if="thread.type == 2 && threadVideo.attributes.status == 0"
@@ -60,7 +61,7 @@
 				-->
 				<v-card tile flat>
 					<ThreadContents
-						class="pl-5 pr-5 text mb-3"
+						class="pl-5 pr-5 text mb-3 pt-4"
 						:thread="thread"
 						:firstPost="firstPost"
 					></ThreadContents>

@@ -7,7 +7,7 @@
 			</v-btn>
 
 			<!--app logo-->
-			<AppLogo v-if="$C.isMobile()" class="mr-4" />
+			<AppLogo class="mr-4" />
 
 			<!--当前页面的标题-->
 			<v-toolbar-title class="font-weight-black">{{title}}</v-toolbar-title>

@@ -5,7 +5,7 @@
 			<BottomNavigation @start="() => showStartDrawer = true"></BottomNavigation>
 			<v-app-bar clipped-right clipped-left flat app></v-app-bar>
 			<!--路由渲染-->
-			<v-main app>
+			<v-main max-width="800px" app>
 				<template v-if="!forum && !loadForumFailed || loadingUser">
 					<!--加载中-->
 					<v-dialog

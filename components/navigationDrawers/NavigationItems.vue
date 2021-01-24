@@ -68,7 +68,7 @@ export default {
 				},
 				{ divider: true },
 				{ text: "站点信息", route: "/views/siteinfo" },
-				{ text: "更新日志", route: "/changelog" },
+				// { text: "更新日志", route: "/changelog" },
 				// { text: "下载APP", route: "/app" },
 			],
 		};

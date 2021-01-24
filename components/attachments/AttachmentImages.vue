@@ -1,5 +1,5 @@
 <template>
-	<div class="qui-attachments ml-2">
+	<div class="qui-attachments ml-2 mt-2">
 		<v-card flat max-width="700">
 			<!--使用九宫格渲染-->
 			<v-row v-if="shouldShowAttchments && grid">
