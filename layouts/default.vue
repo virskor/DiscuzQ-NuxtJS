@@ -3,7 +3,7 @@
 		<v-app>
 			<!--底部菜单，仅手机显示-->
 			<BottomNavigation @start="() => showStartDrawer = true"></BottomNavigation>
-
+			<v-app-bar clipped-right clipped-left flat app></v-app-bar>
 			<!--路由渲染-->
 			<v-main app>
 				<template v-if="!forum && !loadForumFailed || loadingUser">
@@ -117,7 +117,7 @@ export default {
 				return 'black';
 			}
 
-			return 'grey lighten-4 fill-height';
+			return 'app-global-theme fill-height';
 		},
 		siteClosed() {
 			const { forum } = this;
@@ -147,6 +147,9 @@ export default {
 	.v-app-bar.v-toolbar.v-sheet {
 		border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
 		//box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.02), 0px 4px 5px 0px rgba(0, 0, 0, 0.04), 0px 1px 10px 0px rgba(0, 0, 0, 0.22) !important;
+	}
+	.app-global-theme{
+		background: #f0f2f5;
 	}
 }
 </style>
