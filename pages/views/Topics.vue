@@ -23,7 +23,7 @@
 			</v-btn>
 		</AppTitle>
 
-		<v-container>
+		<v-container class="scaffold">
 			<!--话题列表-->
 			<template>
 				<!--没有可用的数据-->
@@ -58,9 +58,6 @@
 </template>
 
 <script>
-import * as types from "~/store/vuex-types";
-import { mapGetters } from "vuex";
-
 import topicsAPI from "~/api/topics";
 import TopicsFilter from "~/components/topics/TopicsFilter";
 import TopicItemCard from "~/components/topics/TopicItemCard";
@@ -76,7 +73,7 @@ export default {
 		app.head.title = "话题列表";
 
 		try {
-			const rs = await topicsAPI.getTopics();
+			const rs = await topicsAPI.getTopics({"page[number]": 1,"sort": "recommended"});
 			if (!rs) {
 				return error({
 					statusCode: 502,
@@ -86,6 +83,7 @@ export default {
 
 			return { topicsList: rs, meta: rs.meta };
 		} catch (error) {
+			console.log(error);
 			throw error;
 		}
 	},
@@ -132,7 +130,6 @@ export default {
 		 * 执行搜索
 		 */
 		search() {
-			const { keyword, sort } = this;
 			this.getTopicList();
 		},
 		/**
@@ -190,6 +187,7 @@ export default {
 				sort,
 				"filter[content]": keyword,
 				"page[number]": pageNumber,
+				"sort": "recommended"
 			});
 
 			this.loading = false;

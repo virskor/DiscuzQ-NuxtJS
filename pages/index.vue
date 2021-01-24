@@ -5,7 +5,7 @@
 			<ThreadsFiltersMenu v-if="$C.isMobile()" />
 		</AppTitle>
 
-		<v-container>
+		<v-container class="scaffold" fluid>
 			<Editor class="mb-2" enablePrice lightMode></Editor>
 			<ThreadList />
 		</v-container>

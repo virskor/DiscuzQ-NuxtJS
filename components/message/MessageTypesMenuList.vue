@@ -53,6 +53,9 @@ export default {
 		 */
 		typeUnreadNotifications() {
 			const { user } = this;
+			if(this.$_.isEmpty(user)){
+				return null;
+			}
 			return user.attributes.typeUnreadNotifications;
 		},
 	},

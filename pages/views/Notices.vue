@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<AppTitle showExtendedNav :title="title"></AppTitle>
-		<v-container>
+		<v-container class="scaffold">
 			<MessageTypesMenuList></MessageTypesMenuList>
 		</v-container>
 	</div>

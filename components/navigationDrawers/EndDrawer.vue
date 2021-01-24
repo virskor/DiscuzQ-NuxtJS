@@ -1,5 +1,5 @@
 <template>
-	<v-navigation-drawer clipped class="end-drawer" width="300" app right v-model="show">
+	<v-navigation-drawer clipped class="end-drawer app-global-theme" width="350" app right v-model="show">
 		<EndDrawerHeader/>
 		<HomePageDrawer />
 	</v-navigation-drawer>

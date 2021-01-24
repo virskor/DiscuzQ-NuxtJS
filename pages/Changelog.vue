@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<AppTitle title="更新日志"></AppTitle>
-		<v-container>
+		<v-container class="scaffold">
 			<v-card tile flat>
 				<v-card-title>最新上传的代码</v-card-title>
 				<v-card-subtitle

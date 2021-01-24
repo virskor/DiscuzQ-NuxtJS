@@ -2,7 +2,7 @@
 	<div>
 		<AppTitle :title="title"></AppTitle>
 
-		<v-container v-if="loading && pageNumber == 1">
+		<v-container class="scaffold" v-if="loading && pageNumber == 1">
 			<template>
 				<v-sheet class="px-3 pb-3">
 					<v-skeleton-loader
@@ -17,7 +17,7 @@
 		</v-container>
 		
 		<!--渲染消息列表-->
-		<v-container v-if="!$_.isEmpty(notifications)">
+		<v-container class="scaffold" v-if="!$_.isEmpty(notifications)">
 			<template v-for="(n, i) in notifications">
 				<NotificationItemCard :notification="n" :type="type"  :key="i"></NotificationItemCard>
 			</template>

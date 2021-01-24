@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<AppTitle showExtendedNav title="编辑器"></AppTitle>
-		<v-container>
+		<v-container class="scaffold">
 			<Editor enablePrice enableAttachment></Editor>
 		</v-container>
 	</div>

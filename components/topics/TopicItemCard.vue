@@ -1,5 +1,5 @@
 <template>
-	<v-card :ripple="false" elevation="0" class="topic-card pa-2 mb-2 " :id="`topic-${topic.id}`">
+	<v-card :ripple="false" flat class="topic-card pa-2 mb-2 " :id="`topic-${topic.id}`">
 		<!--话题标题-->
 		<v-card-title>
 			<v-list-item class="pa-0">

@@ -2,7 +2,7 @@
 	<div>
 		<!--简化顶置主题-->
 		<v-card flat v-if="isSticky">
-			<div @click="$router.push(`/threads/${thread.id || 0}`)" class="pb-1 pt-2 ml-5" v-if="title">
+			<div @click="$router.push(`/threads/${thread.id || 0}`)" class="pb-1 pt-2 ml-5 mt-2" v-if="title">
 				<v-chip label outlined class="mb-1" color="primary" small>顶置</v-chip>
 				<span class="font-weight-black clickable" v-html="title || formatRichText(summary)"></span>
 			</div>
@@ -11,10 +11,10 @@
 
 		<!--普通-->
 		<v-card
-			:ripple="false"
-			class="thread-card pb-2 pt-2 pr-2"
-			:id="`thread-${thread.id}`"
 			flat
+			:ripple="false"
+			class="thread-card pb-2 pt-2 pr-2 mt-2"
+			:id="`thread-${thread.id}`"
 			v-else-if="!showHideThread"
 		>
 			<!--渲染发布用户的信息-->
@@ -48,7 +48,6 @@
 			</div>
 			<!---渲染点赞评论分享-->
 			<ThreadCardQuickActions :firstPost="firstPost" :thread="thread"></ThreadCardQuickActions>
-			<v-divider class="mt-1"></v-divider>
 		</v-card>
 	</div>
 </template>

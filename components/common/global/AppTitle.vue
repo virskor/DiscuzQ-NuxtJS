@@ -1,29 +1,45 @@
 <template>
-	<v-app-bar :color="appbarColor || 'white'" app clipped-right clipped-left flat class="app-title">
-		<v-toolbar :color="appbarColor || 'white'" :dark="appConf.appbarDark" dense flat>
-			<!--返回按钮-->
-			<v-btn v-if="showArrow && $route.path != '/' && $C.isMobile()" @click="$router.go(-1)" icon>
-				<v-icon>mdi-arrow-left</v-icon>
-			</v-btn>
+  <v-app-bar
+    :color="appbarColor || 'white'"
+    app
+    clipped-right
+    clipped-left
+    flat
+    class="app-title"
+  >
+    <v-toolbar
+      :color="appbarColor || 'white'"
+      :dark="appConf.appbarDark"
+      dense
+      flat
+    >
+      <!--返回按钮-->
+      <v-btn
+        v-if="showArrow && $route.path != '/' && $C.isMobile()"
+        @click="$router.go(-1)"
+        icon
+      >
+        <v-icon>mdi-arrow-left</v-icon>
+      </v-btn>
 
-			<!--app logo-->
-			<AppLogo class="mr-4" />
+      <!--app logo-->
+      <AppLogo class="mr-4" />
 
-			<!--当前页面的标题-->
-			<v-toolbar-title class="font-weight-black">{{title}}</v-toolbar-title>
+      <!--当前页面的标题-->
+      <v-toolbar-title class="font-weight-black">{{ title }}</v-toolbar-title>
 
-			<v-spacer />
+      <v-spacer />
 
-			<slot />
+      <slot />
 
-			<!--拓展菜单-->
-			<ExtendedNav v-if="!hideExtendedNav"></ExtendedNav>
+      <!--拓展菜单-->
+      <ExtendedNav v-if="!hideExtendedNav"></ExtendedNav>
 
-			<!--用户登录状态栏-->
-			<UserStatusBar />
-		</v-toolbar>
-		<!-- <ClassicalNav v-if="appConf.classicalTheme"></ClassicalNav> -->
-	</v-app-bar>
+      <!--用户登录状态栏-->
+      <UserStatusBar />
+    </v-toolbar>
+    <!-- <ClassicalNav v-if="appConf.classicalTheme"></ClassicalNav> -->
+  </v-app-bar>
 </template>
 
 <script>
@@ -35,68 +51,69 @@ import ExtendedNav from "~/components/common/global/ExtendedNav";
 //import ClassicalNav from "~/components/common/ClassicalNav";
 
 export default {
-	props: {
-		/**
-		 * title
-		 */
-		title: String,
-		/**
-		 * color
-		 */
-		color: String,
-		/**
-		 * dark
-		 */
-		dark: Boolean,
-		/**
-		 * 隐藏导航条
-		 */
-		hideExtendedNav: Boolean,
-	},
-	data() {
-		return {
-			showArrow: true,
-		};
-	},
-	computed: {
-		...mapGetters({
-			appConf: types.GETTERS_APPCONF,
-		}),
-		appbarColor() {
-			const { appConf, color } = this;
-			if (color) {
-				return color;
-			}
+  props: {
+    /**
+     * title
+     */
+    title: String,
+    /**
+     * color
+     */
+    color: String,
+    /**
+     * dark
+     */
+    dark: Boolean,
+    /**
+     * 隐藏导航条
+     */
+    hideExtendedNav: Boolean,
+  },
+  data() {
+    return {
+      showArrow: true,
+    };
+  },
+  computed: {
+    ...mapGetters({
+      appConf: types.GETTERS_APPCONF,
+    }),
+    appbarColor() {
+      const { appConf, color } = this;
+      if (color) {
+        return color;
+      }
 
-			if (appConf.appbarColor) {
-				return appConf.appbarColor;
-			}
+      if (appConf.appbarColor) {
+        return appConf.appbarColor;
+      }
 
-			if (appConf.dark && !appConf.appbarColor) {
-				return "grey darken-4";
-			}
+      if (appConf.dark && !appConf.appbarColor) {
+        return "grey darken-4";
+      }
 
-			return "white";
-		},
-	},
-	components: {
-		UserStatusBar,
-		ExtendedNav,
-		//ClassicalNav,
-	},
+      return "white";
+    },
+  },
+  components: {
+    UserStatusBar,
+    ExtendedNav,
+    //ClassicalNav,
+  },
 };
 </script>
 
 <style lang="less">
 .app-title {
-	//border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
-	z-index: 9 !important;
-	.v-toolbar__content {
-		margin: 0;
-		padding: 0;
-		header {
-			padding: 0px 16px;
-		}
-	}
+  //border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%)!important;
+  z-index: 9 !important;
+  .v-toolbar__content {
+    margin: 0;
+    padding: 0;
+    header {
+      padding: 0px 16px;
+    }
+  }
 }
 </style>

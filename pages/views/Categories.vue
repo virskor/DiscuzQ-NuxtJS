@@ -3,7 +3,7 @@
     <AppTitle showExtendedNav title="版块分类">
       <ThreadsFiltersMenu v-if="$C.isMobile()" />
     </AppTitle>
-    <v-container>
+    <v-container class="scaffold">
       <CategoriesTab />
     </v-container>
   </div>

@@ -1,7 +1,7 @@
 <template>
 	<client-only>
 		<v-card class="pa-2" flat>
-			<v-overlay v-if="!hasLogined" absolute :opacity=".2" :value="true">
+			<v-overlay v-if="!hasLogined" absolute :opacity=".12" :value="true">
 				<v-btn @click="login" light depressed color="white">
 					登录来发布 <v-icon right>mdi-arrow-right-box</v-icon>
 				</v-btn>

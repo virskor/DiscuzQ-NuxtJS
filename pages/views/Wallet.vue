@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<AppTitle showExtendedNav title="卡包"></AppTitle>
-		<v-container>
+		<v-container class="scaffold">
 			<!--钱包金融数字预览-->
 			<WalletAmountsCard v-if="!loading" :wallet="wallet"></WalletAmountsCard>
 

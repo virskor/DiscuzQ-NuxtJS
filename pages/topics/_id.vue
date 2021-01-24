@@ -11,9 +11,6 @@
 </template>
 
 <script>
-import * as types from "~/store/vuex-types";
-import { mapGetters } from "vuex";
-
 import ThreadList from "~/components/threads/ThreadsList";
 import ThreadsFiltersMenu from "~/components/threads/ThreadsFiltersMenu";
 import TopicDetailCard from "~/components/topics/TopicDetailCard";

@@ -2,9 +2,6 @@
 	<div>
 
 		<v-list>
-			<SiteInfo subHeader></SiteInfo>
-			<v-divider></v-divider>
-
 			<RecentTopics></RecentTopics>
 			<UserRecommendList></UserRecommendList>
 		</v-list>
@@ -14,7 +11,6 @@
 <script>
 import RecentTopics from "~/components/topics/RecentTopics";
 import UserRecommendList from "~/components/users/UserRecommendList";
-import SiteInfo from "~/components/common/SiteInfo";
 
 export default {
 	computed: {
@@ -25,7 +21,6 @@ export default {
 	components: {
 		UserRecommendList,
 		RecentTopics,
-		SiteInfo,
 	},
 };
 </script>
