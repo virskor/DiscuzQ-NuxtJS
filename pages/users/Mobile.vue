@@ -224,6 +224,7 @@ export default {
         mobile,
         code,
         type: smsVerifyType,
+        register: 1
       };
 
       this.loading = true;
