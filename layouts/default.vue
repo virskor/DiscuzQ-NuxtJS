@@ -5,14 +5,6 @@
       <BottomNavigation
         @start="() => (showStartDrawer = true)"
       ></BottomNavigation>
-      
-      <v-app-bar
-        :color="appbarColor || 'white'"
-        clipped-right
-        clipped-left
-        flat
-        app
-      ></v-app-bar>
 
       <!-- <v-dialog :value="true" width="500">
         <v-card>
@@ -77,13 +69,11 @@
         </nuxt>
 
         <!--返回顶部按钮-->
-        <client-only>
-          <go-top id="goTop" :duration="1000">
-            <v-btn class="gotop elevation-5" color="primary" fab>
-              <v-icon large dark>mdi-chevron-up</v-icon>
-            </v-btn>
-          </go-top>
-        </client-only>
+        <go-top id="goTop" :duration="1000">
+          <v-btn class="gotop elevation-5" color="primary" fab>
+            <v-icon large dark>mdi-chevron-up</v-icon>
+          </v-btn>
+        </go-top>
       </v-main>
     </v-app>
   </div>

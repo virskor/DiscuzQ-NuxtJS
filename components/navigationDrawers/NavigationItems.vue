@@ -4,13 +4,13 @@ export default {
   data() {
     return {
       navigationItems: [
-        { img: "/hot.png", size: 25, text: "时下最新", route: "/" },
+        { img: "/home.png", text: "时下", route: "/" },
         {
           img: "/categories.png",
           text: "版块分类",
           route: "/views/categories",
         },
-        { img: "/chat.png",size: 31, text: "话题", route: "/views/topics" },
+        { img: "/chat.png", text: "话题", route: "/views/topics" },
         {
           img: "/bell.png",
           text: "消息提醒",
@@ -34,12 +34,11 @@ export default {
         },
         {
           img: "/settings.png",
-          size: 31,
           text: "设置",
           route: "/views/settings",
         },
         {
-          icon: "icon-tuichu2",
+          img: "/exit.png",
           text: "退出",
           color: "red",
           shouldLogin: true,

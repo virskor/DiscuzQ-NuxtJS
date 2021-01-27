@@ -2,8 +2,6 @@
   <v-app-bar
     :color="appbarColor || 'white'"
     app
-    clipped-right
-    clipped-left
     flat
     class="app-title"
   >
@@ -15,7 +13,7 @@
     >
       <!--返回按钮-->
       <v-btn
-        v-if="showArrow && $route.path != '/' && $C.isMobile()"
+        v-if="showArrow && $route.path != '/'"
         @click="$router.go(-1)"
         icon
       >
@@ -106,7 +104,7 @@ export default {
 <style lang="less">
 .app-title {
   //border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
-  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%)!important;
+  //box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%)!important;
   z-index: 9 !important;
   .v-toolbar__content {
     margin: 0;

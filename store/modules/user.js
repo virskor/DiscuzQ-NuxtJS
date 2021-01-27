@@ -142,13 +142,6 @@ const actions = {
      * shoudLogin
      */
     shouldLogin({state}){
-        /**
-         * 仅在客户端模式下检测是否已经登录
-         */
-        if(!process.client){
-            return;
-        }
-
         if(state.user == null){
             this.$router.push('/users/login');
         }

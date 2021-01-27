@@ -3,8 +3,7 @@
     class="start-drawer app-global-theme"
     app
     color="transparent"
-    clipped
-	width="350"
+    width="350"
     v-model="show"
   >
     <v-list nav>

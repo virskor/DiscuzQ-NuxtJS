@@ -36,6 +36,7 @@
 					<PostLikeButton :post="post"></PostLikeButton>
 					<!--评论-->
 					<PostReplyButton :thread="thread" :post="post"></PostReplyButton>
+
 					<v-menu top offset-y>
 						<template v-slot:activator="{ on, attrs }">
 							<v-btn text v-bind="attrs" v-on="on">更多</v-btn>

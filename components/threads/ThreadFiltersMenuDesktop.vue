@@ -1,5 +1,5 @@
 <template>
-	<v-card v-if="!$C.isMobile()" flat class="mb-2 pl-2 pr-2">
+	<v-card v-if="!$C.isMobile()" flat class="mb-2 pa-3">
 		<v-card-actions>
 			<v-row wrap>
 				<v-btn

@@ -1,6 +1,6 @@
 <template>
 	<div :style="`width:${size || 50}; height: ${size || 50}`" class="qui-avatar">
-		<v-avatar tile @click="onWantOpenUserHomePage" :size="size || 50" class="rounded" color="primary">
+		<v-avatar rounded @click="onWantOpenUserHomePage" :size="size || 50" color="primary">
 			<template>
 				<v-img v-if="!showEmpty" :src="userAvatar" :lazy-src="emptyAvatar" :alt="alt" @error="onError"></v-img>
 				<!--头像如果加载失败，那么将会以标签的形式呈现-->

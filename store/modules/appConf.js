@@ -40,9 +40,7 @@ const actions = {
          */
         const newAppConf = Object.assign({ ...state.appConf }, { ...conf });
         commit(types.MUTATION_APPCONF, newAppConf);
-        if (process.client) {
-            localStorage.setItem(consts.STORAGE_APPCONF, JSON.stringify(newAppConf));
-        }
+        localStorage.setItem(consts.STORAGE_APPCONF, JSON.stringify(newAppConf));
     },
     /**
      * 拉取应用配置

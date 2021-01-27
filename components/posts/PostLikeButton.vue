@@ -1,5 +1,5 @@
 <template>
-	<v-row no-gutters align="center" class="mr-2" justify="end">
+	<v-row no-gutters align="center" class="mr-2 mt-0" justify="end">
 		<v-btn v-if="post.attributes.canLike" :loading="loading" color="transparent" @click="toggleLikeButton" :ripple="false" depressed>
 			<v-icon left :color=" isLiked ? 'pink' : ''">mdi-heart-outline</v-icon>
 			<span :class="isLiked ? 'pink--text' : ''">{{counts || post.attributes.likeCount || 0}}</span>

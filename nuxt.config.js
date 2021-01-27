@@ -7,14 +7,14 @@ module.exports = {
   ** Nuxt rendering mode
   ** See https://nuxtjs.org/api/configuration-mode
   */
-  mode: 'universal',
+  mode: 'spa',
   /**
    * Enable SSR rendering
    * This option is automatically set based on mode value if not provided. 
    * This can be useful to dynamically enable/disable SSR on runtime after image builds 
    * (with docker for example).
    */
-  ssr: true,
+  ssr: false,
   /*
   ** Nuxt target
   ** See https://nuxtjs.org/api/configuration-target

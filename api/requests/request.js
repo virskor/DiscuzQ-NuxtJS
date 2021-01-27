@@ -22,7 +22,7 @@ instance.defaults.withCredentials = true;
  * 跳转到登录前的页面
  */
 const redirectToLogin = async () => {
-    if (typeof swal === "function" && process.client) {
+    if (typeof swal === "function") {
         const result = await swal({
             title: "登录来继续",
             text: "您还没有登录，现在前往登录后即可继续用操作",
@@ -44,38 +44,36 @@ const redirectToLogin = async () => {
 }
 
 const refreshAuthLogic = async failedRequest => {
-
-    if (process.client) {
-        /**
-         * 从客户端取得refresh_token
-         */
-        const getAccessToken = new Authorization().getAccessToken();
-        if (_.isEmpty(getAccessToken)) {
-            return;
-        }
-
-        /**
-         * todo: 尝试刷新accesstoken
-         */
-        const data = {
-            attributes: {
-                grant_type: "refresh_token",
-                refresh_token: getAccessToken.attributes.refresh_token
-            }
-        };
-
-        try {
-            const rs = await axios.post(URLS.REFRESH_TOKEN, { data });
-            if (rs) {
-                new Authorization().setAccessToken(rs.data);
-                failedRequest.response.config.headers['Authorization'] = 'Bearer ' + rs.data.attributes.access_token;
-                return Promise.resolve();
-            }
-        } catch (e) {
-            new Authorization().clear();
-            redirectToLogin();
-        }
+    /**
+     * 从客户端取得refresh_token
+     */
+    const getAccessToken = new Authorization().getAccessToken();
+    if (_.isEmpty(getAccessToken)) {
+        return;
     }
+
+    /**
+     * todo: 尝试刷新accesstoken
+     */
+    const data = {
+        attributes: {
+            grant_type: "refresh_token",
+            refresh_token: getAccessToken.attributes.refresh_token
+        }
+    };
+
+    try {
+        const rs = await axios.post(URLS.REFRESH_TOKEN, { data });
+        if (rs) {
+            new Authorization().setAccessToken(rs.data);
+            failedRequest.response.config.headers['Authorization'] = 'Bearer ' + rs.data.attributes.access_token;
+            return Promise.resolve();
+        }
+    } catch (e) {
+        new Authorization().clear();
+        redirectToLogin();
+    }
+
 
     return;
 }
@@ -88,18 +86,16 @@ instance.interceptors.request.use(
     async config => {
         config.headers = { "Content-Type": "application/vnd.api+json", };
 
-        if (process.client) {
-            /**
+        /**
                  * 补全header
                  * 
                  * 主要的是补全 authorization
                  */
-            const getAccessToken = new Authorization().getAccessToken();
-            if (!_.isEmpty(getAccessToken)) {
-                config.headers = {
-                    'Authorization': `Bearer ${getAccessToken.attributes.access_token}`,
-                    "Content-Type": "application/vnd.api+json",
-                }
+        const getAccessToken = new Authorization().getAccessToken();
+        if (!_.isEmpty(getAccessToken)) {
+            config.headers = {
+                'Authorization': `Bearer ${getAccessToken.attributes.access_token}`,
+                "Content-Type": "application/vnd.api+json",
             }
         }
         return config;
@@ -404,7 +400,7 @@ export default {
         const message = mapRequestErrors(key, err);
 
         /// toast message
-        if (typeof swal === "function" && process.client) {
+        if (typeof swal === "function") {
             swal("操作失败", message, "error");
             return;
         }

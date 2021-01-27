@@ -12,15 +12,12 @@ export default {
     isDevelopement() {
         return process.env.NODE_ENV == 'development'
     },
-    
+
     /**
      * 是否是手机号
      * return bool
      */
     isMobile() {
-        if(!process.client){
-            return false;
-        }
         return navigator.userAgent.match(/mobile/i)
     },
 
