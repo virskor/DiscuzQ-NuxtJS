@@ -6,6 +6,7 @@
     width="350"
     v-model="show"
   >
+    <v-toolbar flat></v-toolbar>
     <v-list nav>
       <template v-for="(item, i) in navigationItems">
         <template v-if="item.shouldLogin && !hasLogined"></template>

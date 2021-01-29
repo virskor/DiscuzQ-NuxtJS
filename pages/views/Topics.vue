@@ -11,6 +11,7 @@
 				hide-details
 				label="搜索话题"
 				prepend-inner-icon="mdi-magnify"
+				class="search-field"
 				@keyup.enter="search"
 			></v-text-field>
 

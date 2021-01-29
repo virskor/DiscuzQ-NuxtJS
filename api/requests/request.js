@@ -49,6 +49,7 @@ const refreshAuthLogic = async failedRequest => {
      */
     const getAccessToken = new Authorization().getAccessToken();
     if (_.isEmpty(getAccessToken)) {
+        redirectToLogin();
         return;
     }
 
@@ -64,13 +65,13 @@ const refreshAuthLogic = async failedRequest => {
 
     try {
         const rs = await axios.post(URLS.REFRESH_TOKEN, { data });
+
         if (rs) {
             new Authorization().setAccessToken(rs.data);
             failedRequest.response.config.headers['Authorization'] = 'Bearer ' + rs.data.attributes.access_token;
             return Promise.resolve();
         }
     } catch (e) {
-        new Authorization().clear();
         redirectToLogin();
     }
 
@@ -101,6 +102,7 @@ instance.interceptors.request.use(
         return config;
     },
     error => {
+
         Promise.reject(error)
     });
 
@@ -217,6 +219,7 @@ export default {
 
             /** 401不要处理，在interceptor处理 */
             if (err.response.status == 401) {
+                this.redirectToLogin();
                 return;
             }
 

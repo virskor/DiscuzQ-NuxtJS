@@ -1,7 +1,8 @@
 <template>
 	<div>
-
+		<v-toolbar flat></v-toolbar>
 		<v-list>
+			
 			<RecentTopics></RecentTopics>
 			<UserRecommendList></UserRecommendList>
 		</v-list>

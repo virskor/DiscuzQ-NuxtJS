@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<v-divider v-if="showViewCount"></v-divider>
-		<v-card-actions :class="showViewCount ? null: 'pa-0'">
+		<v-card-actions :class="showViewCount ? null: 'pa-2'">
 			<span
 				v-if="showViewCount"
 				class="ml-3 v-list-item__subtitle"

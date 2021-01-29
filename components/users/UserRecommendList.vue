@@ -79,7 +79,7 @@ export default {
 	data() {
 		return {
 			loading: true,
-			pageLimit: 5,
+			pageLimit: 8,
 			pageNumber: 1,
 			recommendUserlist: [],
 			meta: null,

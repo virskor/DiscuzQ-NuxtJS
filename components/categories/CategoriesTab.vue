@@ -10,8 +10,8 @@
 					@click="onChanged(cat)"
 				>{{cat.attributes.name}}</v-tab>
 
-				<v-tab-item :key="i">
-					<v-container>
+				<v-tab-item class="app-global-theme" :key="i">
+					<v-container pa-0 fluid>
 						<ThreadList :category="cat"></ThreadList>
 					</v-container>
 				</v-tab-item>

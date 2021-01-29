@@ -10,6 +10,22 @@
       :enablePrice="enablePrice"
     ></MarkdownEditor>
   </v-card>
+
+  <v-card class="pa-2" flat v-else>
+    <v-list-item @click="$router.push('/users/login')">
+      <v-list-item-avatar>
+        <v-avatar color="blue lighten-5">
+          <v-icon color="blue"> mdi-plus </v-icon>
+        </v-avatar>
+      </v-list-item-avatar>
+
+      <v-list-item-content>
+        <v-list-item-title>建立限时动态</v-list-item-title>
+
+        <v-list-item-subtitle>现在登入来继续</v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+  </v-card>
 </template>
 
 <script>

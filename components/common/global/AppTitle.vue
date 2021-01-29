@@ -3,6 +3,8 @@
     :color="appbarColor || 'white'"
     app
     flat
+    clipped-right
+    clipped-left
     class="app-title"
   >
     <v-toolbar
